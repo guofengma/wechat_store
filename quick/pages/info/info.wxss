@@ -1,0 +1,106 @@
+/* pages/info/info.wxss */
+.container{
+    padding: 0 40rpx;
+    overflow: hidden;
+}
+
+.container .content{
+    height: 720rpx;
+    background-color: #fff;
+    border: 1rpx #eee solid;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 80rpx;
+}
+.container .content view{
+    text-align: center;
+}
+.container .content .header{
+    height: 96rpx;
+    line-height: 90rpx;
+    position: relative;
+}
+.container .content .header .title{
+    color: #0D8FEF;
+}
+.container .content .header .delete{
+    position: absolute;
+    right: 40rpx;
+    color: #999999;
+}
+.container .content .header:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ddd;
+    height: 1px;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.container .content .name{
+    margin: 90rpx 0 28rpx;
+    font-size: 40rpx;
+    color: #000000;
+}
+
+.container .content .guige{
+    color: #999999;
+    margin-bottom: 70rpx;
+}
+.container .content .money{
+    color: #0D8FEF;
+}
+.container .content .symbol{
+    font-size: 36rpx;
+    padding-right: 2rpx;
+}
+.container .content .num{
+    font-size: 60rpx;
+}
+.container .content .total{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 82rpx;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.container .content .total .amount{
+    width: 180rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    font-size: 48rpx;
+    color: #333333;
+}
+.container .content .total image{
+    width: 56rpx;
+    height: 56rpx;
+} 
+.container .content .total image:first-of-type{
+    /*padding: 0 0 40rpx 40rpx;*/
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 32rpx;
+    text-align: center;
+}
+.footer view{
+    width: 50%;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+.footer .buy{
+    background-color: #fff;
+    color: #259AF0;
+}
+.footer .cart{
+    background-color: #259AF0;
+    color: #fff;
+}

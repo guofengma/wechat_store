@@ -1,0 +1,30 @@
+<!--pages/info/info.wxml-->
+<view class="container">
+    <view class="content">
+        <view class="header">
+            <text class="title">成功加入购入车</text>
+            <text bindtouchstart="bindDeleteTap" class="delete">删除</text>
+        </view>
+        <view class="name">{{name}}</view>
+        <view class="guige">规格：{{guige}}</view>
+        <view class="money">
+            <text class="symbol">¥</text>
+            <text class="num">{{total}}</text>
+        </view>
+        <view class="total">
+            <view class="left">
+                <image bindtouchstart="bindReduleTap" bindtouchend="Toredule" src="{{reduceSrc}}"></image>
+            </view>
+            <view class="amount">{{amounts}}</view>
+            <view class="right">
+                <image bindtouchstart="bindIncreaseTap" bindtouchend="Toincrease" src="{{increaseSrc}}"></image>
+            </view>
+            
+        </view>
+    </view>
+    
+</view>
+<view class="footer">
+    <view class="buy" bindtap="bindScanTap">继续购物</view>
+    <view class="cart" bindtap="bindCartTap">前往购物车</view>
+</view>

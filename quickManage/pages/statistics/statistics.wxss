@@ -1,0 +1,68 @@
+/* pages/statistics/statistics.wxss */
+.container{
+   overflow: hidden;
+   padding: 0 20rpx;
+}
+.nav{
+   height: 140rpx;
+   margin-top: 76rpx;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   background: #0D8FEF;
+   font-family: PingFangSC-Regular;
+   font-size: 30rpx;
+   color: #FFFFFF;
+   letter-spacing: -0.26px;
+   /* border: 1px solid #ECECEC; */
+   border-radius: 5px 5px 0 0;
+}
+.nav view{
+   opacity: 0.5;
+   width: 30%;
+   height: 140rpx;
+   line-height: 140rpx;
+   text-align: center;
+}
+.content{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   height: 300rpx;
+   background-color: #fff;
+   border-radius: 0 0 5px 5px;
+   box-shadow: -1px 0 1px 0 #ECECEC,1px 0 1px 0 #ECECEC,0 1px 1px 0 #ECECEC;
+}
+
+.content .item{
+   width: 50%;
+   text-align: center;
+   position: relative;
+}
+.content .tit{
+   color: #000000;
+   font-size: 28rpx;
+}
+.content .value{
+   font-family: PingFangSC-Regular;
+   font-size: 60rpx;
+   color: #0D8FEF;
+   margin-top: 34rpx;
+}
+.content .num::after{
+   content: "";
+   position: absolute;
+   width: 1px;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   transform: scaleX(.5);
+   background-color: #ECECEC;
+}
+
+.nav .active{
+   color: #ffffff;
+   opacity: 1;
+}

@@ -1,0 +1,30 @@
+<!--pages/info/info.wxml-->
+<view class="container">
+    <view class="content">
+        <form bindsubmit="save">
+            <view class="item">
+                <text>条形码:</text>
+                <text>{{barCode}}</text>
+                <input type="text" name="code" value="{{code}}" hidden="true" />
+            </view>
+            <view class="item">
+                <view class="title">商品信息</view>
+                <input bindinput="nameHandle" name="name" disabled="{{info}}" class="inputs" type="text" placeholder="请输入商品信息" value="{{name}}"/>
+            </view>
+            <view class="item">
+                <view class="title">规格</view>
+                <input bindinput="specHandle" name="specifi" disabled="{{spec}}" class="inputs" type="text" placeholder="请输入商品规格" value="{{specifi}}"/>
+            </view>
+            <view class="item">
+                <view class="title">库存</view>
+                <input bindinput="stockHandle" name="amount" class="inputs" type="number" placeholder="请输入商品数量" value="{{stock}}"/>
+            </view>
+            <view class="item">
+                <view class="title">价格</view>
+                <input bindinput="priceHandle" name="price" class="inputs" type="digit" placeholder="请输入商品价格" value="{{price}}"/>
+            </view>
+            <button disabled="{{disabled}}" form-type="submit">保存</button>
+        </form>
+    </view>
+    
+</view>

@@ -1,0 +1,32 @@
+<!--pages/orderList/orderList.wxml-->
+<view class="container">
+   <view class="noOrder" wx:if="{{!hasOrder}}">
+      <image src="../../image/noOrder.png"></image>
+      <view class="info">暂无订单</view>
+   </view>
+   <view class="hasOrder" wx:if="{{hasOrder}}">
+      <view class="item" wx:for="{{orderList}}" wx:for-index="index" wx:key="index">
+         <view class="elem top">
+            <view class="time">{{item.time}}</view>
+            <view class="classname">{{item.state}}</view>
+         </view>
+         <view class="center">
+            <view class="elem" wx:for="{{item.temp}}" wx:for-item="goods" wx:for-index="index2" wx:key="index2">
+               <view class="classname">
+                  <text class="name">{{goods.name}}</text>
+                  <text class="amount" style="color:#0D8FEF;">x{{goods.amount}}</text>
+               </view>
+               <view class="classname" style="color:red">¥{{goods.amount * goods.price}}</view>
+            </view>
+         </view>
+
+         <view class="elem bottom">
+            <view class="hasCheck">共{{item.totalNum}}件商品 ¥{{item.totalPrice}}</view>
+         </view>
+      </view>
+      <view class="loadmore">
+         <image hidden="{{hidden}}" src="../../image/loading.gif"></image>
+         <view class="nomore" hidden="{{!hidden}}">没有更多</view>
+      </view>
+   </view>
+</view>

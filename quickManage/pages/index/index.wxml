@@ -1,0 +1,5 @@
+<view class="container">
+    <!--<view class="title">库存管理</view>-->
+    <view class="info">扫货品条形码</view>
+    <image bindtouchstart="scanCode" src="../../image/scanCode.png"></image>
+</view>

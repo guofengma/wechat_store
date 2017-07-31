@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="info">扫顾客二维码</view>
+    <image bindtouchstart="scanCode" src="../../image/scanCode.png"></image>
+
+    <view class="moreView">
+      <button class="item orderList" bindtouchstart="orderView" hover-class="other-button-hover">订单流水</button>
+      <button class="item statistics" bindtouchstart="staticView" hover-class="other-button-hover">销量统计</button>
+    </view>
+</view>
+
+

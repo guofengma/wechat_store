@@ -1,0 +1,60 @@
+/* pages/submit/submit.wxss */
+.container{
+    background-color: #fff;
+    padding: 0 113.6rpx;
+}
+.logo{
+    text-align: center;
+}
+.logo .img{
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 222rpx;
+}
+.content view{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    padding-bottom: 5rpx;
+}
+.content view input{
+    width: 474rpx;
+    font-size: 36rpx;
+}
+.resetStyle{
+   font-size: 30rpx;
+}
+.content view:first-of-type{
+    margin-top: 136rpx;
+    margin-bottom: 86rpx;
+}
+.content view::after{
+    content: '';
+    height: 2px;
+    background-color: #ddd;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+.content image{
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 19.2rpx;
+}
+button{
+    margin-top: 166rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.active{
+    background-color: #0D8FEF;
+    color: #fff;
+}
+.info{
+   color: red;
+   font-size: 24rpx;
+   line-height: 40rpx;
+}

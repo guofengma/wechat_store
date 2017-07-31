@@ -1,0 +1,9 @@
+<!--pages/success/success.wxml-->
+<view class="container">
+    <image src="{{codeSrc}}"></image>
+    <view class="classname">扫码成功</view>
+    <view class="classname">请向店员出示商品</view>
+
+    <view class="classname">查看订单</view>
+    <view class="classname">回到首页</view>
+</view>

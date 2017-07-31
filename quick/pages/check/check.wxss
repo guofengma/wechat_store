@@ -1,0 +1,71 @@
+/* pages/check/check.wxss */
+.container{
+    overflow: hidden;
+    text-align: center;
+}
+.noCheck .tit{
+    font-size: 48rpx;
+    color: #0D8FEF;
+    text-align: center;
+    margin-top: 110rpx;
+}
+.noCheck .show{
+    text-align: center;
+    font-size: 34rpx;
+    margin-top: 40rpx;
+}
+.noCheck image{
+    width: 350rpx;
+    height: 350rpx;
+    margin-top: 90rpx;
+}
+
+
+.hasCheck .code{
+   margin-top: 220rpx;
+   width: 350rpx;
+   height: 350rpx;
+}
+.hasCheck .info{
+   font-family: PingFangSC-Regular;
+   font-size: 28rpx;
+   color: #999999;
+   letter-spacing: -0.34px;
+   margin-top: 42rpx;
+}
+.hasCheck .intro{
+   font-family: PingFangSC-Regular;
+   font-size: 34rpx;
+   color: #333333;
+   letter-spacing: -0.41px;
+   margin-top: 28rpx;
+}
+.hasCheck .nav{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-top: 140rpx;
+   width: 100%;
+}
+.hasCheck .nav button{
+   width: 270rpx;
+   height: 90rpx;
+   border-radius: 6px;
+   line-height: 90rpx;
+   font-family: PingFangSC-Regular;
+   font-size: 32rpx;
+}
+.hasCheck .nav .order{
+   background: #FFFFFF;
+   color: #333333;
+}
+
+.hasCheck .nav .home{
+   background: #FFFFFF;
+   color: #333333;
+}
+
+.hasCheck .nav .other-button-hover{
+   background: #0D8FEF;
+   color: #fff;
+}

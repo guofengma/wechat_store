@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="content">
+    <view class="rule">
+      <view class="rule_top">用快点 不排队</view>
+      <view class="rule_content">
+        <view class="rule_item" wx:for="{{step}}" wx:key="index" wx:for-index="index" wx:for-item="rule">
+          <image src="{{rule.image}}"></image>
+          <view class="rule_tit">{{rule.tit}}</view>
+          <view class="rule_info">{{rule.info}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="buy {{useShadow? 'shadow':''}}" bindlongtap="addShadow" bindtouchend="removeShadow">
+      <view class="bar">
+         <view class="store" wx:if="{{storeId}}" bindtouchstart="ReScanTap">
+            <image src="{{store}}"></image>
+            <view class="classname">{{storeName}}</view>
+         </view>
+         <!-- <view class="cart" wx:if="{{totalNum > 0}}" bindtouchstart="cartView">
+            <image src="{{cart}}"></image>
+            <view class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</view>
+         </view> -->
+      </view>
+      
+      <image class="homebg" src="../../image/homebg.png"></image>
+      <view class="scanCode">
+        <image class="scan_img" bindtap="bindScanTap" class="" src="../../image/scanCode.png"></image>
+      </view>
+      
+    </view>
+  </view>
+</view>

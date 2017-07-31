@@ -1,0 +1,45 @@
+{
+  "pages":[
+     
+     "pages/submit/submit",
+     
+     "pages/orderList/orderList",
+     "pages/detail/detail",
+     "pages/statistics/statistics",
+     "pages/info/info",
+     "pages/check/check",
+     "pages/index/index",
+     "pages/chat/chat"  
+     
+     
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "light",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "快点Boss",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "backgroundColor":"#ffffff",
+    "selectedColor": "#0D8FEF",
+    "borderStyle": "white",
+    "position": "top",
+    "list": [
+       {
+         "selectedIconPath": "./image/checkAct.png",
+         "iconPath": "./image/check.png",
+         "pagePath": "pages/check/check",
+         "text": "订单核查"
+      },
+      {
+        "selectedIconPath": "./image/manageAct.png",
+        "iconPath": "./image/manage.png",
+        "pagePath": "pages/index/index",
+        "text": "库存管理"
+      }
+    ]
+  }
+  
+}

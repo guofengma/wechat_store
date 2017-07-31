@@ -1,0 +1,63 @@
+/* pages/store/store.wxss */
+.container{
+    background-color: #f8f8f8;
+    text-align: center;
+    overflow: hidden;
+}
+.image{
+    width: 248rpx;
+    height: 202rpx;
+    margin: 200rpx auto 0;
+    position: relative;
+}
+/*.shake{
+    animation: myfirst 2s;
+    animation-iteration-count: infinite;
+}*/
+.house{
+    width: 248rpx;
+    height: 202rpx;
+}
+.shake{
+    position: absolute;
+    width: 80rpx;
+    height: 80rpx;
+    top: -80rpx;
+    left: -40rpx;
+}
+
+.location{
+    margin-top: 40rpx;
+    font-size: 34rpx; 
+}
+.scan{
+    margin-top: 30rpx;
+    font-size: 28rpx;
+    color: #999999;
+}
+.scan_img{
+    width: 148rpx;
+    height: 148rpx;
+    margin: 140rpx auto;
+}
+button{
+    margin-top: 136rpx;
+    width: 400rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #0D8FEF;
+    color: #fff;
+}
+
+@keyframes myfirst{
+    0%   {
+        transform: rotateZ(0deg)
+    }
+    30%  {transform: rotateZ(-30deg)}
+    40%  {transform: rotateZ(0deg)}
+    50%  {transform: rotateZ(-30deg)}
+    60%  {transform: rotateZ(0deg)}
+    70% {transform: rotateZ(-30deg)}
+    75% {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(0deg)}
+}

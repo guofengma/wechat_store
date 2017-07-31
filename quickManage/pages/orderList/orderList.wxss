@@ -1,0 +1,101 @@
+/* pages/orderList/orderList.wxss */
+page{
+     height: 100%; 
+}
+.container{
+    height: 100%;
+}
+.noOrder{
+    text-align: center;
+}
+.noOrder image{
+    width: 140rpx;
+    height: 180rpx;
+    margin-top: 260rpx;
+}
+.noOrder .info{
+    margin-top: 70rpx;
+    font-size: 32rpx;
+    color: #999999;
+}
+
+.hasOrder .item{
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.hasOrder .elem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.hasOrder .elem .amount{
+    margin-left: 20rpx;
+}
+.hasOrder .top{
+    padding: 28rpx;
+    position: relative;
+}
+.hasOrder .top:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ddd;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.hasOrder .top .time{
+    color: #999999;
+}
+
+.hasOrder .center{
+    padding: 28rpx;
+    position: relative;
+}
+.hasOrder .center:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ddd;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.hasOrder .center .elem{
+    line-height: 58rpx;
+}
+.hasOrder .bottom{
+    padding: 53rpx;
+    position: relative;
+}
+.hasOrder .bottom .check{
+    padding: 3rpx 9rpx;
+    border: 1px solid #0D8FEF;
+    border-radius: 5px;
+    color: #0D8FEF;
+}
+
+.hasCheck{
+   position: absolute;
+   right: 28rpx;
+   top: 50%;
+   transform: translateY(-50%);
+}
+
+.loadmore{
+   text-align: center;
+}
+.loadmore image{
+   text-align: center;
+   width: 100rpx;
+   height: 100rpx;
+}
+
+.nomore{
+   padding: 20rpx 0 50rpx;
+   color: #999999;
+}

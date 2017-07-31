@@ -1,0 +1,12 @@
+<!--pages/store/store.wxml-->
+<view class="container">
+    <view class="image">
+        <image class="shake" src="../../image/shake.gif"></image>
+        <image class="house" src="../../image/storeCode.png"></image>
+    </view>
+    <view class="location">定位门店</view>
+    <view class="scan">即可开启扫码购物</view>
+    <button bindtouchstart="bindScanTap">扫门店二维码</button>
+    <!--<image class="scan_img" bindtap="bindScanTap" src="../../image/scanCode.png"></image>-->
+    <!--<button  bindtap="bindScanTap">扫门店二维码</button>-->
+</view>

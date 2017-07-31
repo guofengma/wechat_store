@@ -1,0 +1,63 @@
+.container{
+    text-align: center;
+}
+.title{
+    color: #0D8FEF;
+    font-size: 48rpx;
+    text-align: center;
+    margin-top: 314rpx;
+    font-family: PingFangSC-Regular;
+    letter-spacing: -0.41px;
+}
+.info{
+    margin-top: 314rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #333333;
+    letter-spacing: -0.29px;
+    text-align: center;
+}
+image{
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 86rpx;
+}
+
+.moreView{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-top: 180rpx;
+}
+
+.moreView .item{
+   width:270rpx;
+   height: 90rpx;
+   line-height: 90rpx;
+   text-align: center; 
+   font-size: 32rpx;
+   border: 1px #ECECEC solid;
+}
+
+.moreView .item::after{
+   border: none;
+}
+
+.orderList{
+   background-color: #fff;
+   border-radius: 6px;
+   color: #333333;
+}
+
+.statistics{
+   background: #fff;
+   border-radius: 6px;
+   /* border: 1px #ECECEC solid; */
+   color: #333333;
+}
+
+.other-button-hover{
+   background: #0D8FEF;
+   border-radius: 6px;
+   color: #fff;
+}

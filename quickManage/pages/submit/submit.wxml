@@ -1,0 +1,19 @@
+<!--pages/submit/submit.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class="logo">
+        <image class="img" src="../../image/logo.png"></image>
+    </view>
+    <view class="content">
+        <view class="mobile">
+            <image src="../../image/mobile.png"></image>
+            <input name="phoneno" bindinput="mobHandler" maxlength="11" type="number" placeholder="手机号" placeholder-class="resetStyle" />
+        </view>
+        <view class="password">
+            <image src="../../image/pwd.png"></image>
+            <input name="pwd" bindinput="pwdHandler" maxlength="6" type="number" password placeholder="密码" placeholder-class="resetStyle"/>
+        </view>
+    </view>
+    <button form-type="submit" disabled="{{isPhone == true && isPassword == true ? false : true}}" class="{{isPhone == true && isPassword == true ? 'active' : ''}}">登录</button>
+  </form>
+</view>

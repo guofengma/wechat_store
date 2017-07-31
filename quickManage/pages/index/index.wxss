@@ -1,0 +1,25 @@
+
+.container{
+    text-align: center;
+}
+.title{
+    color: #0D8FEF;
+    font-size: 48rpx;
+    text-align: center;
+    margin-top: 314rpx;
+    font-family: PingFangSC-Regular;
+    letter-spacing: -0.41px;
+}
+.info{
+    margin-top: 314rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 34rpx;
+    color: #333333;
+    letter-spacing: -0.29px;
+    text-align: center;
+}
+image{
+    width: 160rpx;
+    height: 160rpx;
+    margin-top: 86rpx;
+}

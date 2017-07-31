@@ -1,0 +1,15 @@
+<!--pages/submit/submit.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class="phone item">
+      <input maxlength="11" bindinput="bindPhoneTap" name="phoneno" type="number" placeholder="手机号" />
+    </view>
+    <view class="info" wx:if="{{isPhone}}">请输入正确的手机号</view>
+    <view class="checkCode item">
+      <input bindinput="bindPwdTap" maxlength="4" name="pwd" type="number" placeholder="验证码" />
+      <view class="msg" catchtap="bindPresendTap"><text class="line">|</text>{{sendmsg}}</view>
+    </view>
+    <view class="info" wx:if="{{isPwd}}">密码不能为空</view>
+    <button form-type="submit" disabled="{{disabled}}">登录</button>
+  </form>
+</view>

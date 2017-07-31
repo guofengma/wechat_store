@@ -1,0 +1,28 @@
+<!--pages/statistics/statistics.wxml-->
+<view class="container">
+   <view class="nav">
+      <view bindtouchstart="selecttoday" class="{{selectedA ? 'active' : false}}">今天</view>
+      <view bindtouchstart="selectyestoday" class="{{selectedB ? 'active' : false}}">昨天</view>
+      <view bindtouchstart="selectrencent" class="{{selectedC ? 'active' : false}}">最近7天</view>
+   </view>
+   <view class="content">
+      <view class="num item">
+         <view class="tit">销量 (件)</view>
+         <view class="value">{{count}}</view>
+      </view>
+      <view class="money item">
+         <view class="tit">销售额 (元)</view>
+         <view class="value">{{totlefee}}</view>
+      </view>
+   </view>
+   <view class="content">
+      <view class="num item">
+         <view class="tit">库存 (件)</view>
+         <view class="value">{{amounts}}</view>
+      </view>
+      <view class="money item">
+         <view class="tit">库存成本 (元)</view>
+         <view class="value">{{totalcost}}</view>
+      </view>
+   </view>
+</view>
