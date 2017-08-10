@@ -21,7 +21,7 @@
          </view>
 
          <view class="elem bottom">
-            <view class="hasCheck">共{{item.totalNum}}件商品 ¥{{item.totalPrice}}</view>
+            <view class="hasCheck">共{{item.totalNum}}件商品 ¥{{item.fee}}</view>
          </view>
       </view>
       <view class="loadmore">

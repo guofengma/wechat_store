@@ -10,14 +10,14 @@ App({
         success: function (res) {
             console.log(res.code)
           if (res.code) {
-            wx.getUserInfo({
-              success: function (res) {
-                var objz = {};
-                objz.avatarUrl = res.userInfo.avatarUrl;
-                objz.nickName = res.userInfo.nickName;
-                wx.setStorageSync('userInfo', objz);//存储userInfo  
-              }
-            });
+            // wx.getUserInfo({
+            //   success: function (res) {
+            //     var objz = {};
+            //     objz.avatarUrl = res.userInfo.avatarUrl;
+            //     objz.nickName = res.userInfo.nickName;
+            //     wx.setStorageSync('userInfo', objz);//存储userInfo  
+            //   }
+            // });
             var d = that.globalData;//这里存储了appid、secret、token串    
             var l = 'https://store.lianlianchains.com/wx/getopenid?code=' + res.code;
             wx.request({
@@ -46,22 +46,22 @@ App({
    
   },
   getUserInfo:function(cb){
-    var that = this
-    if(this.globalData.userInfo){
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
-      //调用登录接口
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      })
-    }
+   //  var that = this
+   //  if(this.globalData.userInfo){
+   //    typeof cb == "function" && cb(this.globalData.userInfo)
+   //  }else{
+   //    //调用登录接口
+   //    wx.login({
+   //      success: function () {
+   //        wx.getUserInfo({
+   //          success: function (res) {
+   //            that.globalData.userInfo = res.userInfo
+   //            typeof cb == "function" && cb(that.globalData.userInfo)
+   //          }
+   //        })
+   //      }
+   //    })
+   //  }
   },
   globalData:{
     userInfo:null,

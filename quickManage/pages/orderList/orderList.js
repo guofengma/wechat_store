@@ -56,7 +56,7 @@ Page({
               result[i].totalPrice = 0;
               for (var j = 0; j < result[i].temp.length; j++) {
                  result[i].totalNum += result[i].temp[j].amount
-                 result[i].totalPrice += result[i].temp[j].amount * result[i].temp[j].price
+               //   result[i].totalPrice += result[i].temp[j].amount * result[i].temp[j].price
               }
            }
 

@@ -82,6 +82,7 @@ Page({
               })
            }
         }
+        this.data.totalAmount = 0;
         for (var i = 0; i < this.data.cartList.length; i++) {
            this.data.total += this.data.cartList[i].price * this.data.cartList[i].amount;
            this.data.totalAmount += this.data.cartList[i].amount
@@ -133,6 +134,7 @@ Page({
         }
      })
   },
+  
   bindReduceTap(e){
      console.log(this.data.totalAmount)
       var param = {};
@@ -176,7 +178,7 @@ Page({
      console.log(this.data.totalAmount)
     var param = {};
     var index = e.target.dataset.index;
-    if (this.data.totalAmount < 3){
+    if (this.data.totalAmount < 5){
        this.data.totalAmount++;
        this.setData({
           totalAmount: this.data.totalAmount

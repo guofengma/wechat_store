@@ -6,7 +6,7 @@
             <text bindtouchstart="bindDeleteTap" class="delete">删除</text>
         </view>
         <view class="name">{{name}}</view>
-        <view class="guige">规格：{{guige}}</view>
+        <view class="guige">规格：{{specifi}}</view>
         <view class="money">
             <text class="symbol">¥</text>
             <text class="num">{{total}}</text>

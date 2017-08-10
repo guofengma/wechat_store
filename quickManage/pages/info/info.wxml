@@ -9,11 +9,11 @@
             </view>
             <view class="item">
                 <view class="title">商品信息</view>
-                <input bindinput="nameHandle" name="name" disabled="{{info}}" class="inputs" type="text" placeholder="请输入商品信息" value="{{name}}"/>
+                <input bindinput="nameHandle" name="name"  class="inputs" type="text" placeholder="请输入商品信息" value="{{name}}"/>
             </view>
             <view class="item">
                 <view class="title">规格</view>
-                <input bindinput="specHandle" name="specifi" disabled="{{spec}}" class="inputs" type="text" placeholder="请输入商品规格" value="{{specifi}}"/>
+                <input bindinput="specHandle" name="specifi" class="inputs" type="text" placeholder="请输入商品规格" value="{{specifi}}"/>
             </view>
             <view class="item">
                 <view class="title">库存</view>

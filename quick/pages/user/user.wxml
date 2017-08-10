@@ -1,7 +1,7 @@
 <view class="container">
    <view class="header">
       <view class="avatar">
-         <image src="{{userInfo.avatarUrl}}"></image>
+         <image src="{{avatarUrl}}"></image>
       </view>
       <button wx:if="{{ mobile == ''}}" class="submit" hover-class="submit-button-hover" bindtap="bindSubmitTap"> 登录 </button>
       <view class="mobile" wx:if="{{ mobile !== ''}}" class="mobile">{{mobile}}</view>

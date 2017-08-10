@@ -71,6 +71,7 @@ Page({
                //查询购物车
                wx.setStorageSync('price', result.price);
                wx.setStorageSync('name', result.name);
+               wx.setStorageSync('specifi', result.specifi);
                fetch({
                   url: "/CVS/cart/querycart",
                   // baseUrl: "http://192.168.50.57:9888",
@@ -193,7 +194,7 @@ Page({
             for (var i = 0; i < carts.length; i++) {
                totalNum += carts[i].amount
             }
-            if (totalNum >= 3) {
+            if (totalNum >= 5) {
                wx.showToast({
                   title: '购物车已满',
                })
@@ -229,13 +230,6 @@ Page({
    onLoad: function (options) {
       var that = this;
       console.log(options)
-      console.log(wx.getStorageSync('user').openid)
-      app.getUserInfo(function (userInfo) {
-         //更新数据
-         that.setData({
-            userInfo: userInfo
-         })
-      })
    },
    onShow: function () {
       console.log(getApp().globalData.storeid)

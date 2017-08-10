@@ -11,7 +11,8 @@ Page({
       reduceSrc: '../../image/reduce.png',
       increaseSrc: '../../image/increase.png',
       name: "",
-      guige: "100ml",
+      totalAmount: 0,
+      totalNUM:0,
       price: 9.9, //物品单价
       total: 0,
       result: {}
@@ -39,7 +40,20 @@ Page({
 
    },
    bindIncreaseTap() {
-      this.data.amounts++;
+      if (this.data.totalNUM < 5) {
+         this.data.totalNUM++;
+         this.setData({
+            totalNUM: this.data.totalNUM
+         })
+         this.data.amounts++;
+      } else {
+         wx.showToast({
+            title: '购物车已达上限',
+            duration: 1500
+         })
+         return
+      }
+      
       this.setData({
          amounts: this.data.amounts,
          increaseSrc: '../../image/increaseAct.png',
@@ -50,12 +64,14 @@ Page({
       if (this.data.amounts == 1) {
          return
       } else {
+         this.data.totalNUM--;
          this.data.amounts--
       }
       this.setData({
          amounts: this.data.amounts,
          reduceSrc: '../../image/reduceAct.png',
-         total: ((wx.getStorageSync('price') - 0) * this.data.amounts).toFixed(2)
+         total: ((wx.getStorageSync('price') - 0) * this.data.amounts).toFixed(2),
+         totalNUM: this.data.totalNUM
       })
    },
    Toincrease() {
@@ -98,6 +114,7 @@ Page({
                //查询购物车
                wx.setStorageSync('price', result.price);
                wx.setStorageSync('name', result.name);
+               wx.setStorageSync('specifi', result.specifi);
                fetch({
                   url: "/CVS/cart/querycart",
                   //   baseUrl: "http://192.168.50.57:9888",
@@ -116,15 +133,17 @@ Page({
                      console.log(1111)
                      console.log()
                      let index = carts.findIndex((value, index, arr) => {
-                        return value.code == res.code;
+                        return value.code == res.result;
                      });
                      if (index >= 0) {
+                        console.log('扫描过了')
                         wx.setStorageSync('already', true);
                         wx.setStorageSync('index', index);
                         wx.redirectTo({
                            url: '../info/info'
                         })
                      } else {
+                        console.log('没扫描')
                         wx.setStorageSync('already', false);
                         fetch({
                            url: "/CVS/cart/addtocart",
@@ -191,8 +210,7 @@ Page({
    bindScanTap() {
       //查看购物车是否已达上限
 
-      //如果达到上限将提示购物车已满
-
+      
 
       //没达到上限情况下继续购物
       fetch({
@@ -211,7 +229,39 @@ Page({
          header: { 'content-type': 'application/x-www-form-urlencoded' }
          //   header: { 'content-type': 'application/json' }
       }).then(carts => {
-         this.ScanCode();
+         //如果达到上限将提示购物车已满
+         fetch({
+            url: "/CVS/cart/querycart",
+            //   baseUrl: "http://192.168.50.57:9888", 
+            baseUrl: "https://store.lianlianchains.com",
+            data: {
+               openid: wx.getStorageSync('user').openid,
+               storeid: wx.getStorageSync('storeId')
+            },
+            noLoading: true,
+            method: "GET",
+            header: { 'content-type': 'application/x-www-form-urlencoded' }
+            //  header: { 'content-type': 'application/json' }
+         }).then(carts => {
+            var totalNum = 0;
+            for (var i = 0; i < carts.length; i++) {
+               totalNum += carts[i].amount
+            }
+            if (totalNum >= 5) {
+               wx.showToast({
+                  title: '购物车已满',
+               })
+               return
+            }
+            this.ScanCode();
+         }).catch(err => {
+            console.log("出错了")
+            wx.showToast({
+               title: '网络繁忙'
+            })
+            console.log(err)
+         });
+         
       })
 
    },
@@ -268,8 +318,10 @@ Page({
       let already = wx.getStorageSync('already');
       let index = wx.getStorageSync('index');
       let name = wx.getStorageSync('name');
+      let specifi = wx.getStorageSync('specifi');
       this.setData({
-         name: name
+         name: name,
+         specifi: specifi
       })
       console.log('查询购物车开始');
       fetch({
@@ -286,7 +338,17 @@ Page({
          header: { 'content-type': 'application/json' }
       }).then(carts => {
          console.log('查询购物车成功');
-         console.log(carts);
+         // console.log(carts);
+         // console.log('cartList:' + this.data.cartList.toString())
+         this.data.totalAmount = 0;
+         for (var i = 0; i < carts.length; i++) {
+            this.data.totalAmount += carts[i].amount
+         }
+         this.setData({
+            totalNUM: this.data.totalAmount
+         })
+         console.log('totalAmount:' + this.data.totalAmount)
+         console.log('输出totalNUM:' + this.data.totalNUM)
          if (already) {
             console.log('已经存在的商品');
             this.setData({

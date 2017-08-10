@@ -8,8 +8,8 @@ Page({
   data: {
       disabled: true,
       barCode: "690112130029a",
-      info: false,
-      spec: false,
+      // info: false,
+      // spec: false,
       name:'',
       specifi: '',
       stock: '',
@@ -165,14 +165,14 @@ Page({
                specifi: result.specifi,
                stock: result.amount,
                price: result.price,
-               info: true,
-               spec: true,
+               // info: true,
+               // spec: true,
                disabled: false
             })
         }else{
            this.setData({
-              info: false,
-              spec: false,
+            //   info: false,
+            //   spec: false,
               disabled:true
            })
         }
