@@ -8,7 +8,7 @@ App({
     if ((!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) && (!userInfo.nickName)) {
       wx.login({
         success: function (res) {
-            console.log(res.code)
+            console.log(res)
           if (res.code) {
             // wx.getUserInfo({
             //   success: function (res) {

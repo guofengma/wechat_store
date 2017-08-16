@@ -1,5 +1,6 @@
 // pages/cart/cart.js
-import fetch from '../../utils/fetch'
+import fetch from '../../utils/fetch';
+import {recharge} from '../../utils/score';
 var list = [{
     price:10,
     amount: 1
@@ -84,13 +85,13 @@ Page({
         }
         this.data.totalAmount = 0;
         for (var i = 0; i < this.data.cartList.length; i++) {
-           this.data.total += this.data.cartList[i].price * this.data.cartList[i].amount;
+         //   this.data.total += (this.data.cartList[i].price * this.data.cartList[i].amount - 0);
            this.data.totalAmount += this.data.cartList[i].amount
         }
-        this.data.total = this.data.total.toFixed(2)
-        this.setData({
-           total: this.data.total
-        })
+      //   this.data.total = this.data.total.toFixed(2) - 0
+      //   this.setData({
+      //      total: this.data.total
+      //   })
      }).catch(err => {
         console.log("出错了")
 
@@ -125,8 +126,10 @@ Page({
               }).then(result => {
                  that.checkCart()
                  that.setData({
-                    total: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2)
+                    total: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2)-0
                  })
+                 console.log(that.data.total)
+                 console.log(typeof that.data.total)
               })
            } else if (res.cancel) {
               console.log('用户点击取消')
@@ -168,7 +171,7 @@ Page({
       }).then(carts => {
          
       })
-      this.data.total = this.data.total.toFixed(2)
+      this.data.total = this.data.total.toFixed(2) - 0
       this.setData({
           cartList: this.data.cartList,
           total: this.data.total
@@ -218,7 +221,7 @@ Page({
     }).then(carts => {
        
     })
-    this.data.total = this.data.total.toFixed(2)
+    this.data.total = this.data.total.toFixed(2) - 0
     this.setData({ 
         cartList: this.data.cartList,
         total:this.data.total
@@ -283,6 +286,7 @@ Page({
   },
   //申请支付
   requestPayment: function (obj, payMoney) {
+     let self = this;
       console.log("支付钱数：" + payMoney);
       wx.requestPayment({
           'timeStamp': obj.timeStamp,
@@ -292,6 +296,7 @@ Page({
           'paySign': obj.paySign,
           'success': function (res) {
               console.log(111);
+              self._getUserInfo();
               fetch({
                   url: "/CVS/cart/deleteall",
                 //   baseUrl: "http://192.168.50.57:9888",
@@ -326,6 +331,29 @@ Page({
               console.log("支付失败")
           }
       })
+  },
+  _getUserInfo(){
+     fetch({
+        url: "/CVS/user/query",
+        //   baseUrl: "http://192.168.50.57:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+           openid: wx.getStorageSync('user').openid
+        },
+        noLoading: true,
+        method: "GET",
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+        //   header: { 'content-type': 'application/json' }
+     }).then(result => {
+        console.log(result)
+
+        if (result.phoneno) {
+           recharge(result.phoneno,5)
+        } 
+     }).catch(err => {
+        console.log("出错了")
+        console.log(err)
+     });
   },
   onLoad: function (options) {
       
@@ -366,7 +394,7 @@ Page({
               this.data.total += this.data.cartList[i].price * this.data.cartList[i].amount;
               this.data.totalAmount += this.data.cartList[i].amount
           }
-          this.data.total = this.data.total.toFixed(2)
+          this.data.total = this.data.total.toFixed(2) - 0
           this.setData({
               total: this.data.total
           })

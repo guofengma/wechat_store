@@ -2,6 +2,7 @@
 import fetch from "../../utils/fetch.js";
 let cartArray = [];
 var app = getApp();
+import {recharge, query, transfer} from '../../utils/score'
 Page({
    data: {
       store: "../../image/store.png",
@@ -242,6 +243,9 @@ Page({
             'storeName': wx.getStorageSync('storeName')
          })
       }
+      // recharge('12000000000',10)
+      query('12000000000')
+      // transfer('12000000000','18610270284',10)
 
    },
    /**
