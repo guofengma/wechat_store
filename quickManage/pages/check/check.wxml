@@ -1,6 +1,10 @@
 <view class="container">
+    <view class="store" bindtap='totalStaticView'>
+      <image class='storepic' src='../../image/store.png'></image>
+      <view>{{storename}}</view>
+    </view>
     <view class="info">扫顾客二维码</view>
-    <image bindtouchstart="scanCode" src="../../image/scanCode.png"></image>
+    <image class='checkpic' bindtouchstart="scanCode" src="../../image/scanCode.png"></image>
 
     <view class="moreView">
       <button class="item orderList" bindtouchstart="orderView" hover-class="other-button-hover">订单流水</button>

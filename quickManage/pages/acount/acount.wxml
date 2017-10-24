@@ -1,0 +1,43 @@
+<view class="container">
+  <view class='head'>
+    <view class='top'>
+      <view class='toLeft' bindtap="decrease">
+        <image class='prev' src='../../image/prev.png'></image>
+      </view>
+      <view class='time'>{{Year + "年" + Month + "月"}}</view>
+      <view class='toRight' bindtap="increase">
+        <image class='next' src='../../image/next.png'></image>
+      </view>
+    </view>
+    <view class='money'>{{profit}}</view>
+    <view class='tit'>利润</view>
+
+    <view class='btm'>
+      <view class='left'>
+        <view class='num'>{{pay}}</view>
+        <view class='elem'>支出</view>
+      </view>
+      <view class='right'>
+        <view class='num'>{{income}}</view>
+        <view class='elem'>收入</view>
+      </view>
+    </view>
+    <image bindtap='acountView' class='acount' src='../../image/acount.png'></image>
+  </view>
+  <view class='content' style='height:{{(windowHeight - 230)*2 - 140}}rpx;'>
+    <scroll-view class='scroll' scroll-y style="height:{{(windowHeight - 230)*2 - 140}}rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class='nav eve'>
+        <view class='times first' style="text-align:center;">时间</view>
+        <view class='times v overHide'>项目名称</view>
+        <view class='child v'>收入/支出</view>
+        <view class='child v'>金额</view>
+      </view>
+      <view class='eve' wx:if="{{acountList}}" wx:for="{{acountList}}" wx:for-index="idx" wx:key="idx">
+        <view class='times first'>{{item.time}}</view>
+        <view class='times v overHide'>{{item.name}}</view>
+        <view class='child v'>{{item.amount - 0 > 0 ? "收入" : "支出"}}</view>
+        <view class='child v'>{{item.amount-0}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

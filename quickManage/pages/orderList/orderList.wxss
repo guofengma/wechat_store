@@ -49,7 +49,12 @@ page{
 .hasOrder .top .time{
     color: #999999;
 }
-
+.hasOrder .top .orderState{
+  color: red;
+}
+.hasOrder .top .active{
+  color: forestgreen;
+}
 .hasOrder .center{
     padding: 28rpx;
     position: relative;

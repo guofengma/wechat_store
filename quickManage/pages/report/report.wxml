@@ -1,0 +1,50 @@
+<view class="container">
+  <view class='head'>
+    <view class='goods'>名称</view>
+    <view class='item'>库存</view>
+    <view class='item'>盘点</view>
+    <view class='item'>损失</view>
+  </view>
+
+  <view class='content'>
+    <view class='listItem' wx:for="{{reportList}}" wx:for-index="idx" wx:for-item="item">
+      <view class='goods elem'>{{item.name}}</view>
+      <view class='item elem'>{{item.amount}}</view>
+      <view class='item elem'>
+        {{item.value}}
+      </view>
+      <view class='item elem'>
+        ¥{{item.price * (item.amount - item.value)}}
+      </view>
+    </view>
+  </view>
+
+  <view class='bottom'>
+    <view class='lose'>
+      <!-- <view class='nav'>丢失</view> -->
+      <view class='top'>
+        <view class='childs'>数量</view>
+        <view class='childs'>百分比</view>
+      </view>
+      <view class='info'>
+        <view class='childs'>{{losenum}}</view>
+        <view class='childs'>{{losenumPercent}}</view>
+      </view>
+    </view>
+    <view class='lose'>
+      <!-- <view class='nav'>亏损</view> -->
+      <view class='top'>
+        <view class='childs'>金额</view>
+        <view class='childs'>百分比</view>
+      </view>
+      <view class='info'>
+        <view class='childs'>¥{{losemoney}}</view>
+        <view class='childs'>{{losemoneyPercent}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class='report'  bindtap="reportView">发送报告</view> -->
+  <button class='report' wx:if="{{reportList.length> 0}}" open-type="share">发送报告</button>
+  <view class='line' wx:if="{{reportList.length> 0}}"></view>
+</view>

@@ -1,0 +1,39 @@
+<view class="container">
+  <image class='banner' src='../../image/banner.png'></image>
+  <view class='content'>
+    <view class='head'>
+      <view class="tab sale {{saleView ? 'active':''}}" bindtap='saleView'>销售</view>
+      <view class="tab money {{moneyView ? 'active':''}}" bindtap='moneyView'>金额</view>
+    </view>
+    <view class='list'>
+      <view  wx:if="{{saleView}}" class='elem' wx:for="{{amountrank}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+        <view class='left'>
+          <view class='num'>
+            <text wx:if="{{idx > 2}}">{{idx + 1}}.</text>
+            <image class='img' wx:if="{{idx === 0}}" src='../../image/range1.png'></image>
+            <image class='img' wx:if="{{idx === 1}}" src='../../image/range2.png'></image>
+            <image class='img' wx:if="{{idx === 2}}" src='../../image/range3.png'></image>
+          </view>
+          <view class='title'>{{item.name}}</view>
+        </view>
+        <view style="color:{{idx < 3 ? 'red':''}}">
+          {{item.amount}}
+        </view>
+      </view>
+      <view wx:if="{{moneyView}}" class='elem' wx:for="{{moneyrank}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}">
+        <view class='left'>
+          <view class='num'>
+            <text wx:if="{{idx > 2}}">{{idx + 1}}.</text>
+            <image class='img' wx:if="{{idx === 0}}" src='../../image/range1.png'></image>
+            <image class='img' wx:if="{{idx === 1}}" src='../../image/range2.png'></image>
+            <image class='img' wx:if="{{idx === 2}}" src='../../image/range3.png'></image>
+          </view>
+          <view class='title'>{{item.name}}</view>
+        </view>
+        <view style="color:{{idx < 3 ? 'red':''}}">
+          ¥ {{item.amount}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

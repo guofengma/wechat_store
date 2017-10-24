@@ -1,0 +1,130 @@
+.container{
+  background-color: #fff;
+}
+.head{
+  background-color: #0D8FEF;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding-top: 60rpx;
+}
+.commodity-name{
+  font-size: 40rpx;
+}
+.commodity-spec{
+  font-size: 30rpx;
+  padding-top: 20rpx;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30rpx;
+  padding: 74rpx 0 134rpx 0;
+}
+.nav-item{
+  padding: 4rpx 6rpx;
+  text-align: center;
+  margin: 0 60rpx;
+}
+.nav-data{
+  height: 190rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 94%;
+  background-color: #fff;
+  position: absolute;
+  left: 3%;
+  bottom: -95rpx;
+  color: #333;
+  box-shadow: 0 0 6px 2px rgba(0,0,0,0.10);
+}
+.nav-data-item{
+  margin-top: 40rpx;
+  width: 30%;
+}
+.nav-data-num{
+  font-size: 40rpx;
+}
+.nav-data-title{
+  padding-top: 10rpx;
+}
+.nav-percent-title{
+  width: 120rpx;
+  height: 20rpx;
+  background-color: #dddddd;
+  padding: 0;
+  margin: 20rpx auto 0;
+  border-radius: 10rpx;
+}
+.nav-percent-entity{
+  height: 100%;
+  border-radius: 10rpx;
+  background-color: #0D8FEF;
+}
+.content{
+  margin-top: 136rpx;
+}
+.nav-data-static{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.line-graph{
+  margin-top: 80rpx;
+  position: relative;
+}
+.unit-y{
+  text-indent: 24px;
+  font-size: 24rpx;
+}
+.pointY{
+  position: absolute;
+  font-size: 24rpx;
+  width: 34rpx;
+  text-align: center;
+}
+.point1{
+  left: 24px;
+  top: 180px;
+}
+.point2{
+  left: 24px;
+  top: 150px;
+}
+.point3{
+  left: 24px;
+  top: 120px;
+}
+.point4{
+  left: 24px;
+  top: 90px;
+}
+.point5{
+  left: 24px;
+  top: 60px;
+}
+.point6{
+  left: 24px;
+  top: 30px;
+}
+
+.pointX{
+  position: absolute;
+  width: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+.pointX1{
+  left: 100px;
+}
+.pointX2{
+  left: 170.5px;
+}
+.pointX3{
+  left: 241px;
+}
+.pointX4{
+  left: 310.5px;
+}

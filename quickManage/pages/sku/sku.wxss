@@ -1,0 +1,100 @@
+.conteiner{
+  height: auto;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+   padding-top: 40rpx; 
+}
+.nav-item{
+  width: 180rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+.nav-shelve{
+  border-radius: 6px 0 0 6px;
+}
+.nav-off-shelve{
+  border-radius: 0 6px 6px 0;
+}
+.nav-active{
+  background-color: #0D8FEF;
+  color: #fff;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #0D8FEF;
+  color: #fff;
+  margin-top: 44rpx;
+  font-size: 28rpx;
+}
+
+.title-item{
+  text-align: center;
+}
+
+.sku-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+.sku-item:nth-of-type(even) {
+  background-color: #fff;
+}
+
+.title,.sku-item,.title-item,.sku-commen{
+  flex: 0.8;
+}
+
+.name,.sku-name{
+  flex: 1.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sku-name{
+  width: 241rpx;
+  text-align: left;
+  text-indent: 20rpx;
+}
+
+.choose{
+  flex: 0.6;
+}
+.sku-checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  color: #0D8FEF;
+}
+
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 40rpx;
+  padding-right: 40rpx;
+  padding-bottom: 40rpx;
+}
+.bottom-total-num{
+  margin-right: 40rpx;
+}
+.text-num{
+  font-size: 40rpx;
+  color: #0D8FEF;
+}

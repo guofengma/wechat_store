@@ -1,0 +1,102 @@
+.container{
+  background-color: #fff;
+}
+.head{
+  background-color: #0D8FEF;
+  color: #fff;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+}
+.nav-item{
+  padding: 10rpx;
+  /* border-bottom: 4rpx #fff solid; */
+}
+.nav-static{
+  margin-top: 80rpx;
+  display: flex;
+  flex-direction: row;
+}
+.nav-static-item{
+  width: 50%;
+  text-align: center;
+}
+.line-graph{
+  margin-top: 50rpx;
+  position: relative;
+}
+.unit-y{
+  text-indent: 24px;
+  font-size: 24rpx;
+}
+.pointY{
+  position: absolute;
+  font-size: 24rpx;
+  width: 34rpx;
+  text-align: center;
+}
+.point1{
+  left: 24px;
+  top: 180px;
+}
+.point2{
+  left: 24px;
+  top: 150px;
+}
+.point3{
+  left: 24px;
+  top: 120px;
+}
+.point4{
+  left: 24px;
+  top: 90px;
+}
+.point5{
+  left: 24px;
+  top: 60px;
+}
+.point6{
+  left: 24px;
+  top: 30px;
+}
+
+.pointX{
+  position: absolute;
+  width: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+.pointX1{
+  left: 100px;
+}
+.pointX2{
+  left: 170.5px;
+}
+.pointX3{
+  left: 241px;
+}
+.pointX4{
+  left: 310.5px;
+}
+
+.store{
+  margin-top: 100rpx;
+  border-top: 1px #ECECEC solid;
+  width: 92%;
+  margin-left: 4%;
+}
+.storeList{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 96rpx;
+  border-bottom: 1px #ECECEC solid;
+}

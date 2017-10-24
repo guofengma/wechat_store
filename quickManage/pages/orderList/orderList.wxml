@@ -8,7 +8,7 @@
       <view class="item" wx:for="{{orderList}}" wx:for-index="index" wx:key="index">
          <view class="elem top">
             <view class="time">{{item.time}}</view>
-            <view class="classname">{{item.state}}</view>
+            <view class="orderState {{item.state == '支付成功' ? 'active': ''}}">{{item.state}}</view>
          </view>
          <view class="center">
             <view class="elem" wx:for="{{item.temp}}" wx:for-item="goods" wx:for-index="index2" wx:key="index2">

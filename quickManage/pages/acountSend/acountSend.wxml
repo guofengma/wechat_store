@@ -1,0 +1,30 @@
+<view class="container">
+  <form bindsubmit='acountSend'>
+    <view class='tab'>
+      <view bindtap='incomeView' class='tab-item tab-item-income {{active ? "tab-item-active" : ""}}'>收入</view>
+      <view bindtap='sendView' class='tab-item tab-item-pay  {{!active ? "tab-item-active" : ""}}'>支出</view>
+    </view>
+    <view class='content'>
+      <view class="section">
+        <view class="section-title">日<text style='opacity:0;'>牛逼</text>期</view>
+        <picker class="picker" mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker-elem">
+             {{date}}
+          </view>
+          <input name="date" value='{{date}}' hidden='true' />
+        </picker>
+      </view>
+      <view class="section">
+        <view class="section-title">项目名称</view>
+        <input class='input' name="production" type='text'></input>
+      </view>
+      <view class="section">
+        <view class="section-title">金<text style='opacity:0;'>牛逼</text>额</view>
+        <input class='input' name="money" type='digit'></input>
+      </view>
+    </view>
+    <button class='button' form-type='submit'>提交</button>
+  </form>
+
+
+</view>

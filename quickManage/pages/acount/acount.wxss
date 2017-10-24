@@ -1,0 +1,133 @@
+.container{
+  display: column;
+  flex: 1;
+  /* overflow: hidden; */
+}
+.head{
+  background-color: #0D8FEF;
+  flex: 1;
+   height: 460rpx; 
+   overflow: hidden;
+   color: white;
+   position: relative;
+}
+.head .acount{
+  width: 44rpx;
+  height: 42rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 54rpx;
+}
+.head .top{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 54rpx;
+}
+.head .top .prev,.head .top .next{
+  width: 18rpx;
+  height: 30rpx;
+  vertical-align: -6rpx;
+  margin: 0 40rpx;
+}
+.head .time{
+  width: 180rpx;
+  height: 50rpx;
+  background: #0B7BCF;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 50rpx;
+}
+.head .money{
+  font-size: 60rpx;
+  line-height: 84rpx;
+  letter-spacing: -0.72px;
+  margin-top: 42rpx;
+  text-align: center;
+}
+.head .tit{
+  font-size: 28rpx;
+  letter-spacing: -0.72px;
+  text-align: center;
+}
+.head .btm{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 82rpx;
+}
+.head .btm .left,.head .btm .right{
+  width: 50%;
+  text-align: center;
+}
+.head .btm .left{
+  position: relative;
+}
+.head .btm .left:after{
+  content: "";
+  width: 6rpx;
+  height: 54rpx;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  background-color: #fff;
+  transform: translateY(-50%);
+}
+.head .btm .num{
+  font-size: 40rpx;
+  letter-spacing: -0.48px;
+  line-height: 56rpx;
+}
+.head .btm .elem{
+  font-size: 28rpx;
+}
+.content{
+   height: 100%; 
+   padding-top: 20rpx;
+}
+.content .nav{
+  height: 82rpx; 
+  line-height: 82rpx;
+}
+
+.content .eve{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 1;
+  
+}
+.content .overHide{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content .eve .first{
+  /* text-indent: 40rpx; */
+  text-align: center;
+}
+.content .eve:nth-of-type(odd){
+  background-color: #fff;
+  
+}
+.content .eve:not(.nav){
+  height: 100rpx; 
+  line-height: 100rpx;
+}
+.content .eve:not(.first){
+  height: 100rpx; 
+  line-height: 100rpx;
+}
+.content .eve .times{
+  flex: 1.2;
+}
+.content .eve .child{
+  flex: 1;
+}
+.content .eve .v{
+  text-align: center;
+}
+
+.item{
+  height: 300px;
+}

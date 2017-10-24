@@ -1,0 +1,50 @@
+<view class="container">
+  <view class='head'>
+    <view class='commodity-name'>{{name}}</view>
+    <view class='commodity-spec'>{{spec}}</view>
+
+    <view class='nav'>
+      <view bindtap='dayView' class='nav-item' style='{{day?"border-bottom: 2px #fff solid;":""}}'>今日</view>
+      <view bindtap='weekView' class='nav-item' style='{{week?"border-bottom: 2px #fff solid;":""}}'>最近7天</view>
+      <view bindtap='monthView' class='nav-item' style='{{month?"border-bottom: 2px #fff solid;":""}}'>最近30天</view>
+    </view>
+
+    <view class='nav-data'>
+      <view class='nav-data-item'>
+        <view class='sale-amount nav-data-num'>{{count}}</view>
+        <view class='nav-data-title'>销量</view>
+      </view>
+      <!-- <view class='nav-data-item'> -->
+        <!-- <view class='data-percent nav-data-num'>{{percent}}</view>
+        <view class='nav-data-title nav-percent-title'>
+          <view class='nav-percent-entity' style='width:{{16}}%;'></view>
+        </view> -->
+      <!-- </view> -->
+      <view class='nav-data-item'>
+        <view class=' nav-data-num'>{{totlefee}}</view>
+        <view class='nav-data-title'>售出总价</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class='content'>
+    <view class='nav-data-static'>
+      <view>加购物车：{{cartcount}}</view>
+      <view>用户反馈：{{commentcount}}</view>
+    </view>
+     <view class='line-graph'> 
+      <view class='unit-y'>销量</view>
+      <view class='pointY point6'>30</view>
+      <view class='pointY point5'>25</view>
+      <view class='pointY point4'>20</view>
+      <view class='pointY point3'>15</view>
+      <view class='pointY point2'>10</view>
+      <view class='pointY point1'>5</view>
+      <canvas style="width: 360px; height: 200px;" canvas-id="skuCanvas"></canvas>
+      <view class='pointX pointX1'>{{time1}}</view>
+      <view class='pointX pointX2'>{{time2}}</view>
+      <view class='pointX pointX3'>{{time3}}</view>
+      <view class='pointX pointX4'>{{time4}}</view>
+     </view> 
+  </view>
+</view>

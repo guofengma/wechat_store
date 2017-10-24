@@ -1,0 +1,41 @@
+<view class="container">
+  <view class='head'>
+    <view class="nav">
+      <view bindtap='selecttoday' class='nav-item' style='{{day?"border-bottom: 2px #fff solid;":""}}'>今日</view>
+      <view bindtap='selectlastseven' class='nav-item' style='{{week?"border-bottom: 2px #fff solid;":""}}'>近7天</view>
+      <view bindtap='selectlastmonth' class='nav-item' style='{{month?"border-bottom: 2px #fff solid;":""}}'>近30天</view>
+    </view>
+    <view class='nav-static'>
+      <view class='nav-static-item'>
+        <view>{{count}}</view>
+        <view>售出总数</view>
+      </view>
+      <view class='nav-static-item'>
+        <view>{{totlefee}}</view>
+        <view>售出总价</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class='line-graph'> 
+    <view class='unit-y'>销量</view>
+    <view class='pointY point6'>300</view>
+    <view class='pointY point5'>250</view>
+    <view class='pointY point4'>200</view>
+    <view class='pointY point3'>150</view>
+    <view class='pointY point2'>100</view>
+    <view class='pointY point1'>50</view>
+    <canvas style="width: 360px; height: 200px;" canvas-id="staticCanvas"></canvas>
+    <view class='pointX pointX1'>{{time1}}</view>
+    <view class='pointX pointX2'>{{time2}}</view>
+    <view class='pointX pointX3'>{{time3}}</view>
+    <view class='pointX pointX4'>{{time4}}</view>
+  </view>
+
+  <view class='store'>
+    <view bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}' class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
+      <view>{{item.name}}</view>
+      <view>{{item.data.count}}件 / {{item.data.totlefee}}元</view>
+    </view>
+  </view>
+</view>

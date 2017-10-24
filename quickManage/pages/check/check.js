@@ -13,6 +13,11 @@ Page({
       messageArray: [],
       socketOpen: false,
    },
+   totalStaticView() {
+     wx.redirectTo({
+       url: '../totalStatic/totalStatic',
+     })
+   },
    scanCode() {
       var that = this;
       wx.scanCode({
@@ -161,7 +166,9 @@ Page({
     * 生命周期函数--监听页面显示
     */
    onShow: function () {
-      
+     this.setData({
+       storename: wx.getStorageSync('storename')
+     })
    },
    onHide() {
       // wx.closeSocket()

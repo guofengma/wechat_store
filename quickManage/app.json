@@ -1,37 +1,40 @@
 {
-  "pages":[
-     
-     "pages/submit/submit",
-     
-     "pages/orderList/orderList",
-     "pages/detail/detail",
-     "pages/statistics/statistics",
-     "pages/info/info",
-     "pages/check/check",
-     "pages/index/index",
-     "pages/chat/chat"  
-     
-     
+  "pages": [
+    "pages/submit/submit",
+    "pages/totalStatic/totalStatic",
+    "pages/index/index",
+    "pages/check/check",
+    "pages/sku/sku",
+    "pages/skuDetail/skuDetail",
+    "pages/acount/acount",
+    "pages/report/report",
+    "pages/acountSend/acountSend",
+    "pages/inventory/inventory",
+    "pages/orderList/orderList",
+    "pages/range/range",
+    "pages/detail/detail",
+    "pages/statistics/statistics",
+    "pages/info/info",
+    "pages/chat/chat"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "backgroundColor": "light",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "快点Boss",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#999999",
-    "backgroundColor":"#ffffff",
+    "backgroundColor": "#ffffff",
     "selectedColor": "#0D8FEF",
     "borderStyle": "white",
-    "position": "top",
     "list": [
-       {
-         "selectedIconPath": "./image/checkAct.png",
-         "iconPath": "./image/check.png",
-         "pagePath": "pages/check/check",
-         "text": "订单核查"
+      {
+        "selectedIconPath": "./image/checkAct.png",
+        "iconPath": "./image/check.png",
+        "pagePath": "pages/check/check",
+        "text": "订单核查"
       },
       {
         "selectedIconPath": "./image/manageAct.png",
@@ -41,5 +44,4 @@
       }
     ]
   }
-  
 }

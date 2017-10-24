@@ -1,25 +1,88 @@
 
 .container{
     text-align: center;
+    overflow: hidden;
 }
-.title{
-    color: #0D8FEF;
-    font-size: 48rpx;
-    text-align: center;
-    margin-top: 314rpx;
-    font-family: PingFangSC-Regular;
-    letter-spacing: -0.41px;
+.store{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 52rpx;
+  align-items: center;
+  height: 38rpx;
+  color: #0D8FEF;
+  font-size: 34rpx;
+}
+.storepic{
+  width: 48rpx;
+  height: 44rpx;
+  margin-right: 6rpx;
 }
 .info{
-    margin-top: 314rpx;
+    margin-top: 194rpx;
     font-family: PingFangSC-Regular;
     font-size: 34rpx;
     color: #333333;
     letter-spacing: -0.29px;
     text-align: center;
 }
-image{
+.managePic{
     width: 160rpx;
     height: 160rpx;
     margin-top: 86rpx;
+}
+.rangeBtn{
+  margin: 180rpx auto 0;
+  width: 270rpx;
+  height: 80rpx;
+  background: #FFFFFF;
+  border: 1px solid #ECECEC;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 16px;
+  color: #333333;
+}
+
+.moreView{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin-top: 180rpx;
+}
+
+.moreView .item{
+   width:270rpx;
+   height: 90rpx;
+   line-height: 90rpx;
+   text-align: center; 
+   font-size: 32rpx;
+   border: 1px #ECECEC solid;
+}
+
+.moreView .item::after{
+   border: none;
+}
+
+.secondView{
+  margin-top: 40rpx;
+}
+
+.rangeList{
+   background-color: #fff;
+   border-radius: 6px;
+   color: #333333;
+}
+
+.inventory{
+   background: #fff;
+   border-radius: 6px;
+   /* border: 1px #ECECEC solid; */
+   color: #333;
+}
+
+.other-button-hover{
+   background: #0D8FEF;
+   border-radius: 6px;
+   color: #fff;
 }

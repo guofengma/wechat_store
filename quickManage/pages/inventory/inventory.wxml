@@ -1,0 +1,52 @@
+<view class="container">
+  
+  <scroll-view class='scroll' scroll-with-animation="true" enable-back-to-top="true" scroll-y="true" style="height:{{windowHeight}}px;" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    
+    <view class='head'>
+      <view class='goods'>名称</view>
+      <view class='item'>库存</view>
+      <view class='item'>盘点</view>
+      <view class='item last'>出错</view>
+    </view>
+     <view class='content'>
+      <view class='listItem' id="{{item.id ? item.id : ''}}" wx:for="{{inventoryList}}" wx:for-index="idx" wx:for-item="item">
+        <view class='goods elem'>{{item.name}}</view>
+        <view class='item elem'>{{item.amount}}</view>
+        <view class='item elem'>
+          <input type='number' bindblur="changevalue" data-idx='{{idx}}' style="border-bottom:1px solid{{selects[idx].onoff ? '#ececec' : '#fff'}};" disabled='{{!selects[idx].onoff}}' class='input' value='{{item.amount}}'></input>
+        </view>
+        <view class='item elem'>
+          <checkbox-group data-price="{{item.price}}" data-total="{{item.total}}" data-name='{{item.name}}' data-idx='{{idx}}' data-value="{{item.amount}}" bindchange="checkboxChange">
+            <checkbox class='checkbox' value="{{item.name}}" checked="{{item.checked}}" color="#0D8FEF" />
+          </checkbox-group>
+        </view>
+      </view>
+    </view> 
+    <!-- <view class='content'>
+      <view wx:for="{{inventoryList}}" wx:for-index="idx" wx:for-item="itemP">
+        <view class='letter' id='{{itemP.letter}}' hidden='{{itemP.good.length === 0}}'>{{itemP.letter}}</view>
+        <view class='listItem' wx:for="{{itemP.good}}" wx:for-index="idy" wx:for-item="item">
+          <view class='goods elem'>{{item.name}}</view>
+          <view class='item elem'>{{item.amount}}</view>
+          <view class='item elem'>
+            <input type='number' bindblur="changevalue" data-idx='{{idx}}' data-idy='{{idy}}' style="border-bottom:1px solid{{x == idx && y == idy ? '#ececec' : '#fff'}};" disabled='{{!item.selected}}' class='input' value='{{item.amount}}'></input>
+          </view>
+          <view class='item elem'>
+            <checkbox-group data-price="{{item.price}}" data-total="{{item.total}}" data-name='{{item.name}}' data-idx='{{idx}}' data-idy='{{idy}}' data-value="{{item.amount}}" bindchange="checkboxChange">
+              <checkbox class='checkbox' value="{{item.name}}" checked="{{item.checked}}" color="#0D8FEF" />
+            </checkbox-group>
+          </view>
+        </view>
+
+      </view>
+    </view> -->
+    <view class='btm'>
+      <view class='report' wx:if="{{inventoryList.length> 0}}" bindtap="reportView">盘点报告</view>
+      <view class='line' wx:if="{{inventoryList.length> 0}}"></view>
+    </view>
+    
+  </scroll-view>
+  <view  wx:if="{{inventoryList}}" class="index-english" style="top:{{indexTop}}px">
+    <view wx:for="{{arrId}}" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+<view class="container">
+  <view class='nav'>
+    <view bindtap='shelveTemp' class='nav-item nav-shelve {{navActive ? "nav-active": ""}}'>上架</view>
+    <view bindtap='offShelveTemp' class='nav-item nav-off-shelve {{!navActive ? "nav-active": ""}}'>下架</view>
+  </view>
+  <view class='content'>
+    <view class='title'>
+      <view class='title-item name'>名称</view>
+      <view class='title-item total'>总量</view>
+      <view class='title-item surplus'>剩余</view>
+      <view class='title-item shelve'>{{navActive ? "上架": "下架"}}</view>
+      <view class='title-item cost'>成本</view>
+      <view class='title-item choose'></view>
+    </view>
+    <view class='sku-item' wx:for="{{shelveList}}" wx:for-index="idx" wx:key="{{idx}}">
+      <view class='sku-commen sku-name' bindtap='skuDetail' data-name="{{item.name}}" data-spec="{{item.specifi}}" data-code="{{item.code}}" data-total='{{item.total}}'>{{item.name}}</view>
+      <view class='sku-commen sku-total'>{{item.total}}</view>
+      <view class='sku-commen sku-surplus'>{{item.amount}}</view>
+      <view class='sku-commen sku-shelve'>{{item.skuamount}}</view>
+      <view class='sku-commen cost'>{{item.cost}}</view>
+      <view class='sku-commen choose'>
+        <checkbox-group data-idx='{{idx}}' data-code="{{item.code}}"  bindchange="checkboxChange">
+          <checkbox class='sku-checkbox' value="" checked="{{item.checked}}" color="#0D8FEF" />
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+
+  <view class='bottom'>
+    <view class='bottom-total-num'>总量：<text class='text-num'>{{totalAmount}}</text></view>
+    <view class='bottom-total-money'>总金额：<text class='text-num'>{{totalPrice}}</text></view>
+  </view>
+</view>

@@ -1,13 +1,21 @@
 .container{
     text-align: center;
+    overflow: hidden;
 }
-.title{
-    color: #0D8FEF;
-    font-size: 48rpx;
-    text-align: center;
-    margin-top: 314rpx;
-    font-family: PingFangSC-Regular;
-    letter-spacing: -0.41px;
+.store{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 52rpx;
+  align-items: center;
+  height: 38rpx;
+  color: #0D8FEF;
+  font-size: 34rpx;
+}
+.storepic{
+  width: 48rpx;
+  height: 44rpx;
+  margin-right: 6rpx;
 }
 .info{
     margin-top: 314rpx;
@@ -17,7 +25,7 @@
     letter-spacing: -0.29px;
     text-align: center;
 }
-image{
+.checkpic{
     width: 160rpx;
     height: 160rpx;
     margin-top: 86rpx;
@@ -53,7 +61,7 @@ image{
    background: #fff;
    border-radius: 6px;
    /* border: 1px #ECECEC solid; */
-   color: #333333;
+   color: #333;
 }
 
 .other-button-hover{

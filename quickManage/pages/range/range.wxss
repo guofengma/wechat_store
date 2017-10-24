@@ -1,0 +1,68 @@
+page{
+  background-color: #fff;
+}
+.container{
+  background-color: #fff;
+  height: 100%;
+}
+.banner{
+  width: 100%;
+  height: 248rpx;
+}
+
+.content .head{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 54rpx 0; 
+}
+.content .head .tab{
+  padding: 0 40rpx;
+  width: 92rpx;
+  text-align: center;
+  height: 38rpx;
+  line-height: 38rpx;
+  font-size: 32rpx;
+}
+.content .head .sale{
+  border-right: 1px #ddd solid; 
+}
+.elem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40rpx;
+  position: relative;
+  font-size: 28rpx;
+}
+.elem .left{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.elem:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #ececec;
+  transform: scaleY(0.5);
+  -webkit-transform: scaleY(0.5) 
+}
+.elem .num{
+  width: 50rpx;
+  text-align: center;
+}
+.elem .left .title{
+  margin-left: 20rpx;
+}
+.elem .num .img{
+  width: 50rpx;
+  height: 54rpx;
+}
+
+.active{
+  color: #0D8FEF;
+}

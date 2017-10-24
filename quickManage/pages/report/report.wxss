@@ -1,0 +1,113 @@
+.head {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #0d8fef;
+  color: white;
+  font-size: 34rpx;
+  padding: 32rpx 6rpx 36rpx 0;
+}
+
+.goods {
+  flex: 2;
+  text-indent: 50rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item {
+  flex: 1;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+}
+
+.content .listItem {
+  width: 100%;
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 30rpx;
+}
+
+.content .listItem:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+.content .listItem:nth-of-type(even) {
+  background-color: #eeeeee;
+}
+
+.content .listItem .elem {
+  height: 80rpx;
+  line-height: 80rpx;
+  position: relative;
+}
+
+.bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 120rpx;
+}
+
+.bottom .lose .nav{
+  font-size: 36rpx;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+.bottom .lose .top,.bottom .lose .info{
+  width: 300rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.bottom .lose .top{
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #eeeeee;
+}
+.bottom .lose .info{
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #ffffff;
+  color: red;
+}
+
+.bottom .lose .top .childs{
+  width: 50%;
+  text-align: center;
+}
+
+.bottom .lose .info .childs{
+  width: 50%;
+  text-align: center;
+}
+
+.report {
+  font-size: 28rpx;
+  color: #0d8fef;
+  text-align: center;
+  margin-top: 80rpx;
+  border: none;
+  height: 50rpx;
+}
+.report:after{
+  width: 0;
+}
+.line{
+  width: 140rpx;
+  height: 1px;
+  background-color: #0d8fef;
+  margin: 10rpx auto;
+}

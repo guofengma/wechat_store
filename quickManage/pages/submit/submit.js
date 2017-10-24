@@ -40,10 +40,11 @@ Page({
    },
    formSubmit(e) {
       console.log(e);
+      var phoneno = e.detail.value.phoneno;
       //检查账号和密码是否正确
       fetch({
          url: "/CVS/user/login",
-         //   baseUrl: "http://192.168.50.57:9888",
+          //  baseUrl: "http://192.168.50.157:9888",
          baseUrl: "https://store.lianlianchains.com",
          data: {
             'phoneno': e.detail.value.phoneno,
@@ -72,10 +73,11 @@ Page({
                title: '登录成功',
                duration: 1500
             })
-            wx.setStorageSync('storeid', result.storeid)
+            wx.setStorageSync('storeidList', result.storeid)
+            wx.setStorageSync('phoneno', phoneno)
             var timer = setTimeout(() => {
-               wx.switchTab({
-                  url: '../check/check',
+               wx.redirectTo({
+                 url: '../totalStatic/totalStatic',
                })
                clearTimeout(timer)
             }, 1500)
@@ -123,7 +125,7 @@ Page({
     * 生命周期函数--监听页面卸载
     */
    onUnload: function () {
-
+    
    },
 
    /**
