@@ -1,0 +1,9 @@
+<view class="container">
+  <view class='item' wx:for="{{list}}" wx:for-index="index">
+    <view class='header'><text class='header-index'>{{item.idx}}</text><text>{{item.title}}</text></view>
+    <view class='showimg'>
+      <image class='{{"img"+index}}' src="{{item.img}}"></image>
+    </view>
+  </view>
+  <image bindtap='shelveView' class='shenqing' src="../../image/shenqing.png"></image>
+</view>

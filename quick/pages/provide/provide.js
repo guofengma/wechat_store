@@ -1,0 +1,215 @@
+// pages/provide/provide.js
+import { uploadImage} from '../../utils/uploadImg.js'
+import { sendmsg } from '../../utils/sendmsg.js'
+var onoff = true
+
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    imageDefault: "../../image/upload.png",
+    codestate: "验证码",
+    codeflag:true,
+    buttonActive: false,
+    timerOnoff:true
+  },
+  setAddress(e) {
+    this.setData({
+      Address: e.detail.value
+    })
+  },
+  setClassify(e) {
+    this.setData({
+      Classify: e.detail.value
+    })
+  },
+  setPerson(e) {
+    this.setData({
+      Person: e.detail.value
+    })
+  },
+  getmobile(e) {
+    this.setData({
+      mobile: e.detail.value
+    })
+  },
+  setCheck(e) {
+    this.setData({
+      Check: e.detail.value
+    })
+  },
+  sendmsg(e) {
+    console.log(e)
+    var mobile = this.data.mobile;
+    var codeflag = this.data.codeflag;
+    this.setData({
+      mobile: mobile
+    })
+    if (mobile != "" && codeflag) {
+      this.setData({
+        codeflag: false
+      })
+      var currentTime = 60
+      var interval = setInterval( () => {
+        currentTime--;
+        this.setData({
+          codestate: '(' + currentTime + ')s'
+        })
+
+        if (currentTime == 0) {
+          clearInterval(interval)
+
+          this.setData({
+            'codestate': '发送',
+            codeflag: true
+          })
+        }
+      }, 1000)
+
+    }
+    
+    sendmsg(mobile).then((result) => {
+      console.log(result)
+      if (result.code != 200) {
+
+      }
+    })
+  },
+  imageView(e) {
+    console.log(e.target.dataset.idx)
+    console.log("好", this)
+    let idx = e.target.dataset.idx;
+    uploadImage().then(res => {
+      console.log(res)
+      let path = res.tempFilePaths[0];
+      if (idx === "previewImg1") {
+        this.setData({
+          previewImg1: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+            console.log(data);
+            this.setData({
+              image1: data
+            })
+          }
+        })
+      } else if (idx === "previewImg2") {
+        this.setData({
+          previewImg2: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+            console.log(data);
+            this.setData({
+              image2: data
+            })
+          }
+        })
+      }
+    })
+  },
+  buttonActive() {
+    console.log(1111)
+    // !Address || !Classify || !Classify || !mobile || !Check || !previewImg1 || !previewImg2
+    var Address = this.data.Address;
+    return Address
+  },
+  formSubmit(e) {
+    var img1 = this.data.image1;
+    var img2 = this.data.image2;
+    clearTimeout(this.timeoutflag);
+    this.timeoutflag = setTimeout(() => {  
+      console.log(e)
+    }, 400);
+    // var timerOnoff = this.data.timerOnoff;
+    // if (timerOnoff) {
+    //   this.setData({
+    //     timerOnoff:false
+    //   })
+    //   var timeoutflag = setTimeout( () => {
+    //     clearTimeout(timeoutflag);
+    //     console.log(e)
+    //     this.setData({
+    //       timerOnoff: true
+    //     })
+    //   }, 500);
+    // }
+    
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

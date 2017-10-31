@@ -1,0 +1,38 @@
+page{
+  background-color: #fff;
+}
+.container{
+  height: auto;
+  background-color: #fff;
+  padding: 90rpx;
+}
+.header{
+  color: #333;
+  font-size: 30rpx;
+}
+.header-index{
+  margin-right: 38rpx;
+}
+.showimg{
+  text-align: center;
+  margin-top: 66rpx;
+}
+.img0{
+  width: 304rpx;
+  height: 244rpx;
+}
+.img1{
+  width: 312rpx;
+  height: 186rpx;
+}
+.img2{
+  width: 370rpx;
+  height: 166rpx;
+}
+.shenqing{
+  position: fixed;
+  right: 0;
+  bottom: 60rpx;
+  width: 148rpx;
+  height: 84rpx;
+}

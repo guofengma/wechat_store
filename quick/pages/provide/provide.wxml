@@ -1,0 +1,48 @@
+<form class="forms" bindsubmit="formSubmit">
+  <view class='container'>
+    <view class='item'>
+      <label class='name'>地<text style="opacity:0;">隐藏</text>址 </label>
+      <view class='input-border'>
+          <input bindinput='setAddress' type='text' name="address"></input>
+      </view>
+    </view>  
+    <view class='item'>
+      <label class='name'>供货种类 </label>
+      <view class='input-border'>
+          <input bindinput='setClassify' type='text' name="classify"></input>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='name'>联系人<text style="opacity:0;">隐</text> </label>
+      <view class='input-border'>
+          <input bindinput='setPerson' type='text' name="person"></input>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='name'>联系电话 </label>
+      <view class='input-border'>
+          <input bindinput='getmobile' type='number' name="phoneno"></input>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='name'>验证码<text style="opacity:0;">隐</text> </label>
+      <view class='input-border'>
+          <input bindinput='setCheck' type='number' name="check"></input>
+          <view data-mobile='{{mobile}}' style='background:{{!codeflag?"#DDDDDD":"#4993F7"}}' catchtap='sendmsg' class='send'>{{codestate}}</view>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>工商营业执照 </label>
+      <view>
+          <image class='upload' bindtouchstart="imageView" data-idx="previewImg1" src="{{previewImg1 ? previewImg1 : imageDefault}}"></image>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>食品流通许可证 </label>
+      <view>
+          <image class='upload' bindtouchstart="imageView" data-idx="previewImg2" src="{{previewImg2 ? previewImg2 : imageDefault}}"></image>
+      </view>
+    </view>
+    <button disabled='{{!Address || !Classify || !Person || !mobile || !Check || !previewImg1 || !previewImg2}}' class='button' form-type='submit'>提交</button>  
+  </view>
+</form>

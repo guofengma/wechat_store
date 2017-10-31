@@ -1,19 +1,24 @@
                                                             {
   "pages":[
-     
-     "pages/index/index",
-     "pages/cart/cart",
-      "pages/orderList/orderList",
-      "pages/leftCancel/leftCancel",
-      "pages/check/check",
-      
-      "pages/store/store",
-      "pages/submit/submit",
-      
-      "pages/info/info",
-      "pages/user/user",
-      "pages/success/success",
-      "pages/demo/demo"
+    "pages/apply/apply",
+    "pages/settle/settle",
+    "pages/providenav/providenav",
+    "pages/managenav/managenav",
+    "pages/shelvenav/shelvenav",
+    "pages/provide/provide",
+    "pages/manage/manage",
+    "pages/shelve/shelve",
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/orderList/orderList",
+    "pages/leftCancel/leftCancel",
+    "pages/check/check",
+    "pages/store/store",
+    "pages/submit/submit",
+    "pages/info/info",
+    "pages/user/user",
+    "pages/success/success",
+    "pages/demo/demo"
   ],
   "window":{
     "backgroundTextStyle":"light",

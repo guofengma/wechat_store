@@ -44,5 +44,19 @@ export function randomString(len) {
     return pwd;
 }
 
+export function mapStoreName(id){
+  if (id === "000001") {
+    return "快点国贸店"
+  } 
+  if (id === "000002") {
+    console.log(222)
+    return "快点阜外店"
+  } 
+  if (id === "000003") {
+    console.log(333)
+    return "炬熵宇日用百货"
+  } 
+}
+
  
 

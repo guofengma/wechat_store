@@ -1,0 +1,117 @@
+<view class="container">
+  <view class='header'>我要</view>
+  <view class='nav'>
+    <view bindtap='provideView' class='nav-item nav-item-first'>提供场地</view>
+    <view bindtap='manageView' class='nav-item nav-item-second'>经营管理</view>
+    <view bindtap='shelveView' class='nav-item nav-item-third'>货架供货</view>
+  </view>
+  <view class='join-top'>
+    <view class='header-join'>快速加入</view>
+    <view class='header-search'>
+      <input placeholder='地点' placeholder-class='header-search-input-holder' class='header-search-input'></input>
+      <view class='header-search-p'>
+        <image class="header-search-img" src='../../image/search.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='store'>
+    <view class='store-item'>
+      <view class='store-top'>
+        <view class='store-name'>快点国贸店</view>
+        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
+      </view>
+      <view class='store-content'>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-office' src="../../image/office.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-join' src="../../image/join.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-manager' src="../../image/manager.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-join' src="../../image/join.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-truck' src="../../image/truck.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-join' src="../../image/join.png"></image>
+          </view>
+        </view>
+      </view>    
+    </view>
+    <view class='store-item'>
+      <view class='store-top'>
+        <view class='store-name'>快点国贸店</view>
+        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
+      </view>
+      <view class='store-content'>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-office' src="../../image/officeAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-quit' src="../../image/quit.png"></image>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+    <view class='store-item'>
+      <view class='store-top'>
+        <view class='store-name'>快点国贸店</view>
+        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
+      </view>
+      <view class='store-content'>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-office' src="../../image/officeAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</view>
