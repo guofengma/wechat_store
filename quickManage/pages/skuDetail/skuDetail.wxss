@@ -72,7 +72,7 @@
   justify-content: space-around;
 }
 .line-graph{
-  margin-top: 80rpx;
+  margin-top: 180rpx;
   position: relative;
 }
 .unit-y{

@@ -16,7 +16,7 @@
                   <text class="name">{{goods.name}}</text>
                   <text class="amount" style="color:#0D8FEF;">x{{goods.amount}}</text>
                </view>
-               <view class="classname" style="color:red">¥{{goods.amount * goods.price}}</view>
+               <view class="classname" style="color:red">¥{{(goods.amount * (goods.price * 100))/100}}</view>
             </view>
          </view>
 
