@@ -89,7 +89,7 @@ page{
   width: 520rpx;
   height: 80rpx;
   line-height: 80rpx;
-  background: #0D8FEF;
+  background: #5DA7F8;
   border-radius: 6px;
   font-size: 32rpx;
   text-align: center;

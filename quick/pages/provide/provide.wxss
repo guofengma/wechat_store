@@ -24,15 +24,16 @@ page{
   position: absolute;
   right: 0;
   top: 0;
-  width: 112rpx;
-  height: 50rpx;
+  width: 120rpx;
+  height: 60rpx;
   text-align: center;
-  line-height: 50rpx;
+  line-height: 60rpx;
   color: #fff;
   font-size: 24rpx;
   background-color: #4993F7;
   border-radius: 2px;
   z-index: 10;
+  margin-top: -20rpx;
 }
 .upload{
   width: 122rpx;

@@ -1,42 +1,45 @@
 <form class="forms" bindsubmit="formSubmit">
   <view class='container'>
     <view class='item'>
-      <label class='name'>地<text style="opacity:0;">隐藏</text>址 </label>
+      <label class='name'>联系地址 </label>
       <view class='input-border'>
-          <input type='text' name="address"></input>
+          <input bindinput='setAddress' type='text' name="address" value='{{Address}}'></input>
       </view>
     </view>  
     <view class='item'>
-      <label class='name'>联系人<text style="opacity:0;">隐</text> </label>
+      <label class='name'>联系人员 </label>
       <view class='input-border'>
-          <input type='text' name="person"></input>
+          <input bindinput='setPerson' type='text' name="person" value='{{Person}}'></input>
       </view>
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
       <view class='input-border'>
-          <input type='number' name="phoneno"></input>
+          <input bindinput='getmobile' type='number' name="phoneno" value='{{mobile}}'></input>
       </view>
     </view>
     <view class='item'>
-      <label class='name'>验证码<text style="opacity:0;">隐</text> </label>
+      <label class='name'>验证码</label>
       <view class='input-border'>
-          <input type='number' name="check"></input>
-          <view catchtap='sendmsg' class='send'>验证码</view>
+          <input bindinput='setCheck' type='number' name="check"></input>
+          <view data-mobile='{{mobile}}' 
+          style='background:{{!codeflag?"#DDDDDD":"#4993F7"}}' catchtap='sendmsg' class='send'>{{codestate}}</view>
       </view>
     </view>
     <view class='item'>
       <label class='upload-title'>工商营业执照 </label>
       <view>
-          <image class='upload' bindtouchstart="imageView" data-idx="previewImg1" src="{{previewImg1 ? previewImg1 : imageDefault}}"></image>
+          <image class='upload' bindtouchstart="imageView" data-idx="previewImg1" 
+          src="{{previewImg1}}"></image>
       </view>
     </view>
     <view class='item'>
-      <label class='upload-title'>食品流通许可证 </label>
+      <label class='upload-title'>食品流通许可 </label>
       <view>
-          <image class='upload' bindtouchstart="imageView" data-idx="previewImg2" src="{{previewImg2 ? previewImg2 : imageDefault}}"></image>
+          <image class='upload' bindtouchstart="imageView" data-idx="previewImg2" 
+          src="{{previewImg2}}"></image>
       </view>
     </view>
-    <button class='button' form-type='submit'>提交</button>  
+    <button disabled='{{!Address || !Person || !mobile || !Check || !previewImg1 || !previewImg2}}' class='button' form-type='submit'>提交</button>  
   </view>
 </form>

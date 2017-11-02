@@ -1,6 +1,8 @@
 // pages/provide/provide.js
-import { uploadImage} from '../../utils/uploadImg.js'
+import { uploadImage } from '../../utils/uploadImg.js'
 import { sendmsg } from '../../utils/sendmsg.js'
+import { verifymsg } from '../../utils/verifymsg.js'
+import fetch from '../../utils/fetch.js'
 var onoff = true
 
 Page({
@@ -9,11 +11,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imageDefault: "../../image/upload.png",
-    codestate: "验证码",
-    codeflag:true,
+    codestate: "发送",
+    codeflag: true,
     buttonActive: false,
-    timerOnoff:true
+    timerOnoff: true,
+    apiflag: 0
   },
   setAddress(e) {
     this.setData({
@@ -41,18 +43,19 @@ Page({
     })
   },
   sendmsg(e) {
-    console.log(e)
+
     var mobile = this.data.mobile;
     var codeflag = this.data.codeflag;
     this.setData({
       mobile: mobile
     })
+
     if (mobile != "" && codeflag) {
       this.setData({
         codeflag: false
       })
       var currentTime = 60
-      var interval = setInterval( () => {
+      var interval = setInterval(() => {
         currentTime--;
         this.setData({
           codestate: '(' + currentTime + ')s'
@@ -67,22 +70,30 @@ Page({
           })
         }
       }, 1000)
-
     }
-    
-    sendmsg(mobile).then((result) => {
-      console.log(result)
-      if (result.code != 200) {
 
-      }
-    })
+    if (mobile != "" && codeflag) {
+      sendmsg(mobile).then((result) => {
+
+        if (result.code != 200) {
+          console.log(result)
+          wx.showToast({
+            title: '请输入正确号码'
+          })
+        } else {
+
+        }
+      })
+    }
+
   },
   imageView(e) {
-    console.log(e.target.dataset.idx)
-    console.log("好", this)
+
+    this.data.apishow = false
+
     let idx = e.target.dataset.idx;
     uploadImage().then(res => {
-      console.log(res)
+
       let path = res.tempFilePaths[0];
       if (idx === "previewImg1") {
         this.setData({
@@ -90,7 +101,7 @@ Page({
         })
         wx.uploadFile({
           // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
-          url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
           filePath: path,
           name: 'test',
           formData: {
@@ -99,7 +110,7 @@ Page({
           success: (res) => {
             var data = res.data
             //do something
-            console.log(data);
+
             this.setData({
               image1: data
             })
@@ -111,7 +122,7 @@ Page({
         })
         wx.uploadFile({
           // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
-          url: 'https://store.lianlianchains.com/exchange/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
           filePath: path,
           name: 'test',
           formData: {
@@ -120,96 +131,183 @@ Page({
           success: (res) => {
             var data = res.data
             //do something
-            console.log(data);
+
             this.setData({
               image2: data
             })
           }
         })
       }
+
     })
   },
-  buttonActive() {
-    console.log(1111)
-    // !Address || !Classify || !Classify || !mobile || !Check || !previewImg1 || !previewImg2
-    var Address = this.data.Address;
-    return Address
-  },
+  // buttonActive() {
+  //   var Address = this.data.Address;
+  //   return Address
+  // },
   formSubmit(e) {
-    var img1 = this.data.image1;
-    var img2 = this.data.image2;
-    clearTimeout(this.timeoutflag);
-    this.timeoutflag = setTimeout(() => {  
-      console.log(e)
-    }, 400);
-    // var timerOnoff = this.data.timerOnoff;
-    // if (timerOnoff) {
-    //   this.setData({
-    //     timerOnoff:false
-    //   })
-    //   var timeoutflag = setTimeout( () => {
-    //     clearTimeout(timeoutflag);
-    //     console.log(e)
-    //     this.setData({
-    //       timerOnoff: true
-    //     })
-    //   }, 500);
-    // }
-    
+
+    var address = this.data.Address
+    var goodtype = this.data.Classify
+    var name = this.data.Person
+    var mobile = this.data.mobile
+    var code = this.data.Check
+    var img1 = this.data.image1
+    var img2 = this.data.image2
+
+    // 手机验证码验证
+    verifymsg(mobile, code).then((result) => {
+
+      if (result.code != 200) {
+        wx.showToast({
+          title: '验证码错误'
+        })
+      } else {
+        // 场地申请接口
+        fetch({
+          url: (this.data.apiflag == 0) ? "/CVS/apply/supply/insert" : "/CVS/apply/supply/update",
+          //   baseUrl: "http://192.168.50.57:9888", 
+          baseUrl: "https://store.lianlianchains.com",
+          data: {
+            openid: wx.getStorageSync('user').openid,
+            name: name,
+            phone: mobile,
+            address: address,
+            img1: img1,
+            img2: img2,
+            goodtype: goodtype
+          },
+          noLoading: false,
+          method: "GET",
+          header: { 'content-type': 'application/x-www-form-urlencoded' }
+          //  header: { 'content-type': 'application/json' }
+        }).then(result => {
+          console.log(result)
+          if (result.ec == '000000') {
+            wx.redirectTo({
+              url: '../apply/apply',
+            })
+          } else {
+            console.log("出错了")
+            wx.showToast({
+              title: '网络繁忙'
+            })
+          }
+        }).catch(err => {
+
+          console.log("出错了")
+          wx.showToast({
+            title: '网络繁忙'
+          })
+          console.log(err)
+        })
+      }
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
+    // 场地申请接口
+    fetch({
+      url: "/CVS/apply/supply/query",
+      //   baseUrl: "http://192.168.50.57:9888", 
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        openid: wx.getStorageSync('user').openid
+      },
+      noLoading: false,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(result => {
+
+      console.log(result)
+      if (result != "") {
+        this.data.apiflag = 1
+
+        this.setData({
+          Person: result.name,
+          mobile: result.phone,
+          Address: result.address,
+          Classify: result.goodtype,
+          image1: result.img1,
+          image2: result.img2
+        })
+
+        var url = 'https://store.lianlianchains.com/images/'
+        this.setData({
+          previewImg1: url + result.img1,
+          previewImg2: url + result.img2
+        })
+        console.log("previewImg1===" + this.data.previewImg1)
+      } else {
+
+        this.setData({
+          previewImg1: "../../image/upload.png",
+          previewImg2: "../../image/upload.png"
+        })
+      }
+
+    }).catch(err => {
+
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    })
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

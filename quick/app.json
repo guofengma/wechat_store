@@ -1,14 +1,14 @@
-                                                            {
-  "pages":[
-    "pages/apply/apply",
+{
+  "pages": [
+    "pages/index/index",
     "pages/settle/settle",
+    "pages/apply/apply",
+    "pages/provide/provide",
     "pages/providenav/providenav",
     "pages/managenav/managenav",
     "pages/shelvenav/shelvenav",
-    "pages/provide/provide",
     "pages/manage/manage",
     "pages/shelve/shelve",
-    "pages/index/index",
     "pages/cart/cart",
     "pages/orderList/orderList",
     "pages/leftCancel/leftCancel",
@@ -20,16 +20,16 @@
     "pages/success/success",
     "pages/demo/demo"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "backgroundColor": "light",
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#999999",
-    "backgroundColor":"#ffffff",
+    "backgroundColor": "#ffffff",
     "selectedColor": "#0D8FEF",
     "borderStyle": "white",
     "list": [
@@ -39,7 +39,6 @@
         "pagePath": "pages/index/index",
         "text": "首页"
       },
-      
       {
         "selectedIconPath": "./image/mineAct.png",
         "iconPath": "./image/mine.png",
@@ -48,5 +47,4 @@
       }
     ]
   }
-  
 }

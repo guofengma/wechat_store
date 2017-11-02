@@ -24,8 +24,8 @@ Page({
     ]
   },
   shelveView() {
-    wx.navigateTo({
-      url: '../shelve/shelve',
+    wx.redirectTo({
+      url: '../provide/provide',
     })
   },
   /**

@@ -29,7 +29,7 @@ Page({
     ]
   },
   manageView() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../manage/manage',
     })
   },

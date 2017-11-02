@@ -45,7 +45,7 @@
             <image class='roleimg-join' src="../../image/join.png"></image>
           </view>
         </view>
-      </view>    
+      </view>
     </view>
     <view class='store-item'>
       <view class='store-top'>
@@ -78,7 +78,6 @@
           </view>
         </view>
       </view>
-      
     </view>
     <view class='store-item'>
       <view class='store-top'>
@@ -111,7 +110,7 @@
           </view>
         </view>
       </view>
-      
+
     </view>
   </view>
 </view>

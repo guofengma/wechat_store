@@ -18,7 +18,6 @@ Page({
     })
   },
   shelveView() {
-    console.log("执行了")
     wx.navigateTo({
       url: '../shelvenav/shelvenav',
     })
