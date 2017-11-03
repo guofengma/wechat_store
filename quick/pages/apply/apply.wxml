@@ -17,100 +17,84 @@
   <view class='store'>
     <view class='store-item'>
       <view class='store-top'>
-        <view class='store-name'>快点国贸店</view>
-        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
-      </view>
-      <view class='store-content'>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-office' src="../../image/office.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-join' src="../../image/join.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-manager' src="../../image/manager.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-join' src="../../image/join.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-truck' src="../../image/truck.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-join' src="../../image/join.png"></image>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='store-item'>
-      <view class='store-top'>
-        <view class='store-name'>快点国贸店</view>
-        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
-      </view>
-      <view class='store-content'>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-office' src="../../image/officeAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-quit' src="../../image/quit.png"></image>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class='store-item'>
-      <view class='store-top'>
-        <view class='store-name'>快点国贸店</view>
-        <view class='store-address'>朝阳区呼家楼世纪财富中心</view>
-      </view>
-      <view class='store-content'>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-office' src="../../image/officeAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
-          </view>
-        </view>
-        <view>
-          <view class='roleimg-logo'>
-            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
-          </view>
-          <view class='roleimg-action'>
-            <image class='roleimg-joinAct' src="../../image/joinAct.png"></image>
-          </view>
-        </view>
+        <view class='store-name'>快点XX店</view>
+        <view class='store-address'>XXXXXX</view>
       </view>
 
+      <view class='store-content'>
+        <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">
+          <view class='roleimg-logo'>
+            <image class='{{item.titleicon}}' src="{{item.titleimg}}"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='{{item.icon}}' src="{{item.img}}" data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
+          </view>
+        </view>
+      </view>
     </view>
+
+    <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
+      <view class='store-top'>
+        <view class='store-name'>快点国贸店1</view>
+        <view class='store-address'>{{'storeid_' + item.id}}</view>
+      </view>
+      <view class='store-content'>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-office' src="../../image/officeAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' bindtap="tapfield" src="../../image/joinAct.png" 
+            wx:if="{{item.field != '' && item.field != user}}" 
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-join' bindtap="tapfield" src="../../image/join.png" 
+            wx:if="{{item.field == ''}}" 
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-quit' bindtap="tapfield" src="../../image/quit.png" 
+            wx:if="{{item.field != '' && item.field == user}}"
+            data-storeid='{{item.id}}'></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' bindtap="tapdeal" src="../../image/joinAct.png" 
+            wx:if="{{item.field != '' && item.field != user}}"
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-join' bindtap="tapdeal" src="../../image/join.png" 
+            wx:if="{{item.field == ''}}" 
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-quit' bindtap="tapdeal" src="../../image/quit.png" 
+            wx:if="{{item.field != '' && item.field == user}}" 
+            data-storeid='{{item.id}}'></image>
+          </view>
+        </view>
+        <view>
+          <view class='roleimg-logo'>
+            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
+          </view>
+          <view class='roleimg-action'>
+            <image class='roleimg-joinAct' bindtap="tapsupply" src="../../image/joinAct.png" 
+            wx:if="{{item.field != '' && item.field != user}}"
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-join' bindtap="tapsupply" src="../../image/join.png" 
+            wx:if="{{item.field == ''}}"
+            data-storeid='{{item.id}}'></image>
+
+            <image class='roleimg-quit' bindtap="tapsupply" src="../../image/quit.png" 
+            wx:if="{{item.field != '' && item.field == user}}"
+            data-storeid='{{item.id}}'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
   </view>
 </view>

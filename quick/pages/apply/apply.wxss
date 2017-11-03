@@ -145,3 +145,12 @@ page{
   width: 60rpx;
   height: 56rpx;
 }
+
+.loadmore{
+   text-align: center;
+}
+.loadmore image{
+   text-align: center;
+   width: 100rpx;
+   height: 100rpx;
+}

@@ -25,7 +25,8 @@
       
       <image class="homebg" src="../../image/homebg.png"></image>
       <view class="scanCode">
-        <image class="scan_img" bindtap="bindScanTap" class="" src="../../image/scanCode.png"></image>
+        <image class="scan_img" bindtap="bindScanTap" 
+        class="" src="../../image/scanCode.png"></image>
         <view class='scan_tit'>扫描商品条形码</view>
       </view>
       
