@@ -94,12 +94,12 @@ Page({
 
       console.log("没有更多了")
       page = totalpage
-      
+
       this.setData({
         hidden: true
       })
     } else {
-      
+
       console.log("加载更多")
       page++
 
@@ -208,21 +208,59 @@ Page({
       console.log(err)
     })
   },
-  tapfield(e){
-    
+  tapfield(e) {
+
     var storeid = e.target.dataset.storeid
-    this.jOrqShelve(0, storeid) 
+    var idx = e.target.dataset.idx
+    this.modifyfield(idx)
 
   },
   tapdeal(e) {
 
     var storeid = e.target.dataset.storeid
-    this.jOrqShelve(1, storeid) 
+    var idx = e.target.dataset.idx
+    this.jOrqShelvelist(1, storeid, idx)
+
   },
   tapsupply(e) {
 
     var storeid = e.target.dataset.storeid
-    this.jOrqShelve(2, storeid) 
+    var idx = e.target.dataset.idx
+    this.jOrqShelvelist(2, storeid, idx)
+
+  },
+  modifyfield(idx) {
+
+    var field = this.data.storeList[idx].field
+    var optype = (user == field)?'join':'quit'
+    
+    fetch({
+      url: "/CVS/apply/opapply",
+      //   baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'openid': wx.getStorageSync("user").openid,
+        'id': this.data.storeid,
+        'roletype': roletype,
+        'optype': optype
+      },
+      method: "POST",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+      
+      if (res.ec == '000000') {
+          
+      }
+
+    }).catch(err => {
+      console.log("出错了")
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+    })
+
   },
   initShelve(roletype) {
 
