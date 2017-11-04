@@ -55,7 +55,18 @@ Page({
       url: '../shelvenav/shelvenav',
     })
   },
-  querystore(address) {
+  searchstore(){
+
+    storeList = []
+    this.data.storeList = []
+    page = 0
+    this.querystore()
+  },
+  querystore() {
+
+    console.log('address' + this.data.address)
+
+    this.data.hasOrder = false
 
     fetch({
       url: "/CVS/apply/queryapply",
@@ -64,19 +75,20 @@ Page({
       data: {
         'page': page,
         'pagenum': 5,
-        'address': address
+        'address': this.data.address
       },
       method: "GET",
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log("res====" + res.totalpage)
-      console.log("res====" + res.apply)
+      console.log(res.apply)
 
+      totalpage = res.totalpage
       this.setData({
-        storeList: res.apply
+        storeList: this.data.storeList.concat(res.apply)
       })
+      this.data.hasOrder = true
 
     }).catch(err => {
 
@@ -86,17 +98,20 @@ Page({
       console.log(err)
     })
   },
+  setAddress(e){
+    this.setData({
+      address: e.detail.value
+    })
+  },
   loadMore() {
 
-    console.log(totalpage)
-
-    if (page >= totalpage - 1) {
+    if (page >= totalpage/5) {
 
       console.log("没有更多了")
       page = totalpage
 
       this.setData({
-        hidden: true
+        hidden: false
       })
     } else {
 
@@ -106,10 +121,7 @@ Page({
       this.querystore(this.data.address)
     }
   },
-  inittapicon(e) {
-
-    // 0 场地 1 经营 2 供货
-    var roletype = parseInt(e.target.dataset.roletype)
+  checkrole(roletype) {
 
     if (roletype == 0) {
 
@@ -141,13 +153,21 @@ Page({
       }
 
     }
+  },
+  inittapicon(e) {
 
-    (this.data.storeid == '') ? (this.initShelve(roletype)) : (this.jOrqShelve(roletype, this.data.storeid))
+    // 0 场地 1 经营 2 供货
+    var roletype = parseInt(e.target.dataset.roletype)
+    
+    this.checkrole(roletype)
+    
+    (this.data.storeid == '') ? (this.initShelve(roletype)) :
+    (this.jOrqShelve(roletype, this.data.storeid))
 
   },
   changeIcon(roletype) {
 
-    var iconflag = {};
+    var iconflag = {}
     var img = {}
     var icon = {}
 
@@ -174,7 +194,7 @@ Page({
     this.setData(img)
     this.setData(icon)
 
-    console.log(this.data.iconlist)
+    // console.log(this.data.iconlist)
 
   },
   roleQuery() {
@@ -191,7 +211,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
+      // console.log(res)
       if (res.ec == '000000') {
         this.setData({
           field: res.data.field,
@@ -208,39 +228,29 @@ Page({
       console.log(err)
     })
   },
-  tapfield(e) {
+  tapitem(e) {
 
+    var user = e.target.dataset.user
     var storeid = e.target.dataset.storeid
     var idx = e.target.dataset.idx
-    this.modifyfield(idx)
+    var roletype = parseInt(e.target.dataset.roletype)
+
+    this.checkrole(roletype)
+
+    this.modifyicon(user, storeid, idx, roletype)
 
   },
-  tapdeal(e) {
+  modifyicon(user, storeid, idx, roletype) {
 
-    var storeid = e.target.dataset.storeid
-    var idx = e.target.dataset.idx
-    this.jOrqShelvelist(1, storeid, idx)
+    var optype = (user == this.data.user) ? 'quit' : 'join'
 
-  },
-  tapsupply(e) {
-
-    var storeid = e.target.dataset.storeid
-    var idx = e.target.dataset.idx
-    this.jOrqShelvelist(2, storeid, idx)
-
-  },
-  modifyfield(idx) {
-
-    var field = this.data.storeList[idx].field
-    var optype = (user == field)?'join':'quit'
-    
     fetch({
       url: "/CVS/apply/opapply",
       //   baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
-        'id': this.data.storeid,
+        'id': storeid,
         'roletype': roletype,
         'optype': optype
       },
@@ -248,9 +258,18 @@ Page({
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
-      
+
+      // console.log(res)
       if (res.ec == '000000') {
-          
+
+        var itemtmp = {}
+        var itemtmpname = "storeList[" + idx + "]." +
+          ((roletype == 0) ? 'field' : ((roletype == 1) ? 'deal' : 'supply'))
+        // console.log(itemtmpname)
+        itemtmp[itemtmpname] = (optype == 'quit') ? '' : this.data.user
+        this.setData(itemtmp)
+        // console.log(this.data.storeList)
+
       }
 
     }).catch(err => {
@@ -278,7 +297,7 @@ Page({
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       this.data.storeid = res
       this.changeIcon(roletype)
 
@@ -308,7 +327,7 @@ Page({
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.ec == '000000') {
         this.changeIcon(roletype, optype)
       }
@@ -331,7 +350,7 @@ Page({
     this.roleQuery()
 
     // 店铺
-    this.querystore(this.data.address)
+    this.querystore()
 
   },
   /**

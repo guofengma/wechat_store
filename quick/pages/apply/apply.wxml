@@ -8,9 +8,9 @@
   <view class='join-top'>
     <view class='header-join'>快速加入</view>
     <view class='header-search'>
-      <input placeholder='地点' placeholder-class='header-search-input-holder' class='header-search-input'></input>
+      <input placeholder='地点' placeholder-class='header-search-input-holder' class='header-search-input' bindinput='setAddress'></input>
       <view class='header-search-p'>
-        <image class="header-search-img" src='../../image/search.png'></image>
+        <image class="header-search-img" src='../../image/search.png' bindtap='searchstore'></image>
       </view>
     </view>
   </view>
@@ -35,7 +35,7 @@
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
       <view class='store-top'>
-        <view class='store-name'>快点国贸店1</view>
+        <view class='store-name'>快点XX</view>
         <view class='store-address'>{{'storeid_' + item.id}}</view>
       </view>
       <view class='store-content'>
@@ -44,17 +44,17 @@
             <image class='roleimg-office' src="../../image/officeAct.png"></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-joinAct' bindtap="tapfield" src="../../image/joinAct.png" 
-            wx:if="{{item.field != '' && item.field != user}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
+            wx:if="{{item.field == '' || null == item.field}}" 
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.field}}' data-roletype='0'></image>
 
-            <image class='roleimg-join' bindtap="tapfield" src="../../image/join.png" 
-            wx:if="{{item.field == ''}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.field != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapfield" src="../../image/quit.png" 
-            wx:if="{{item.field != '' && item.field == user}}"
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.field}}' data-roletype='0'></image>
           </view>
         </view>
         <view>
@@ -62,17 +62,17 @@
             <image class='roleimg-manager' src="../../image/managerAct.png"></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-joinAct' bindtap="tapdeal" src="../../image/joinAct.png" 
-            wx:if="{{item.deal != '' && item.field != user}}"
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
+            wx:if="{{item.deal == '' || null == item.deal}}" 
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.deal}}' data-roletype='1'></image>
 
-            <image class='roleimg-join' bindtap="tapdeal" src="../../image/join.png" 
-            wx:if="{{item.deal == ''}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.deal != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapdeal" src="../../image/quit.png" 
-            wx:if="{{item.deal != '' && item.field == user}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.deal}}' data-roletype='1'></image>
           </view>
         </view>
         <view>
@@ -80,21 +80,25 @@
             <image class='roleimg-truck' src="../../image/truckAct.png"></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-joinAct' bindtap="tapsupply" src="../../image/joinAct.png" 
-            wx:if="{{item.supply != '' && item.field != user}}"
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
+            wx:if="{{item.supply == '' || null == item.supply}}" 
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.supply}}' data-roletype='2'></image>
 
-            <image class='roleimg-join' bindtap="tapsupply" src="../../image/join.png" 
-            wx:if="{{item.supply == ''}}"
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.supply != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapsupply" src="../../image/quit.png" 
-            wx:if="{{item.supply != '' && item.field == user}}"
-            data-storeid='{{item.id}}' data-idx='{{index}}'></image>
+            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
+            data-storeid='{{item.id}}' data-idx='{{index}}' 
+            data-user='{{item.supply}}' data-roletype='2'></image>
           </view>
         </view>
       </view>
     </view>
 
+    <view class="loadmore">
+        <image hidden="{{hasOrder}}" src="../../image/storeloading.gif"></image>
+        <view class="nomore" hidden="{{hidden}}">没有更多</view>
+    </view>
   </view>
 </view>
