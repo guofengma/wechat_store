@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/settle/settle",
     "pages/apply/apply",
+    "pages/settle/settle",
     "pages/provide/provide",
     "pages/providenav/providenav",
     "pages/managenav/managenav",

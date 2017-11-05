@@ -17,17 +17,16 @@
   <view class='store'>
     <view class='store-item'>
       <view class='store-top'>
-        <view class='store-name'>快点XX店</view>
-        <view class='store-address'>XXXXXX</view>
+        <view class='store-address'></view>
       </view>
-
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">
           <view class='roleimg-logo'>
             <image class='{{item.titleicon}}' src="{{item.titleimg}}"></image>
           </view>
           <view class='roleimg-action'>
-            <image class='{{item.icon}}' src="{{item.img}}" data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
+            <image class='{{item.icon}}' src="{{item.img}}" 
+            data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
           </view>
         </view>
       </view>
@@ -35,7 +34,9 @@
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
       <view class='store-top'>
-        <view class='store-name'>快点XX</view>
+        <view class='store-name'>
+          <input placeholder='快点' value='快点' bindinput='setItemStorename'></input>
+        </view>
         <view class='store-address'>{{'storeid_' + item.id}}</view>
       </view>
       <view class='store-content'>
