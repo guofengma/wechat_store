@@ -1,13 +1,13 @@
 <view class="container">
-   <view class='mask' hidden='{{cancel}}'>
+  <view class='mask' hidden='{{cancel}}'>
     <form bindsubmit='submitComment' hidden='{{cancel}}'>
       <textarea hidden='{{cancel}}' class='textarea' name="comment" value="{{inputCotent}}" maxlength="100" placeholder="{{cancel?'':'意见反馈（100字以内......）'}}">
       </textarea>
       <image class='suggest' src="../../image/suggestion.png"></image>
-       <view bindtap='commenCancel' class='cancel'></view> 
+      <view bindtap='commenCancel' class='cancel'></view>
       <button form-type='submit' class='subBtn'>提交</button>
     </form>
-  </view> 
+  </view>
   <view class="header">
     <view class="avatar">
       <image src="{{avatarUrl}}"></image>
@@ -32,11 +32,13 @@
     <view class="tit" data-totalNum="{{totalNum}}">
       购物车
       <text class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</text>
-    </view> 
+    </view>
 
   </view>
-  <button bindtap="orderView" class="order" hover-class="other-button-hover"> 查看订单 </button>
-   <button bindtap="commenShow" class="order"> 意见反馈 </button> 
-          <!--  -->
+  <button bindtap="orderView"  class="order" hover-class="other-button-hover"> 查看订单 </button>
+  <button bindtap="commenShow" class="order"> 意见反馈 </button>
+  <button bindtap="webShow" class="order"> 关于我们 </button>
+  
+  <!--  -->
 
 </view>

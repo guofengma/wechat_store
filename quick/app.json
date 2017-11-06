@@ -19,7 +19,8 @@
     "pages/info/info",
     "pages/user/user",
     "pages/success/success",
-    "pages/demo/demo"
+    "pages/demo/demo",
+    "pages/webpage/webpage"
   ],
   "window": {
     "backgroundTextStyle": "light",
