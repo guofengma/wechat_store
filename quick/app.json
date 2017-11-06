@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/apply/apply",
+    "pages/storedetail/storedetail",
     "pages/settle/settle",
     "pages/provide/provide",
     "pages/providenav/providenav",

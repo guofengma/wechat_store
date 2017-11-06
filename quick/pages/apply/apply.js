@@ -13,7 +13,7 @@ Page({
     user: wx.getStorageSync("user").openid,
     hasOrder: true,
     storeList: [],
-    hidden: true,
+    hidden: false,
     storeid: '',
     address: '',
     iconlist: [
@@ -55,8 +55,19 @@ Page({
       url: '../shelvenav/shelvenav',
     })
   },
+  storedetail(e) {
+
+    var field = e.currentTarget.dataset.field
+    var deal = e.currentTarget.dataset.deal
+    var supply = e.currentTarget.dataset.supply
+
+    wx.navigateTo({
+      url: '../storedetail/storedetail?' +
+      'field=' + field + '&deal=' + deal + '&supply=' + supply
+    })
+  },
   setItemStorename(e) {
-    
+
     var idx = e.target.dataset.idx
     // this.data.storeList[idx].storename = e.detail.value
 
@@ -104,14 +115,22 @@ Page({
   },
   searchstore() {
 
-    storeList = []
-    this.data.storeList = []
     page = 0
+    storeList = []
+    totalpage = 0
+    this.setData({
+      storeList: storeList,
+      hidden: false,
+      hasOrder: true
+    })
+  
     this.querystore()
   },
   querystore() {
 
-    this.data.hasOrder = false
+    this.setData({
+      hasOrder: true
+    })
 
     fetch({
       url: "/CVS/apply/queryapply",
@@ -127,13 +146,26 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      // console.log(res.apply)
+      console.log(res.apply)
+      if (res.apply != '') {
+        setTimeout(() => {
 
-      totalpage = res.totalpage
-      this.setData({
-        storeList: this.data.storeList.concat(res.apply)
-      })
-      this.data.hasOrder = true
+          totalpage = res.totalpage
+          this.setData({
+            storeList: this.data.storeList.concat(res.apply)
+          })
+
+          this.setData({
+            hasOrder: false
+          })
+
+        }, 1000);
+      } else {
+
+        this.setData({
+          hasOrder: false
+        })
+      }
 
     }).catch(err => {
 
@@ -141,20 +173,23 @@ Page({
         title: '出错了',
       })
       console.log(err)
+
+      this.data.hasOrder = true
     })
   },
   loadMore() {
 
-    // console.log(totalpage)
-    // console.log(page)
+    console.log(totalpage)
+    console.log(page)
 
-    if (page >= totalpage / 5 + 1) {
+    if (page >= totalpage - 1 ) {
 
       console.log("没有更多了")
       page = totalpage
 
       this.setData({
-        hidden: false
+        hidden: true,
+        hasOrder: false
       })
     } else {
 
@@ -171,22 +206,22 @@ Page({
 
     this.checkrole(roletype);
 
-    (this.data.storeid == '') ? 
-    (this.initShelve(roletype)) : 
-    (this.jOrqShelve(roletype, this.data.storeid))
+    (this.data.storeid == '') ?
+      (this.initShelve(roletype)) :
+      (this.jOrqShelve(roletype, this.data.storeid))
 
   },
   changeIcon(roletype) {
 
     var iconflag = "iconlist[" + roletype + "].iconflag"
-    var img =      "iconlist[" + roletype + "].img"
-    var icon =     "iconlist[" + roletype + "].icon"
+    var img = "iconlist[" + roletype + "].img"
+    var icon = "iconlist[" + roletype + "].icon"
 
     var flag = this.data.iconlist[roletype].iconflag
 
     this.setData({
 
-      [img]: (!flag) ? '../../image/quit.png' :'../../image/join.png',
+      [img]: (!flag) ? '../../image/quit.png' : '../../image/join.png',
       [icon]: (!flag) ? 'roleimg-quit' : 'roleimg-join',
       [iconflag]: (!flag)
     })
@@ -225,7 +260,14 @@ Page({
   },
   tapitem(e) {
 
+    // console.log(e)
     var user = e.target.dataset.user
+
+    if (null != user && '' != user && this.data.user != user) {
+      console.log('角色非本人')
+      return
+    }
+
     var storeid = e.target.dataset.storeid
     var idx = e.target.dataset.idx
     var roletype = parseInt(e.target.dataset.roletype)
@@ -257,7 +299,7 @@ Page({
       if (res.ec == '000000') {
 
         var item = "storeList[" + idx + "]." + ((roletype == 0) ? 'field' :
-         ((roletype == 1) ? 'deal' : 'supply'))
+          ((roletype == 1) ? 'deal' : 'supply'))
         this.setData({
           [item]: (optype == 'quit') ? '' : this.data.user
         })

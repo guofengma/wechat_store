@@ -104,6 +104,12 @@ page {
   box-shadow: 0 1px 5px 0 #bebcbc, 0 0 0 0 #bebcbc;
 }
 
+.store-item-init{
+  border: 1px #5da7f8 solid;
+  margin-top: 40rpx;
+  /* box-shadow: 0 1px 5px 0 #bebcbc, 0 0 0 0 #bebcbc; */
+}
+
 .store-top {
   border-bottom: 1px solid #f4f4f4;
   text-align: center;

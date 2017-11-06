@@ -1,0 +1,104 @@
+<form class="forms" bindsubmit="formSubmit">
+
+  <view class='title'>
+    <image class='title-item ' data-idx='0' src='{{fieldimg}}' bindtap='tapitem'></image>
+    <image class='title-item ' data-idx='1' src='{{dealimg}}' bindtap='tapitem'></image>
+    <image class='title-item ' data-idx='2' src='{{supplyimg}}' bindtap='tapitem'></image>
+  </view>
+  <view class='container' wx:if='{{fieldflag}}'>
+    <view class='item'>
+      <label class='name'>公司地址 </label>
+      <view class='input-border'>{{fieldaddress}}</view>
+    </view>  
+    <view class='item'>
+      <label class='name'>公司名称 </label>
+      <view class='input-border'>{{fieldcomname}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>公司人数 </label>
+      <view class='input-border'>{{fieldcomnum}}</view>
+    </view>    
+    <view class='item'>
+      <label class='name'>费用情况 </label>
+      <view class='input-border'>{{fieldfee}}</view>
+    </view>        
+    <view class='item'>
+      <label class='name'>联系人员 </label>
+      <view class='input-border'>{{fieldperson}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>联系电话 </label>
+      <view class='input-border'>{{fieldmobile}}</view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>场地照片 </label>
+      <view class='upload-cont'>
+          <image class='upload' src="{{fieldpreviewImg1}}"></image>
+          <image class='upload' src="{{fieldpreviewImg2}}"></image>
+          <image class='upload' src="{{fieldpreviewImg3}}"></image>
+      </view>
+    </view>
+    <button disabled='' class='button' form-type='submit'>签约</button>  
+  </view>
+
+  <view class='container'  wx:if='{{dealflag}}'>
+    <view class='item'>
+      <label class='name'>联系地址 </label>
+      <view class='input-border'>{{dealaddress}}</view>
+    </view>  
+    <view class='item'>
+      <label class='name'>联系人员 </label>
+      <view class='input-border'>{{dealperson}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>联系电话 </label>
+      <view class='input-border'>{{dealmobile}}</view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>工商营业执照 </label>
+      <view>
+          <image class='upload' src="{{dealpreviewImg1}}"></image>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>食品流通许可 </label>
+      <view>
+          <image class='upload' src="{{dealpreviewImg2}}"></image>
+      </view>
+    </view>   
+    <button disabled='' class='button' form-type='submit'>签约</button>  
+  </view>
+
+  <view class='container'  wx:if='{{supplyflag}}'>
+    <view class='item'>
+      <label class='name'>联系地址 </label>
+      <view class='input-border'>{{supplyaddress}}</view>
+    </view>  
+    <view class='item'>
+      <label class='name'>供货种类 </label>
+      <view class='input-border'>{{supplyclassify}}</view>
+    </view>    
+    <view class='item'>
+      <label class='name'>联系人员 </label>
+      <view class='input-border'>{{supplyperson}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>联系电话 </label>
+      <view class='input-border'>{{supplymobile}}</view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>工商营业执照 </label>
+      <view>
+          <image class='upload' src="{{supplypreviewImg1}}"></image>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='upload-title'>食品流通许可 </label>
+      <view>
+          <image class='upload' src="{{supplypreviewImg2}}"></image>
+      </view>
+    </view>   
+    <button disabled='' class='button' form-type='submit'>签约</button>  
+  </view>  
+
+</form>

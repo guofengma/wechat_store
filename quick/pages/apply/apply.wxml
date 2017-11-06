@@ -15,91 +15,85 @@
     </view>
   </view>
   <view class='store'>
-    <view class='store-item'>
+    <view class='store-item-init'>
       <view class='store-top'>
-        <view class='store-address'></view>
+        <view class='store-address'>创建新货架</view>
       </view>
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">
           <view class='roleimg-logo'>
-            <image class='{{item.titleicon}}' src="{{item.titleimg}}"></image>
+            <image class='{{item.titleicon}}' src="{{item.titleimg}}" data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
           </view>
           <view class='roleimg-action'>
-            <image class='{{item.icon}}' src="{{item.img}}" 
-            data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
+            <image class='{{item.icon}}' src="{{item.img}}"></image>
           </view>
         </view>
       </view>
     </view>
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
-      <view class='store-top'>
-        <view class='store-name'>
-          <input placeholder='快点' value='快点' bindinput='setItemStorename'></input>
-        </view>
-        <view class='store-address'>{{'storeid_' + item.id}}</view>
+      <view class='store-top' bindtap='storedetail' 
+      data-field='{{item.field}}' data-deal='{{item.deal}}' data-supply='{{item.supply}}'>
+        <view class='store-name'>快点</view>
+        <view class='store-address'>{{item.id + '  ' + item.address}}</view>
       </view>
       <view class='store-content'>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-office' src="../../image/officeAct.png"></image>
+            <image class='roleimg-office' src="../../image/office.png"
+              bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
+              data-user='{{item.field}}' data-roletype='0'></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
-            wx:if="{{item.field == '' || null == item.field}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.field}}' data-roletype='0'></image>
+            <image class='roleimg-join' src="../../image/join.png" 
+              wx:if="{{item.field == '' || null == item.field}}"></image>
 
             <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.field != user}}"></image>
+              wx:elif="{{item.field != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.field}}' data-roletype='0'></image>
+            <image class='roleimg-quit' src="../../image/quit.png" 
+              wx:else></image>
           </view>
         </view>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-manager' src="../../image/managerAct.png"></image>
+            <image class='roleimg-manager' src="../../image/manager.png"
+              bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
+              data-user='{{item.deal}}' data-roletype='1'></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
-            wx:if="{{item.deal == '' || null == item.deal}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.deal}}' data-roletype='1'></image>
+            <image class='roleimg-join'  src="../../image/join.png" 
+              wx:if="{{item.deal == '' || null == item.deal}}"></image>
 
             <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.deal != user}}"></image>
+              wx:elif="{{item.deal != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.deal}}' data-roletype='1'></image>
+            <image class='roleimg-quit' src="../../image/quit.png"                                         wx:else></image>
           </view>
         </view>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-truck' src="../../image/truckAct.png"></image>
+            <image class='roleimg-truck' src="../../image/truck.png"
+              bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
+              data-user='{{item.supply}}' data-roletype='2'></image>
           </view>
           <view class='roleimg-action'>
-            <image class='roleimg-join' bindtap="tapitem" src="../../image/join.png" 
-            wx:if="{{item.supply == '' || null == item.supply}}" 
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.supply}}' data-roletype='2'></image>
+            <image class='roleimg-join' src="../../image/join.png" 
+              wx:if="{{item.supply == '' || null == item.supply}}"></image>
 
             <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.supply != user}}"></image>
+              wx:elif="{{item.supply != user}}"></image>
 
-            <image class='roleimg-quit' bindtap="tapitem" src="../../image/quit.png" wx:else
-            data-storeid='{{item.id}}' data-idx='{{index}}' 
-            data-user='{{item.supply}}' data-roletype='2'></image>
+            <image class='roleimg-quit' src="../../image/quit.png" 
+              wx:else></image>
           </view>
         </view>
       </view>
     </view>
 
     <view class="loadmore">
-        <image hidden="{{hasOrder}}" src="../../image/storeloading.gif"></image>
-        <view class="nomore" hidden="{{hidden}}">没有更多</view>
+        <image wx:if="{{hasOrder}}" src="../../image/storeloading.gif"></image>
+        <view class="nomore" wx:if="{{hidden}}">没有更多</view>
     </view>
   </view>
 </view>

@@ -1,0 +1,75 @@
+/* pages/storedetail/storedetail.wxss */
+
+page{
+  height: auto;
+  padding: 40rpx 0;
+  background-color: #fff;
+}
+.container{
+  padding: 0 60rpx;
+  box-sizing: border-box;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+  margin-top: 50rpx;
+}
+.name{
+  width: 180rpx;
+}
+.input-border{
+  width: 100%;
+  
+  position: relative;
+}
+.send{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background-color: #4993F7;
+  border-radius: 2px;
+  z-index: 10;
+  margin-top: -20rpx;
+}
+.upload{
+  width: 122rpx;
+  height: 122rpx;
+}
+.upload-title{
+  width: 180rpx;
+}
+.upload-cont{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.button{
+  width: 520rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  text-align: center;
+  background-color: #4993F7;
+  color: #fff;
+  margin-top: 100rpx;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+}
+
+.title-item{
+  width: 106rpx;
+  height: 106rpx;
+}
