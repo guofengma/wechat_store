@@ -13,6 +13,7 @@ page{
   display: flex;
   flex-direction: row;
   margin-top: 50rpx;
+  font-size: 32rpx;
 }
 .name{
   width: 180rpx;
