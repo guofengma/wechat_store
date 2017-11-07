@@ -1,4 +1,4 @@
-/* pages/storedetail/storedetail.wxss */
+/* pages/open/open.wxss */
 
 page{
   height: auto;
@@ -19,7 +19,7 @@ page{
 }
 .input-border{
   width: 100%;
-  
+  border-bottom: 1px #ececec solid;
   position: relative;
 }
 .send{
@@ -44,9 +44,6 @@ page{
 .upload-title{
   width: 180rpx;
 }
-.upload-title-two{
-  width: 238rpx;
-}
 .upload-cont{
   width: 100%;
   display: flex;
@@ -63,44 +60,3 @@ page{
   color: #fff;
   margin-top: 100rpx;
 }
-
-.store-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  text-align: center;
-  padding: 16rpx 0 0 0;
-}
-
-.roleimg-logo {
-  height: 84rpx;
-}
-
-.roleimg-action {
-  height: 56rpx;
-  line-height: 56rpx;
-}
-
-.roleimg-office {
-  width: 88rpx;
-  height: 82rpx;
-}
-
-.roleimg-manager {
-  width: 84rpx;
-  height: 82rpx;
-}
-
-.roleimg-truck {
-  width: 96rpx;
-  height: 76rpx;
-}
-
-.protocol {
-  text-align: center;
-  text-decoration: underline;
-  color: #4993F7;
-  font-size: 35rpx;
-  margin-top: 100rpx;
-}
-

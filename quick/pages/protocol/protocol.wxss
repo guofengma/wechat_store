@@ -1,0 +1,47 @@
+page {
+  background-color: #fff;
+  height: auto;
+}
+
+.container {
+  padding: 44rpx 40rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 10rpx;
+}
+
+.role {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rolebtn0 {
+  margin-right: 30rpx;
+  color: red;
+}
+
+.rolebtn1 {
+  margin-right: 30rpx;
+  color: #4993F7;
+}
+
+.rolebtn2 {
+  margin-right: 30rpx;
+  color: green;
+}
+
+.content {
+  margin-top: 25rpx;
+}
+
+.back {
+  text-align: center;
+  text-decoration: underline;
+  color: #4993F7;
+  font-size: 35rpx;
+  margin-top: 55rpx;
+}

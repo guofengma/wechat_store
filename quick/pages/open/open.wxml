@@ -1,0 +1,18 @@
+<form class="forms" bindsubmit="formSubmit">
+  <view class='container'> 
+    <view class='item'>
+      <label class='name'>手机号码 </label>
+      <view class='input-border'>
+        <input type='text' name="mobile" disabled value='{{mobile}}'></input>
+      </view>
+    </view>      
+    <view class='item'>
+      <label class='name'>登录密码 </label>
+      <view class='input-border'>
+        <input bindinput='setPw' password="true" maxlength='6' name="pw"></input>
+      </view>
+    </view>
+
+    <button disabled='{{!pw}}' class='button' form-type='submit'>提交</button>
+  </view>
+</form>

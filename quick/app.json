@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/apply/apply",
+    "pages/index/index",
+    "pages/open/open",
+    "pages/protocol/protocol",
     "pages/storedetail/storedetail",
     "pages/settle/settle",
     "pages/provide/provide",

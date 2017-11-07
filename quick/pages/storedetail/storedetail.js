@@ -7,12 +7,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fieldflag: true,
+    user: wx.getStorageSync("user").openid,
+    fieldflag: false,
     dealflag: false,
     supplyflag: false,
+    field: true,
+    deal: true,
+    supply: true,
     fieldimg: '../../image/officeAct.png',
     dealimg: '../../image/manager.png',
     supplyimg: '../../image/truck.png'
+  },
+  protocol() {
+
+    wx.redirectTo({
+      url: '../protocol/protocol?' +
+      'storeid=' + this.data.storeid +
+      '&fielduser=' + this.data.fielduser +
+      '&dealuser=' + this.data.dealuser +
+      '&supplyuser=' + this.data.supplyuser +
+      '&fieldstate=' + this.data.fieldstate +
+      '&dealstate=' + this.data.dealstate +
+      '&supplystate=' + this.data.supplystate +
+      '&fieldperson=' + this.data.fieldperson +
+      '&dealperson=' + this.data.dealperson +
+      '&supplyperson=' + this.data.supplyperson
+    })
   },
   queryfield(user) {
 
@@ -35,6 +55,7 @@ Page({
       if (result != "") {
 
         this.setData({
+          fielduser: result.openid,
           fieldperson: result.name,
           fieldmobile: result.phone,
           fieldaddress: result.address,
@@ -46,13 +67,17 @@ Page({
           fieldpreviewImg3: 'https://store.lianlianchains.com/images/' + result.img3
         })
 
-        this.data.field = true
+        this.setData({
+          field: true
+        })
 
         this.itemshow(0)
 
       } else {
 
-        this.data.field = false
+        this.setData({
+          field: false
+        })
       }
 
     }).catch(err => {
@@ -86,6 +111,7 @@ Page({
       if (result != "") {
 
         this.setData({
+          dealuser: result.openid,
           dealperson: result.name,
           dealmobile: result.phone,
           dealaddress: result.address,
@@ -93,11 +119,15 @@ Page({
           dealpreviewImg2: 'https://store.lianlianchains.com/images/' + result.img2
         })
 
-        this.data.deal = true
+        this.setData({
+          deal: true
+        })
 
       } else {
 
-        this.data.deal = false
+        this.setData({
+          deal: false
+        })
       }
 
     }).catch(err => {
@@ -131,6 +161,7 @@ Page({
       if (result != "") {
 
         this.setData({
+          supplyuser: result.openid,
           supplyperson: result.name,
           supplymobile: result.phone,
           supplyaddress: result.address,
@@ -139,11 +170,15 @@ Page({
           supplypreviewImg2: 'https://store.lianlianchains.com/images/' + result.img2
         })
 
-        this.data.supply = true
+        this.setData({
+          supply: true
+        })
 
       } else {
 
-        this.data.deal = false
+        this.setData({
+          supply: false
+        })
       }
 
     }).catch(err => {
@@ -155,8 +190,8 @@ Page({
       console.log(err)
     })
 
-  },  
-  tapitem(e){
+  },
+  tapitem(e) {
 
     var idx = e.target.dataset.idx
     this.itemshow(idx)
@@ -164,37 +199,33 @@ Page({
   itemshow(idx) {
 
     console.log(idx)
-    console.log(this.data.field)
-    
-    
+
     this.setData({
       fieldimg: (idx == 0) ? '../../image/officeAct.png' : '../../image/office.png',
       dealimg: (idx == 1) ? '../../image/managerAct.png' : '../../image/manager.png',
-      supplyimg: (idx == 2) ? '../../image/truckAct.png' : '../../image/truck.png'
+      supplyimg: (idx == 2) ? '../../image/truckAct.png' : '../../image/truck.png',
+      fieldflag: (idx == 0 && this.data.field == true) ? true : false,
+      dealflag: (idx == 1 && this.data.deal == true) ? true : false,
+      supplyflag: (idx == 2 && this.data.supply == true) ? true : false
     })
-    this.setData({
-      fieldflag: (idx == 0 && this.data.field) ? true : false,
-      dealflag: (idx == 1 && this.data.deal) ? true : false,
-      supplyflag: (idx == 2 && this.data.supply) ? true : false
-    })
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
-    console.log(options)
+    this.queryfield(options.field)
+    this.querydeal(options.deal)
+    this.querysupply(options.supply)
 
-    var field = options.field
-    var deal = options.deal
-    var supply = options.supply
-
-    this.queryfield(field)
-    this.querydeal(deal)
-    this.querysupply(supply)
-
+    this.setData({
+      storeid: options.storeid,
+      fieldstate: options.fieldstate,
+      dealstate: options.dealstate,
+      supplystate: options.supplystate,
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

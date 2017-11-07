@@ -13,7 +13,6 @@ Page({
     user: wx.getStorageSync("user").openid,
     hasOrder: true,
     storeList: [],
-    hidden: false,
     storeid: '',
     address: '',
     iconlist: [
@@ -55,16 +54,129 @@ Page({
       url: '../shelvenav/shelvenav',
     })
   },
+  isEmpty(item) {
+
+    if (null == item || '' == item) {
+      return true
+    } else {
+      return false
+    }
+  },
   storedetail(e) {
+
+    var storeid = e.currentTarget.dataset.storeid
 
     var field = e.currentTarget.dataset.field
     var deal = e.currentTarget.dataset.deal
     var supply = e.currentTarget.dataset.supply
 
-    wx.navigateTo({
-      url: '../storedetail/storedetail?' +
-      'field=' + field + '&deal=' + deal + '&supply=' + supply
-    })
+    if (this.isEmpty(field) && this.isEmpty(deal) && this.isEmpty(supply)) {
+      console.log('没有用户')
+      return
+    }
+
+    var fieldstate = e.currentTarget.dataset.fieldstate
+    var dealstate = e.currentTarget.dataset.dealstate
+    var supplystate = e.currentTarget.dataset.supplystate
+
+    // 开户申请
+    // checkstate
+
+    // open
+    if (fieldstate == 1 && dealstate == 1 && supplystate == 1 && 
+      deal == this.data.user) {
+
+      fetch({
+        url: "/CVS/apply/registerquery",
+        //   baseUrl: "http://192.168.50.57:9888", 
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          id: storeid
+        },
+        noLoading: false,
+        method: "GET",
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+        //  header: { 'content-type': 'application/json' }
+      }).then(result => {
+
+        console.log(result)
+        if (!result){
+
+          wx.showModal({
+            title: '开户申请',
+            content: '货架参与方均签约，是否去申请开户？',
+            success: function (sm) {
+
+              if (sm.confirm) {
+                console.log('用户点击确定')
+
+                // 场地申请接口
+                fetch({
+                  url: "/CVS/apply/deal/query",
+                  //   baseUrl: "http://192.168.50.57:9888", 
+                  baseUrl: "https://store.lianlianchains.com",
+                  data: {
+                    openid: deal
+                  },
+                  noLoading: false,
+                  method: "GET",
+                  header: { 'content-type': 'application/x-www-form-urlencoded' }
+                  //  header: { 'content-type': 'application/json' }
+                }).then(result => {
+
+                  console.log(result)
+                  wx.redirectTo({
+                    url: '../open/open?' + 'mobile=' + result.phone + 
+                    '&id=' + storeid
+                  })
+
+                }).catch(err => {
+
+                  console.log("出错了")
+                  wx.showToast({
+                    title: '网络繁忙'
+                  })
+                  console.log(err)
+                })
+
+              } else if (sm.cancel) {
+                console.log('用户点击取消')
+
+                wx.navigateTo({
+                  url: '../storedetail/storedetail?' + 'storeid=' + storeid +
+                  '&field=' + field + '&deal=' + deal + '&supply=' + supply +
+                  '&fieldstate=' + fieldstate +
+                  '&dealstate=' + dealstate +
+                  '&supplystate=' + supplystate
+                })
+              }
+
+            }
+          })
+        }
+        
+      }).catch(err => {
+
+        console.log("出错了")
+        wx.showToast({
+          title: '网络繁忙'
+        })
+        console.log(err)
+      })  
+
+    
+    } else {
+
+      wx.navigateTo({
+        url: '../storedetail/storedetail?' + 'storeid=' + storeid +
+        '&field=' + field + '&deal=' + deal + '&supply=' + supply +
+        '&fieldstate=' + fieldstate +
+        '&dealstate=' + dealstate +
+        '&supplystate=' + supplystate
+      })
+    }
+
+
   },
   setItemStorename(e) {
 
@@ -120,10 +232,9 @@ Page({
     totalpage = 0
     this.setData({
       storeList: storeList,
-      hidden: false,
       hasOrder: true
     })
-  
+
     this.querystore()
   },
   querystore() {
@@ -159,7 +270,7 @@ Page({
             hasOrder: false
           })
 
-        }, 1000);
+        }, 500);
       } else {
 
         this.setData({
@@ -182,13 +293,12 @@ Page({
     console.log(totalpage)
     console.log(page)
 
-    if (page >= totalpage - 1 ) {
+    if (page >= totalpage - 1) {
 
       console.log("没有更多了")
       page = totalpage
 
       this.setData({
-        hidden: true,
         hasOrder: false
       })
     } else {
@@ -379,6 +489,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    console.log('onload')
 
     // 角色
     this.roleQuery()

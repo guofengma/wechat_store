@@ -182,6 +182,6 @@ page {
 
 .loadmore image {
   text-align: center;
-  width: 100rpx;
-  height: 100rpx;
+  width: 96rpx;
+  height: 96rpx;
 }

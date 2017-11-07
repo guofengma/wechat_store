@@ -32,15 +32,18 @@
     </view>
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
-      <view class='store-top' bindtap='storedetail' 
-      data-field='{{item.field}}' data-deal='{{item.deal}}' data-supply='{{item.supply}}'>
+      <view class='store-top' bindtap='storedetail' data-storeid='{{item.id}}'
+        data-field='{{item.field}}'   data-fieldstate='{{item.fieldstate}}' 
+        data-deal='{{item.deal}}'     data-dealstate='{{item.dealstate}}'
+        data-supply='{{item.supply}}' data-supplystate='{{item.supplystate}}'>
         <view class='store-name'>快点</view>
-        <view class='store-address'>{{item.id + '  ' + item.address}}</view>
+        <view class='store-address'>{{item.address}}</view>
       </view>
       <view class='store-content'>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-office' src="../../image/office.png"
+            <image class='roleimg-office' 
+              src="{{(item.fieldstate == 0)? '../../image/office.png':'../../image/officeAct.png'}}"
               bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
               data-user='{{item.field}}' data-roletype='0'></image>
           </view>
@@ -57,7 +60,7 @@
         </view>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-manager' src="../../image/manager.png"
+            <image class='roleimg-manager' src="{{(item.dealstate == 0)? '../../image/manager.png':'../../image/managerAct.png'}}"
               bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
               data-user='{{item.deal}}' data-roletype='1'></image>
           </view>
@@ -73,7 +76,7 @@
         </view>
         <view>
           <view class='roleimg-logo'>
-            <image class='roleimg-truck' src="../../image/truck.png"
+            <image class='roleimg-truck' src="{{(item.supplystate == 0)? '../../image/truck.png':'../../image/truckAct.png'}}"
               bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' 
               data-user='{{item.supply}}' data-roletype='2'></image>
           </view>
@@ -93,7 +96,6 @@
 
     <view class="loadmore">
         <image wx:if="{{hasOrder}}" src="../../image/storeloading.gif"></image>
-        <view class="nomore" wx:if="{{hidden}}">没有更多</view>
     </view>
   </view>
 </view>
