@@ -1,11 +1,15 @@
 <form class="forms" bindsubmit="formSubmit">
-  <view class='container'> 
+  <view class='container'>
     <view class='item'>
       <label class='name'>手机号码 </label>
+      <view class='input-border'>{{mobile}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>货架名称 </label>
       <view class='input-border'>
-        <input type='text' name="mobile" disabled value='{{mobile}}'></input>
+        <input bindinput='setStorename' type='text' name="storename" value='{{storename}}'></input>
       </view>
-    </view>      
+    </view>
     <view class='item'>
       <label class='name'>登录密码 </label>
       <view class='input-border'>
@@ -13,6 +17,13 @@
       </view>
     </view>
 
-    <button disabled='{{!pw}}' class='button' form-type='submit'>提交</button>
+    <button wx:if="{{showbtn}}" disabled='{{!pw || !storename}}' class='button' form-type='submit'>提交</button>
   </view>
+
+  <view class='notice' wx:if="{{showqr}}">开户成功, 请下载店铺二维码：</view>
+  <view class='qr'>
+    <image wx:if="{{showqr}}" src='{{qr}}'></image>
+  </view>
+  <view wx:if="{{showqr}}" class='back' bindtap='goback'>返回首页</view>
+
 </form>

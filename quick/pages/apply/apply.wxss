@@ -43,11 +43,10 @@ page {
 }
 
 .join-top {
-  margin-top: 96rpx;
+  margin-top: 76rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 22rpx;
 }
 
 .header-join {
@@ -133,7 +132,7 @@ page {
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  padding: 16rpx 0 44rpx 0;
+  padding: 16rpx 0 20rpx 0;
 }
 
 .roleimg-logo {
@@ -184,4 +183,11 @@ page {
   text-align: center;
   width: 96rpx;
   height: 96rpx;
+}
+
+.storeheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }

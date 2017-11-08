@@ -60,3 +60,30 @@ page{
   color: #fff;
   margin-top: 100rpx;
 }
+
+.notice {
+  margin-top: 50rpx;
+  color: #4993F7;
+  text-align: center;
+}
+
+.qr {
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+image {
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.back {
+  text-align: center;
+  text-decoration: underline;
+  color: #4993F7;
+  font-size: 35rpx;
+  margin-top: 80rpx;
+}
+

@@ -7,11 +7,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showqr: false,
+    showbtn: true
   },
   setPw(e) {
     this.setData({
       pw: e.detail.value
+    })
+  },
+  setStorename(e) {
+    this.setData({
+      storename: e.detail.value
+    })
+  },
+  goback(){
+    wx.redirectTo({
+      url: '../apply/apply'
     })
   },
   formSubmit(e) {
@@ -22,7 +33,8 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         id: this.data.id,
-        password: this.data.pw
+        password: this.data.pw,
+        storename: this.data.storename
       },
       noLoading: false,
       method: "GET",
@@ -32,9 +44,45 @@ Page({
 
       console.log(result)
 
-      wx.redirectTo({
-        url: '../apply/apply'
-      })
+      if (result.ec == '000000') {
+
+        this.setData({
+          showqr: true,
+          showbtn: false,
+          qr: 'https://store.lianlianchains.com/images/' + this.data.id + '.png'
+        })
+
+        fetch({
+          url: "/CVS/apply/updatename",
+          //   baseUrl: "http://192.168.50.57:9888", 
+          baseUrl: "https://store.lianlianchains.com",
+          data: {
+            id: this.data.id,
+            storename: this.data.storename
+          },
+          noLoading: false,
+          method: "GET",
+          header: { 'content-type': 'application/x-www-form-urlencoded' }
+          //  header: { 'content-type': 'application/json' }
+        }).then(result => {
+
+        }).catch(err => {
+
+          console.log("出错了")
+          wx.showToast({
+            title: '网络繁忙'
+          })
+          console.log(err)
+        })
+
+      } else {
+
+        console.log("出错了")
+        wx.showToast({
+          title: result.em
+        })
+        console.log(result)
+      }
 
     }).catch(err => {
 

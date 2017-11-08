@@ -8,7 +8,7 @@ Page({
     list: [
       {
         idx: "第一步",
-        title: "提供货架场地信息",
+        title: "录入经营者信息",
         img: "../../image/jingying.png"
       },
       {

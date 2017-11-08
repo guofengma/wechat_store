@@ -10,6 +10,13 @@
       <image class='roleimg-truck' data-idx='2' src='{{supplyimg}}' bindtap='tapitem'></image>
     </view>
   </view>
+
+  <view class="nocontent"
+    wx:if="{{fieldflag == false && dealflag == false && supplyflag == false}}">
+    <image class='nocontentimg' src='../../image/noOrder.png'></image>
+    <view class='nocontenttext'>暂无成员加入</view>
+  </view>
+
   <view class='container' wx:if='{{fieldflag}}'>
     <view class='item'>
       <label class='name'>公司地址 </label>

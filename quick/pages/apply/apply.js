@@ -72,6 +72,9 @@ Page({
 
     if (this.isEmpty(field) && this.isEmpty(deal) && this.isEmpty(supply)) {
       console.log('没有用户')
+      wx.showToast({
+        title: '还未有用户加入',
+      })
       return
     }
 
@@ -445,6 +448,9 @@ Page({
       this.data.storeid = res
       this.changeIcon(roletype)
 
+      // refresh store
+      this.searchstore()
+
     }).catch(err => {
 
       wx.showToast({
@@ -474,6 +480,7 @@ Page({
       // console.log(res)
       if (res.ec == '000000') {
         this.changeIcon(roletype, optype)
+        this.searchstore()
       }
 
     }).catch(err => {
@@ -510,6 +517,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    console.log('onshow')
 
   },
 
