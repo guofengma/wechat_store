@@ -32,7 +32,7 @@ page{
 .shenqing{
   position: fixed;
   right: 0;
-  bottom: 60rpx;
+  bottom: 560rpx;
   width: 148rpx;
   height: 84rpx;
 }

@@ -43,11 +43,14 @@
       <view class='input-border'>{{fieldmobile}}</view>
     </view>
     <view class='item'>
-      <label class='upload-title'>场地照片 </label>
+      <label class='upload-title'>场地照 </label>
       <view class='upload-cont'>
-        <image class='upload' src="{{fieldpreviewImg1}}"></image>
-        <image class='upload' src="{{fieldpreviewImg2}}"></image>
-        <image class='upload' src="{{fieldpreviewImg3}}"></image>
+        <image class='upload' src="{{fieldpreviewImg1}}" 
+          data-img="{{fieldpreviewImg1}}" bindtap="previewImage"></image>
+        <image class='upload' src="{{fieldpreviewImg2}}"
+          data-img="{{fieldpreviewImg2}}" bindtap="previewImage"></image>
+        <image class='upload' src="{{fieldpreviewImg3}}"
+          data-img="{{fieldpreviewImg3}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view wx:if='{{field && deal && supply && fielduser == user && fieldstate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>
@@ -69,13 +72,15 @@
     <view class='item'>
       <label class='upload-title-two'>工商营业执照 </label>
       <view>
-        <image class='upload' src="{{dealpreviewImg1}}"></image>
+        <image class='upload' src="{{dealpreviewImg1}}"
+          data-img="{{dealpreviewImg1}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view class='item'>
       <label class='upload-title-two'>食品流通许可 </label>
       <view>
-        <image class='upload' src="{{dealpreviewImg2}}"></image>
+        <image class='upload' src="{{dealpreviewImg2}}"
+          data-img="{{dealpreviewImg2}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view wx:if='{{field && deal && supply && dealuser == user && dealstate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>
@@ -101,13 +106,15 @@
     <view class='item'>
       <label class='upload-title-two'>工商营业执照 </label>
       <view>
-        <image class='upload' src="{{supplypreviewImg1}}"></image>
+        <image class='upload' src="{{supplypreviewImg1}}"
+          data-img="{{supplypreviewImg1}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view class='item'>
       <label class='upload-title-two'>食品流通许可 </label>
       <view>
-        <image class='upload' src="{{supplypreviewImg2}}"></image>
+        <image class='upload' src="{{supplypreviewImg2}}"
+          data-img="{{supplypreviewImg2}}" bindtap="previewImage"></image>
       </view>
     </view>
     <view wx:if='{{field && deal && supply && supplyuser == user && supplystate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>

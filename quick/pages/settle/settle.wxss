@@ -35,7 +35,7 @@ page{
 }
 
 .bottom{
-  margin-top: 64rpx;
+  margin-top: 34rpx;
 }
 .market-bottom{
   display: flex;
@@ -94,5 +94,5 @@ page{
   font-size: 32rpx;
   text-align: center;
   color: #fff;
-  margin: 144rpx auto 0;
+  margin: 100rpx auto 0;
 }

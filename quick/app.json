@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/settle/settle",
     "pages/apply/apply",
     "pages/open/open",
     "pages/protocol/protocol",
     "pages/storedetail/storedetail",
-    "pages/settle/settle",
     "pages/provide/provide",
     "pages/providenav/providenav",
     "pages/managenav/managenav",

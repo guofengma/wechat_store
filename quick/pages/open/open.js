@@ -25,6 +25,14 @@ Page({
       url: '../apply/apply'
     })
   },
+  previewImage(e) {
+
+    var img = e.target.dataset.img
+    // console.log(img)
+    wx.previewImage({
+      urls: [img],
+    })
+  },
   formSubmit(e) {
 
     fetch({

@@ -82,9 +82,6 @@ Page({
     var dealstate = e.currentTarget.dataset.dealstate
     var supplystate = e.currentTarget.dataset.supplystate
 
-    // 开户申请
-    // checkstate
-
     // open
     if (fieldstate == 1 && dealstate == 1 && supplystate == 1 && 
       deal == this.data.user) {
@@ -156,6 +153,16 @@ Page({
 
             }
           })
+        } else {
+
+          wx.navigateTo({
+            url: '../storedetail/storedetail?' + 'storeid=' + storeid +
+            '&field=' + field + '&deal=' + deal + '&supply=' + supply +
+            '&fieldstate=' + fieldstate +
+            '&dealstate=' + dealstate +
+            '&supplystate=' + supplystate
+          })
+
         }
         
       }).catch(err => {
@@ -177,6 +184,7 @@ Page({
         '&dealstate=' + dealstate +
         '&supplystate=' + supplystate
       })
+
     }
 
 
@@ -204,29 +212,31 @@ Page({
         wx.showToast({
           title: '请先申请提供场地',
         })
-        return
+        return false
       }
     } else if (roletype == 1) {
 
       // 角色
-      if (!this.data.field) {
+      if (!this.data.deal) {
         wx.showToast({
           title: '请先申请经营管理',
         })
-        return
+        return false
       }
 
     } else {
 
       // 角色
-      if (!this.data.field) {
+      if (!this.data.supply) {
         wx.showToast({
           title: '请先申请货架供货',
         })
-        return
+        return false
       }
 
     }
+
+    return true
   },
   searchstore() {
 
@@ -317,7 +327,10 @@ Page({
     // 0 场地 1 经营 2 供货
     var roletype = parseInt(e.target.dataset.roletype)
 
-    this.checkrole(roletype);
+    if(!this.checkrole(roletype)){
+      console.log('role error')
+      return
+    }
 
     (this.data.storeid == '') ?
       (this.initShelve(roletype)) :
@@ -354,7 +367,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      // console.log(res)
+      console.log(res)
       if (res.ec == '000000') {
         this.setData({
           field: res.data.field,
@@ -385,9 +398,12 @@ Page({
     var idx = e.target.dataset.idx
     var roletype = parseInt(e.target.dataset.roletype)
 
-    this.checkrole(roletype)
-
-    this.modifyicon(user, storeid, idx, roletype)
+    if(!this.checkrole(roletype)){
+      console.log('role error')
+      return
+    }else{
+      this.modifyicon(user, storeid, idx, roletype)
+    }
 
   },
   modifyicon(user, storeid, idx, roletype) {

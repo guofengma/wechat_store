@@ -1,10 +1,7 @@
 <view class="container">
   <view class='market-analysis'>
-    <view class='header'>市场分析</view>
-    <view class='market-content'>
-      <view class='imgs'>
-        <image class='market-img' src='../../image/market.png'></image>
-      </view>
+    <!-- <view class='header'>自助货架</view> -->
+    <!-- <view class='market-content'>
       <view class='market-bottom bottom'>
         <view class='market-bottom-item'>
           月销售额：{{1500}}-{{2000}}
@@ -13,8 +10,15 @@
           毛利润率：{{25}}%-{{30}}%
         </view>
       </view>
+    </view> -->
+    <view class='market-bottom bottom'>
+      <view class='market-bottom-item'>
+        月销售额：{{1500}}-{{2000}}
+      </view>
+      <view class='market-bottom-item'>
+        毛利润率：{{25}}%-{{30}}%
+      </view>
     </view>
-    <view class='header'>商业模式</view>
     <view class='business-content'>
       <view class='imgs'>
         <image class='business-img' src='../../image/business.png'></image>
@@ -23,12 +27,10 @@
         <view class='business-bottom-left'>
           <view class='business-bottom-item'>持续稳定的商品销售</view>
           <view class='business-bottom-item'>销售与物流渠道的扩展</view>
-          <view class='business-bottom-item'>金融服务 企业融资</view>
         </view>
         <view class='business-bottom-right'>
           <view class='business-bottom-item'>货架加盟运营</view>
           <view class='business-bottom-item'>金融服务 小额贷款</view>
-          <view class='business-bottom-item'>平台手续费</view>
         </view>
       </view>
     </view>

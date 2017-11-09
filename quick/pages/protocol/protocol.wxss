@@ -20,17 +20,17 @@ page {
 }
 
 .rolebtn0 {
-  margin-right: 30rpx;
+  margin-right: 40rpx;
   color: red;
 }
 
 .rolebtn1 {
-  margin-right: 30rpx;
+  margin-right: 40rpx;
   color: #4993F7;
 }
 
 .rolebtn2 {
-  margin-right: 30rpx;
+  margin-right: 40rpx;
   color: green;
 }
 

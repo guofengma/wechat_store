@@ -34,7 +34,8 @@ Page({
 
         if (res.ec == '000000') {
           this.setData({
-            fieldflag: '已签约'
+            fieldflag: '已签约',
+            fieldrolebtn: 'rolebtn2'
           })
         }
 
@@ -69,7 +70,8 @@ Page({
 
         if (res.ec == '000000') {
           this.setData({
-            dealflag: '已签约'
+            dealflag: '已签约',
+            dealrolebtn: 'rolebtn2'
           })
         }
 
@@ -103,7 +105,8 @@ Page({
 
         if (res.ec == '000000') {
           this.setData({
-            supplyflag: '已签约'
+            supplyflag: '已签约',
+            supplyrolebtn: 'rolebtn2'
           })
         }
 

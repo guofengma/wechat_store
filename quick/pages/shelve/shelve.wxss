@@ -56,5 +56,5 @@ page{
   text-align: center;
   background-color: #4993F7;
   color: #fff;
-  margin-top: 100rpx;
+  margin-top: 150rpx;
 }

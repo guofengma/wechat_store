@@ -12,7 +12,7 @@ page{
 .item{
   display: flex;
   flex-direction: row;
-  margin-top: 50rpx;
+  margin-top: 60rpx;
   font-size: 32rpx;
 }
 .name{
@@ -39,17 +39,18 @@ page{
   margin-top: -20rpx;
 }
 .upload{
-  width: 122rpx;
-  height: 122rpx;
+  width: 155rpx;
+  height: 155rpx;
+  margin-right: 15rpx;
 }
 .upload-title{
-  width: 180rpx;
+  width: 220rpx;
 }
 .upload-title-two{
   width: 238rpx;
 }
 .upload-cont{
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,9 +70,9 @@ page{
 .store-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
-  padding: 16rpx 0 0 0;
+  padding: 16rpx 48rpx 0 48rpx;
 }
 
 .roleimg-logo {
@@ -103,7 +104,7 @@ page{
   text-decoration: underline;
   color: #4993F7;
   font-size: 35rpx;
-  margin-top: 100rpx;
+  margin-top: 90rpx;
 }
 
 .nocontent {

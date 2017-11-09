@@ -18,6 +18,14 @@ Page({
     dealimg: '../../image/manager.png',
     supplyimg: '../../image/truck.png'
   },
+  previewImage(e) {
+
+    var img = e.target.dataset.img
+    // console.log(img)
+    wx.previewImage({
+      urls: [img],
+    })
+  },
   protocol() {
 
     wx.redirectTo({

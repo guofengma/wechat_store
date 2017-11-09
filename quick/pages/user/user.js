@@ -21,7 +21,7 @@ Page({
   //  },
   webShow(){
     wx.navigateTo({
-      url: '../apply/apply',
+      url: '../settle/settle',
     })
   },
   submitComment(e) {
