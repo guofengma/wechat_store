@@ -4,6 +4,7 @@ import fetch from '../../utils/fetch';
 let storeList = []
 let page = 0
 let totalpage = 0
+
 Page({
 
   /**
@@ -251,6 +252,9 @@ Page({
     this.querystore()
   },
   querystore() {
+
+    console.log('user==='+this.data.user)
+    console.log('user2===' + wx.getStorageSync("user").openid)
 
     this.setData({
       hasOrder: true
@@ -519,7 +523,7 @@ Page({
     this.roleQuery()
 
     // 店铺
-    this.querystore()
+    this.searchstore()
 
   },
   /**
@@ -535,6 +539,9 @@ Page({
   onShow: function () {
 
     console.log('onshow')
+    this.setData({
+      user: wx.getStorageSync("user").openid
+    })
 
   },
 

@@ -54,7 +54,7 @@ Page({
       });
       wx.onSocketClose(function (res) {
          console.log('WebSocket 已关闭！')
-         console.log("成功")
+         console.log("重新连接")
          wx.connectSocket({
             url: 'wss://store.lianlianchains.com/websocket',
             fail: function (err) {

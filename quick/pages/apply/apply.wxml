@@ -48,7 +48,8 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.field == '' || null == item.field}}"></image>
 
-            <image class='roleimg-joinAct' src="" wx:elif="{{item.field != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.field != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>
@@ -60,7 +61,8 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.deal == '' || null == item.deal}}"></image>
 
-            <image class='roleimg-joinAct' src="" wx:elif="{{item.deal != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.deal != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>
@@ -72,7 +74,8 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.supply == '' || null == item.supply}}"></image>
 
-            <image class='roleimg-joinAct' src="" wx:elif="{{item.supply != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
+            wx:elif="{{item.supply != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>
