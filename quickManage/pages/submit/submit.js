@@ -41,6 +41,7 @@ Page({
    formSubmit(e) {
       console.log(e);
       var phoneno = e.detail.value.phoneno;
+      var pw = e.detail.value.pwd
       //检查账号和密码是否正确
       fetch({
          url: "/CVS/user/login",
@@ -73,8 +74,13 @@ Page({
                title: '登录成功',
                duration: 1500
             })
+
+            // console.log(result)
+
             wx.setStorageSync('storeidList', result.storeid)
             wx.setStorageSync('phoneno', phoneno)
+            wx.setStorageSync('pw', pw)
+
             var timer = setTimeout(() => {
                wx.redirectTo({
                  url: '../totalStatic/totalStatic',

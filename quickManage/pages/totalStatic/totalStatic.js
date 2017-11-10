@@ -8,9 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    month: true,
+    month: false,
     week: false,
-    day: false
+    day: true
   },
   storeView(e) {
     // console.log(e.currentTarget.dataset.storename)
@@ -28,7 +28,7 @@ Page({
       week: false,
       day: true
     })
-    console.log(this.data.monthList)
+    // console.log(this.data.monthList)
     // var todaycount = wx.getStorageSync('todaycount');
     // if (todaycount && FirstTimes == NowTime()) {
     //   this.setData({
@@ -38,6 +38,8 @@ Page({
     //   })
     //   return
     // }
+
+
     wx.showLoading({
       title: '加载中',
     })
@@ -56,14 +58,40 @@ Page({
       setTimeout(function () {
         wx.hideLoading()
       }, 2000)
-      var storeList = normalizeStoreList(result, storeidList);
-      console.log("aa", storeList)
-      
-      this.setData({
-        count: result.count,
-        totlefee: result.totlefee.toFixed(2),
-        storeList: storeList
-      })
+
+
+      var phoneno = wx.getStorageSync('phoneno', phoneno)
+      var pw = wx.getStorageSync('pw', pw)
+
+      fetch({
+        url: "/CVS/user/login",
+        //  baseUrl: "http://192.168.50.157:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          'phoneno': phoneno,
+          'password': pw
+        },
+        method: "POST",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+
+        console.log(res);
+        // wx.setStorageSync('storeidList', res.storeid)
+
+        var storeList = normalizeStoreList(result, res.storeid);
+        console.log("aa", storeList)
+
+        this.setData({
+          count: result.count,
+          totlefee: result.totlefee.toFixed(2),
+          storeList: storeList
+        })
+
+      }).catch(err => {
+
+      });
+
       // wx.setStorageSync('todaycount', result.count)
       // wx.setStorageSync('todaytotlefee', result.totlefee.toFixed(2))
       // wx.setStorageSync('todayList', storeList)
@@ -83,7 +111,13 @@ Page({
       day: false
     })
     var weekcount = wx.getStorageSync('weekcount');
-    if (weekcount && FirstTimes == NowTime() && WeekDate == NowTime() && MonthDate == NowTime()) {
+
+    console.log('week now is ' + NowTime())
+
+    if (weekcount && WeekDate == NowTime()) {
+
+      console.log('缓存')
+
       this.setData({
         storeList: wx.getStorageSync('weekList'),
         count: weekcount,
@@ -91,6 +125,7 @@ Page({
       })
       return
     }
+
     wx.showLoading({
       title: '加载中',
     })
@@ -109,20 +144,42 @@ Page({
       setTimeout(function () {
         wx.hideLoading()
       }, 2000);
-      wx.setStorageSync('weekDate', NowTime());
-      var storeList = normalizeStoreList(result, storeidList);
-      wx.setStorageSync('weekcount', result.count)
-      wx.setStorageSync('weektotlefee', result.totlefee.toFixed(2))
-      wx.setStorageSync('weekList', storeList)
-      
-      this.setData({
-        count: result.count,
-        totlefee: result.totlefee.toFixed(2),
-        storeList: storeList
-      })
 
-      
-      
+      var phoneno = wx.getStorageSync('phoneno', phoneno)
+      var pw = wx.getStorageSync('pw', pw)
+
+      fetch({
+        url: "/CVS/user/login",
+        //  baseUrl: "http://192.168.50.157:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          'phoneno': phoneno,
+          'password': pw
+        },
+        method: "POST",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+
+        console.log(res);
+        // wx.setStorageSync('storeidList', res.storeid)
+
+        wx.setStorageSync('weekDate', NowTime());
+        var storeList = normalizeStoreList(result, res.storeid);
+        wx.setStorageSync('weekcount', result.count)
+        wx.setStorageSync('weektotlefee', result.totlefee.toFixed(2))
+        wx.setStorageSync('weekList', storeList)
+
+        this.setData({
+          count: result.count,
+          totlefee: result.totlefee.toFixed(2),
+          storeList: storeList
+        })
+
+      }).catch(err => {
+
+      });
+
     }).catch(err => {
       console.log("出错了")
       console.log(err)
@@ -139,7 +196,13 @@ Page({
       day: false
     })
     var monthcount = wx.getStorageSync('monthcount')
-    if (monthcount && FirstTimes == NowTime() && WeekDate == NowTime() && MonthDate == NowTime()) {
+
+    console.log('month now is ' + NowTime())
+
+    if (monthcount && MonthDate == NowTime()) {
+
+      console.log('缓存')
+
       this.setData({
         storeList: wx.getStorageSync('monthList'),
         count: monthcount,
@@ -147,6 +210,7 @@ Page({
       })
       return
     }
+
     wx.showLoading({
       title: '加载中',
     })
@@ -165,15 +229,40 @@ Page({
       setTimeout(function () {
         wx.hideLoading()
       }, 2000)
-      var storeList = normalizeStoreList(result, storeidList);
-      console.log("aa", storeList)
-      this.setData({
-        count: result.count,
-        totlefee: result.totlefee.toFixed(2),
-        storeList: storeList
-      })
-      var MonthDate = NowTime();
-      wx.setStorageSync('MonthDate', MonthDate)
+
+      var phoneno = wx.getStorageSync('phoneno', phoneno)
+      var pw = wx.getStorageSync('pw', pw)
+
+      fetch({
+        url: "/CVS/user/login",
+        //  baseUrl: "http://192.168.50.157:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          'phoneno': phoneno,
+          'password': pw
+        },
+        method: "POST",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+
+        console.log(res);
+        // wx.setStorageSync('storeidList', res.storeid)
+
+        var storeList = normalizeStoreList(result, res.storeid);
+
+        this.setData({
+          count: result.count,
+          totlefee: result.totlefee.toFixed(2),
+          storeList: storeList
+        })
+        var MonthDate = NowTime();
+        wx.setStorageSync('MonthDate', MonthDate)
+
+      }).catch(err => {
+
+      });
+
     }).catch(err => {
       console.log("出错了")
       console.log(err)
@@ -193,7 +282,7 @@ Page({
     //   var FirstTime = NowTime();
     //   wx.setStorageSync('FirstTime', FirstTime);
     // }
-    
+
 
     this.setData({
       storeidList: wx.getStorageSync('storeidList'),
@@ -279,10 +368,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    console.log('now is ====' + NowTime())
+
     var storeidList = wx.getStorageSync('storeidList');
     var FirstTimes = wx.getStorageSync('FirstTime');
     var monthcount = wx.getStorageSync('monthcount')
     if (monthcount && FirstTimes == NowTime()) {
+
+      console.log('缓存')
+
       this.setData({
         storeList: wx.getStorageSync('monthList'),
         count: monthcount,
@@ -294,8 +389,42 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    // fetch({
+    //   url: "/CVS/usertotallastmonth",
+    //   // baseUrl: "http://192.168.50.157:9888",
+    //   baseUrl: "https://store.lianlianchains.com",
+    //   data: {
+    //     phoneno: wx.getStorageSync('phoneno')
+    //   },
+    //   method: "GET",
+    //   noLoading: false,
+    //   header: { 'content-type': 'application/x-www-form-urlencoded' }
+    // }).then(result => {
+    //   console.log(result);
+    //   setTimeout(function () {
+    //     wx.hideLoading()
+    //   }, 3000)
+    //   var storeList = normalizeStoreList(result, storeidList);
+    //   console.log("aa", storeList)
+
+    //   this.setData({
+    //     count: result.count,
+    //     totlefee: result.totlefee.toFixed(2),
+    //     storeList: storeList
+    //   })
+    //   wx.setStorageSync('monthcount', result.count)
+    //   wx.setStorageSync('monthtotlefee', result.totlefee.toFixed(2))
+    //   wx.setStorageSync('monthList', storeList)
+    //   var FirstTime = NowTime();
+    //   wx.setStorageSync('FirstTime', FirstTime);
+    //   wx.setStorageSync('MonthDate', FirstTime)
+    // }).catch(err => {
+    //   console.log("出错了")
+    //   console.log(err)
+    // });
+
     fetch({
-      url: "/CVS/usertotallastmonth",
+      url: "/CVS/usertotal",
       // baseUrl: "http://192.168.50.157:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
@@ -311,18 +440,15 @@ Page({
       }, 2000)
       var storeList = normalizeStoreList(result, storeidList);
       console.log("aa", storeList)
-      
+
       this.setData({
         count: result.count,
         totlefee: result.totlefee.toFixed(2),
         storeList: storeList
       })
-      wx.setStorageSync('monthcount', result.count)
-      wx.setStorageSync('monthtotlefee', result.totlefee.toFixed(2))
-      wx.setStorageSync('monthList', storeList)
-      var FirstTime = NowTime();
-      wx.setStorageSync('FirstTime', FirstTime);
-      wx.setStorageSync('MonthDate', FirstTime)
+      // wx.setStorageSync('todaycount', result.count)
+      // wx.setStorageSync('todaytotlefee', result.totlefee.toFixed(2))
+      // wx.setStorageSync('todayList', storeList)
     }).catch(err => {
       console.log("出错了")
       console.log(err)

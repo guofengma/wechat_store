@@ -33,7 +33,7 @@ App({
                 console.log(obj);
                 wx.setStorageSync('user', obj);//存储openid    
                 console.log(wx.getStorageSync('user'));
-                console.log('年后')
+                // console.log('年后')
               }
             });
           } else {

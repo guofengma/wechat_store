@@ -1,3 +1,6 @@
+page {
+  background-color: #fff;
+}
 .container{
   background-color: #fff;
 }
@@ -91,6 +94,7 @@
   border-top: 1px #ECECEC solid;
   width: 92%;
   margin-left: 4%;
+  background-color: #fff;
 }
 .storeList{
   display: flex;
@@ -99,4 +103,5 @@
   align-items: center;
   height: 96rpx;
   border-bottom: 1px #ECECEC solid;
+  background-color: #fff;
 }
