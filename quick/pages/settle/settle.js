@@ -8,7 +8,7 @@ Page({
   
   },
   applyView() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../apply/apply',
     })
   },

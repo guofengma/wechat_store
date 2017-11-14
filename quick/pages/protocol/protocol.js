@@ -10,7 +10,7 @@ Page({
 
   },
   goback(){
-    wx.redirectTo({
+    wx.navigateBack({
       url: '../apply/apply',
     })
   },

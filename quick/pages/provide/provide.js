@@ -184,7 +184,7 @@ Page({
         }).then(result => {
           console.log(result)
           if (result.ec == '000000') {
-            wx.redirectTo({
+            wx.navigateBack({
               url: '../apply/apply',
             })
           } else {

@@ -11,7 +11,7 @@
   <view class='store'>
     <view class='store-item-init'>
       <view class='store-top'>
-        <view class='store-address'>加入新货架</view>
+        <view class='store-address'>点击图标添加新货架</view>
       </view>
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">

@@ -84,7 +84,7 @@ Page({
     var supplystate = e.currentTarget.dataset.supplystate
 
     // open
-    if (fieldstate == 1 && dealstate == 1 && supplystate == 1 && 
+    if (fieldstate == 1 && dealstate == 1 && supplystate == 1 &&
       deal == this.data.user) {
 
       fetch({
@@ -101,7 +101,7 @@ Page({
       }).then(result => {
 
         console.log(result)
-        if (!result){
+        if (!result) {
 
           wx.showModal({
             title: '开户申请',
@@ -126,8 +126,8 @@ Page({
                 }).then(result => {
 
                   console.log(result)
-                  wx.redirectTo({
-                    url: '../open/open?' + 'mobile=' + result.phone + 
+                  wx.navigateTo({
+                    url: '../open/open?' + 'mobile=' + result.phone +
                     '&id=' + storeid
                   })
 
@@ -165,7 +165,7 @@ Page({
           })
 
         }
-        
+
       }).catch(err => {
 
         console.log("出错了")
@@ -173,9 +173,9 @@ Page({
           title: '网络繁忙'
         })
         console.log(err)
-      })  
+      })
 
-    
+
     } else {
 
       wx.navigateTo({
@@ -253,7 +253,7 @@ Page({
   },
   querystore() {
 
-    console.log('user==='+this.data.user)
+    console.log('user===' + this.data.user)
     console.log('user2===' + wx.getStorageSync("user").openid)
 
     this.setData({
@@ -331,7 +331,7 @@ Page({
     // 0 场地 1 经营 2 供货
     var roletype = parseInt(e.target.dataset.roletype)
 
-    if(!this.checkrole(roletype)){
+    if (!this.checkrole(roletype)) {
       console.log('role error')
       return
     }
@@ -402,10 +402,22 @@ Page({
     var idx = e.target.dataset.idx
     var roletype = parseInt(e.target.dataset.roletype)
 
-    if(!this.checkrole(roletype)){
+    if (this.data.storeList[idx].fieldstate == 1 &&
+        this.data.storeList[idx].dealstate == 1 &&
+        this.data.storeList[idx].supplystate == 1) {
+
+      wx.showToast({
+        title: '签约后不能修改',
+      })
+
+      return
+
+    }
+
+    if (!this.checkrole(roletype)) {
       console.log('role error')
       return
-    }else{
+    } else {
       this.modifyicon(user, storeid, idx, roletype)
     }
 
@@ -437,6 +449,20 @@ Page({
           [item]: (optype == 'quit') ? '' : this.data.user
         })
 
+        if (optype == 'quit'){
+
+          wx.showToast({
+            title: '退出成功',
+          })
+
+        }else{
+
+          wx.showToast({
+            title: '加入成功',
+          })
+
+        }
+
       }
 
     }).catch(err => {
@@ -464,10 +490,18 @@ Page({
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
+
+      setTimeout(() => {
+
+        wx.showToast({
+          title: '货架创建成功',
+        })
+
+      }, 800);
+
       // console.log(res)
       this.data.storeid = res
       this.changeIcon(roletype)
-
       // refresh store
       this.searchstore()
 
@@ -519,12 +553,6 @@ Page({
 
     console.log('onload')
 
-    // 角色
-    this.roleQuery()
-
-    // 店铺
-    this.searchstore()
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -542,6 +570,12 @@ Page({
     this.setData({
       user: wx.getStorageSync("user").openid
     })
+
+    // 角色
+    this.roleQuery()
+
+    // 店铺
+    this.searchstore()
 
   },
 
