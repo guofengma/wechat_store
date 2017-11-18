@@ -15,7 +15,8 @@
     "pages/detail/detail",
     "pages/statistics/statistics",
     "pages/info/info",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/auth/auth"
   ],
   "window": {
     "backgroundTextStyle": "light",

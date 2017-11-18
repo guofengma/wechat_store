@@ -12,6 +12,11 @@ Page({
     week: false,
     day: true
   },
+  auth(){
+    wx.navigateTo({
+      url: '../auth/auth',
+    })
+  },
   storeView(e) {
     // console.log(e.currentTarget.dataset.storename)
     wx.setStorageSync('storename', e.currentTarget.dataset.storename)
@@ -198,6 +203,7 @@ Page({
     var monthcount = wx.getStorageSync('monthcount')
 
     console.log('month now is ' + NowTime())
+    console.log('monthcount is ' + monthcount)
 
     if (monthcount && MonthDate == NowTime()) {
 
@@ -258,6 +264,9 @@ Page({
         })
         var MonthDate = NowTime();
         wx.setStorageSync('MonthDate', MonthDate)
+        wx.setStorageSync('monthcount', result.count)
+        wx.setStorageSync('monthtotlefee', result.totlefee.toFixed(2))
+        wx.setStorageSync('monthList', storeList)
 
       }).catch(err => {
 

@@ -38,6 +38,7 @@ page {
 .unit-y{
   text-indent: 24px;
   font-size: 24rpx;
+  margin-bottom: 20rpx;
 }
 .pointY{
   position: absolute;
@@ -90,7 +91,7 @@ page {
 }
 
 .store{
-  margin-top: 100rpx;
+  margin-top: 10rpx;
   border-top: 1px #ECECEC solid;
   width: 92%;
   margin-left: 4%;
@@ -104,4 +105,11 @@ page {
   height: 96rpx;
   border-bottom: 1px #ECECEC solid;
   background-color: #fff;
+}
+
+.auth {
+  margin-top: 100rpx;
+  margin-left: 80%;
+  width: 200rpx;
+  color: #0D8FEF;
 }

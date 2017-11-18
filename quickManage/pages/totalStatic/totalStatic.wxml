@@ -16,9 +16,9 @@
       </view>
     </view>
   </view>
-  
-  <view class='line-graph'> 
-    <view class='unit-y'>销量</view>
+
+  <view class='line-graph'>
+    <view class='unit-y'>近一月销量</view>
     <view class='pointY point6'>300</view>
     <view class='pointY point5'>250</view>
     <view class='pointY point4'>200</view>
@@ -31,6 +31,8 @@
     <view class='pointX pointX3'>{{time3}}</view>
     <view class='pointX pointX4'>{{time4}}</view>
   </view>
+
+  <view class='auth' bindtap='auth'>授权管理</view>
 
   <view class='store'>
     <view bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}' class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
