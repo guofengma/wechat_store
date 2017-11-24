@@ -91,7 +91,7 @@ page {
 }
 
 .store{
-  margin-top: 10rpx;
+  margin-top: 60rpx;
   border-top: 1px #ECECEC solid;
   width: 92%;
   margin-left: 4%;
@@ -107,9 +107,18 @@ page {
   background-color: #fff;
 }
 
-.auth {
-  margin-top: 100rpx;
-  margin-left: 80%;
-  width: 200rpx;
+.blue {
   color: #0D8FEF;
+  background-color: #fff;
+  border:none;
+  font-size: 30rpx;
+}
+
+.stname {
+  width: 35%;
+  color: #0D8FEF;
+}
+
+button::after{
+border: none;
 }

@@ -32,12 +32,13 @@
     <view class='pointX pointX4'>{{time4}}</view>
   </view>
 
-  <view class='auth' bindtap='auth'>授权管理</view>
-
   <view class='store'>
-    <view bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}' class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
-      <view>{{item.name}}</view>
-      <view>{{item.data.count}}件 / {{item.data.totlefee}}元</view>
+    <view class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
+      <view class='stname' bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}'>{{item.name}}</view>
+      <view>{{item.data.count}}件/{{item.data.totlefee}}元</view>
+      <view>
+        <button class='blue' open-type="share" data-id="{{item.id}}">授权</button>
+      </view>
     </view>
   </view>
 </view>

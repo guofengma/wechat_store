@@ -13,6 +13,9 @@ Page({
    */
   onLoad: function (options) {
   
+      wx.showToast({
+        title: 'load' + options.id,
+      })
   },
 
   /**
