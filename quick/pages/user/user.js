@@ -19,11 +19,16 @@ Page({
   //      url: '../settle/settle',
   //    })
   //  },
-  webShow(){
+  apply(){
     wx.navigateTo({
       url: '../settle/settle',
     })
   },
+  webShow() {
+    wx.navigateTo({
+      url: '../webpage/webpage',
+    })
+  },  
   submitComment(e) {
     var comment = e.detail.value.comment;
     console.log(e)
