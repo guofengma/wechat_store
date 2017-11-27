@@ -30,12 +30,12 @@ Page({
   formSubmit(e) {
 
     fetch({
-      url: "/",
+      url: "/CVS/apply/authorize",
       //   baseUrl: "http://192.168.50.57:9888", 
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        id: this.data.id,
-        mobile: this.data.mobile,
+        storeid: this.data.id,
+        phoneno: this.data.mobile,
         password: this.data.pw
       },
       noLoading: false,
@@ -46,9 +46,17 @@ Page({
       console.log(result)
       // ...
 
-      wx.navigateTo({
-        url: '../submit/submit',
-      })
+      if (result.ec == '000000') {
+
+        wx.navigateTo({
+          url: '../submit/submit',
+        })
+      } else {
+
+        wx.showToast({
+          title: '只能授权他人'
+        })
+      }
 
     }).catch(err => {
 
@@ -76,11 +84,11 @@ Page({
 
     // 查询店铺
     fetch({
-      url: "/",
+      url: "/CVS/apply/getshop",
       //   baseUrl: "http://192.168.50.57:9888", 
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        id: this.data.id
+        storeid: this.data.id
       },
       noLoading: false,
       method: "GET",
@@ -89,6 +97,11 @@ Page({
     }).then(result => {
       console.log(result)
       // ...
+      this.setData({
+
+        storename: result.data.storeName,
+        storeaddress: result.data.address
+      })
 
     }).catch(err => {
 
