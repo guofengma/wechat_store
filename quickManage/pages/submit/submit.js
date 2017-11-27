@@ -82,7 +82,7 @@ Page({
             wx.setStorageSync('pw', pw)
 
             var timer = setTimeout(() => {
-               wx.redirectTo({
+               wx.navigateTo({
                  url: '../totalStatic/totalStatic',
                })
                clearTimeout(timer)

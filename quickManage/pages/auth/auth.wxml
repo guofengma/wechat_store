@@ -1,2 +1,31 @@
 <!--pages/auth/auth.wxml-->
-<text>pages/auth/auth.wxml</text>
+<form class="forms" bindsubmit="formSubmit">
+  <view class='container'>
+    <view class='qr'>
+      <image src='{{qr}}' data-img="{{qr}}" bindtap="previewImage"></image>
+    </view>
+    <view class='item'>
+      <label class='name'>货架名称 </label>
+      <view>{{storename}}</view>
+    </view>
+    <view class='item'>
+      <label class='name'>货架地址 </label>
+      <view>{{storeaddress}}</view>
+    </view>    
+    <view class='item'>
+      <label class='name'>手机号码 </label>
+      <view class='input-border'>
+        <input bindinput='setMobile' type='text' maxlength='11'></input>
+      </view>
+    </view>
+    <view class='item'>
+      <label class='name'>登录密码 </label>
+      <view class='input-border'>
+        <input bindinput='setPw' type="number" password="true" maxlength='6'></input>
+      </view>
+    </view>
+
+    <button disabled='{{!pw || !mobile}}' class='button' form-type='submit'>提交</button>
+  </view>
+
+</form>

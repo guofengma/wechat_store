@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/submit/submit",
     "pages/auth/auth",
-    
+    "pages/submit/submit",
     "pages/totalStatic/totalStatic",
     "pages/index/index",
     "pages/check/check",
@@ -18,7 +17,6 @@
     "pages/statistics/statistics",
     "pages/info/info",
     "pages/chat/chat"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

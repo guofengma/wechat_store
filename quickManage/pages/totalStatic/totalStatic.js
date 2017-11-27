@@ -497,9 +497,9 @@ Page({
     console.log('share')
 
     return {
-      title: '货架授权',
+      title: '授权',
       path: '/pages/auth/auth?id=' + e.target.dataset.id,
-      imageUrl: '../../image/logo.png'
+      imageUrl: '../../image/auth.png'
     }
   }  
 })
