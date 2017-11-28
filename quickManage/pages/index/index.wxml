@@ -10,7 +10,7 @@
       <button class="item inventory"  bindtap='reportView' hover-class="other-button-hover">商品盘点</button>
     </view>
     <view class="secondView moreView">
-      <button class="item inventory"  bindtap='acountView' hover-class="other-button-hover">账目详情</button>
-      <button class="item rangeList"  bindtap='skuView' hover-class="other-button-hover">库存优化</button>
+      <button wx:if='{{boss}}' class="item inventory"  bindtap='acountView' hover-class="other-button-hover">账目详情</button>
+      <button wx:if='{{boss}}' class="item rangeList"  bindtap='skuView' hover-class="other-button-hover">库存优化</button>
     </view>
 </view>

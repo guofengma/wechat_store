@@ -151,10 +151,6 @@ Page({
       });
       
    },
-   ceshi(){
-      console.log(111)
-      
-   },
    /**
     * 生命周期函数--监听页面初次渲染完成
     */
@@ -169,6 +165,17 @@ Page({
      this.setData({
        storename: wx.getStorageSync('storename')
      })
+
+     if (wx.getStorageSync('role') != 'boss') {
+       this.setData({
+         boss: false
+       })
+     } else {
+       this.setData({
+         boss: true
+       })
+     }
+
    },
    onHide() {
       // wx.closeSocket()

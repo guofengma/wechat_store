@@ -12,7 +12,7 @@ Page({
     week: false,
     day: true
   },
-  auth(){
+  auth() {
     wx.navigateTo({
       url: '../auth/auth',
     })
@@ -458,6 +458,19 @@ Page({
       // wx.setStorageSync('todaycount', result.count)
       // wx.setStorageSync('todaytotlefee', result.totlefee.toFixed(2))
       // wx.setStorageSync('todayList', storeList)
+
+      if (wx.getStorageSync('role') != 'boss') {
+        this.setData({
+          boss: false
+        })
+      } else {
+        this.setData({
+          boss: true
+        })
+      }
+
+      console.log(this.data.boss)
+
     }).catch(err => {
       console.log("出错了")
       console.log(err)
@@ -493,7 +506,7 @@ Page({
 
   },
 
-  onShareAppMessage(e){
+  onShareAppMessage(e) {
     console.log('share')
 
     return {
@@ -501,5 +514,5 @@ Page({
       path: '/pages/auth/auth?id=' + e.target.dataset.id,
       imageUrl: '../../image/auth.png'
     }
-  }  
+  }
 })

@@ -7,8 +7,8 @@
     <image class='checkpic' bindtouchstart="scanCode" src="../../image/scanCode.png"></image>
 
     <view class="moreView">
-      <button class="item orderList" bindtouchstart="orderView" hover-class="other-button-hover">订单流水</button>
-      <button class="item statistics" bindtouchstart="staticView" hover-class="other-button-hover">销量统计</button>
+      <button wx:if='{{boss}}' class="item orderList" bindtouchstart="orderView" hover-class="other-button-hover">订单流水</button>
+      <button wx:if='{{boss}}' class="item statistics" bindtouchstart="staticView" hover-class="other-button-hover">销量统计</button>
     </view>
 </view>
 
