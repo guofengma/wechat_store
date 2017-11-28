@@ -80,6 +80,7 @@ Page({
             wx.setStorageSync('storeidList', result.storeid)
             wx.setStorageSync('phoneno', phoneno)
             wx.setStorageSync('pw', pw)
+            wx.setStorageSync('role', result.role)
 
             var timer = setTimeout(() => {
                wx.navigateTo({

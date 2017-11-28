@@ -37,7 +37,7 @@
       <view class='stname' bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}'>{{item.name}}</view>
       <view>{{item.data.count}}件/{{item.data.totlefee}}元</view>
       <view>
-        <button class='blue' open-type="share" data-id="{{item.id}}">授权</button>
+        <button wx:if='{{wx.getStorageSync(role) == boss}}' class='blue' open-type="share" data-id="{{item.id}}">授权</button>
       </view>
     </view>
   </view>
