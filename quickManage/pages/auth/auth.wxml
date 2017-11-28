@@ -10,7 +10,7 @@
     </view>
     <view class='item'>
       <label class='name'>货架地址 </label>
-      <view>{{storeaddress}}</view>
+      <view class='sname'>{{storeaddress}}</view>
     </view>    
     <view class='item'>
       <label class='name'>手机号码 </label>

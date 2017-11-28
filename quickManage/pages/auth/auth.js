@@ -73,9 +73,7 @@ Page({
    */
   onLoad: function (options) {
 
-    // wx.showToast({
-    //   title: 'load' + options.id,
-    // })
+    console.log(options.id)
 
     this.setData({
       id: options.id,
