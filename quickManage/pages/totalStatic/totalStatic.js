@@ -12,10 +12,12 @@ Page({
     week: false,
     day: true
   },
-  auth() {
-    wx.navigateTo({
-      url: '../auth/auth',
+  quit() {
+
+    wx.redirectTo({
+      url: '../submit/submit',
     })
+  
   },
   storeView(e) {
     // console.log(e.currentTarget.dataset.storename)

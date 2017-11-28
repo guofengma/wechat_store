@@ -32,6 +32,8 @@
     <view class='pointX pointX4'>{{time4}}</view>
   </view>
 
+<view class='quit' bindtap='quit'>退出登录</view>
+
   <view class='store'>
     <view class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
       <view class='stname' bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}'>{{item.name}}</view>

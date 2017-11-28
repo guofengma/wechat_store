@@ -1,6 +1,6 @@
 <view class="container">
     <view class="store" bindtap='totalStaticView'>
-      <image class='storepic' src='../../image/store.png'></image>
+      <image class='storepic' src='../../image/change.png'></image>
       <view>{{storename}}</view>
     </view>
     <view class="info">扫顾客二维码</view>

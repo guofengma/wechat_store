@@ -54,7 +54,7 @@ Page({
       } else {
 
         wx.showToast({
-          title: '只能授权他人'
+          title: result.em
         })
       }
 
