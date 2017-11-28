@@ -9,7 +9,7 @@
       <view class='item last'>出错</view>
     </view>
      <view class='content'>
-      <view class='listItem' id="{{item.id ? item.id : ''}}" wx:for="{{inventoryList}}" wx:key="idx" wx:for-item="item">
+      <view class='listItem' id="{{item.id ? item.id : ''}}" wx:for="{{inventoryList}}" wx:for-index="idx" wx:for-item="item">
         <view class='goods elem'>{{item.name}}</view>
         <view class='item elem'>{{item.amount}}</view>
         <view class='item elem'>
@@ -47,6 +47,6 @@
     
   </scroll-view>
   <view  wx:if="{{inventoryList}}" class="index-english" style="top:{{indexTop}}px">
-    <view wx:for="{{arrId}}" wx:key="idx" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
+    <view wx:for="{{arrId}}" wx:for-item="i" id="{{i}}" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">{{i}}</view>
   </view>
 </view>
