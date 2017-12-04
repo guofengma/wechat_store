@@ -310,8 +310,8 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(chart => {
       console.log("chart", chart);
-      context.setStrokeStyle("#BBBBBB");
-      context.setLineWidth(2);
+      // context.setStrokeStyle("white");
+      context.setLineWidth(1);
       context.moveTo(50, 0);
       context.lineTo(50, 200);
       context.lineTo(360, 200);
@@ -343,8 +343,8 @@ Page({
       //折线图
 
       var basenum = 0.6;
-      context.setStrokeStyle("#0D8FEF");
-      context.setFillStyle("#0D8FEF");
+      context.setStrokeStyle("#BBBBBB");
+      // context.setFillStyle("#BBBBBB");
       context.moveTo(120.5, 200 - chart.count1 * basenum);
       context.lineTo(120.5, 200 - chart.count1 * basenum);
       context.arc(120.5, 200 - chart.count1 * basenum, 1, 0, 2 * Math.PI, false)

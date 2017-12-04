@@ -29,6 +29,12 @@
 					"pathName": "pages/auth/auth",
 					"query": "id=10",
 					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "total",
+					"pathName": "pages/totalStatic/totalStatic",
+					"query": ""
 				}
 			]
 		}

@@ -1,17 +1,13 @@
 <!--pages/auth/auth.wxml-->
 <form class="forms" bindsubmit="formSubmit">
   <view class='container'>
-    <view class='qr'>
-      <image src='{{qr}}' data-img="{{qr}}" bindtap="previewImage"></image>
+    <view class='imgview'>
+      <image class='img' src='../../image/authop.png'></image>
+      <view class='sname'>{{storename}}</view>
+      <view class='saddr'>
+        <image class='locate' src='../../image/locate.png'></image>{{storeaddress}}
+      </view>
     </view>
-    <view class='item'>
-      <label class='name'>货架名称 </label>
-      <view>{{storename}}</view>
-    </view>
-    <view class='item'>
-      <label class='name'>货架地址 </label>
-      <view class='sname'>{{storeaddress}}</view>
-    </view>    
     <view class='item'>
       <label class='name'>手机号码 </label>
       <view class='input-border'>
@@ -26,6 +22,9 @@
     </view>
 
     <button disabled='{{!pw || !mobile}}' class='button' form-type='submit'>提交</button>
+
+    <view class='qr' bindtap='previewImage'>获取店铺二维码</view>
+
   </view>
 
 </form>

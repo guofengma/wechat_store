@@ -7,15 +7,18 @@
     </view>
     <view class='nav-static'>
       <view class='nav-static-item'>
-        <view>{{count}}</view>
-        <view>售出总数</view>
+        <view class='num'>{{count}}</view>
+        <view class='numinfo'>售出总数</view>
       </view>
+      <image class='line' src='../../image/line.png'></image>
       <view class='nav-static-item'>
-        <view>{{totlefee}}</view>
-        <view>售出总价</view>
+        <view class='num'>{{totlefee}}</view>
+        <view class='numinfo'>售出总价</view>
       </view>
     </view>
   </view>
+
+  <view class='quit' bindtap='quit'>切换用户</view>  
 
   <view class='line-graph'>
     <view class='unit-y'>近一月销量</view>
@@ -31,8 +34,6 @@
     <view class='pointX pointX3'>{{time3}}</view>
     <view class='pointX pointX4'>{{time4}}</view>
   </view>
-
-<view class='quit' bindtap='quit'>退出登录</view>
 
   <view class='store'>
     <view class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">

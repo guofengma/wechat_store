@@ -19,9 +19,10 @@ Page({
       mobile: e.detail.value
     })
   },
-  previewImage(e) {
+  previewImage() {
 
-    var img = e.target.dataset.img
+    var img = 'https://store.lianlianchains.com/images/' + 
+      this.data.id + '.png'
     // console.log(img)
     wx.previewImage({
       urls: [img],

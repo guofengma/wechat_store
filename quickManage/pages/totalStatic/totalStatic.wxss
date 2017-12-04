@@ -24,11 +24,12 @@ page {
 
 .nav-item {
   padding: 10rpx;
+  font-size: 24rpx;
   /* border-bottom: 4rpx #fff solid; */
 }
 
 .nav-static {
-  margin-top: 80rpx;
+  margin-top: 60rpx;
   display: flex;
   flex-direction: row;
 }
@@ -110,8 +111,8 @@ page {
 }
 
 .store {
-  margin-top: 10rpx;
-  border-top: 1px #ececec solid;
+  margin-top: 60rpx;
+  /* border-top: 1px #ececec solid; */
   width: 92%;
   margin-left: 4%;
   background-color: #fff;
@@ -144,8 +145,25 @@ button::after {
 }
 
 .quit {
-  color: #d81e06;
-  margin-top: 60rpx;
+  color: #333333;
+  margin-top: 50rpx;
   margin-left: 77%;
   align-self: flex-end;
+  position: absolute;
+  border: 1px #999999 solid;
+  font-size: 24rpx;
+  padding: 6rpx;
+}
+
+.num {
+  font-size: 40rpx;
+}
+
+.numinfo {
+  font-size: 24rpx;
+}
+
+.line {
+  width: 4rpx;
+  height: 60rpx;
 }
