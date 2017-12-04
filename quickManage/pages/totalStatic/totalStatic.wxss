@@ -24,7 +24,8 @@ page {
 
 .nav-item {
   padding: 10rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
+  margin-left: 25rpx;
   /* border-bottom: 4rpx #fff solid; */
 }
 
@@ -153,6 +154,7 @@ button::after {
   border: 1px #999999 solid;
   font-size: 24rpx;
   padding: 6rpx;
+  z-index: 999;
 }
 
 .num {

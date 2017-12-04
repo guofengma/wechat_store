@@ -14,6 +14,8 @@ Page({
   },
   quit() {
 
+    console.log('quit');
+
     wx.redirectTo({
       url: '../submit/submit',
     })
