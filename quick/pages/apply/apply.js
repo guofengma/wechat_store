@@ -105,7 +105,7 @@ Page({
 
           wx.showModal({
             title: '开户申请',
-            content: '货架参与方均签约，是否去申请开户？',
+            content: '参与方均签约，是否申请开户？',
             success: function (sm) {
 
               if (sm.confirm) {
@@ -491,6 +491,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
+      console.log(res)
       setTimeout(() => {
 
         wx.showToast({

@@ -1,8 +1,8 @@
 <view class="container">
-  <view class='header'>录入信息</view>
+  <view class='header'>我要</view>
   <view class='nav'>
     <view bindtap='provideView' class='nav-item nav-item-first'>提供场地</view>
-    <view bindtap='manageView' class='nav-item nav-item-second'>经营管理</view>
+    <view bindtap='manageView' class='nav-item nav-item-second'>经营货架</view>
     <view bindtap='shelveView' class='nav-item nav-item-third'>货架供货</view>
   </view>
   <view class='join-top'>
@@ -37,8 +37,14 @@
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
       <view class='store-top' bindtap='storedetail' data-storeid='{{item.id}}' data-field='{{item.field}}' data-fieldstate='{{item.fieldstate}}' data-deal='{{item.deal}}' data-dealstate='{{item.dealstate}}' data-supply='{{item.supply}}' data-supplystate='{{item.supplystate}}'>
-        <view class='store-name'>{{(item.storename==''||item.storename==null)?'快点货架':item.storename}}</view>
-        <view class='store-address'>{{item.address}}</view>
+        <view class='store-name'>{{(item.storename==''||item.storename==null)?'':item.storename}}</view>
+
+        <view class='store-address'>
+          <view>{{item.add1}}1</view>
+          <view>{{item.add2}}2</view>
+          <view>{{item.add3}}3</view>
+        </view>
+
       </view>
       <view class='store-content'>
         <view>
@@ -48,8 +54,7 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.field == '' || null == item.field}}"></image>
 
-            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.field != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" wx:elif="{{item.field != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>
@@ -61,8 +66,7 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.deal == '' || null == item.deal}}"></image>
 
-            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.deal != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" wx:elif="{{item.deal != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>
@@ -74,8 +78,7 @@
           <view class='roleimg-action'>
             <image class='roleimg-join' src="../../image/join.png" wx:if="{{item.supply == '' || null == item.supply}}"></image>
 
-            <image class='roleimg-joinAct' src="../../image/joinAct.png" 
-            wx:elif="{{item.supply != user}}"></image>
+            <image class='roleimg-joinAct' src="../../image/joinAct.png" wx:elif="{{item.supply != user}}"></image>
 
             <image class='roleimg-quit' src="../../image/quit.png" wx:else></image>
           </view>

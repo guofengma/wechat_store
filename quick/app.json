@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/settle/settle",
     "pages/apply/apply",
+    "pages/settle/settle",
     "pages/open/open",
     "pages/protocol/protocol",
     "pages/storedetail/storedetail",
@@ -22,7 +22,8 @@
     "pages/user/user",
     "pages/success/success",
     "pages/demo/demo",
-    "pages/webpage/webpage"
+    "pages/webpage/webpage",
+    "pages/qrcode/qrcode"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,30 @@
+/* pages/qrcode/qrcode.wxss */
+
+.container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.notice {
+  /* color: #4993f7; */
+  text-align: center;
+  font-size: 32rpx;
+  margin-top: 150rpx;
+}
+
+.qr {
+  width: 350rpx;
+  height: 350rpx;
+  margin-top: 80rpx;
+}
+
+.back {
+  text-align: center;
+  text-decoration: underline;
+  color: #4993f7;
+  font-size: 34rpx;
+  margin-top: 80rpx;
+}

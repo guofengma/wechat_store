@@ -22,7 +22,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "pages/auth/auth",
+					"query": "id=10",
+					"scene": "1007"
+				}
+			]
 		}
 	}
 }

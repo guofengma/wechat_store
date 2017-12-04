@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showqr: false,
     showbtn: true
   },
   setPw(e) {
@@ -18,19 +17,6 @@ Page({
   setStorename(e) {
     this.setData({
       storename: e.detail.value
-    })
-  },
-  goback(){
-    wx.navigateBack({
-      url: '../apply/apply'
-    })
-  },
-  previewImage(e) {
-
-    var img = e.target.dataset.img
-    // console.log(img)
-    wx.previewImage({
-      urls: [img],
     })
   },
   formSubmit(e) {
@@ -54,12 +40,6 @@ Page({
 
       if (result.ec == '000000') {
 
-        this.setData({
-          showqr: true,
-          showbtn: false,
-          qr: 'https://store.lianlianchains.com/images/' + this.data.id + '.png'
-        })
-
         fetch({
           url: "/CVS/apply/updatename",
           //   baseUrl: "http://192.168.50.57:9888", 
@@ -73,6 +53,10 @@ Page({
           header: { 'content-type': 'application/x-www-form-urlencoded' }
           //  header: { 'content-type': 'application/json' }
         }).then(result => {
+
+          wx.redirectTo({
+            url: '../qrcode/qrcode?id=' + this.data.id,
+          })
 
         }).catch(err => {
 

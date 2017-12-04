@@ -1,8 +1,11 @@
 <form class="forms" bindsubmit="formSubmit">
   <view class='container'>
+    <image class='img' src='../../image/open.png'></image>
     <view class='item'>
       <label class='name'>手机号码 </label>
-      <view class='input-border'>{{mobile}}</view>
+      <view class='input-border'>
+        <input type='text' value='{{mobile}}' disabled></input>
+      </view>
     </view>
     <view class='item'>
       <label class='name'>货架名称 </label>
@@ -19,12 +22,5 @@
 
     <button wx:if="{{showbtn}}" disabled='{{!pw || !storename}}' class='button' form-type='submit'>提交</button>
   </view>
-
-  <view class='notice' wx:if="{{showqr}}">开户成功, 请保存店铺二维码：</view>
-  <view class='qr'>
-    <image wx:if="{{showqr}}" src='{{qr}}' 
-      data-img="{{qr}}" bindtap="previewImage"></image>
-  </view>
-  <view wx:if="{{showqr}}" class='back' bindtap='goback'>返回首页</view>
 
 </form>

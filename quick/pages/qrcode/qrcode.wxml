@@ -1,0 +1,6 @@
+<!--pages/qrcode/qrcode.wxml-->
+<view class='container'>
+  <view class='notice'>开户成功 请保存店铺二维码</view>
+  <image class='qr' src='{{qr}}' data-img="{{qr}}" bindtap="previewImage"></image>
+  <view class='back' bindtap='goback'>返回首页</view>
+</view>

@@ -33,7 +33,7 @@
           style='background:{{!codeflag?"#DDDDDD":"#4993F7"}}' catchtap='sendmsg' class='send'>{{codestate}}</view>
       </view>
     </view>
-    <view class='item'>
+    <!-- <view class='item'>
       <label class='upload-title'>工商营业执照 </label>
       <view>
           <image class='upload' bindtouchstart="imageView" data-idx="previewImg1" 
@@ -46,7 +46,7 @@
           <image class='upload' bindtouchstart="imageView" data-idx="previewImg2" 
           src="{{previewImg2}}"></image>
       </view>
-    </view>
+    </view> -->
     <button disabled='{{!Address || !Classify || !Person || !mobile || !Check || !previewImg1 || !previewImg2}}' class='button' form-type='submit'>提交</button>  
   </view>
 </form>

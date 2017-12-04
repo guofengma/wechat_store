@@ -1,29 +1,35 @@
 /* pages/storedetail/storedetail.wxss */
 
-page{
+page {
   height: auto;
   padding: 40rpx 0;
   background-color: #fff;
 }
-.container{
+
+.container {
   padding: 0 60rpx;
   box-sizing: border-box;
 }
-.item{
+
+.item {
   display: flex;
   flex-direction: row;
   margin-top: 60rpx;
   font-size: 32rpx;
 }
-.name{
+
+.name {
   width: 180rpx;
 }
-.input-border{
+
+.input-border {
   width: 100%;
   margin-left: 20rpx;
   position: relative;
+  border-bottom: 1px #ececec solid;
 }
-.send{
+
+.send {
   position: absolute;
   right: 0;
   top: 0;
@@ -33,44 +39,48 @@ page{
   line-height: 60rpx;
   color: #fff;
   font-size: 24rpx;
-  background-color: #4993F7;
+  background-color: #4993f7;
   border-radius: 2px;
   z-index: 10;
   margin-top: -20rpx;
 }
-.upload{
-  width: 155rpx;
-  height: 155rpx;
+
+.upload {
+  width: 200rpx;
+  height: 200rpx;
   margin-right: 15rpx;
 }
-.upload-title{
+
+.upload-title {
   width: 220rpx;
 }
-.upload-title-two{
+
+.upload-title-two {
   width: 238rpx;
 }
-.upload-cont{
+
+.upload-cont {
   width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 20rpx;
 }
-.button{
+
+.button {
   width: 520rpx;
   height: 80rpx;
   line-height: 80rpx;
   font-size: 32rpx;
   text-align: center;
-  background-color: #4993F7;
+  background-color: #4993f7;
   color: #fff;
-  margin-top: 100rpx;
+  margin-top: 80rpx;
 }
 
 .store-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
   padding: 16rpx 48rpx 0 48rpx;
 }
@@ -102,7 +112,7 @@ page{
 .protocol {
   text-align: center;
   text-decoration: underline;
-  color: #4993F7;
+  color: #4993f7;
   font-size: 35rpx;
   margin-top: 90rpx;
 }
