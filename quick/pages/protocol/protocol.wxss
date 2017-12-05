@@ -43,5 +43,5 @@ page {
   text-decoration: underline;
   color: #4993F7;
   font-size: 35rpx;
-  margin-top: 55rpx;
+  margin-top: 30rpx;
 }

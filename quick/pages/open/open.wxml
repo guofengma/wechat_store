@@ -14,13 +14,19 @@
       </view>
     </view>
     <view class='item'>
+      <label class='name'>货架地址 </label>
+      <view class='input-border'>
+        <input bindinput='setStoreaddr' type='text' name="storeaddr" value='{{storeaddr}}'></input>
+      </view>
+    </view>    
+    <view class='item'>
       <label class='name'>登录密码 </label>
       <view class='input-border'>
         <input bindinput='setPw' type="number" password="true" maxlength='6' name="pw"></input>
       </view>
     </view>
 
-    <button wx:if="{{showbtn}}" disabled='{{!pw || !storename}}' class='button' form-type='submit'>提交</button>
+    <button wx:if="{{showbtn}}" disabled='{{!pw || !storename || !storeaddr}}' class='button' form-type='submit'>提交</button>
   </view>
 
 </form>

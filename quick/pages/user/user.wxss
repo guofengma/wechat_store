@@ -1,39 +1,44 @@
 /* pages/user/user.wxss */
-page{
+
+page {
   height: 100%;
   position: relative;
 }
-.container{
-   height: 100%;
-   position: relative;
+
+.container {
+  height: 100%;
+  position: relative;
 }
-.header{
-  padding: 104rpx 0 100rpx;
-   background-color: #fff; 
-  /* border-top: 1px #e3e3e3 solid; */
-  /* border-bottom: 1px #e3e3e3 solid; */
+
+.header {
+  padding: 104rpx 0 80rpx;
+  background-color: #fff;
+  /* border-top: 1px #e3e3e3 solid; *//* border-bottom: 1px #e3e3e3 solid; */
   position: relative;
   text-align: center;
 }
-.header .comment{
+
+.header .comment {
   width: 45rpx;
   height: 45rpx;
   position: absolute;
   right: 38rpx;
   top: 48rpx;
 }
-.header::after{
-   content: '';
-   height: 1px;
-   background-color: #ddd;
-   position: absolute;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   transform: scaleY(.5);
+
+.header::after {
+  content: '';
+  height: 1px;
+  background-color: #ddd;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scaleY(0.5);
 }
-.avatar{
-  border:2rpx #ffffff solid;
+
+.avatar {
+  border: 2rpx #fff solid;
   width: 160rpx;
   height: 160rpx;
   border-radius: 120rpx;
@@ -42,134 +47,145 @@ page{
   position: relative;
   z-index: 100;
 }
-.nickname{
+
+.nickname {
   margin-top: 30rpx;
 }
-.avatar image{
+
+.avatar image {
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 100;
 }
 
-.submit{
-    width: 230rpx;
-    height: 60rpx;
-    border: 1rpx solid #0D8FEF;
-    margin: 40rpx auto 0;
-    line-height: 60rpx;
-    color: #0D8FEF;
-    background-color: #fff;
-    font-size: 30rpx;
-    border-radius: 6px;
-    position: relative;
-    z-index: 10;
+.submit {
+  width: 230rpx;
+  height: 60rpx;
+  border: 1rpx solid #0d8fef;
+  margin: 40rpx auto 0;
+  line-height: 60rpx;
+  color: #0d8fef;
+  background-color: #fff;
+  font-size: 30rpx;
+  border-radius: 6px;
+  position: relative;
+  z-index: 10;
 }
 
-.submit:after{
-    border-radius: 0;
+.submit:after {
+  border-radius: 0;
 }
 
-.submit-button-hover{
-    background-color: #0D8FEF;
-    color: #fff;
-}
-.mobile{
-    margin-top: 32rpx;
-    font-size: 28rpx;
-    font-family: PingFangSC-Regular;
-    color: #333333;
-    letter-spacing: 0.1px;
-}
-.nav{
-    position: absolute;
-    bottom: 20rpx;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-.nav .elem{
-    width: 50%;
-    position: relative;
-}
-.nav .elem:first-of-type:after{
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 1px;
-    -webkit-transform: scaleX(0.5);
-    transform: scaleX(0.5);
-    background-color: #ddd;
-}
-.nav .elem .num{
-    color: #0D8FEF;
-    font-size: 40rpx;
-}
-.nav .elem .name{
-    margin-top: 14rpx;
-    font-size: 28rpx;
-}
-
-.cart{
-   width: 100%;
-   background: #FFFFFF;
-   border: 1px solid #ECECEC;
-   height: 90rpx;
-   line-height: 90rpx;
-   text-align: center;
-   font-family: PingFangSC-Regular;
-   font-size: 28rpx;
-   color: #333333;
-   letter-spacing: 0.08px;
-   margin-top: 20rpx;
-}
-
-.cart .tit{
-   width: 108rpx;
-   margin: 0 auto;
-   position: relative;
-   font-size: 30rpx;
-}
-.cart .num{
-   position: absolute;
-   right: -12rpx;
-   top: 8rpx;
-   width: 38rpx;
-   height: 38rpx;
-   line-height: 38rpx;
-   text-align: center;
-   border-radius: 28rpx;
-   background: #F02E51;
-   color: #fff;
-}
-.order{
-    width: 100%;
-    background-color: #fff;
-    height: 90rpx;
-    margin-top: 20rpx;
-    font-size: 30rpx;
-    line-height: 90rpx;
-    border: 1px solid #ECECEC;
-    border-left: none;
-    border-right: none;
-    color: #333333;
-    border-radius: 0;
-}
-
-.order:after{
-    border: none;
-    border-radius: 0;
-}
-
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: #0D8FEF;
+.submit-button-hover {
+  background-color: #0d8fef;
   color: #fff;
 }
 
-.mask{
+.mobile {
+  margin-top: 32rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  color: #333;
+  letter-spacing: 0.1px;
+}
+
+.nav {
+  position: absolute;
+  bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nav .elem {
+  width: 50%;
+  position: relative;
+}
+
+.nav .elem:first-of-type:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  background-color: #ddd;
+}
+
+.nav .elem .num {
+  color: #0d8fef;
+  font-size: 40rpx;
+}
+
+.nav .elem .name {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+}
+
+.cart {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ececec;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333;
+  letter-spacing: 0.08px;
+  margin-top: 20rpx;
+}
+
+.cart .tit {
+  width: 108rpx;
+  margin: 0 auto;
+  position: relative;
+  font-size: 30rpx;
+}
+
+.cart .num {
+  position: absolute;
+  right: -12rpx;
+  top: 8rpx;
+  width: 38rpx;
+  height: 38rpx;
+  line-height: 38rpx;
+  text-align: center;
+  border-radius: 28rpx;
+  background: #f02e51;
+  color: #fff;
+}
+
+.order {
+  width: 100%;
+  background-color: #fff;
+  height: 90rpx;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  border: 1px solid #ececec;
+  border-left: none;
+  border-right: none;
+  color: #333;
+  border-radius: 0;
+}
+
+.order:after {
+  border: none;
+  border-radius: 0;
+}
+
+/** 添加自定义button点击态样式类**/
+
+.other-button-hover {
+  background-color: #0d8fef;
+  color: #fff;
+}
+
+.mask {
   width: 692rpx;
   height: 752rpx;
   position: absolute;
@@ -180,16 +196,17 @@ page{
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
 }
-.suggest{
+
+.suggest {
   width: 692rpx;
   height: 752rpx;
   position: absolute;
-  
   /* left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); */
 }
-.textarea{
+
+.textarea {
   padding: 20rpx;
   width: 460rpx;
   height: 320rpx;
@@ -200,7 +217,8 @@ page{
   left: 50%;
   transform: translateX(-50%);
 }
-.cancel{
+
+.cancel {
   width: 90rpx;
   height: 90rpx;
   background: rgba(0, 0, 0, 0);
@@ -208,7 +226,8 @@ page{
   top: 50rpx;
   right: 50rpx;
 }
-.subBtn{
+
+.subBtn {
   width: 230rpx;
   height: 70rpx;
   background-color: #fff;
@@ -223,8 +242,8 @@ page{
   font-size: 30rpx;
   color: #333;
 }
-.subBtn:after{
+
+.subBtn:after {
   width: 0;
   border: none;
 }
-

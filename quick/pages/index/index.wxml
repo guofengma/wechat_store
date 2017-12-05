@@ -28,8 +28,9 @@
         <image class="scan_img" bindtap="bindScanTap" 
         class="" src="../../image/scanCode.png"></image>
         <view class='scan_tit'>扫描商品条形码</view>
-      </view>
-      
+      </view>      
     </view>
+
+    
   </view>
 </view>

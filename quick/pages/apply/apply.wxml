@@ -11,7 +11,7 @@
   <view class='store'>
     <view class='store-item-init'>
       <view class='store-top'>
-        <view class='store-address'>点击图标添加新货架</view>
+        <view class='store-address-init'>点击图标添加新货架</view>
       </view>
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">
@@ -40,9 +40,9 @@
         <view class='store-name'>{{(item.storename==''||item.storename==null)?'':item.storename}}</view>
 
         <view class='store-address'>
-          <view>{{item.add1}}1</view>
-          <view>{{item.add2}}2</view>
-          <view>{{item.add3}}3</view>
+          <view class='address'>{{item.fieldaddress== null?'':item.fieldaddress}}</view>
+          <view class='address'>{{item.dealaddress== null?'':item.dealaddress}}</view>
+          <view class='address'>{{item.supplyaddress== null?'':item.supplyaddress}}</view>
         </view>
 
       </view>

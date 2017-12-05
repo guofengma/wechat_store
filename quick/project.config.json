@@ -29,6 +29,13 @@
 					"pathName": "pages/qrcode/qrcode",
 					"query": "id=11",
 					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "apply",
+					"pathName": "pages/apply/apply",
+					"query": "",
+					"scene": "1007"
 				}
 			]
 		}

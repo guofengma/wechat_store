@@ -38,5 +38,6 @@
   <button bindtap="orderView" class="order" hover-class="other-button-hover"> 查看订单 </button>
   <button bindtap="apply" class="order"> 申请入驻 </button>
   <button bindtap="commenShow" class="order"> 意见反馈 </button>
+  <button open-type="contact" class="order"> 在线客服 </button>
   <button bindtap="webShow" class="order"> 关于我们 </button>
 </view>

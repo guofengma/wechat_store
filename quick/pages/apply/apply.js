@@ -449,19 +449,21 @@ Page({
           [item]: (optype == 'quit') ? '' : this.data.user
         })
 
-        if (optype == 'quit'){
+        // if (optype == 'quit'){
 
-          wx.showToast({
-            title: '退出成功',
-          })
+        //   wx.showToast({
+        //     title: '退出成功',
+        //   })
 
-        }else{
+        // }else{
 
-          wx.showToast({
-            title: '加入成功',
-          })
+        //   wx.showToast({
+        //     title: '加入成功',
+        //   })
 
-        }
+        // }
+        
+        this.searchstore()
 
       }
 
