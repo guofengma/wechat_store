@@ -22,21 +22,24 @@ Page({
         titleicon: "roleimg-office",
         iconflag: false,
         img: '../../image/join.png',
-        icon: 'roleimg-join'
+        icon: 'roleimg-join',
+        role: '场地方'
       },
       {
         titleimg: "../../image/manager.png",
         titleicon: "roleimg-manager",
         iconflag: false,
         img: '../../image/join.png',
-        icon: 'roleimg-join'
+        icon: 'roleimg-join',
+        role: '经营方'
       },
       {
         titleimg: "../../image/truck.png",
         titleicon: "roleimg-truck",
         iconflag: false,
         img: '../../image/join.png',
-        icon: 'roleimg-join'
+        icon: 'roleimg-join',
+        role: '供货方'
       }
     ]
   },

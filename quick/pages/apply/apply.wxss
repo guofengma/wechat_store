@@ -110,9 +110,9 @@ page {
 }
 
 .store-top {
-  border-bottom: 1px solid #f4f4f4;
+  /* border-bottom: 1px solid #f4f4f4; */
   text-align: center;
-  padding: 20rpx 0;
+  padding: 10rpx 0;
 }
 
 .store-name {
@@ -132,13 +132,14 @@ page {
 }
 
 .store-address {
-  font-size: 26rpx;
+  font-size: 30rpx;
   color: #999;
   line-height: 1.5;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  border-top: 1rpx #f4f4f4 solid;
 }
 
 .store-content {
@@ -209,5 +210,24 @@ page {
   text-align: center;
   font-size: 24rpx;
   width: 400rpx;
-  margin: 10rpx 0 0 10rpx;
+  margin: 20rpx 0 20rpx 2rpx;
+}
+
+.listrole {
+  font-size: 26rpx;
+  color: #bebcbc;
+  margin-bottom: 6rpx;
+  margin-top: 10rpx;
+}
+
+.NO {
+  text-align: left;
+  margin-left: 12rpx;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: #f39a98;
+  width: 95%;
+  height: 46rpx;
 }
