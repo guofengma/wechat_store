@@ -104,7 +104,7 @@ page {
 }
 
 .store-item-init {
-  border: 1px #5da7f8 solid;
+  border: 1px #bb95e8 solid;
   margin-top: 40rpx;
   /* box-shadow: 0 1px 5px 0 #bebcbc, 0 0 0 0 #bebcbc; */
 }
@@ -147,7 +147,7 @@ page {
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  padding: 16rpx 0 20rpx 0;
+  padding: 16rpx 0 10rpx 0;
 }
 
 .roleimg-logo {
@@ -160,18 +160,18 @@ page {
 }
 
 .roleimg-office {
-  width: 88rpx;
-  height: 82rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .roleimg-manager {
-  width: 84rpx;
-  height: 82rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .roleimg-truck {
-  width: 96rpx;
-  height: 76rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .roleimg-join {
@@ -215,9 +215,9 @@ page {
 
 .listrole {
   font-size: 26rpx;
-  color: #bebcbc;
-  margin-bottom: 6rpx;
-  margin-top: 10rpx;
+  /* color: #bebcbc; */
+  margin-bottom: 10rpx;
+  /* margin-top: 6rpx; */
 }
 
 .NO {
@@ -230,4 +230,5 @@ page {
   background-color: #f39a98;
   width: 95%;
   height: 46rpx;
+  opacity: 0.7;
 }

@@ -95,18 +95,18 @@ page {
 }
 
 .roleimg-office {
-  width: 88rpx;
-  height: 82rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .roleimg-manager {
-  width: 84rpx;
-  height: 82rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .roleimg-truck {
-  width: 96rpx;
-  height: 76rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .protocol {
