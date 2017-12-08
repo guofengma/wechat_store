@@ -23,7 +23,8 @@
     "pages/success/success",
     "pages/demo/demo",
     "pages/webpage/webpage",
-    "pages/qrcode/qrcode"
+    "pages/qrcode/qrcode",
+    "pages/score/score"
   ],
   "window": {
     "backgroundTextStyle": "light",

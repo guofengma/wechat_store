@@ -11,7 +11,7 @@ page {
 }
 
 .header {
-  padding: 104rpx 0 80rpx;
+  padding: 50rpx 0 160rpx;
   background-color: #fff;
   /* border-top: 1px #e3e3e3 solid; *//* border-bottom: 1px #e3e3e3 solid; */
   position: relative;
@@ -117,11 +117,11 @@ page {
 
 .nav .elem .num {
   color: #0d8fef;
-  font-size: 40rpx;
+  font-size: 30rpx;
 }
 
 .nav .elem .name {
-  margin-top: 14rpx;
+  margin-top: 10rpx;
   font-size: 28rpx;
 }
 

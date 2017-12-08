@@ -19,6 +19,11 @@ Page({
   //      url: '../settle/settle',
   //    })
   //  },
+  score(){
+    wx.navigateTo({
+      url: '../score/score',
+    })
+  },
   apply(){
     wx.navigateTo({
       url: '../settle/settle',

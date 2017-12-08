@@ -1,0 +1,87 @@
+/* pages/score/score.wxss */
+
+.container {
+  background-color: #fff;
+
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120rpx;
+  background-color: #0D8FEF;
+}
+
+.scoreicon {
+  width: 96rpx;
+}
+
+.scoreimg {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 42rpx 20rpx 42rpx 42rpx;
+}
+
+.score {
+  margin: 42rpx 20rpx 42rpx 0;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  width: 210rpx;
+}
+
+.detail {
+  margin: 42rpx 20rpx 42rpx 240rpx;
+  color: #FFFFFF;
+  font-size: 26rpx;
+}
+
+.right {
+  margin: 42rpx 0;
+  width: 20rpx;
+  height: 30rpx;
+}
+
+.rightimg {
+  width: 15rpx;
+  height: 28rpx;
+}
+
+.title {
+  margin: 30rpx 0 30rpx 40rpx;
+  font-size: 34rpx;
+}
+
+.storelist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30rpx 40rpx 20rpx 40rpx;
+  border-top: 1px #ECECEC solid;
+  padding-top: 30rpx;
+  width: 90%;
+}
+
+.storeimg {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 40rpx;
+}
+
+.info {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.storeinfo {
+  width: 460rpx;
+}
+
+.op {
+  background-color: #0D8FEF;
+  width: 110rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 24rpx;
+}
