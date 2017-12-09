@@ -170,13 +170,14 @@ page {
 }
 
 .roleimg-truck {
-  width: 80rpx;
+  width: 83rpx;
   height: 80rpx;
 }
 
 .roleimg-join {
   width: 36rpx;
   height: 38rpx;
+  opacity: 0.5;
 }
 
 .roleimg-quit {
@@ -225,10 +226,35 @@ page {
   margin-left: 12rpx;
   padding-left: 10rpx;
   padding-top: 10rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: #ffffff;
   background-color: #f39a98;
   width: 95%;
-  height: 46rpx;
+  height: 55rpx;
   opacity: 0.7;
+}
+
+.NO-pengding {
+  text-align: left;
+  margin-left: 12rpx;
+  padding-left: 10rpx;
+  padding-top: 10rpx;
+  font-size: 26rpx;
+  color: #ffffff;
+  background-color: #5da7f8;
+  width: 95%;
+  height: 55rpx;
+  opacity: 0.7;
+}
+
+.opa {
+  opacity: 0.3;
+}
+
+.del {
+  height: 35rpx;
+  width: 40rpx;
+  position: relative;
+  top: -60rpx;
+  left: 600rpx;
 }

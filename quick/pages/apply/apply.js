@@ -16,6 +16,7 @@ Page({
     storeList: [],
     storeid: '',
     address: '',
+    storetitle: 'NO-pengding',
     iconlist: [
       {
         titleimg: "../../image/office.png",
@@ -66,7 +67,19 @@ Page({
       return false
     }
   },
+  delstore(e){
+    wx.showModal({
+      title: '删除货架',
+      content: '是否删除货架？',
+      success: function (sm) {
+
+      }
+      })
+
+  },
   storedetail(e) {
+
+    console.log(e)
 
     var storeid = e.currentTarget.dataset.storeid
 
@@ -223,7 +236,7 @@ Page({
       // 角色
       if (!this.data.deal) {
         wx.showToast({
-          title: '请先申请经营管理',
+          title: '请先申请经营货架',
         })
         return false
       }

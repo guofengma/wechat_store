@@ -105,7 +105,7 @@ page {
 }
 
 .roleimg-truck {
-  width: 80rpx;
+  width: 83rpx;
   height: 80rpx;
 }
 
