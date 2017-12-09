@@ -227,7 +227,7 @@ page {
   padding-left: 10rpx;
   padding-top: 10rpx;
   font-size: 26rpx;
-  color: #ffffff;
+  color: #fff;
   background-color: #f39a98;
   width: 95%;
   height: 55rpx;
@@ -240,7 +240,7 @@ page {
   padding-left: 10rpx;
   padding-top: 10rpx;
   font-size: 26rpx;
-  color: #ffffff;
+  color: #fff;
   background-color: #5da7f8;
   width: 95%;
   height: 55rpx;
@@ -255,6 +255,6 @@ page {
   height: 35rpx;
   width: 40rpx;
   position: relative;
-  top: -60rpx;
-  left: 600rpx;
+   top: 5rpx; 
+  left: 520rpx;
 }

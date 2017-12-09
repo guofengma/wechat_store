@@ -38,9 +38,9 @@
         <view wx:if="{{ item.storename!=null}}" class='NO'>No.{{item.id}} {{item.storename}}
         </view>
         <view wx:if="{{ item.storename==null}}" class='NO-pengding'>No.{{item.id}}
+              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ item.storename==null}}'></image>
         </view>
       </view>
-      <image bindtap='delstore' class='del' src='../../image/del.png' wx:if='{{ item.storename==null}}'></image>
       <view class='store-content'>
         <view>
           <view class='listrole'>场地方</view>

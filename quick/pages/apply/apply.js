@@ -67,19 +67,31 @@ Page({
       return false
     }
   },
-  delstore(e){
+  delstore(e) {
     wx.showModal({
       title: '删除货架',
       content: '是否删除货架？',
       success: function (sm) {
 
       }
-      })
+    })
 
   },
   storedetail(e) {
 
     console.log(e)
+
+    if (e.target.dataset.del == 0) {
+      wx.showModal({
+        title: '删除货架',
+        content: '是否删除货架？',
+        success: function (sm) {
+
+        }
+      })
+
+      return
+    }
 
     var storeid = e.currentTarget.dataset.storeid
 
@@ -419,8 +431,8 @@ Page({
     var roletype = parseInt(e.target.dataset.roletype)
 
     if (this.data.storeList[idx].fieldstate == 1 &&
-        this.data.storeList[idx].dealstate == 1 &&
-        this.data.storeList[idx].supplystate == 1) {
+      this.data.storeList[idx].dealstate == 1 &&
+      this.data.storeList[idx].supplystate == 1) {
 
       wx.showToast({
         title: '签约后不能修改',
@@ -478,7 +490,7 @@ Page({
         //   })
 
         // }
-        
+
         this.searchstore()
 
       }
