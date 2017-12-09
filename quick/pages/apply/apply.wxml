@@ -38,7 +38,7 @@
         <view wx:if="{{ item.storename!=null}}" class='NO'>No.{{item.id}} {{item.storename}}
         </view>
         <view wx:if="{{ item.storename==null}}" class='NO-pengding'>No.{{item.id}}
-              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ item.storename==null}}'></image>
+              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ 1==1}}'></image>
         </view>
       </view>
       <view class='store-content'>
