@@ -11,7 +11,7 @@
   <view class='store'>
     <view class='store-item-init'>
       <view class='store-top'>
-        <view class='store-address-init'>选择您想担任的角色</view>
+        <view class='store-address-init'>选择您想担任的角色加入</view>
       </view>
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item">
@@ -38,7 +38,7 @@
         <view wx:if="{{ item.storename!=null}}" class='NO'>No.{{item.id}} {{item.storename}}
         </view>
         <view wx:if="{{ item.storename==null}}" class='NO-pengding'>No.{{item.id}}
-              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ 1==1}}'></image>
+              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ item.field==user ||  item.supply==user ||  item.deal==user}}'></image>
         </view>
       </view>
       <view class='store-content'>

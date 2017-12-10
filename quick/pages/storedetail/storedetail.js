@@ -29,8 +29,7 @@ Page({
   protocol() {
 
     wx.redirectTo({
-      url: '../protocol/protocol?' +
-      'storeid=' + this.data.storeid +
+      url: '../protocol/protocol?' + 'storeid=' + this.data.storeid +
       '&fielduser=' + this.data.fielduser +
       '&dealuser=' + this.data.dealuser +
       '&supplyuser=' + this.data.supplyuser +
@@ -62,9 +61,17 @@ Page({
 
       if (result != "") {
 
+        var person;
+        if (result.name.length == 2) {
+          person = result.name.substring(0, 1) + '*'
+        } else {
+          person = result.name.substring(0, 1) + '**'
+        }
+
         this.setData({
           fielduser: result.openid,
           fieldperson: result.name,
+          fieldpersontemp: person,
           fieldmobile: result.phone,
           fieldaddress: result.address,
           fieldcomname: result.comname,
@@ -118,9 +125,17 @@ Page({
 
       if (result != "") {
 
+        var person;
+        if (result.name.length == 2) {
+          person = result.name.substring(0, 1) + '*'
+        } else {
+          person = result.name.substring(0, 1) + '**'
+        }
+
         this.setData({
           dealuser: result.openid,
           dealperson: result.name,
+          dealpersontemp: person,
           dealmobile: result.phone,
           dealaddress: result.address,
           dealpreviewImg1: 'https://store.lianlianchains.com/images/' + result.img1,
@@ -168,9 +183,17 @@ Page({
 
       if (result != "") {
 
+        var person;
+        if (result.name.length == 2) {
+          person = result.name.substring(0, 1) + '*'
+        } else {
+          person = result.name.substring(0, 1) + '**'
+        }
+
         this.setData({
           supplyuser: result.openid,
           supplyperson: result.name,
+          supplypersontemp: person,
           supplymobile: result.phone,
           supplyaddress: result.address,
           supplyclassify: result.goodtype,
@@ -245,7 +268,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
     this.setData({
       user: wx.getStorageSync("user").openid
     })

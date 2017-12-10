@@ -15,28 +15,30 @@
   <view class='content'>各方承诺按如下协议要求承担货架经营过程中应尽义务并提供相应服务。如有违规平台将取消其经营资格，并追究法律责任，最终解释权归L：
   </view>
   <view>
-    <view class='title'>A :</view>
-    <view>承诺提供信息真实可靠，配合B完成货架安装部署如有变动应提前1月告知B、C、L完成信息变更。
-      <text style='color:red'>可获得销售额2%分润。</text>
+    <view class='fee'>
+      A : 分润销售额<input value='2' class='inp' maxlength='2' type='number' disabled='{{field!=user || fieldstate == 1}}'></input>%
     </view>
+    <view>承诺提供信息真实可靠，配合B完成货架安装部署如有变动应提前1月告知B、C、L完成信息变更。</view>
   </view>
   <view>
-    <view class='title'>B :</view>
+    <view class='fee'>
+      B : 分润销售额<input value='92' class='inp' maxlength='2' type='number' disabled='{{deal!=user || dealstate == 1}}'></input>%
+    </view>
     <view>承诺提供信息真实可靠，负责联系C进行货架商品的采购、上、下架、盘点等经营活动，如有变动应提前1月告知A、C、L完成信息变更。
-      <text style='color:red'>可获得销售额92%分润。</text>
     </view>
   </view>
   <view>
-    <view class='title'>C :</view>
+    <view class='fee'>
+      C : 分润销售额<input value='3' class='inp' maxlength='2' type='number' disabled='{{supply!=user || supplystate == 1}}'></input>%
+    </view>
     <view>承诺提供信息真实可靠，保证货架商品供应与商品质量，如有变动应提前1月告知A、B、L 完成信息变更。
-      <text style='color:red'>可获得销售额3%分润。</text>
     </view>
   </view>
   <view>
-    <view class='title'>L :</view>
-    <view>提供货架经营、商品销售软件“快点Plus”、“快点Boss”技术支持。
-      <text style='color:red'>可获得销售额3%分润。</text>
+    <view class='fee'>
+      L : 分润销售额<input value='3' class='inp' maxlength='2' type='number' disabled></input>%
     </view>
+    <view>提供货架经营、商品销售软件“快点Plus”、“快点Boss”技术支持。</view>
   </view>
   <view bindtap='goback' class='back'>返回首页</view>
 </view>

@@ -18,12 +18,12 @@ Page({
       },
       {
         idx: "第三步",
-        title: '使用“快点boss”小程序进行商品销售管理',
+        title: '使用“快点Boss”小程序进行商品销售管理',
         img: "../../image/useBoss.png"
       },
       {
         idx: "第四步",
-        title: '消费者使用“快点plus”小程序进行商品购买，实时结算到商户',
+        title: '消费者使用“快点Plus”小程序进行商品购买，实时结算到商户',
         img: "../../image/usePlus.png"
       }
     ]

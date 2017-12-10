@@ -195,56 +195,56 @@ Page({
     var img3 = this.data.image3
 
     // 手机验证码验证
-    verifymsg(mobile, code).then((result) => {
+    // verifymsg(mobile, code).then((result) => {
 
-      if (result.code != 200) {
-        wx.showToast({
-          title: '验证码错误'
+    // if (result.code != 200) {
+    //   wx.showToast({
+    //     title: '验证码错误'
+    //   })
+    // } else {
+    // 场地申请接口
+    fetch({
+      url: (this.data.apiflag == 0) ? "/CVS/apply/field/insert" : "/CVS/apply/field/update",
+      //   baseUrl: "http://192.168.50.57:9888", 
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        openid: wx.getStorageSync('user').openid,
+        name: name,
+        phone: mobile,
+        address: address,
+        comname: comname,
+        comnum: comnum,
+        fee: feeinfo,
+        img1: img1,
+        img2: img2,
+        img3: img3
+      },
+      noLoading: false,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(result => {
+      console.log(result)
+      if (result.ec == '000000') {
+        wx.navigateBack({
+          url: '../apply/apply',
         })
       } else {
-        // 场地申请接口
-        fetch({
-          url: (this.data.apiflag == 0) ? "/CVS/apply/field/insert" : "/CVS/apply/field/update",
-          //   baseUrl: "http://192.168.50.57:9888", 
-          baseUrl: "https://store.lianlianchains.com",
-          data: {
-            openid: wx.getStorageSync('user').openid,
-            name: name,
-            phone: mobile,
-            address: address,
-            comname: comname,
-            comnum: comnum,
-            fee: feeinfo,
-            img1: img1,
-            img2: img2,
-            img3: img3
-          },
-          noLoading: false,
-          method: "GET",
-          header: { 'content-type': 'application/x-www-form-urlencoded' }
-          //  header: { 'content-type': 'application/json' }
-        }).then(result => {
-          console.log(result)
-          if (result.ec == '000000') {
-            wx.navigateBack({
-              url: '../apply/apply',
-            })
-          } else {
-            console.log("出错了")
-            wx.showToast({
-              title: '网络繁忙'
-            })
-          }
-        }).catch(err => {
-
-          console.log("出错了")
-          wx.showToast({
-            title: '网络繁忙'
-          })
-          console.log(err)
+        console.log("出错了")
+        wx.showToast({
+          title: '网络繁忙'
         })
       }
+    }).catch(err => {
+
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
     })
+    // }
+    // })
 
   },
   /**
@@ -283,15 +283,15 @@ Page({
         })
 
         var url = 'https://store.lianlianchains.com/images/'
-        
+
         this.setData({
           previewImg1: url + result.img1,
           previewImg2: url + result.img2,
           previewImg3: url + result.img3
         })
-        
+
       } else {
-        
+
         this.setData({
           previewImg1: "../../image/upload.png",
           previewImg2: "../../image/upload.png",

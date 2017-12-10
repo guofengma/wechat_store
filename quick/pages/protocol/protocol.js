@@ -7,18 +7,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user: wx.getStorageSync("user").openid
   },
-  goback(){
+  goback() {
     wx.navigateBack({
       url: '../apply/apply',
     })
   },
-  fieldprotocol(){
-    
-    if(this.data.fieldflag == '签约'){
+  fieldprotocol() {
+
+    if (this.data.fieldflag == '签约') {
       console.log('签约')
-      
+
       fetch({
         url: "/CVS/apply/update",
         //   baseUrl: "http://192.168.50.239:9888",
@@ -35,6 +35,7 @@ Page({
         if (res.ec == '000000') {
           this.setData({
             fieldflag: '已签约',
+            fieldstate: 1,
             fieldrolebtn: 'rolebtn2'
           })
         }
@@ -71,6 +72,7 @@ Page({
         if (res.ec == '000000') {
           this.setData({
             dealflag: '已签约',
+            dealstate: 1,
             dealrolebtn: 'rolebtn2'
           })
         }
@@ -106,6 +108,7 @@ Page({
         if (res.ec == '000000') {
           this.setData({
             supplyflag: '已签约',
+            supplystate: 1,
             supplyrolebtn: 'rolebtn2'
           })
         }
@@ -126,6 +129,8 @@ Page({
    */
   onLoad: function (options) {
 
+    console.log(options)
+
     this.setData({
       storeid: options.storeid,
       field: options.fielduser,
@@ -143,7 +148,7 @@ Page({
       fieldperson: options.fieldperson,
       dealperson: options.dealperson,
       supplyperson: options.supplyperson
-    });  
+    });
 
     this.setData({
       fieldflag: (this.data.fieldstate == 1) ? '已签约' :
@@ -151,19 +156,19 @@ Page({
       dealflag: (this.data.dealstate == 1) ? '已签约' :
         ((this.data.deal == wx.getStorageSync("user").openid) ? '签约' : '未签约'),
       supplyflag: (this.data.supplystate == 1) ? '已签约' :
-        ((this.data.supply == wx.getStorageSync("user").openid) ? '签约' : '未签约')  
+        ((this.data.supply == wx.getStorageSync("user").openid) ? '签约' : '未签约')
     })
 
     this.setData({
-      fieldrolebtn: (this.data.fieldflag == '已签约') ?'rolebtn2':
+      fieldrolebtn: (this.data.fieldflag == '已签约') ? 'rolebtn2' :
         ((this.data.fieldflag == '签约') ? 'rolebtn1' : 'rolebtn0'),
       dealrolebtn: (this.data.dealflag == '已签约') ? 'rolebtn2' :
         ((this.data.dealflag == '签约') ? 'rolebtn1' : 'rolebtn0'),
       supplyrolebtn: (this.data.supplyflag == '已签约') ? 'rolebtn2' :
-        ((this.data.supplyflag == '签约') ? 'rolebtn1' : 'rolebtn0')    
-        
+        ((this.data.supplyflag == '签约') ? 'rolebtn1' : 'rolebtn0')
+
     })
-      
+
   },
 
   /**

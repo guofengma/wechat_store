@@ -45,3 +45,17 @@ page {
   font-size: 35rpx;
   margin-top: 30rpx;
 }
+
+.fee {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10rpx;
+  color: red;
+}
+
+.inp {
+  width: 50rpx;
+  border-bottom: 1px #999990 solid;
+  text-align: center;
+}

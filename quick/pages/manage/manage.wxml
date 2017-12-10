@@ -19,14 +19,14 @@
           <input bindinput='getmobile' type='number' name="phoneno" value='{{mobile}}'></input>
       </view>
     </view>
-    <view class='item'>
+    <!-- <view class='item'>
       <label class='name'>验证码</label>
       <view class='input-border'>
           <input bindinput='setCheck' type='number' name="check"></input>
           <view data-mobile='{{mobile}}' 
           style='background:{{!codeflag?"#DDDDDD":"#4993F7"}}' catchtap='sendmsg' class='send'>{{codestate}}</view>
       </view>
-    </view>
+    </view> -->
     <!-- <view class='item'>
       <label class='upload-title'>工商营业执照 </label>
       <view>
@@ -41,6 +41,6 @@
           src="{{previewImg2}}"></image>
       </view>
     </view> -->
-    <button disabled='{{!Address || !Person || !mobile || !Check || !previewImg1 || !previewImg2}}' class='button' form-type='submit'>提交</button>  
+    <button disabled='{{!Address || !Person || !mobile || !previewImg1 || !previewImg2}}' class='button' form-type='submit'>提交</button>  
   </view>
 </form>

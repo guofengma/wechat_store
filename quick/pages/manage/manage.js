@@ -150,42 +150,100 @@ Page({
     var img2 = this.data.image2
 
     // 手机验证码验证
-    verifymsg(mobile, code).then((result) => {
+    // verifymsg(mobile, code).then((result) => {
 
-      if (result.code != 200) {
+      // if (result.code != 200) {
+      //   wx.showToast({
+      //     title: '验证码错误'
+      //   })
+      // } else {
+      // 场地申请接口
+      fetch({
+        url: (this.data.apiflag == 0) ? "/CVS/apply/deal/insert" : "/CVS/apply/deal/update",
+        //   baseUrl: "http://192.168.50.57:9888", 
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          openid: wx.getStorageSync('user').openid,
+          name: name,
+          phone: mobile,
+          address: address,
+          img1: img1,
+          img2: img2
+        },
+        noLoading: false,
+        method: "GET",
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+        //  header: { 'content-type': 'application/json' }
+      }).then(result => {
+        console.log(result)
+        if (result.ec == '000000') {
+          wx.navigateBack({
+            url: '../apply/apply',
+          })
+        } else {
+          console.log("出错了")
+          wx.showToast({
+            title: '网络繁忙'
+          })
+        }
+      }).catch(err => {
+
+        console.log("出错了")
         wx.showToast({
-          title: '验证码错误'
+          title: '网络繁忙'
         })
-      } else {
+        console.log(err)
+      })
+      //   }
+      // })
+
+    },
+      /**
+       * 生命周期函数--监听页面加载
+       */
+      onLoad: function (options) {
+
         // 场地申请接口
         fetch({
-          url: (this.data.apiflag == 0) ? "/CVS/apply/deal/insert" : "/CVS/apply/deal/update",
+          url: "/CVS/apply/deal/query",
           //   baseUrl: "http://192.168.50.57:9888", 
           baseUrl: "https://store.lianlianchains.com",
           data: {
-            openid: wx.getStorageSync('user').openid,
-            name: name,
-            phone: mobile,
-            address: address,
-            img1: img1,
-            img2: img2
+            openid: wx.getStorageSync('user').openid
           },
           noLoading: false,
           method: "GET",
           header: { 'content-type': 'application/x-www-form-urlencoded' }
           //  header: { 'content-type': 'application/json' }
         }).then(result => {
+
           console.log(result)
-          if (result.ec == '000000') {
-            wx.navigateBack({
-              url: '../apply/apply',
+          if (result != "") {
+            this.data.apiflag = 1
+
+            this.setData({
+              Person: result.name,
+              mobile: result.phone,
+              Address: result.address,
+              image1: result.img1,
+              image2: result.img2
             })
+
+            var url = 'https://store.lianlianchains.com/images/'
+            console.log("result.img1===" + result.img1)
+            this.setData({
+              previewImg1: url + result.img1,
+              previewImg2: url + result.img2
+            })
+            console.log("previewImg1===" + this.data.previewImg1)
           } else {
-            console.log("出错了")
-            wx.showToast({
-              title: '网络繁忙'
+
+            this.setData({
+              previewImg1: "../../image/upload.png",
+              previewImg2: "../../image/upload.png"
             })
           }
+
         }).catch(err => {
 
           console.log("出错了")
@@ -194,113 +252,55 @@ Page({
           })
           console.log(err)
         })
-      }
-    })
 
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-    // 场地申请接口
-    fetch({
-      url: "/CVS/apply/deal/query",
-      //   baseUrl: "http://192.168.50.57:9888", 
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        openid: wx.getStorageSync('user').openid
       },
-      noLoading: false,
-      method: "GET",
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
-      //  header: { 'content-type': 'application/json' }
-    }).then(result => {
 
-      console.log(result)
-      if (result != "") {
-        this.data.apiflag = 1
+      /**
+       * 生命周期函数--监听页面初次渲染完成
+       */
+      onReady: function () {
 
-        this.setData({
-          Person: result.name,
-          mobile: result.phone,
-          Address: result.address,
-          image1: result.img1,
-          image2: result.img2
-        })
+      },
 
-        var url = 'https://store.lianlianchains.com/images/'
-        console.log("result.img1===" + result.img1)
-        this.setData({
-          previewImg1: url + result.img1,
-          previewImg2: url + result.img2
-        })
-        console.log("previewImg1===" + this.data.previewImg1)
-      } else {
-        
-        this.setData({
-          previewImg1: "../../image/upload.png",
-          previewImg2: "../../image/upload.png"
-        })
+      /**
+       * 生命周期函数--监听页面显示
+       */
+      onShow: function () {
+
+      },
+
+      /**
+       * 生命周期函数--监听页面隐藏
+       */
+      onHide: function () {
+
+      },
+
+      /**
+       * 生命周期函数--监听页面卸载
+       */
+      onUnload: function () {
+
+      },
+
+      /**
+       * 页面相关事件处理函数--监听用户下拉动作
+       */
+      onPullDownRefresh: function () {
+
+      },
+
+      /**
+       * 页面上拉触底事件的处理函数
+       */
+      onReachBottom: function () {
+
+      },
+
+      /**
+       * 用户点击右上角分享
+       */
+      onShareAppMessage: function () {
+
       }
-
-    }).catch(err => {
-
-      console.log("出错了")
-      wx.showToast({
-        title: '网络繁忙'
-      })
-      console.log(err)
-    })
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

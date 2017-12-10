@@ -36,7 +36,7 @@
     </view> -->
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <view class='input-border'>{{fieldperson}}</view>
+      <view class='input-border'>{{fieldpersontemp}}</view>
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
@@ -53,7 +53,7 @@
           data-img="{{fieldpreviewImg3}}" bindtap="previewImage"></image> -->
       </view>
     </view>
-    <view wx:if='{{field && deal && supply && fielduser == user && fieldstate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>
+    <view wx:if='{{supply && deal && field && fielduser == user}}' class='protocol' bindtap='protocol'>在线协议</view>
   </view>
 
   <view class='container' wx:if='{{dealflag}}'>
@@ -63,7 +63,7 @@
     </view>
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <view class='input-border'>{{dealperson}}</view>
+      <view class='input-border'>{{dealpersontemp}}</view>
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
@@ -83,7 +83,7 @@
           data-img="{{dealpreviewImg2}}" bindtap="previewImage"></image>
       </view>
     </view> -->
-    <view wx:if='{{field && deal && supply && dealuser == user && dealstate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>
+    <view wx:if='{{supply && deal && field && dealuser == user}}' class='protocol' bindtap='protocol'>在线协议</view>
   </view>
 
   <view class='container' wx:if='{{supplyflag}}'>
@@ -93,7 +93,7 @@
     </view>
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <view class='input-border'>{{supplyperson}}</view>
+      <view class='input-border'>{{supplypersontemp}}</view>
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
@@ -117,7 +117,7 @@
           data-img="{{supplypreviewImg2}}" bindtap="previewImage"></image>
       </view>
     </view> -->
-    <view wx:if='{{field && deal && supply && supplyuser == user && supplystate == 0}}' class='protocol' bindtap='protocol'>签约协议</view>
+    <view wx:if='{{supply && deal && field && supplyuser == user}}' class='protocol' bindtap='protocol'>在线协议</view>
   </view>
 
 </form>
