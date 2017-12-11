@@ -1,0 +1,29 @@
+/* pages/scorelist/scorelist.wxss */
+
+.container {
+  background-color: #fff;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  padding: 40rpx;
+  border-bottom: 1px #ECECEC solid;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  margin-left: 150rpx;
+}
+
+.img {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.bak {
+  margin-left: 120rpx;
+}

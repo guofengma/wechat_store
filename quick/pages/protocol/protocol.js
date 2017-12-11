@@ -7,7 +7,83 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user: wx.getStorageSync("user").openid
+    user: wx.getStorageSync("user").openid,
+    fieldpercent: 2,
+    dealpercent: 92,
+    supplypercent: 3,
+  },
+  setfield(e) {
+    this.setData({
+      fieldpercent: e.detail.value
+    })
+  },
+  setdeal(e) {
+    this.setData({
+      dealpercent: e.detail.value
+    })
+  },  
+  setsupply(e) {
+    this.setData({
+      supplypercent: e.detail.value
+    })
+  },   
+  setpercent(roletype, per) {
+
+    var that = this
+    fetch({
+      url: "/CVS/apply/perset",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'id': that.data.storeid,
+        'roletype': roletype,
+        'per': per
+      },
+      method: "POST",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+    }).catch(err => {
+      console.log("出错了")
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+    })
+  },
+  querypercent() {
+
+    var that = this
+    fetch({
+      url: "/CVS/apply/queryper",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'id': that.data.storeid
+      },
+      method: "POST",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+      that.setData({
+        fieldpercent: res.fieldper == 0 ? 2 : res.fieldper,
+        dealpercent: res.dealper == 0 ? 92 : res.dealper,
+        supplypercent: res.supplyper == 0 ? 3 : res.supplyper
+      })
+
+    }).catch(err => {
+      console.log("出错了")
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+    })
   },
   goback() {
     wx.navigateBack({
@@ -19,33 +95,54 @@ Page({
     if (this.data.fieldflag == '签约') {
       console.log('签约')
 
-      fetch({
-        url: "/CVS/apply/update",
-        //   baseUrl: "http://192.168.50.239:9888",
-        baseUrl: "https://store.lianlianchains.com",
-        data: {
-          'id': this.data.storeid,
-          'fieldstate': 1
-        },
-        method: "POST",
-        noLoading: true,
-        header: { 'content-type': 'application/x-www-form-urlencoded' }
-      }).then(res => {
+      var that = this
 
-        if (res.ec == '000000') {
-          this.setData({
-            fieldflag: '已签约',
-            fieldstate: 1,
-            fieldrolebtn: 'rolebtn2'
-          })
+      wx.showModal({
+        title: '协议签约',
+        content: '签约后分润比例将不能修改，请确认是否签约？',
+        success: function (sm) {
+
+          if (sm.confirm) {
+            console.log('用户点击确定')
+
+            fetch({
+              url: "/CVS/apply/update",
+              //   baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                'id': that.data.storeid,
+                'fieldstate': 1
+              },
+              method: "POST",
+              noLoading: true,
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+            }).then(res => {
+
+              if (res.ec == '000000') {
+
+                that.setData({
+                  fieldflag: '已签约',
+                  fieldstate: 1,
+                  fieldrolebtn: 'rolebtn2'
+                })
+
+                that.setpercent(0, that.data.fieldpercent)
+              }
+
+            }).catch(err => {
+              console.log("出错了")
+              wx.showToast({
+                title: '出错了',
+              })
+              console.log(err)
+            })
+
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+
+          }
+
         }
-
-      }).catch(err => {
-        console.log("出错了")
-        wx.showToast({
-          title: '出错了',
-        })
-        console.log(err)
       })
 
     }
@@ -56,33 +153,54 @@ Page({
     if (this.data.dealflag == '签约') {
       console.log('签约')
 
-      fetch({
-        url: "/CVS/apply/update",
-        //   baseUrl: "http://192.168.50.239:9888",
-        baseUrl: "https://store.lianlianchains.com",
-        data: {
-          'id': this.data.storeid,
-          'dealstate': 1
-        },
-        method: "POST",
-        noLoading: true,
-        header: { 'content-type': 'application/x-www-form-urlencoded' }
-      }).then(res => {
+      var that = this
 
-        if (res.ec == '000000') {
-          this.setData({
-            dealflag: '已签约',
-            dealstate: 1,
-            dealrolebtn: 'rolebtn2'
-          })
+      wx.showModal({
+        title: '协议签约',
+        content: '签约后分润比例将不能修改，请确认是否签约？',
+        success: function (sm) {
+
+          if (sm.confirm) {
+            console.log('用户点击确定')
+
+            fetch({
+              url: "/CVS/apply/update",
+              //   baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                'id': that.data.storeid,
+                'dealstate': 1
+              },
+              method: "POST",
+              noLoading: true,
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+            }).then(res => {
+
+              if (res.ec == '000000') {
+
+                that.setData({
+                  dealflag: '已签约',
+                  dealstate: 1,
+                  dealrolebtn: 'rolebtn2'
+                })
+
+                that.setpercent(1, that.data.dealpercent)
+              }
+
+            }).catch(err => {
+              console.log("出错了")
+              wx.showToast({
+                title: '出错了',
+              })
+              console.log(err)
+            })
+
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+
+          }
+
         }
-
-      }).catch(err => {
-        console.log("出错了")
-        wx.showToast({
-          title: '出错了',
-        })
-        console.log(err)
       })
     }
   },
@@ -92,33 +210,54 @@ Page({
     if (this.data.supplyflag == '签约') {
       console.log('签约')
 
-      fetch({
-        url: "/CVS/apply/update",
-        //   baseUrl: "http://192.168.50.239:9888",
-        baseUrl: "https://store.lianlianchains.com",
-        data: {
-          'id': this.data.storeid,
-          'supplystate': 1
-        },
-        method: "POST",
-        noLoading: true,
-        header: { 'content-type': 'application/x-www-form-urlencoded' }
-      }).then(res => {
+      var that = this
 
-        if (res.ec == '000000') {
-          this.setData({
-            supplyflag: '已签约',
-            supplystate: 1,
-            supplyrolebtn: 'rolebtn2'
-          })
+      wx.showModal({
+        title: '协议签约',
+        content: '签约后分润比例将不能修改，请确认是否签约？',
+        success: function (sm) {
+
+          if (sm.confirm) {
+            console.log('用户点击确定')
+
+            fetch({
+              url: "/CVS/apply/update",
+              //   baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                'id': that.data.storeid,
+                'supplystate': 1
+              },
+              method: "POST",
+              noLoading: true,
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+            }).then(res => {
+
+              if (res.ec == '000000') {
+
+                that.setData({
+                  supplyflag: '已签约',
+                  supplystate: 1,
+                  supplyrolebtn: 'rolebtn2'
+                })
+
+                that.setpercent(2, that.data.supplypercent)
+              }
+
+            }).catch(err => {
+              console.log("出错了")
+              wx.showToast({
+                title: '出错了',
+              })
+              console.log(err)
+            })
+
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+
+          }
+
         }
-
-      }).catch(err => {
-        console.log("出错了")
-        wx.showToast({
-          title: '出错了',
-        })
-        console.log(err)
       })
 
     }
@@ -168,6 +307,8 @@ Page({
         ((this.data.supplyflag == '签约') ? 'rolebtn1' : 'rolebtn0')
 
     })
+
+    this.querypercent()
 
   },
 

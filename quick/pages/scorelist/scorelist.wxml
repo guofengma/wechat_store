@@ -1,0 +1,24 @@
+<!--pages/scorelist/scorelist.wxml-->
+
+<view class='container'>
+
+  <view>
+    <view class='list'>
+      <view>2017/12/09</view>
+      <view class='bak'>支付订单</view>
+      <view class='score'>
+        <image src='../../image/score.png' class='img'></image>
+        <view>100</view>
+      </view>
+    </view>
+    <view class='list'>
+      <view>2017/12/09</view>
+      <view class='bak'>支付订单</view>
+      <view class='score'>
+        <image src='../../image/score.png' class='img'></image>
+        <view>100</view>
+      </view>
+    </view>
+  </view>
+
+</view>

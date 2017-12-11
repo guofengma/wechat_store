@@ -1,0 +1,66 @@
+/* pages/scoreinvest/scoreinvest.wxss */
+
+.container {
+  /* background-color: #fff; */
+}
+
+.storelist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  padding: 20rpx 42rpx 20rpx 42rpx;
+  border-bottom: 1px #f4f4f4 solid;
+  border-top: 1px #f4f4f4 solid;
+}
+
+.storeimg {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 40rpx;
+}
+
+.chg {
+  color: red;
+  font-size: 24rpx;
+}
+
+.op {
+  padding: 42rpx 42rpx 22rpx 42rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+}
+
+.condition {
+  font-size: 24rpx;
+  margin-top: 30rpx;
+}
+
+.notice {
+  padding: 40rpx 42rpx 20rpx 42rpx;
+  font-size: 24rpx;
+}
+
+.noticeimg {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.btn {
+  line-height: 80rpx;
+  background-color: #0D8FEF;
+  color: #fff;
+  width: 70%;
+  font-size: 32rpx;
+  margin-top: 40rpx;
+}
+
+input {
+  border-bottom: 1px #f4f4f4 solid;
+  margin-top: 40rpx;
+}
+
+.protocol {
+  color: #0D8FEF;
+}

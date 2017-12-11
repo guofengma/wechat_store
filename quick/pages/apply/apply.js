@@ -67,25 +67,50 @@ Page({
       return false
     }
   },
-  delstore(e) {
-    wx.showModal({
-      title: '删除货架',
-      content: '是否删除货架？',
-      success: function (sm) {
-
-      }
-    })
-
-  },
   storedetail(e) {
 
     console.log(e)
+    var that = this
 
     if (e.target.dataset.del == 0) {
       wx.showModal({
         title: '删除货架',
         content: '是否删除货架？',
         success: function (sm) {
+
+          if (sm.confirm) {
+            console.log('用户点击确定')
+
+            // 货架删除接口
+            fetch({
+              url: "/CVS/apply/delete",
+              // baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                id: e.currentTarget.dataset.storeid
+              },
+              noLoading: false,
+              method: "GET",
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+              //  header: { 'content-type': 'application/json' }
+            }).then(result => {
+
+              console.log(result);
+              that.searchstore();
+
+            }).catch(err => {
+
+              console.log("出错了")
+              wx.showToast({
+                title: '网络繁忙'
+              })
+              console.log(err)
+            })
+
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+
+          }
 
         }
       })
@@ -522,13 +547,13 @@ Page({
     }).then(res => {
 
       console.log(res)
-      setTimeout(() => {
+      // setTimeout(() => {
 
-        wx.showToast({
-          title: '货架创建成功',
-        })
+      //   wx.showToast({
+      //     title: '货架创建成功',
+      //   })
 
-      }, 800);
+      // }, 800);
 
       // console.log(res)
       this.data.storeid = res

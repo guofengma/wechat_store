@@ -1,0 +1,31 @@
+<!--pages/scoreinvest/scoreinvest.wxml-->
+<view class='container'>
+
+  <view class='storelist'>
+    <view>
+      <image src='../../image/storeicon.png' class='storeimg'></image>
+    </view>
+    <view class='storeinfo'>
+      <view>链链信息国贸店</view>
+      <view class='chg'>周涨幅 12%</view>
+    </view>
+  </view>
+
+  <view class='op'>
+    <view>投入积分</view>
+    <view>
+      <input placeholder='数量' type='number'></input>
+    </view>
+    <view class='condition'>
+      每周日00:00——24:00可提取积分
+    </view>
+  </view>
+
+  <view class='notice'>
+      <image src='../../image/ok.png' class='noticeimg'></image>
+      同意<text class='protocol'>相关协议</text>规则，并知晓此参与行为存在积分损失风险
+  </view>
+
+  <button class='btn'>确认</button>
+
+</view>

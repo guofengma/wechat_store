@@ -16,20 +16,20 @@
   </view>
   <view>
     <view class='fee'>
-      A : 分润销售额<input value='2' class='inp' maxlength='2' type='number' disabled='{{field!=user || fieldstate == 1}}'></input>%
+      A : 分润销售额<input value='{{fieldpercent}}' class='inp' maxlength='2' type='number' disabled='{{field!=user || fieldstate == 1}}' bindinput='setfield'></input>%
     </view>
     <view>承诺提供信息真实可靠，配合B完成货架安装部署如有变动应提前1月告知B、C、L完成信息变更。</view>
   </view>
   <view>
     <view class='fee'>
-      B : 分润销售额<input value='92' class='inp' maxlength='2' type='number' disabled='{{deal!=user || dealstate == 1}}'></input>%
+      B : 分润销售额<input value='{{dealpercent}}' class='inp' maxlength='2' type='number' disabled='{{deal!=user || dealstate == 1}}' bindinput='setdeal'></input>%
     </view>
     <view>承诺提供信息真实可靠，负责联系C进行货架商品的采购、上、下架、盘点等经营活动，如有变动应提前1月告知A、C、L完成信息变更。
     </view>
   </view>
   <view>
     <view class='fee'>
-      C : 分润销售额<input value='3' class='inp' maxlength='2' type='number' disabled='{{supply!=user || supplystate == 1}}'></input>%
+      C : 分润销售额<input value='{{supplypercent}}' class='inp' maxlength='2' type='number' disabled='{{supply!=user || supplystate == 1}}' bindinput='setsupply'></input>%
     </view>
     <view>承诺提供信息真实可靠，保证货架商品供应与商品质量，如有变动应提前1月告知A、B、L 完成信息变更。
     </view>

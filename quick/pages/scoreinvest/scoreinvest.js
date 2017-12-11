@@ -1,22 +1,13 @@
-// pages/score/score.js
+// pages/scoreinvest/scoreinvest.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    score: 100
+  
   },
-  detail(){
-    wx.navigateTo({
-      url: '../scorelist/scorelist',
-    })
-  },
-  invest(){
-    wx.navigateTo({
-      url: '../scoreinvest/scoreinvest',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

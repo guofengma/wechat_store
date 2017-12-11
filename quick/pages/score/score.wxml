@@ -6,7 +6,7 @@
       <image src='../../image/score.png' class='scoreimg'></image>
     </view>
     <view class='score'>我的积分： {{score}}</view>
-    <view class='detail'>查看明细</view>
+    <view class='detail' bindtap='detail'>查看明细</view>
     <view class='right'>
       <image src='../../image/right.png' class='rightimg'></image>
     </view>
@@ -21,9 +21,9 @@
       </view>
       <view class='storeinfo'>
         <view>链链信息国贸店</view>
-        <view>周涨幅 12%</view>
+        <view class='chg'>周涨幅 12%</view>
       </view>
-      <button class='op'>提取</button>
+      <button class='op' bindtap='invest'>提取</button>
     </view>
     <view class='storelist'>
       <view>
@@ -31,7 +31,7 @@
       </view>
       <view class='storeinfo'>
         <view>链链信息保利店</view>
-        <view>周涨幅 10%</view>
+        <view class='chg'>周涨幅 10%</view>
       </view>
       <button class='op'>提取</button>
     </view>
@@ -48,7 +48,7 @@
       </view>
       <view class='storeinfo'>
         <view>链链信息国贸店</view>
-        <view>周涨幅 12%</view>
+        <view class='chg'>周涨幅 12%</view>
       </view>
       <button class='op'>参与</button>
     </view>
@@ -58,7 +58,7 @@
       </view>
       <view class='storeinfo'>
         <view>链链信息保利店</view>
-        <view>周涨幅 10%</view>
+        <view class='chg'>周涨幅 10%</view>
       </view>
       <button class='op'>参与</button>
     </view>

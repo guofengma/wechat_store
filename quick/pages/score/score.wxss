@@ -2,7 +2,6 @@
 
 .container {
   background-color: #fff;
-
 }
 
 .header {
@@ -10,7 +9,7 @@
   flex-direction: row;
   width: 100%;
   height: 120rpx;
-  background-color: #0D8FEF;
+  background-color: #0d8fef;
 }
 
 .scoreicon {
@@ -25,14 +24,14 @@
 
 .score {
   margin: 42rpx 20rpx 42rpx 0;
-  color: #FFFFFF;
+  color: #fff;
   font-size: 30rpx;
   width: 210rpx;
 }
 
 .detail {
   margin: 42rpx 20rpx 42rpx 240rpx;
-  color: #FFFFFF;
+  color: #fff;
   font-size: 26rpx;
 }
 
@@ -57,7 +56,7 @@
   flex-direction: row;
   align-items: center;
   margin: 30rpx 40rpx 20rpx 40rpx;
-  border-top: 1px #ECECEC solid;
+  border-top: 1px #ececec solid;
   padding-top: 30rpx;
   width: 90%;
 }
@@ -78,10 +77,15 @@
 }
 
 .op {
-  background-color: #0D8FEF;
+  background-color: #0d8fef;
   width: 110rpx;
   line-height: 50rpx;
   text-align: center;
-  color: #FFFFFF;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.chg {
+  color: red;
   font-size: 24rpx;
 }
