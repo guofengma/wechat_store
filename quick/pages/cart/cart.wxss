@@ -132,6 +132,7 @@ to {left: -50px;}
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  margin-top: 10rpx;
 }
 
 .scoreimg {
@@ -141,5 +142,5 @@ to {left: -50px;}
 }
 
 .classname {
-  margin-top: 10rpx;
+  /* margin-top: 10rpx; */
 }

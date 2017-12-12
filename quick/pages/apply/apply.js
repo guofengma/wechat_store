@@ -482,8 +482,8 @@ Page({
 
     fetch({
       url: "/CVS/apply/opapply",
-        baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'id': storeid,
@@ -536,8 +536,8 @@ Page({
 
     fetch({
       url: "/CVS/apply/insert",
-        baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         // 'openid': wx.getStorageSync("user").openid,
         'field': (roletype == 0) ? wx.getStorageSync("user").openid : '',
@@ -578,8 +578,8 @@ Page({
     var optype = (this.data.iconlist[roletype].iconflag) ? 'quit' : 'join'
     fetch({
       url: "/CVS/apply/opapply",
-        baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'id': this.data.storeid,

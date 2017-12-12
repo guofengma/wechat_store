@@ -46,8 +46,8 @@ Page({
     // 场地申请接口
     fetch({
       url: "/CVS/apply/field/querynow",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         id: storeid
       },
@@ -110,8 +110,8 @@ Page({
     // 场地申请接口
     fetch({
       url: "/CVS/apply/deal/querynow",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         id: storeid
       },
@@ -168,8 +168,8 @@ Page({
     // 场地申请接口
     fetch({
       url: "/CVS/apply/supply/querynow",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         id: storeid
       },
