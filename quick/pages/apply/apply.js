@@ -389,9 +389,10 @@ Page({
       return
     }
 
-    (this.data.storeid == '') ?
-      (this.initShelve(roletype)) :
-      (this.jOrqShelve(roletype, this.data.storeid))
+    // (this.data.storeid == '') ?
+    //   (this.initShelve(roletype)) :
+    //   (this.jOrqShelve(roletype, this.data.storeid))
+    this.initShelve(roletype)
 
   },
   changeIcon(roletype) {

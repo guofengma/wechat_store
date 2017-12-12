@@ -24,7 +24,9 @@
     "pages/demo/demo",
     "pages/webpage/webpage",
     "pages/qrcode/qrcode",
-    "pages/score/score"
+    "pages/score/score",
+    "pages/scorelist/scorelist",
+    "pages/scoreinvest/scoreinvest"
   ],
   "window": {
     "backgroundTextStyle": "light",
