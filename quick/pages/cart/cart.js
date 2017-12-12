@@ -12,7 +12,9 @@ var list = [{
 {
   price: 20,
   amount: 1
-}]
+}];
+
+var score = 0;
 
 function change(_this, types) {
   for (var i = 0; i < list.length; i++) {
@@ -36,7 +38,69 @@ Page({
     total: 0,
     moveLeft: false,
     hidden: true,
-    totalAmount: 0
+    totalAmount: 0,
+    scoreflag: false,
+    score: 0,
+    scoreimg: '../../image/scoreno.png',
+    scoredesc: '积分抵扣 最多可抵10%'
+  },
+  initscore() {
+
+    this.setData({
+      scoreimg: '../../image/scoreno.png',
+      scoredesc: '积分抵扣 最多可抵10%',
+      score: 0
+    })
+  },
+  score() {
+
+    this.data.scoreflag = !this.data.scoreflag
+    console.log(this.data.scoreflag)
+
+    if (this.data.scoreflag) {
+
+      // var score = 5000
+
+      var sale = (score / 100)
+
+      console.log('total=' + this.data.total)
+
+      sale = sale > this.data.total * 0.1 ? this.data.total * 0.1 : sale
+
+      console.log('sale='+sale)
+
+      if (sale < 0.01) {
+        this.setData({
+          scoreimg: '../../image/scoreno.png',
+          scoredesc: '积分不足',
+          score: 0
+        })
+      } else {
+        this.setData({
+          scoreimg: '../../image/scoreyes.png',
+          scoredesc: '使用' + sale * 100 + '积分 抵扣' + sale + '元',
+          score: sale * 100
+        })
+
+        this.setData({
+          totaltemp: this.data.total - sale
+        })
+
+      }
+
+
+    } else {
+      this.setData({
+        scoreimg: '../../image/scoreno.png',
+        scoredesc: '积分抵扣 最多可抵10%',
+        score: 0
+      })
+
+      this.setData({
+        totaltemp: this.data.total
+      })
+    }
+
   },
   moveLeft() {
     this.setData({
@@ -126,7 +190,8 @@ Page({
           }).then(result => {
             that.checkCart()
             that.setData({
-              total: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0
+              total: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0,
+              totaltemp: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0,
             })
             console.log(that.data.total)
             console.log(typeof that.data.total)
@@ -139,6 +204,9 @@ Page({
   },
 
   bindReduceTap(e) {
+
+    this.initscore();
+
     console.log(this.data.totalAmount)
     var param = {};
     var index = e.target.dataset.index;
@@ -174,10 +242,14 @@ Page({
     this.data.total = this.data.total.toFixed(2) - 0
     this.setData({
       cartList: this.data.cartList,
-      total: this.data.total
+      total: this.data.total,
+      totaltemp: this.data.total
     });
   },
   bindIncreaseTap(e) {
+
+    this.initscore();
+
     console.log(this.data.totalAmount)
     var param = {};
     var index = e.target.dataset.index;
@@ -224,27 +296,28 @@ Page({
     this.data.total = this.data.total.toFixed(2) - 0
     this.setData({
       cartList: this.data.cartList,
-      total: this.data.total
+      total: this.data.total,
+      totaltemp: this.data.total
     });
   },
   //下单
   order() {
-    this.prepay(wx.getStorageSync('user').openid, this.data.total)
+    this.prepay(wx.getStorageSync('user').openid, this.data.totaltemp)
   },
   prepay(openId, payMoney) {
     console.log("支付钱数：" + payMoney);
     var that = this;
     fetch({
       url: "/wxpay/prepay",
-      //  baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
+       baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': openId,
         'fee': payMoney,
         'description': "快点支付",
-        'usedScore': 0,
+        'usedScore': this.data.score,
         'mch_id': wx.getStorageSync('storeId'),
-        storeid: wx.getStorageSync('storeId')
+        'storeid': wx.getStorageSync('storeId')
       },
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded' }
@@ -394,7 +467,8 @@ Page({
       }
       this.data.total = this.data.total.toFixed(2) - 0
       this.setData({
-        total: this.data.total
+        total: this.data.total,
+        totaltemp: this.data.total
       })
     }).catch(err => {
       console.log("出错了")

@@ -1,29 +1,36 @@
 <!--pages/cart/cart.wxml-->
 <view class="container">
-   <view class="item {{moveLeft?'left':''}}" wx:for="{{cartList}}" wx:for-index="index" bindtouchmove="moveLeft">
-      <view class="top">
-         <view class="name">{{item.name}}</view>
-         <view class="delete" data-code="{{item.code}}" data-price="{{item.price}}" data-amount="{{item.amount}}" bindtouchstart="bindDeleteTap">删除</view>
-      </view>
+  <view class="item {{moveLeft?'left':''}}" wx:for="{{cartList}}" wx:key="storeid" wx:for-index="index" bindtouchmove="moveLeft">
+    <view class="top">
+      <view class="name">{{item.name}}</view>
+      <view class="delete" data-code="{{item.code}}" data-price="{{item.price}}" data-amount="{{item.amount}}" bindtouchstart="bindDeleteTap">删除</view>
+    </view>
 
-      <view class="bottom">
-         <view class="info">
-            <view class="guige">规格：{{item.specifi}}</view>
-            <view class="money"><text class="symbol">¥</text><text class="singMoney">{{item.price}}</text></view>
-         </view>
-         <view class="total">
-            <image data-index="{{index}}" data-code="{{item.code}}" bindtouchstart="bindReduceTap" src="{{reduceSrc}}"></image>
-            <view class="amount">{{item.amount}}</view>
-            <image data-index="{{index}}" data-code="{{item.code}}" bindtouchstart="bindIncreaseTap" src="{{increaseSrc}}"></image>
-         </view>
+    <view class="bottom">
+      <view class="info">
+        <view class="guige">规格：{{item.specifi}}</view>
+        <view class="money">
+          <text class="symbol">¥</text>
+          <text class="singMoney">{{item.price}}</text>
+        </view>
       </view>
-   </view>
-   <view class="item total" hidden="{{!hidden}}">
-      <view class="classname">金额：¥{{total}}</view>
-   </view>
-   <button disabled="{{disabled}}" bindtap="order" class="button" wx:if="{{cartList.length}}">立即支付</button>
-   <view class="noCart" hidden="{{hidden}}">
-      <text class="tishi">购物车暂无商品</text>
-      <button bindtap="homeView" class="order" hover-class="other-button-hover"> 回到首页 </button>
-   </view>
+      <view class="total">
+        <image data-index="{{index}}" data-code="{{item.code}}" bindtouchstart="bindReduceTap" src="{{reduceSrc}}"></image>
+        <view class="amount">{{item.amount}}</view>
+        <image data-index="{{index}}" data-code="{{item.code}}" bindtouchstart="bindIncreaseTap" src="{{increaseSrc}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="item total" hidden="{{!hidden}}">
+    <view class='score'>
+      <image src='{{scoreimg}}' class='scoreimg' bindtap='score'></image>
+      {{scoredesc}}
+    </view>
+    <view class="classname">金额：¥{{totaltemp}}</view>
+  </view>
+  <button disabled="{{disabled}}" bindtap="order" class="button" wx:if="{{cartList.length}}">立即支付</button>
+  <view class="noCart" hidden="{{hidden}}">
+    <text class="tishi">购物车暂无商品</text>
+    <button bindtap="homeView" class="order" hover-class="other-button-hover"> 回到首页 </button>
+  </view>
 </view>

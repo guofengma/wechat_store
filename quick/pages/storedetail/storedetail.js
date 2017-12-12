@@ -41,15 +41,15 @@ Page({
       '&supplyperson=' + this.data.supplyperson
     })
   },
-  queryfield(user) {
+  queryfield(storeid) {
 
     // 场地申请接口
     fetch({
-      url: "/CVS/apply/field/query",
-      //   baseUrl: "http://192.168.50.57:9888", 
-      baseUrl: "https://store.lianlianchains.com",
+      url: "/CVS/apply/field/querynow",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        openid: user
+        id: storeid
       },
       noLoading: false,
       method: "GET",
@@ -105,15 +105,15 @@ Page({
     })
 
   },
-  querydeal(user) {
+  querydeal(storeid) {
 
     // 场地申请接口
     fetch({
-      url: "/CVS/apply/deal/query",
-      //   baseUrl: "http://192.168.50.57:9888", 
-      baseUrl: "https://store.lianlianchains.com",
+      url: "/CVS/apply/deal/querynow",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        openid: user
+        id: storeid
       },
       noLoading: false,
       method: "GET",
@@ -163,15 +163,15 @@ Page({
     })
 
   },
-  querysupply(user) {
+  querysupply(storeid) {
 
     // 场地申请接口
     fetch({
-      url: "/CVS/apply/supply/query",
-      //   baseUrl: "http://192.168.50.57:9888", 
-      baseUrl: "https://store.lianlianchains.com",
+      url: "/CVS/apply/supply/querynow",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        openid: user
+        id: storeid
       },
       noLoading: false,
       method: "GET",
@@ -246,9 +246,11 @@ Page({
    */
   onLoad: function (options) {
 
-    this.queryfield(options.field)
-    this.querydeal(options.deal)
-    this.querysupply(options.supply)
+    console.log(options)
+
+    this.queryfield(options.storeid)
+    this.querydeal(options.storeid)
+    this.querysupply(options.storeid)
 
     this.setData({
       storeid: options.storeid,

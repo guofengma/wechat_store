@@ -124,3 +124,22 @@ to {left: -50px;}
   background-color: #0D8FEF;
   color: #fff;
 }
+
+.score {
+  color: #0D8FEF;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.scoreimg {
+  margin-right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.classname {
+  margin-top: 10rpx;
+}
