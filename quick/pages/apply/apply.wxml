@@ -45,30 +45,30 @@
         <view>
           <view class='listrole'>场地方</view>
           <view class='roleimg-logo'>
-            <image wx:if='{{item.fieldaddress==null}}' class='roleimg-office opa' src="{{(item.field == user)? '../../image/office.png':'../../image/office.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.field}}' data-roletype='0'></image>
-            <image wx:if='{{item.fieldaddress!=null}}' class='roleimg-office' src="{{(item.field == user)? '../../image/office.png':'../../image/office.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.field}}' data-roletype='0'></image>
+            <image wx:if='{{item.fieldaddress==""}}' class='roleimg-office opa' src="{{(item.field == user)? '../../image/office.png':'../../image/office.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.field}}' data-roletype='0'></image>
+            <image wx:if='{{item.fieldaddress!=""}}' class='roleimg-office' src="{{(item.field == user)? '../../image/office.png':'../../image/office.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.field}}' data-roletype='0'></image>
           </view>
         </view>
         <view>
           <view class='listrole'>经营方</view>
           <view class='roleimg-logo'>
-            <image wx:if='{{item.dealaddress==null}}' class='roleimg-manager opa' src="{{(item.deal == user)? '../../image/manager.png':'../../image/manager.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.deal}}' data-roletype='1'></image>
-            <image wx:if='{{item.dealaddress!=null}}' class='roleimg-manager' src="{{(item.deal == user)? '../../image/manager.png':'../../image/manager.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.deal}}' data-roletype='1'></image>
+            <image wx:if='{{item.dealaddress==""}}' class='roleimg-manager opa' src="{{(item.deal == user)? '../../image/manager.png':'../../image/manager.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.deal}}' data-roletype='1'></image>
+            <image wx:if='{{item.dealaddress!=""}}' class='roleimg-manager' src="{{(item.deal == user)? '../../image/manager.png':'../../image/manager.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.deal}}' data-roletype='1'></image>
           </view>
         </view>
         <view>
           <view class='listrole'>供货方</view>
           <view class='roleimg-logo'>
-            <image wx:if='{{item.supplyaddress==null}}' class='roleimg-truck opa' src="{{(item.supply == user)? '../../image/truck.png':'../../image/truck.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.supply}}' data-roletype='2'></image>
-            <image wx:if='{{item.supplyaddress!=null}}' class='roleimg-truck' src="{{(item.supply == user)? '../../image/truck.png':'../../image/truck.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.supply}}' data-roletype='2'></image>
+            <image wx:if='{{item.supplyaddress==""}}' class='roleimg-truck opa' src="{{(item.supply == user)? '../../image/truck.png':'../../image/truck.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.supply}}' data-roletype='2'></image>
+            <image wx:if='{{item.supplyaddress!=""}}' class='roleimg-truck' src="{{(item.supply == user)? '../../image/truck.png':'../../image/truck.png'}}" bindtap="tapitem" data-storeid='{{item.id}}' data-idx='{{index}}' data-user='{{item.supply}}' data-roletype='2'></image>
           </view>
         </view>
       </view>
 
       <view class='store-address'>
-        <view class='address'>{{item.fieldaddress== null?'':item.fieldaddress}}</view>
-        <view class='address'>{{item.dealaddress== null?'':item.dealaddress}}</view>
-        <view class='address'>{{item.supplyaddress== null?'':item.supplyaddress}}</view>
+        <view class='address'>{{item.fieldaddress==''?'':item.fieldaddress}}</view>
+        <view class='address'>{{item.dealaddress==''?'':item.dealaddress}}</view>
+        <view class='address'>{{item.supplyaddress==''?'':item.supplyaddress}}</view>
       </view>
     </view>
 

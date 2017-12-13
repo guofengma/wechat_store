@@ -1,0 +1,36 @@
+/* pages/benefitlist/benefitlist.wxss */
+
+.container {
+  background-color: #fff;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  padding: 40rpx;
+  border-bottom: 1px #ECECEC solid;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+}
+
+.img {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.bak {
+  margin-left: 80rpx;
+  width: 600rpx;
+  border: 1px black solid;
+}
+
+.time {
+  width: 100rpx;
+}

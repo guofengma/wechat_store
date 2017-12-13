@@ -19,6 +19,11 @@ Page({
   //      url: '../settle/settle',
   //    })
   //  },
+  benefit(){
+    wx.navigateTo({
+      url: '../benefit/benefit',
+    })
+  },
   score(){
     wx.navigateTo({
       url: '../score/score',

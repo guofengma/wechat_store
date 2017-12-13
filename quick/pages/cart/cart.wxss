@@ -132,15 +132,11 @@ to {left: -50px;}
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
 }
 
 .scoreimg {
   margin-right: 10rpx;
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.classname {
-  /* margin-top: 10rpx; */
+  width: 26rpx;
+  height: 26rpx;
 }

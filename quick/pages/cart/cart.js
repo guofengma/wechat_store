@@ -1,29 +1,9 @@
 // pages/cart/cart.js
 import fetch from '../../utils/fetch';
 import { recharge } from '../../utils/score';
-var list = [{
-  price: 10,
-  amount: 1
-},
-{
-  price: 10,
-  amount: 2
-},
-{
-  price: 20,
-  amount: 1
-}];
 
 var score = 0;
 
-function change(_this, types) {
-  for (var i = 0; i < list.length; i++) {
-    if (i = index) {
-      list[i].amount++
-      _this.setData
-    }
-  }
-}
 Page({
 
   /**
@@ -41,13 +21,14 @@ Page({
     totalAmount: 0,
     scoreflag: false,
     score: 0,
-    scoreimg: '../../image/scoreno.png',
+    scoreimg: '',
     scoredesc: '积分抵扣 最多可抵10%'
   },
   initscore() {
 
     this.setData({
-      scoreimg: '../../image/scoreno.png',
+      scoreflag: false,
+      scoreimg: '',
       scoredesc: '积分抵扣 最多可抵10%',
       score: 0
     })
@@ -61,18 +42,19 @@ Page({
 
       // var score = 5000
 
-      var sale = (score / 100)
+      var sale = (score / 100).toFixed(2)
 
       console.log('total=' + this.data.total)
 
-      sale = sale > this.data.total * 0.1 ? this.data.total * 0.1 : sale
+      sale = sale > (this.data.total * 0.1).toFixed(2) ?
+        (this.data.total * 0.1).toFixed(2) : sale
 
-      console.log('sale='+sale)
+      console.log('sale=' + sale)
 
       if (sale < 0.01) {
         this.setData({
-          scoreimg: '../../image/scoreno.png',
-          scoredesc: '积分不足',
+          scoreimg: '',
+          scoredesc: '积分不足 可参与活动赚积分',
           score: 0
         })
       } else {
@@ -83,7 +65,7 @@ Page({
         })
 
         this.setData({
-          totaltemp: this.data.total - sale
+          totaltemp: (this.data.total - sale).toFixed(2)
         })
 
       }
@@ -91,7 +73,7 @@ Page({
 
     } else {
       this.setData({
-        scoreimg: '../../image/scoreno.png',
+        scoreimg: '',
         scoredesc: '积分抵扣 最多可抵10%',
         score: 0
       })

@@ -8,12 +8,12 @@ Page({
    */
   data: {
     user: wx.getStorageSync("user").openid,
-    fieldflag: false,
+    fieldflag: true,
     dealflag: false,
     supplyflag: false,
-    field: true,
-    deal: true,
-    supply: true,
+    field: false,
+    deal: false,
+    supply: false,
     fieldimg: '../../image/officeAct.png',
     dealimg: '../../image/manager.png',
     supplyimg: '../../image/truck.png'
@@ -57,9 +57,9 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log(result)
+      console.log('fieldresult=' + result)
 
-      if (result != "") {
+      if (result.address != "") {
 
         var person;
         if (result.name.length == 2) {
@@ -69,7 +69,7 @@ Page({
         }
 
         this.setData({
-          fielduser: result.openid,
+          // fielduser: result.openid,
           fieldperson: result.name,
           fieldpersontemp: person,
           fieldmobile: result.phone,
@@ -85,8 +85,6 @@ Page({
         this.setData({
           field: true
         })
-
-        this.itemshow(0)
 
       } else {
 
@@ -121,9 +119,9 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log(result)
+      console.log('dealresult=' + result)
 
-      if (result != "") {
+      if (result.address != "") {
 
         var person;
         if (result.name.length == 2) {
@@ -133,7 +131,7 @@ Page({
         }
 
         this.setData({
-          dealuser: result.openid,
+          // dealuser: result.openid,
           dealperson: result.name,
           dealpersontemp: person,
           dealmobile: result.phone,
@@ -179,9 +177,9 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log(result)
+      console.log('supplyresult=' + result)
 
-      if (result != "") {
+      if (result.address != "") {
 
         var person;
         if (result.name.length == 2) {
@@ -191,7 +189,7 @@ Page({
         }
 
         this.setData({
-          supplyuser: result.openid,
+          // supplyuser: result.openid,
           supplyperson: result.name,
           supplypersontemp: person,
           supplymobile: result.phone,
@@ -229,15 +227,13 @@ Page({
   },
   itemshow(idx) {
 
-    console.log(idx)
-
     this.setData({
       fieldimg: (idx == 0) ? '../../image/officeAct.png' : '../../image/office.png',
       dealimg: (idx == 1) ? '../../image/managerAct.png' : '../../image/manager.png',
       supplyimg: (idx == 2) ? '../../image/truckAct.png' : '../../image/truck.png',
-      fieldflag: (idx == 0 && this.data.field == true) ? true : false,
-      dealflag: (idx == 1 && this.data.deal == true) ? true : false,
-      supplyflag: (idx == 2 && this.data.supply == true) ? true : false
+      fieldflag: idx == 0 ? true : false,
+      dealflag: idx == 1 ? true : false,
+      supplyflag: idx == 2 ? true : false
     })
 
   },
@@ -257,6 +253,12 @@ Page({
       fieldstate: options.fieldstate,
       dealstate: options.dealstate,
       supplystate: options.supplystate,
+    })
+
+    this.setData({
+      fielduser: options.field,
+      dealuser: options.deal,
+      supplyuser: options.supply
     })
   },
   /**

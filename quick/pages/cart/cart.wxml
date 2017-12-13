@@ -24,8 +24,8 @@
   <view class="item total" hidden="{{!hidden}}">
     <view class="classname">金额：¥{{totaltemp}}</view>
     <view class='score'>
-      <image src='{{scoreimg}}' class='scoreimg' bindtap='score'></image>
-      {{scoredesc}}
+      <image src='{{scoreimg}}' class='scoreimg' ></image>
+      <view bindtap='score'>{{scoredesc}}</view>
     </view>    
   </view>
   <button disabled="{{disabled}}" bindtap="order" class="button" wx:if="{{cartList.length}}">立即支付</button>

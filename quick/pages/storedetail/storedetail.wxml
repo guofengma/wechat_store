@@ -11,13 +11,13 @@
     </view>
   </view>
 
-  <view class="nocontent"
-    wx:if="{{fieldflag == false && dealflag == false && supplyflag == false}}">
+  <view class="nocontent" 
+  wx:if="{{(!field && fieldflag)||(!deal && dealflag)||(!supply && supplyflag)}}">
     <image class='nocontentimg' src='../../image/noOrder.png'></image>
     <view class='nocontenttext'>暂无成员加入</view>
   </view>
 
-  <view class='container' wx:if='{{fieldflag}}'>
+  <view class='container' wx:if='{{fieldflag && field}}'>
     <view class='item'>
       <label class='name'>公司地址 </label>
       <view class='input-border'>{{fieldaddress}}</view>
@@ -45,10 +45,8 @@
     <view class='item'>
       <label class='upload-title'>场地照片 </label>
       <view class='upload-cont'>
-        <image class='upload' src="{{fieldpreviewImg1}}" 
-          data-img="{{fieldpreviewImg1}}" bindtap="previewImage"></image>
-        <image class='upload' src="{{fieldpreviewImg2}}"
-          data-img="{{fieldpreviewImg2}}" bindtap="previewImage"></image>
+        <image class='upload' src="{{fieldpreviewImg1}}" data-img="{{fieldpreviewImg1}}" bindtap="previewImage"></image>
+        <image class='upload' src="{{fieldpreviewImg2}}" data-img="{{fieldpreviewImg2}}" bindtap="previewImage"></image>
         <!-- <image class='upload' src="{{fieldpreviewImg3}}"
           data-img="{{fieldpreviewImg3}}" bindtap="previewImage"></image> -->
       </view>
@@ -56,7 +54,7 @@
     <view wx:if='{{supply && deal && field && fielduser == user}}' class='protocol' bindtap='protocol'>在线协议</view>
   </view>
 
-  <view class='container' wx:if='{{dealflag}}'>
+  <view class='container' wx:if='{{dealflag && deal}}'>
     <view class='item'>
       <label class='name'>联系地址 </label>
       <view class='input-border'>{{dealaddress}}</view>
@@ -86,7 +84,7 @@
     <view wx:if='{{supply && deal && field && dealuser == user}}' class='protocol' bindtap='protocol'>在线协议</view>
   </view>
 
-  <view class='container' wx:if='{{supplyflag}}'>
+  <view class='container' wx:if='{{supplyflag && supply}}'>
     <view class='item'>
       <label class='name'>联系地址 </label>
       <view class='input-border'>{{supplyaddress}}</view>
@@ -102,7 +100,7 @@
     <view class='item'>
       <label class='name'>供货种类 </label>
       <view class='input-border'>{{supplyclassify}}</view>
-    </view>    
+    </view>
     <!-- <view class='item'>
       <label class='upload-title-two'>工商营业执照 </label>
       <view>

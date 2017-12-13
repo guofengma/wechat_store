@@ -21,7 +21,7 @@
         <view class="num">0</view>
         <view class="name">快点积分</view>
       </view>
-      <view class="elem">
+      <view class="elem" bindtap='benefit'>
         <view class="num">0</view>
         <view class="name">快点赚钱</view>
       </view>

@@ -1,0 +1,45 @@
+<!--pages/benefit/benefit.wxml-->
+
+<view class='container'>
+
+  <view class='header'>
+    <view class='scoreicon'>
+      <image src='../../image/score.png' class='scoreimg'></image>
+    </view>
+    <view class='score'>我的分润： {{score}}</view>
+    <view class='detail' bindtap='detail'>查看明细</view>
+    <view class='right'>
+      <image src='../../image/right.png' class='rightimg'></image>
+    </view>
+  </view>
+
+  <view class='title'>我参与</view>
+
+  <view>
+    <view class='storelist'>
+      <view>
+        <image src='../../image/storeicon.png' class='storeimg'></image>
+      </view>
+      <view class='storeinfo'>
+        <view>链链信息国贸店</view>
+        <view class='chg'>周涨幅 12%</view>
+      </view>
+
+      <image src='../../image/score.png' class='benefitimg'></image>
+      <view class='benefit'>200</view>
+    </view>
+    <view class='storelist'>
+      <view>
+        <image src='../../image/storeicon.png' class='storeimg'></image>
+      </view>
+      <view class='storeinfo'>
+        <view>链链信息保利店</view>
+        <view class='chg'>周涨幅 10%</view>
+      </view>
+
+      <image src='../../image/score.png' class='benefitimg'></image>
+      <view class='benefit'>200</view>
+    </view>
+  </view>
+
+</view>

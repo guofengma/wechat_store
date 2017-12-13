@@ -1,0 +1,16 @@
+<!--pages/benefitlist/benefitlist.wxml-->
+
+<view class='container'>
+
+  <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
+    <view class='list'>
+      <view class='time'>{{item.time}}</view>
+      <view class='bak'>{{item.description}}</view>
+      <view class='score'>
+        <image src='../../image/score.png' class='img'></image>
+        <view>{{item.feeformat}}</view>
+      </view>
+    </view>
+  </view>
+
+</view>

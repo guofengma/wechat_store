@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -42,6 +42,11 @@
 					"name": "score",
 					"pathName": "pages/score/score",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "benefit",
+					"pathName": "pages/benefit/benefit"
 				}
 			]
 		}
