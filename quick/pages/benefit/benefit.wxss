@@ -1,6 +1,5 @@
 /* pages/benefit/benefit.wxss */
 
-
 .container {
   background-color: #fff;
 }

@@ -3,23 +3,15 @@
 <view class='container'>
 
   <image src='../../image/scorebk.png' class='scorebk'></image>
-  <view>
+  <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='list'>
-      <view>2017/12/09</view>
-      <view class='bak'>支付订单</view>
+      <view>{{item.time}}</view>
+      <view class='bak'>{{item.desc}}</view>
       <view class='score'>
         <image src='../../image/score.png' class='img'></image>
-        <view>100</view>
-      </view>
-    </view>
-    <view class='list'>
-      <view>2017/12/09</view>
-      <view class='bak'>支付订单</view>
-      <view class='score'>
-        <image src='../../image/score.png' class='img'></image>
-        <view>100</view>
+        <view>{{item.tsf==0?'-':'+'}} {{item.amt}}</view>
       </view>
     </view>
   </view>
-
+  <view wx:if="{{noorder}}" class='noorder'>没有更多了</view>
 </view>

@@ -11,8 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasOrder: true,
     storeList: [],
+    noorder: false
   },
   querystorelist() {
     fetch({
@@ -39,15 +39,10 @@ Page({
             storeList: this.data.storeList.concat(res.data.withDrawDay)
           })
 
-          this.setData({
-            hasOrder: false
-          })
-
         }, 500);
       } else {
-
         this.setData({
-          hasOrder: false
+          noorder: true
         })
       }
 
@@ -70,9 +65,6 @@ Page({
       console.log("没有更多了")
       page = totalpage
 
-      this.setData({
-        hasOrder: false
-      })
     } else {
 
       console.log("加载更多")
@@ -80,7 +72,7 @@ Page({
 
       this.querystorelist()
     }
-  },  
+  },
   /**
    * 生命周期函数--监听页面加载
    */

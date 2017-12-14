@@ -14,12 +14,13 @@
   padding: 30rpx;
   margin-left: 0 20rpx 0 40rpx;
   border-bottom: 1px #ECECEC solid;
+  background-color: #fff;
 }
 
 .score {
   display: flex;
   flex-direction: row;
-  /* margin-right: 30rpx; */
+   margin-right: 30rpx; 
 }
 
 .img {
@@ -29,12 +30,13 @@
 }
 
 .bak {
-  /* margin-left: 80rpx; */
+   margin-left: 20rpx; 
   /* width: 600rpx; */
 }
 
 .time {
   margin-top: 10rpx;
+  margin-left: 20rpx; 
   font-size: 26rpx;
 }
 

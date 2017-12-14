@@ -88,4 +88,5 @@
 .chg {
   color: red;
   font-size: 24rpx;
+  margin-top: 10rpx;
 }

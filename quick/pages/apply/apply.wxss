@@ -122,8 +122,8 @@ page {
 }
 
 .store-address-init {
-  font-size: 26rpx;
-  color: #999;
+  font-size: 30rpx;
+  color: #333;
   line-height: 1.5;
   display: flex;
   flex-direction: row;
@@ -255,6 +255,11 @@ page {
   height: 35rpx;
   width: 40rpx;
   position: relative;
-   top: 5rpx; 
+  top: 5rpx;
   left: 520rpx;
+}
+
+.notice {
+  font-size: 28rpx;
+  color: #bbb;
 }

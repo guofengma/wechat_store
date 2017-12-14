@@ -3,20 +3,25 @@ import fetch from '../../utils/fetch';
 
 let start = 1
 
+let storeList = []
+let page = 0
+let totalpage = 0
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    start: 1
+    start: 1,
+    noorder: false
   },
   querystorelist() {
 
     fetch({
       url: "/CVS/score/querydetail",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'start': start,
         'pagenum': 5,
@@ -28,9 +33,21 @@ Page({
     }).then(res => {
 
       console.log(res)
-      this.setData({
 
-      })
+      if (res.ec != '999999') {
+        setTimeout(() => {
+
+          start = res.data[4].ser + 1
+          this.setData({
+            storeList: this.data.storeList.concat(res.data)
+          })
+
+        }, 500);
+      } else {
+        this.setData({
+          noorder: true
+        })
+      }
 
     }).catch(err => {
 
@@ -86,7 +103,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.querystorelist()
   },
 
   /**

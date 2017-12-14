@@ -13,7 +13,7 @@
     </view>
   </view>
 
-  <view class='title'>我的货架</view>
+  <view class='title'>参与的</view>
 
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='storelist'>
@@ -22,7 +22,6 @@
       </view>
       <view class='storeinfo'>
         <view>{{item.storename}}</view>
-        <view class='chg'>周涨幅 12%</view>
       </view>
 
       <image src='../../image/score.png' class='benefitimg'></image>

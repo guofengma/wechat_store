@@ -1,12 +1,16 @@
 <view class="container">
-  <view class='header'>我要</view>
+  <view class='header'>我要申请
+    <text class='notice'>填写您的申请信息</text>
+  </view>
   <view class='nav'>
     <view bindtap='provideView' class='nav-item nav-item-first'>提供场地</view>
     <view bindtap='manageView' class='nav-item nav-item-second'>经营货架</view>
     <view bindtap='shelveView' class='nav-item nav-item-third'>货架供货</view>
   </view>
   <view class='join-top'>
-    <view class='header-join'>快速加入</view>
+    <view class='header-join'>快速加入
+      <text class='notice'>选择角色创建货架</text>
+    </view>
   </view>
   <view class='store'>
     <view class='store-item-init'>
@@ -24,7 +28,9 @@
     </view>
 
     <view class='join-top'>
-      <view class='header-join'>货架列表</view>
+      <view class='header-join'>货架列表
+        <text class='notice'>组成货架合伙人</text>
+      </view>
       <view class='header-search'>
         <input placeholder='地点' placeholder-class='header-search-input-holder' class='header-search-input' bindinput='setAddress'></input>
         <view class='header-search-p'>
@@ -38,7 +44,7 @@
         <view wx:if="{{ item.storename!=null}}" class='NO'>No.{{item.id}} {{item.storename}}
         </view>
         <view wx:if="{{ item.storename==null}}" class='NO-pengding'>No.{{item.id}}
-              <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ item.field==user ||  item.supply==user ||  item.deal==user}}'></image>
+          <image data-del='0' class='del' src='../../image/del.png' wx:if='{{ item.field==user ||  item.supply==user ||  item.deal==user}}'></image>
         </view>
       </view>
       <view class='store-content'>

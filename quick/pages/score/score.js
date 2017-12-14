@@ -4,7 +4,7 @@ import fetch from '../../utils/fetch';
 let start = 1
 
 let storeListUser = []
-let pageUse = 0
+let pageUser = 0
 let totalpageUser = 0
 
 let storeList = []
@@ -30,13 +30,13 @@ Page({
     wx.navigateTo({
       url: '../scoreinvest/scoreinvest',
     })
-  }, 
+  },
   queryscore() {
 
     fetch({
       url: "/CVS/score/query",
-        baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'unionId': wx.getStorageSync('unionId')
       },
@@ -46,9 +46,12 @@ Page({
     }).then(res => {
 
       console.log(res)
-      this.setData({
-        score: (res.data / 100).toFixed(2)
-      })
+
+      if (res.ec != '999999') {
+        this.setData({
+          score: (res.data / 100).toFixed(2)
+        })
+      }
 
     }).catch(err => {
 
@@ -59,15 +62,15 @@ Page({
 
     })
   },
-  querystore(){
+  querystore() {
 
     fetch({
       url: "/wxpay/increaseall",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'page': page,
-        'pagenum': 10
+        'pagenum': 5
       },
       method: "GET",
       noLoading: true,
@@ -81,11 +84,11 @@ Page({
 
           totalpage = res.data.totalpage
           this.setData({
-            storeList: this.data.storeList.concat(res.data.withDrawDay)
+            storeList: this.data.storeList.concat(res.data.increasMoney)
           })
 
         }, 500);
-      } 
+      }
 
     }).catch(err => {
 
@@ -101,11 +104,11 @@ Page({
 
     fetch({
       url: "/wxpay/increaseuser",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'page': page,
-        'pagenum': 10,
+        'pagenum': 20,
         'openid': wx.getStorageSync("user").openid
       },
       method: "GET",
@@ -120,11 +123,11 @@ Page({
 
           totalpageUser = res.data.totalpage
           this.setData({
-            storeListUser: this.data.storeListUser.concat(res.data.withDrawDay)
+            storeListUser: this.data.storeListUser.concat(res.data.increasMoney)
           })
 
         }, 500);
-      } 
+      }
 
     }).catch(err => {
 
@@ -135,7 +138,25 @@ Page({
 
     })
 
-  },  
+  },
+  loadMore() {
+
+    console.log(totalpage)
+    console.log(page)
+
+    if (page >= totalpage - 1) {
+
+      console.log("没有更多了")
+      page = totalpage
+
+    } else {
+
+      console.log("加载更多")
+      page++
+
+      this.querystore()()
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -184,7 +205,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.loadMore()
   },
 
   /**

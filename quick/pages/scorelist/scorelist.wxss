@@ -9,7 +9,7 @@
   flex-direction: row;
   width: 90%;
   padding: 40rpx;
-  border-bottom: 1px #ECECEC solid;
+  border-bottom: 1px #ececec solid;
 }
 
 .score {
@@ -31,4 +31,9 @@
 .scorebk {
   width: 100%;
   height: 120rpx;
+}
+
+.noorder {
+  width: 100%;
+  text-align: center;
 }
