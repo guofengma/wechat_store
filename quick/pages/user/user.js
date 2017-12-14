@@ -20,14 +20,14 @@ Page({
   //    })
   //  },
   benefit(){
-    wx.navigateTo({
-      url: '../benefit/benefit',
-    })
+    // wx.navigateTo({
+    //   url: '../benefit/benefit',
+    // })
   },
   score(){
-    wx.navigateTo({
-      url: '../score/score',
-    })
+    // wx.navigateTo({
+    //   url: '../score/score',
+    // })
   },
   apply(){
     wx.navigateTo({
