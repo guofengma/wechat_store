@@ -1,6 +1,5 @@
 /* pages/benefit/benefit.wxss */
 
-/* pages/score/score.wxss */
 
 .container {
   background-color: #fff;
@@ -28,11 +27,11 @@
   margin: 42rpx 20rpx 42rpx 0;
   color: #fff;
   font-size: 30rpx;
-  width: 210rpx;
+  width: 300rpx;
 }
 
 .detail {
-  margin: 42rpx 20rpx 42rpx 240rpx;
+  margin: 42rpx 20rpx 42rpx 140rpx;
   color: #fff;
   /* font-size: 26rpx; */
 }

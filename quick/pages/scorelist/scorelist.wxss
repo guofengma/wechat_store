@@ -27,3 +27,8 @@
 .bak {
   margin-left: 120rpx;
 }
+
+.scorebk {
+  width: 100%;
+  height: 120rpx;
+}

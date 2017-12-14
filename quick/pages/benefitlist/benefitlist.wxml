@@ -2,10 +2,13 @@
 
 <view class='container'>
 
+  <image src='../../image/scorebk.png' class='scorebk'></image>
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='list'>
-      <view class='time'>{{item.time}}</view>
-      <view class='bak'>{{item.description}}</view>
+      <view class='info'>
+        <view class='bak'>{{'链链信息保利店平台'}}</view>
+        <view class='time'>{{item.time}}</view>
+      </view>
       <view class='score'>
         <image src='../../image/score.png' class='img'></image>
         <view>{{item.feeformat}}</view>

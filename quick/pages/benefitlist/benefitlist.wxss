@@ -2,21 +2,24 @@
 
 .container {
   background-color: #fff;
+  /* padding: 0 20rpx; */
 }
 
 .list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
-  padding: 40rpx;
+  padding: 30rpx;
+  margin-left: 0 20rpx 0 40rpx;
   border-bottom: 1px #ECECEC solid;
 }
 
 .score {
   display: flex;
   flex-direction: row;
-  margin-left: 30rpx;
+  /* margin-right: 30rpx; */
 }
 
 .img {
@@ -26,10 +29,22 @@
 }
 
 .bak {
-  margin-left: 80rpx;
-  width: 600rpx;
+  /* margin-left: 80rpx; */
+  /* width: 600rpx; */
 }
 
 .time {
-  width: 100rpx;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.scorebk {
+  width: 100%;
+  height: 120rpx;
 }

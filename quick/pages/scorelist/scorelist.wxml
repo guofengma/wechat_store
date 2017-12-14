@@ -2,6 +2,7 @@
 
 <view class='container'>
 
+  <image src='../../image/scorebk.png' class='scorebk'></image>
   <view>
     <view class='list'>
       <view>2017/12/09</view>
