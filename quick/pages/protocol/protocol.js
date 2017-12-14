@@ -13,20 +13,64 @@ Page({
     supplypercent: 3,
   },
   setfield(e) {
+    
+    var sum = parseInt(e.detail.value == '' ? 0 : e.detail.value) + parseInt(this.data.dealpercent) + parseInt(this.data.supplypercent)
+    
+    if (sum > 97) {
+      wx.showToast({
+        title: '比例超限',
+      })
+
+      this.setData({
+        fieldpercent: 2
+      })
+
+      return
+    }
     this.setData({
-      fieldpercent: e.detail.value
+      fieldpercent: e.detail.value == '' ? 0 : e.detail.value
     })
   },
   setdeal(e) {
+
+    var sum = parseInt(e.detail.value == '' ? 0 : e.detail.value) + parseInt(this.data.fieldpercent) + parseInt(this.data.supplypercent)
+
+    if (sum > 97) {
+      wx.showToast({
+        title: '比例超限',
+      })
+
+      this.setData({
+        dealpercent: 92
+      })
+
+      return
+    }
+
     this.setData({
-      dealpercent: e.detail.value
+      dealpercent: e.detail.value == '' ? 0 : e.detail.value
     })
-  },  
+  },
   setsupply(e) {
+
+    var sum = parseInt(e.detail.value == '' ? 0 : e.detail.value) + parseInt(this.data.fieldpercent) + parseInt(this.data.dealpercent)
+
+    if (sum > 97) {
+      wx.showToast({
+        title: '比例超限',
+      })
+
+      this.setData({
+        supplypercent: 3
+      })
+
+      return
+    }
+
     this.setData({
-      supplypercent: e.detail.value
+      supplypercent: e.detail.value == '' ? 0 : e.detail.value
     })
-  },   
+  },
   setpercent(roletype, per) {
 
     var that = this
@@ -72,9 +116,9 @@ Page({
       console.log(res)
 
       that.setData({
-        fieldpercent: res.fieldper == 0 ? 2 : res.fieldper,
-        dealpercent: res.dealper == 0 ? 92 : res.dealper,
-        supplypercent: res.supplyper == 0 ? 3 : res.supplyper
+        fieldpercent: res.fieldper,
+        dealpercent: res.dealper,
+        supplypercent: res.supplyper
       })
 
     }).catch(err => {

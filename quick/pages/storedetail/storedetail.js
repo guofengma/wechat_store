@@ -57,7 +57,7 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log('fieldresult=' + result)
+      // console.log('fieldresult=' + result)
 
       if (result.address != "") {
 
@@ -119,7 +119,7 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log('dealresult=' + result)
+      // console.log('dealresult=' + result)
 
       if (result.address != "") {
 
@@ -177,7 +177,7 @@ Page({
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
 
-      console.log('supplyresult=' + result)
+      // console.log('supplyresult=' + result)
 
       if (result.address != "") {
 

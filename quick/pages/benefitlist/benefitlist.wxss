@@ -28,7 +28,6 @@
 .bak {
   margin-left: 80rpx;
   width: 600rpx;
-  border: 1px black solid;
 }
 
 .time {
