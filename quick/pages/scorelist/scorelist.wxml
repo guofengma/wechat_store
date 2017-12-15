@@ -5,8 +5,10 @@
   <image src='../../image/scorebk.png' class='scorebk'></image>
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='list'>
-      <view>{{item.time}}</view>
-      <view class='bak'>{{item.desc}}</view>
+      <view class='info'>
+        <view class='bak'>{{item.desc}}</view>
+        <view class='time'>{{item.time}}</view>
+      </view>
       <view class='score'>
         <image src='../../image/score.png' class='img'></image>
         <view>{{item.tsf==0?'-':'+'}} {{item.amt}}</view>

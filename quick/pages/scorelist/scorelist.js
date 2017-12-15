@@ -14,7 +14,18 @@ Page({
    */
   data: {
     start: 1,
-    noorder: false
+    noorder: false,
+    storeList: [],
+  },
+  toDate(stime) {
+
+    var n = stime * 1000;
+    var date = new Date(n);
+    var Y = date.getFullYear() + '/';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) :
+      date.getMonth() + 1) + '/';
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    return (Y + M + D)
   },
   querystorelist() {
 
@@ -32,18 +43,27 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
+      console.log(JSON.parse(res.data))
+      var data = JSON.parse(res.data)
 
       if (res.ec != '999999') {
         setTimeout(() => {
 
-          start = res.data[4].ser + 1
+          console.log(data.length)
+
+          data[0].time = this.toDate(data[0].time)
+
+          start = data[data.length - 1].ser + 1
+
           this.setData({
-            storeList: this.data.storeList.concat(res.data)
+            storeList: this.data.storeList.concat(data)
           })
 
         }, 500);
       } else {
+
+        start = 1
+
         this.setData({
           noorder: true
         })
@@ -62,6 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    start = 1
     this.querystorelist()
   },
   /**
@@ -75,7 +96,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    start = 1
   },
 
   /**

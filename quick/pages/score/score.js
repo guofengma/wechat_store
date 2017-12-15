@@ -49,7 +49,7 @@ Page({
 
       if (res.ec != '999999') {
         this.setData({
-          score: (res.data / 100).toFixed(2)
+          score: res.data
         })
       }
 
