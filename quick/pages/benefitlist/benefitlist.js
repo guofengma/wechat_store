@@ -15,13 +15,18 @@ Page({
     noorder: false
   },
   querystorelist() {
+
+    wx.showLoading({
+      title: '加载中',
+    })
+
     fetch({
       url: "/CVS/querywithuser",
       //   baseUrl: "http://192.168.50.57:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'page': page,
-        'pagenum': 10,
+        'pagenum': 5,
         'openid': wx.getStorageSync("user").openid
       },
       method: "GET",
@@ -46,6 +51,10 @@ Page({
         })
       }
 
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 500)
+
     }).catch(err => {
 
       wx.showToast({
@@ -62,8 +71,12 @@ Page({
 
     if (page >= totalpage - 1) {
 
-      console.log("没有更多了")
+      console.log("没有更多")
       page = totalpage
+
+      this.setData({
+        noorder: true
+      })
 
     } else {
 
@@ -77,6 +90,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    storeList = []
+    page = 0
+    totalpage = 0
+
     this.querystorelist()
   },
 
@@ -92,6 +110,9 @@ Page({
    */
   onShow: function () {
 
+    storeList = []
+    page = 0
+    totalpage = 0
   },
 
   /**

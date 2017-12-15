@@ -13,14 +13,14 @@
   width: 90%;
   padding: 30rpx;
   margin-left: 0 20rpx 0 40rpx;
-  border-bottom: 1px #ECECEC solid;
+  border-bottom: 1px #ececec solid;
   background-color: #fff;
 }
 
 .score {
   display: flex;
   flex-direction: row;
-   margin-right: 30rpx; 
+  margin-right: 30rpx;
 }
 
 .img {
@@ -30,13 +30,13 @@
 }
 
 .bak {
-   margin-left: 20rpx; 
+  margin-left: 20rpx;
   /* width: 600rpx; */
 }
 
 .time {
   margin-top: 10rpx;
-  margin-left: 20rpx; 
+  margin-left: 20rpx;
   font-size: 26rpx;
 }
 
@@ -49,4 +49,11 @@
 .scorebk {
   width: 100%;
   height: 120rpx;
+}
+
+.noorder {
+  width: 100%;
+  text-align: center;
+  margin-top: 10rpx;
+  color: #ececec;
 }

@@ -15,5 +15,6 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{noorder}}" class='noorder'>没有更多了</view>
+  <view wx:if="{{noorder}}" class='noorder'>没有更多</view>
+  
 </view>

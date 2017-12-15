@@ -12,24 +12,84 @@ Page({
     isSubmit: false,
     avatarUrl: '',
     getComment: "1",
-    inputCotent: ""
+    inputCotent: "",
+    score: 0,
+    benefit: 0
   },
   //  settleView() {
   //    wx.navigateTo({
   //      url: '../settle/settle',
   //    })
   //  },
-  benefit(){
+  querybenefit() {
+    fetch({
+      url: "/CVS/querywithusersum",
+      //   baseUrl: "http://192.168.50.57:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'openid': wx.getStorageSync("user").openid
+      },
+      method: "GET",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+      this.setData({
+        benefit: (res.data / 100).toFixed(2)
+      })
+
+    }).catch(err => {
+
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+
+    })
+  },
+  queryscore() {
+
+    fetch({
+      url: "/CVS/score/query",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'unionId': wx.getStorageSync('unionId')
+      },
+      method: "GET",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+      if (res.ec != '999999') {
+        this.setData({
+          score: res.data
+        })
+      }
+
+    }).catch(err => {
+
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+
+    })
+  },
+  benefit() {
     wx.navigateTo({
       url: '../benefit/benefit',
     })
   },
-  score(){
+  score() {
     wx.navigateTo({
       url: '../score/score',
     })
   },
-  apply(){
+  apply() {
     wx.navigateTo({
       url: '../settle/settle',
     })
@@ -38,7 +98,7 @@ Page({
     wx.navigateTo({
       url: '../webpage/webpage',
     })
-  },  
+  },
   submitComment(e) {
     var comment = e.detail.value.comment;
     console.log(e)
@@ -217,7 +277,8 @@ Page({
     });
     this._getCartnum();
 
-
+    this.queryscore()
+    this.querybenefit()
 
   },
 

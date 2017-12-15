@@ -21,15 +21,13 @@
       </view>
       <view class='storeinfo'>
         <view>{{item.storename}}</view>
-        <view class='chg'>周涨幅 {{item.finalincrease}}%</view>
+        <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
       </view>
-      <button class='op' bindtap='invest'>提取</button>
+      <button class='op'>提取</button>
     </view>
   </view>
 
-<view class='title'>赚积分 
-<image src='../../image/info.png' class='info'></image>
-</view>
+<view class='title'>赚积分</view>
 
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='storelist'>
@@ -38,7 +36,7 @@
       </view>
       <view class='storeinfo'>
         <view>{{item.storename}}</view>
-        <view class='chg'>周涨幅 {{item.finalincrease}}%</view>
+        <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
       </view>
       <button class='op'>参与</button>
     </view>

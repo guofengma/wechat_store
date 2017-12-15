@@ -1,8 +1,6 @@
 // pages/score/score.js
 import fetch from '../../utils/fetch';
 
-let start = 1
-
 let storeListUser = []
 let pageUser = 0
 let totalpageUser = 0

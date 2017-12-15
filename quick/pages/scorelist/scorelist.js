@@ -19,7 +19,7 @@ Page({
   },
   toDate(stime) {
 
-    var n = stime * 1000;
+    var n = stime;
     var date = new Date(n);
     var Y = date.getFullYear() + '/';
     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) :
@@ -28,6 +28,10 @@ Page({
     return (Y + M + D)
   },
   querystorelist() {
+
+    wx.showLoading({
+      title: '加载中',
+    })
 
     fetch({
       url: "/CVS/score/querydetail",
@@ -46,12 +50,14 @@ Page({
       console.log(JSON.parse(res.data))
       var data = JSON.parse(res.data)
 
-      if (res.ec != '999999') {
+      if (data.length != 0) {
         setTimeout(() => {
 
           console.log(data.length)
 
-          data[0].time = this.toDate(data[0].time)
+          for (var i = 0; i < data.length; i++) {
+            data[i].time = this.toDate(data[i].time)
+          }
 
           start = data[data.length - 1].ser + 1
 
@@ -62,12 +68,14 @@ Page({
         }, 500);
       } else {
 
-        start = 1
-
         this.setData({
           noorder: true
         })
       }
+
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 500)
 
     }).catch(err => {
 
@@ -82,8 +90,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    start = 1
-    this.querystorelist()
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -97,6 +104,7 @@ Page({
    */
   onShow: function () {
     start = 1
+    this.querystorelist()
   },
 
   /**
