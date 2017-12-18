@@ -50,7 +50,10 @@ Page({
   },
   join() {
 
-    if (this.data.scoresum == 0) {
+    console.log(this.data.scoresum)
+    console.log(this.data.curscore)
+
+    if (parseInt(this.data.scoresum) == 0) {
       wx.showToast({
         title: '请输入积分',
       })
@@ -58,7 +61,7 @@ Page({
       return
     }
 
-    if (this.data.scoresum > this.data.curscore) {
+    if (parseInt(this.data.scoresum) > parseInt(this.data.curscore)) {
       wx.showToast({
         title: '您的积分不足',
       })

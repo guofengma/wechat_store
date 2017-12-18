@@ -33,6 +33,37 @@ Page({
       score: 0
     })
   },
+  queryscore() {
+
+    fetch({
+      url: "/CVS/score/query",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'unionId': wx.getStorageSync('unionId')
+      },
+      method: "GET",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+      if (res.ec != '999999') {
+        this.setData({
+          curscore: res.data
+        })
+      }
+
+    }).catch(err => {
+
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+
+    })
+  },
   score() {
 
     this.data.scoreflag = !this.data.scoreflag
@@ -40,7 +71,7 @@ Page({
 
     if (this.data.scoreflag) {
 
-      // var score = 5000
+      var score = this.data.curscore
 
       var sale = (score / 100).toFixed(2)
 
