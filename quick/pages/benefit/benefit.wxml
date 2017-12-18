@@ -13,7 +13,7 @@
     </view>
   </view>
 
-  <view class='title'>参与的</view>
+  <!-- <view class='title'>参与的</view> -->
 
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='storelist'>

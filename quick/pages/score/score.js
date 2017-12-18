@@ -133,7 +133,7 @@ Page({
 
       console.log(res)
 
-      if (res != '') {
+      if (res.ec != '999999') {
         setTimeout(() => {
 
           totalpageUser = res.data.totalpage
