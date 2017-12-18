@@ -23,7 +23,9 @@
         <view>{{item.storename}}</view>
         <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
       </view>
-      <button class='op'>提取</button>
+      <button class='op' bindtap='investquit' 
+      data-storeid='{{item.storeid}}' data-investtype='1'
+      data-score='{{item.score}}' data-scorebonus='{{item.scorebonus}}'>提取</button>
     </view>
   </view>
 
@@ -38,7 +40,8 @@
         <view>{{item.storename}}</view>
         <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
       </view>
-      <button class='op'>参与</button>
+      <button class='op' bindtap='investjoin' 
+      data-storeid='{{item.storeid}}' data-investtype='0'>参与</button>
     </view>
   </view>  
 

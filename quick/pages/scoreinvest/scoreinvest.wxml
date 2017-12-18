@@ -7,25 +7,36 @@
     </view>
     <view class='storeinfo'>
       <view>链链信息国贸店</view>
-      <view class='chg'>周涨幅 12%</view>
+      <!-- <view class='chg'>周涨幅 12%</view> -->
     </view>
   </view>
 
   <view class='op'>
-    <view>投入积分</view>
+    <view wx:if='{{investtype==1}}' class='lable'>投入积分
+      <label class='lablevalue'>{{score}}</label>
+    </view>
+    <view wx:if='{{investtype==1}}' class='lable'>积分收益
+      <label class='lablevalue'>{{scorebonus}}</label>
+    </view>
+    <view wx:if='{{investtype==0}}' class='lable'>当前积分
+      <label class='lablevalue'>{{curscore}}</label>
+    </view>
+    <view>{{investtype==0?'投入积分':'提取积分'}}</view>
     <view>
-      <input placeholder='数量' type='number'></input>
+      <input type='number' value='{{scoresum}}' disabled='{{investtype==1}}' bindinput='setScore'></input>
     </view>
     <view class='condition'>
-      每周日00:00——24:00可提取积分
+      仅每周日00:00——24:00可{{investtype==0?'参与':'提取'}}积分 {{investtype==0?'':'仅支持全额提取'}}
     </view>
   </view>
 
   <view class='notice'>
-      <image src='../../image/ok.png' class='noticeimg'></image>
-      同意<text class='protocol'>相关协议</text>规则，并知晓此参与行为存在积分损失风险
+    <image src='../../image/ok.png' class='noticeimg'></image>
+    同意
+    <text class='protocol'>相关协议</text>规则，并知晓此参与行为存在积分损失风险
   </view>
 
-  <button class='btn'>确认</button>
+  <button class='btn' bindtap='{{investtype==0?"join":"quit"}}'>
+  {{investtype==0?'参与':'提取'}}</button>
 
 </view>

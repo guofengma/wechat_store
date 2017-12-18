@@ -9,6 +9,8 @@
         <view class='bak'>{{'链链信息保利店平台'}}</view>
         <view class='time'>{{item.time}}</view>
       </view>
+      <view style="{{item.state==1?'color:green;':'color:red;'}}">
+      {{item.state==1?'已清算':'待清算'}}</view>
       <view class='score'>
         <image src='../../image/score.png' class='img'></image>
         <view>{{item.feeformat}}</view>

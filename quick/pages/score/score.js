@@ -24,9 +24,26 @@ Page({
       url: '../scorelist/scorelist',
     })
   },
-  invest() {
+  investquit(e){
+
+    var investtype = e.target.dataset.investtype
+    var storeid = e.target.dataset.storeid
+    var score = e.target.dataset.score
+    var scorebonus = e.target.dataset.scorebonus
+
     wx.navigateTo({
-      url: '../scoreinvest/scoreinvest',
+      url: '../scoreinvest/scoreinvest?investtype=' + investtype +
+      '&storeid=' + storeid + '&score=' + score + '&scorebonus=' + scorebonus,
+    })
+  },
+  investjoin(e) {
+
+    var investtype = e.target.dataset.investtype 
+    var storeid = e.target.dataset.storeid
+
+    wx.navigateTo({
+      url: '../scoreinvest/scoreinvest?investtype=' + investtype +
+      '&storeid=' + storeid + '&curscore=' + this.data.score,
     })
   },
   queryscore() {
@@ -101,7 +118,7 @@ Page({
   querystoreuser() {
 
     fetch({
-      url: "/wxpay/increaseuser",
+      url: "/CVS/user/queryfinance",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
@@ -160,9 +177,6 @@ Page({
    */
   onLoad: function (options) {
 
-    this.queryscore()
-    this.querystoreuser()
-    this.querystore()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -175,7 +189,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
+    this.queryscore()
+    this.querystoreuser()
+    this.querystore()
   },
 
   /**

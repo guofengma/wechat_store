@@ -35,6 +35,7 @@
 .condition {
   font-size: 24rpx;
   margin-top: 30rpx;
+  color: red;
 }
 
 .notice {
@@ -63,4 +64,13 @@ input {
 
 .protocol {
   color: #0D8FEF;
+}
+
+.lable {
+  margin-bottom: 20rpx;
+}
+
+.lablevalue {
+  margin-left: 100rpx;
+  color: red;
 }

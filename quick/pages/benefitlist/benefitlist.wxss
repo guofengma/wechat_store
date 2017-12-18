@@ -54,6 +54,6 @@
 .noorder {
   width: 100%;
   text-align: center;
-  margin-top: 10rpx;
-  color: #ececec;
+  margin: 10rpx 0;
+  color: gray;
 }
