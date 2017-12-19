@@ -24,8 +24,8 @@ App({
                     success: function (info) {
                       console.log(info)
                       wx.request({
-                        url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
-                        // url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
+                        // url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
+                        url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
                         data: {
                           openid: res.data.openid,
                           session_key: res.data.session_key,

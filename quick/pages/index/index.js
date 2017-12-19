@@ -29,6 +29,31 @@ Page({
          }
       ]
    },
+   saveUnion(){
+     fetch({
+       url: "/wx/account",
+        //  baseUrl: "http://192.168.50.239:9888", 
+       baseUrl: "https://store.lianlianchains.com",
+       data: {
+         openid: wx.getStorageSync('user').openid,
+         unionId: wx.getStorageSync('unionId')
+       },
+       noLoading: true,
+       method: "GET",
+       header: { 'content-type': 'application/x-www-form-urlencoded' }
+       //  header: { 'content-type': 'application/json' }
+     }).then(res => {
+
+       console.log(res)
+
+     }).catch(err => {
+       console.log("出错了")
+       wx.showToast({
+         title: '网络繁忙'
+       })
+       console.log(err)
+     });
+   },
    ReScanTap() {
       wx.navigateTo({
          url: '../store/store'
@@ -252,9 +277,8 @@ Page({
             'storeName': storeNames
          })
       }
-      // recharge('12000000000',10)
-      // query('12000000000')
-      // transfer('12000000000','18610270284',10)
+
+      this.saveUnion()
 
    },
    /**
