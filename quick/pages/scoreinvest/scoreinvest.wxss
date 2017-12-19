@@ -29,7 +29,8 @@
   padding: 42rpx 42rpx 22rpx 42rpx;
   margin-top: 20rpx;
   background-color: #fff;
-  width: 100%;
+  /* width: 100%; */
+  /* border: 1px #0D8FEF solid; */
 }
 
 .condition {
