@@ -34,8 +34,8 @@ Page({
 
     fetch({
       url: "/CVS/user/deletefinance",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'storeid': this.data.storeid,
@@ -49,7 +49,7 @@ Page({
       console.log(res)
 
       if (res.ec == '000000') {
-        wx.navigateTo({
+        wx.navigateBack({
           url: '../score/score',
         })
       }
@@ -86,8 +86,8 @@ Page({
 
     fetch({
       url: "/CVS/user/joinfinance",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'storeid': this.data.storeid,
@@ -101,7 +101,7 @@ Page({
       console.log(res)
 
       if (res.ec == '000000') {
-        wx.navigateTo({
+        wx.navigateBack({
           url: '../score/score',
         })
       }

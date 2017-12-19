@@ -14,9 +14,9 @@ Page({
     field: false,
     deal: false,
     supply: false,
-    fieldimg: '../../image/officeAct.png',
-    dealimg: '../../image/manager.png',
-    supplyimg: '../../image/truck.png'
+    fieldimg: '../../image/office.png',
+    dealimg: '../../image/managerAct.png',
+    supplyimg: '../../image/truckAct.png'
   },
   previewImage(e) {
 
@@ -228,9 +228,9 @@ Page({
   itemshow(idx) {
 
     this.setData({
-      fieldimg: (idx == 0) ? '../../image/officeAct.png' : '../../image/office.png',
-      dealimg: (idx == 1) ? '../../image/managerAct.png' : '../../image/manager.png',
-      supplyimg: (idx == 2) ? '../../image/truckAct.png' : '../../image/truck.png',
+      fieldimg: (idx == 0) ? '../../image/office.png' : '../../image/officeAct.png',
+      dealimg: (idx == 1) ? '../../image/manager.png' : '../../image/managerAct.png',
+      supplyimg: (idx == 2) ? '../../image/truck.png' : '../../image/truckAct.png',
       fieldflag: idx == 0 ? true : false,
       dealflag: idx == 1 ? true : false,
       supplyflag: idx == 2 ? true : false

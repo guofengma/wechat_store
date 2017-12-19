@@ -104,7 +104,7 @@ page {
 }
 
 .store-item-init {
-  border: 1px #bb95e8 solid;
+  /* border: 1px #bb95e8 solid; */
   margin-top: 40rpx;
   /* box-shadow: 0 1px 5px 0 #bebcbc, 0 0 0 0 #bebcbc; */
 }
@@ -152,6 +152,11 @@ page {
 
 .roleimg-logo {
   height: 84rpx;
+}
+
+.init-role {
+  border: 1px #979797 dashed;
+  padding: 10rpx 30rpx;
 }
 
 .roleimg-action {
@@ -222,13 +227,13 @@ page {
 }
 
 .NO {
-  text-align: left;
+  text-align: center;
   margin-left: 12rpx;
   padding-left: 10rpx;
   padding-top: 10rpx;
   font-size: 26rpx;
   color: #fff;
-  background-color: #f39a98;
+  background-color: #5da7f8;
   width: 95%;
   height: 55rpx;
   opacity: 0.7;
@@ -241,7 +246,7 @@ page {
   padding-top: 10rpx;
   font-size: 26rpx;
   color: #fff;
-  background-color: #5da7f8;
+  background-color: #bebcbc;
   width: 95%;
   height: 55rpx;
   opacity: 0.7;
@@ -252,14 +257,19 @@ page {
 }
 
 .del {
-  height: 35rpx;
-  width: 40rpx;
+  height: 38rpx;
+  width: 45rpx;
   position: relative;
   top: 5rpx;
-  left: 520rpx;
+  /* left: 500rpx; */
 }
 
 .notice {
   font-size: 28rpx;
   color: #bbb;
+}
+
+.storename {
+  text-align: center;
+  width: 80%;
 }
