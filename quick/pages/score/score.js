@@ -119,8 +119,8 @@ Page({
 
     fetch({
       url: "/CVS/user/queryfinance",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'page': page,
         'pagenum': 20,

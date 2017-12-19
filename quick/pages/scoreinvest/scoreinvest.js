@@ -7,20 +7,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scoresum: 0
+    scoresum: 0,
+    btn: true
   },
   setScore(e) {
-
     this.setData({
       scoresum: e.detail.value
     })
+  },
+  initScore(){
+    this.setData({
+      scoresum: ''
+    })
+  },
+  initbtn(){
+
+    var dt = new Date();
+    console.log(dt.getDay())
+
+    this.setData({
+      btn: dt.getDay() != 0
+    })
+
   },
   quit() {
 
     fetch({
       url: "/CVS/user/deletefinance",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'storeid': this.data.storeid,
@@ -53,7 +68,7 @@ Page({
     console.log(this.data.scoresum)
     console.log(this.data.curscore)
 
-    if (parseInt(this.data.scoresum) == 0) {
+    if (this.data.scoresum=='' || parseInt(this.data.scoresum) == 0) {
       wx.showToast({
         title: '请输入积分',
       })
@@ -71,8 +86,8 @@ Page({
 
     fetch({
       url: "/CVS/user/joinfinance",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': wx.getStorageSync("user").openid,
         'storeid': this.data.storeid,
@@ -122,6 +137,8 @@ Page({
         scoresum: parseInt(options.score) + parseInt(options.scorebonus)
       })
     }
+
+    this.initbtn()
 
   },
 
