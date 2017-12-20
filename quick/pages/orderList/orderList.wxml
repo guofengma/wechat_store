@@ -24,7 +24,9 @@
 
       <view class="elem bottom" style="padding: {{item.state != '支付成功' || item.checkstate != 0 ? '30rpx 28rpx' : '30rpx 28rpx'}};">
         <view wx:if="{{item.state == '支付成功' && item.checkstate == 0}}" class="check" bindtouchstart="checkView" data-orderno="{{item.orderNo}}">{{item.checkstate == 0 ? '待核验': ''}}</view>
-        <view class="hasCheck">共{{item.totalNum}}件商品 ¥{{item.fee}}</view>
+        <view class="hasCheck">
+          共{{item.totalNum}}件商品 ¥{{item.fee}}（积分抵扣{{item.usedScore}}） 
+        </view>
       </view>
     </view>
     <view class="loadmore">

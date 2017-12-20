@@ -21,7 +21,9 @@
          </view>
 
          <view class="elem bottom">
-            <view class="hasCheck">共{{item.totalNum}}件商品 ¥{{item.fee}}</view>
+            <view class="hasCheck">
+            共{{item.totalNum}}件商品 ¥{{item.fee}}（积分抵扣{{item.usedScore}}）
+            </view>
          </view>
       </view>
       <view class="loadmore">

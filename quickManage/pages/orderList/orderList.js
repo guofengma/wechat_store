@@ -58,6 +58,8 @@ Page({
                  result[i].totalNum += result[i].temp[j].amount;
                //   result[i].totalPrice += result[i].temp[j].amount * result[i].temp[j].price
               }
+              result[i].usedScore = (parseInt(result[i].usedScore) / 100).toFixed(2)
+
            }
 
            orderList = orderList.concat(result);
@@ -111,6 +113,8 @@ Page({
               result[i].totalNum += result[i].temp[j].amount
               result[i].totalPrice += result[i].temp[j].amount * result[i].temp[j].price
            }
+           result[i].usedScore = (parseInt(result[i].usedScore) / 100).toFixed(2)
+
         }
         orderList = [...result]
         setTimeout(() => {
@@ -179,6 +183,7 @@ Page({
               result[i].totalNum += result[i].temp[j].amount
               result[i].totalPrice += result[i].temp[j].amount * result[i].temp[j].price
            }
+           result[i].usedScore = (parseInt(result[i].usedScore)/100).toFixed(2)
         }
         orderList = [...result];
         this.setData({
