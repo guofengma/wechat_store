@@ -72,7 +72,6 @@ Page({
     if (this.data.scoreflag) {
 
       var score = this.data.curscore
-
       var sale = (score / 100).toFixed(2)
 
       console.log('total=' + this.data.total)
@@ -83,11 +82,25 @@ Page({
       console.log('sale=' + sale)
 
       if (sale < 0.01) {
-        this.setData({
-          scoreimg: '',
-          scoredesc: '积分不足 可参与活动赚积分',
-          score: 0
-        })
+
+        if ((this.data.total * 0.1).toFixed(2)<0.01){
+
+          this.setData({
+            scoreimg: '',
+            scoredesc: '商品金额 不满足折扣条件',
+            score: 0
+          })
+
+        }else{
+
+          this.setData({
+            scoreimg: '',
+            scoredesc: '积分不足 可参与活动赚积分',
+            score: 0
+          })
+
+        }
+
       } else {
         this.setData({
           scoreimg: '../../image/scoreyes.png',
@@ -360,7 +373,7 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'repay_id': prepay_id,
-        storeid: wx.getStorageSync('storeId')
+        'storeid': wx.getStorageSync('storeId')
       },
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded' }
@@ -450,11 +463,11 @@ Page({
     //  });
   },
   onLoad: function (options) {
-    console.log("onload")
+    // console.log("onload")
 
-    console.log("onshow")
+    // console.log("onshow")
 
-    console.log("购物车查询开始")
+    // console.log("购物车查询开始")
     fetch({
       url: "/CVS/cart/querycart",
       //   baseUrl: "http://192.168.50.57:9888", 
