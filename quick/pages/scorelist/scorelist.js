@@ -50,6 +50,8 @@ Page({
       console.log(JSON.parse(res.data))
       var data = JSON.parse(res.data)
 
+      // var data = JSON.parse(res.data.records)
+      
       if (data.length != 0) {
         setTimeout(() => {
 
@@ -60,6 +62,8 @@ Page({
           }
 
           start = data[data.length - 1].ser + 1
+
+          // start = data.nextser
 
           this.setData({
             storeList: this.data.storeList.concat(data)

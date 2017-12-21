@@ -6,7 +6,7 @@
   <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
     <view class='list'>
       <view class='info'>
-        <view class='bak'>{{'链链信息保利店平台'}}</view>
+        <view class='bak'>{{item.description}}</view>
         <view class='time'>{{item.time}}</view>
       </view>
       <view style="{{item.state==1?'color:green;':'color:red;'}}">
