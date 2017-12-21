@@ -1,4 +1,6 @@
 // pages/settle/settle.js
+import fetch from '../../utils/fetch';
+
 Page({
 
   /**
@@ -7,6 +9,31 @@ Page({
   data: {
   
   },
+  saveUnion() {
+    fetch({
+      url: "/wx/account",
+      //  baseUrl: "http://192.168.50.239:9888", 
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        openid: wx.getStorageSync('user').openid,
+        unionId: wx.getStorageSync('unionId')
+      },
+      noLoading: true,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(res => {
+
+      console.log(res)
+
+    }).catch(err => {
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    });
+  },  
   applyView() {
     wx.redirectTo({
       url: '../apply/apply',
@@ -30,7 +57,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
+    this.saveUnion()
   },
 
   /**

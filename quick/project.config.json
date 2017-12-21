@@ -48,6 +48,12 @@
 					"name": "benefit",
 					"pathName": "pages/benefit/benefit",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "settle",
+					"pathName": "pages/settle/settle",
+					"query": ""
 				}
 			]
 		}
