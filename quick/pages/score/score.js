@@ -28,22 +28,26 @@ Page({
 
     var investtype = e.target.dataset.investtype
     var storeid = e.target.dataset.storeid
+    var storename = e.target.dataset.storename
     var score = e.target.dataset.score
     var scorebonus = e.target.dataset.scorebonus
 
     wx.navigateTo({
       url: '../scoreinvest/scoreinvest?investtype=' + investtype +
-      '&storeid=' + storeid + '&score=' + score + '&scorebonus=' + scorebonus,
+      '&storeid=' + storeid + '&storename=' + storename + 
+      '&score=' + score + '&scorebonus=' + scorebonus,
     })
   },
   investjoin(e) {
 
     var investtype = e.target.dataset.investtype 
     var storeid = e.target.dataset.storeid
+    var storename = e.target.dataset.storename
 
     wx.navigateTo({
       url: '../scoreinvest/scoreinvest?investtype=' + investtype +
-      '&storeid=' + storeid + '&curscore=' + this.data.score,
+      '&storeid=' + storeid + '&storename=' + storename +
+      '&curscore=' + this.data.score,
     })
   },
   queryscore() {

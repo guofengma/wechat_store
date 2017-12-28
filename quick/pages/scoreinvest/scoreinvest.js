@@ -24,10 +24,13 @@ Page({
 
     var dt = new Date();
     console.log(dt.getDay())
+    console.log(dt.getHours())
 
     this.setData({
-      btn: dt.getDay() != 0
+      btn: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 15) 
     })
+
+    console.log(this.data.btn)
 
   },
   quit() {
@@ -124,6 +127,7 @@ Page({
     this.setData({
       investtype: options.investtype,
       storeid: options.storeid,
+      storename: options.storename,
     })
 
     if (options.investtype == 0) {

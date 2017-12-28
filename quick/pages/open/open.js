@@ -28,7 +28,7 @@ Page({
 
     fetch({
       url: "/CVS/apply/register",
-      //   baseUrl: "http://192.168.50.57:9888", 
+        // baseUrl: "http://192.168.50.239:9888", 
       baseUrl: "https://store.lianlianchains.com",
       data: {
         id: this.data.id,
@@ -49,33 +49,6 @@ Page({
         wx.redirectTo({
           url: '../qrcode/qrcode?id=' + this.data.id,
         })
-
-        // fetch({
-        //   url: "/CVS/apply/updatename",
-        //   //   baseUrl: "http://192.168.50.57:9888", 
-        //   baseUrl: "https://store.lianlianchains.com",
-        //   data: {
-        //     id: this.data.id,
-        //     storename: this.data.storename
-        //   },
-        //   noLoading: false,
-        //   method: "GET",
-        //   header: { 'content-type': 'application/x-www-form-urlencoded' }
-        //   //  header: { 'content-type': 'application/json' }
-        // }).then(result => {
-
-        //   wx.redirectTo({
-        //     url: '../qrcode/qrcode?id=' + this.data.id,
-        //   })
-
-        // }).catch(err => {
-
-        //   console.log("出错了")
-        //   wx.showToast({
-        //     title: '网络繁忙'
-        //   })
-        //   console.log(err)
-        // })
 
       } else {
 

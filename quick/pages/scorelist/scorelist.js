@@ -39,7 +39,7 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'start': start,
-        'pagenum': 5,
+        'pagenum': 7,
         'unionId': wx.getStorageSync('unionId')
       },
       method: "GET",
@@ -47,11 +47,13 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(JSON.parse(res.data))
-      var data = JSON.parse(res.data)
+      console.log(res)
 
-      // var data = JSON.parse(res.data.records)
-      
+      // var data = JSON.parse(res.data)
+
+      var data = JSON.parse(res.data).records
+      start = JSON.parse(res.data).nextser
+
       if (data.length != 0) {
         setTimeout(() => {
 
@@ -61,9 +63,7 @@ Page({
             data[i].time = this.toDate(data[i].time)
           }
 
-          start = data[data.length - 1].ser + 1
-
-          // start = data.nextser
+          // start = data[data.length - 1].ser + 1
 
           this.setData({
             storeList: this.data.storeList.concat(data)
