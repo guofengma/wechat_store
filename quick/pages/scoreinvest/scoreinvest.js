@@ -8,7 +8,7 @@ Page({
    */
   data: {
     scoresum: 0,
-    btn: true,
+    btn: false,
     benifit: 0,
     score: 0
   },
