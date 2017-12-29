@@ -28,7 +28,7 @@
 }
 
 .bak {
-  width: 350rpx;
+  /* width: 350rpx; */
   margin-left: 20rpx;
 }
 
@@ -46,13 +46,15 @@
 }
 
 .time {
-  width: 100rpx;
+  /* width: 200rpx; */
   margin-left: 20rpx;
   margin-top: 10rpx;
   font-size: 26rpx;
 }
 
 .info {
+  /* border: 1px black solid; */
+  width: 360rpx;
   display: flex;
   flex-direction: column;
 }

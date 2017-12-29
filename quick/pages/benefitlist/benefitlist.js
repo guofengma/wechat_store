@@ -26,7 +26,7 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'page': page,
-        'pagenum': 5,
+        'pagenum': 7,
         'openid': wx.getStorageSync("user").openid
       },
       method: "GET",
