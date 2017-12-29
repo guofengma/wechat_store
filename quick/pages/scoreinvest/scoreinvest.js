@@ -8,7 +8,9 @@ Page({
    */
   data: {
     scoresum: 0,
-    btn: true
+    btn: true,
+    benifit: 0,
+    score: 0
   },
   setScore(e) {
     this.setData({
@@ -33,6 +35,42 @@ Page({
     console.log(this.data.btn)
 
   },
+  querybenifit(score) {
+
+    fetch({
+      url: "/CVS/user/queryalone",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'unionId': wx.getStorageSync('unionId'),
+        'storeId': this.data.storeid
+      },
+      method: "GET",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+      if (JSON.parse(res.data).code == 0) {
+
+        var benifit = JSON.parse(res.data).result
+
+        this.setData({
+          benifit: benifit,
+          scoresum: parseInt(score) + parseInt(benifit)
+        })
+      }
+
+    }).catch(err => {
+
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+
+    })
+  },  
   quit() {
 
     fetch({
@@ -135,11 +173,12 @@ Page({
         curscore: options.curscore,
       })
     } else {
+
       this.setData({
-        score: options.score,
-        scorebonus: options.scorebonus,
-        scoresum: parseInt(options.score) + parseInt(options.scorebonus)
+        score: options.score
       })
+      this.querybenifit(options.score)
+      
     }
 
     this.initbtn()

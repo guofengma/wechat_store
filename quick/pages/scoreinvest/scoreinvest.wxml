@@ -16,7 +16,7 @@
       <label class='lablevalue'>{{score}}</label>
     </view>
     <view wx:if='{{investtype==1}}' class='lable'>积分收益
-      <label class='lablevalue'>{{scorebonus}}</label>
+      <label class='lablevalue'>{{benifit}}</label>
     </view>
     <view wx:if='{{investtype==0}}' class='lable'>当前积分
       <label class='lablevalue'>{{curscore}}</label>
