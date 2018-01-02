@@ -38,7 +38,7 @@
     知晓此参与行为存在积分损失风险
   </view> -->
 
-  <button class='btn' disabled='{{!btn}}' bindtap='{{investtype==0?"join":"quit"}}'>
+  <button class='btn' bindtap='{{investtype==0?"join":"quit"}}'>
     {{investtype==0?'参与':'提取'}}</button>
 
 </view>

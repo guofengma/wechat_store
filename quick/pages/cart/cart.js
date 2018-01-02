@@ -516,6 +516,10 @@ Page({
    */
   onShow: function () {
 
+    this.queryscore()
+
+    
+
   },
 
   /**
