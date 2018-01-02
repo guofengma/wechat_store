@@ -194,6 +194,14 @@ Page({
    */
   onShow: function () {
 
+    storeListUser = []
+    pageUser = 0
+    totalpageUser = 0
+
+    storeList = []
+    page = 0
+    totalpage = 0
+
     this.setData({
       storeListUser: [],
       storeList: []
