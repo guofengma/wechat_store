@@ -10,7 +10,8 @@ Page({
     scoresum: 0,
     btn: false,
     benifit: 0,
-    score: 0
+    score: 0,
+    extract: false,
   },
   setScore(e) {
     this.setData({
@@ -29,7 +30,8 @@ Page({
     console.log(dt.getHours())
 
     this.setData({
-      btn: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 15) 
+      btn: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 15),
+      extract: (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() < 15),
     })
 
     console.log(this.data.btn)
