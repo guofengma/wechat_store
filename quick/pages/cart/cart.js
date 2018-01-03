@@ -394,11 +394,13 @@ Page({
       'signType': obj.signType,
       'paySign': obj.paySign,
       'success': function (res) {
-        console.log(111);
-        var unionId = wx.getStorageSync('unionId');
-        if (unionId) {
-          recharge(unionId, 5)
-        }
+        
+        // console.log(111);
+        // var unionId = wx.getStorageSync('unionId');
+        // // if (unionId) {
+        // //   recharge(unionId, 5)
+        // // }
+        
         fetch({
           url: "/CVS/cart/deleteall",
           //   baseUrl: "http://192.168.50.57:9888",
