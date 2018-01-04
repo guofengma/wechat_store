@@ -23,8 +23,8 @@
     </view>
     <view>{{investtype==0?'投入积分':'提取积分'}}</view>
     <view class='number-control'>
-      <input type='number' value='{{scoresum}}' style='color:red;' disabled='{{investtype==1}}' bindinput='setScore' bindfocus='initScore'></input>
-      <view wx:if="{{joinBtn}}" class='limit'>剩余额度 {{limitNum - scoresum}}</view>
+      <input type='number' value='{{scoresum}}' placeholder='最大额度为 {{limitNum}}' style='color:red;' disabled='{{investtype==1}}' bindinput='setScore' ></input>
+      <!-- <view wx:if="{{joinBtn}}" class='limit'>剩余额度 {{limitNum - scoresum}}</view> -->
     </view>
     <view class='condition'>
       仅每周一09:00——12:00可{{investtype==0?'投资':'提取'}}积分 {{investtype==0?'':'仅支持全额提取'}}

@@ -15,8 +15,18 @@ Page({
     limitNum:0
   },
   setScore(e) {
+    var inputNum = e.detail.value - 0;
+    if (inputNum == '') {
+      this.setData({
+        scoresum: ""
+      });
+      return;
+    }
+    if (inputNum >= this.data.limitNum - 0) {
+      inputNum = this.data.limitNum - 0
+    }
     this.setData({
-      scoresum: e.detail.value
+      scoresum: inputNum
     })
   },
   initScore(){
@@ -116,6 +126,22 @@ Page({
   },  
   quit() {
 
+    if (this.data.scoresum == '' || parseInt(this.data.scoresum) == 0) {
+      wx.showToast({
+        title: '请输入积分',
+      })
+
+      return
+    }
+
+    if (parseInt(this.data.scoresum) > parseInt(this.data.curscore)) {
+      wx.showToast({
+        title: '您的积分不足',
+      })
+
+      return
+    }
+
     fetch({
       url: "/CVS/user/deletefinance",
       // baseUrl: "http://192.168.50.239:9888",
@@ -202,31 +228,29 @@ Page({
   },
   //获取投资额度
   _getLimit() {
-    this.setData({
-      limitNum:500
-    });
-    return
     fetch({
-      url: "/CVS/user/joinfinance",
+      url: "/CVS/user/querylimit",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        'openid': wx.getStorageSync("user").openid,
-        'storeid': this.data.storeid,
-        'score': this.data.scoresum
+        'storeid': this.data.storeid
       },
       method: "GET",
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
-
-      console.log(res)
-
-      if (res.ec == '000000') {
-        wx.navigateBack({
-          url: '../score/score',
-        })
+      var result = JSON.parse(res.data).result;
+      var code = JSON.parse(res.data).code;
+      
+      if(code == 0) {
+        this.setData({
+          limitNum: result,
+          scoresum: ""
+        });
       }
+
+      
+      return
 
     }).catch(err => {
 

@@ -261,17 +261,16 @@ Page({
 
     if (roletype == 0) {
 
-      wx.navigateTo({
-        url: '../providenav/providenav',
-      })
-
       // 角色
-      // if (!this.data.field) {
-      //   wx.showToast({
-      //     title: '请先申请提供场地',
-      //   })
-      //   return false
-      // }
+      if (!this.data.field) {
+        wx.navigateTo({
+          url: '../providenav/providenav',
+        })
+        // wx.showToast({
+        //   title: '请先申请提供场地',
+        // })
+        return false
+      }
     } else if (roletype == 1) {
 
       // 角色
@@ -283,16 +282,16 @@ Page({
       }
 
     } else {
-      wx.navigateTo({
-        url: '../shelvenav/shelvenav',
-      })
       // 角色
-      // if (!this.data.supply) {
-      //   wx.showToast({
-      //     title: '请先申请货架供货',
-      //   })
-      //   return false
-      // }
+      if (!this.data.supply) {
+        wx.navigateTo({
+          url: '../shelvenav/shelvenav',
+        });
+        // wx.showToast({
+        //   title: '请先申请货架供货',
+        // })
+        return false
+      }
 
     }
 
@@ -393,12 +392,14 @@ Page({
     if (!this.checkrole(roletype)) {
       console.log('role error')
       return
+    }else{
+      this.initShelve(roletype)
     }
 
     // (this.data.storeid == '') ?
     //   (this.initShelve(roletype)) :
     //   (this.jOrqShelve(roletype, this.data.storeid))
-    this.initShelve(roletype)
+    
 
   },
   changeIcon(roletype) {
