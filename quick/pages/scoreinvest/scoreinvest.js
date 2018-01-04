@@ -12,6 +12,7 @@ Page({
     benifit: 0,
     score: 0,
     extract: false,
+    limitNum:0
   },
   setScore(e) {
     this.setData({
@@ -23,7 +24,7 @@ Page({
       scoresum: ''
     })
   },
-  initbtn(){
+  initbtn(investtype){
 
     var dt = new Date();
     console.log(dt.getDay())
@@ -32,7 +33,47 @@ Page({
     this.setData({
       btn: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 15),
       extract: (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() < 15),
+      join: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 12),
     })
+
+    if (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 12) {
+      this.setData({
+        btnCont: "参与",
+        joinBtn:true
+      });
+
+      this._getLimit();
+
+      return
+    } else if (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() < 15) {
+      this.setData({
+        btnCont: "提取",
+        joinBtn:false
+      });
+
+      return
+    } else{
+      this.setData({
+        btnContDisable:true
+      })
+    }
+
+    if (investtype == 0) {
+      this.setData({
+        btnCont: "参与",
+        joinBtn: true
+      });
+      this._getLimit();
+
+      return
+    } else {
+      this.setData({
+        btnCont: "提取",
+        joinBtn: false
+      });
+
+      return
+    }
 
     console.log(this.data.btn)
 
@@ -159,6 +200,43 @@ Page({
     })
 
   },
+  //获取投资额度
+  _getLimit() {
+    this.setData({
+      limitNum:500
+    });
+    return
+    fetch({
+      url: "/CVS/user/joinfinance",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        'openid': wx.getStorageSync("user").openid,
+        'storeid': this.data.storeid,
+        'score': this.data.scoresum
+      },
+      method: "GET",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      console.log(res)
+
+      if (res.ec == '000000') {
+        wx.navigateBack({
+          url: '../score/score',
+        })
+      }
+
+    }).catch(err => {
+
+      wx.showToast({
+        title: '出错了',
+      })
+      console.log(err)
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -183,7 +261,7 @@ Page({
       
     }
 
-    this.initbtn()
+    this.initbtn(options.investtype)
 
   },
 

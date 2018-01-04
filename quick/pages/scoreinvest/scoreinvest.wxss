@@ -63,6 +63,17 @@ input {
   margin-top: 40rpx;
 }
 
+.number-control{
+  position: relative;
+}
+.limit{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4rpx;
+  background-color: forestgreen;
+  color: #fff;
+}
 .protocol {
   color: #0D8FEF;
 }

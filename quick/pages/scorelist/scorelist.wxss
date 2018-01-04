@@ -2,6 +2,7 @@
 
 .container {
   background-color: #fff;
+  overflow: hidden;
 }
 
 .list {
