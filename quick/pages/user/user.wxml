@@ -27,16 +27,46 @@
       </view>
     </view>
   </view>
-  <view class="cart" wx:if="{{totalNum > 0}}" hover-class="{{totalNum > 0 ? 'other-button-hover' : ''}}" bindtouchstart="cartView" data-totalNum="{{totalNum}}">
-    <view class="tit" data-totalNum="{{totalNum}}">
-      购物车
+
+
+  <view class='bottom'>
+    <view class="item" wx:if="{{totalNum > 0}}" hover-class="{{totalNum > 0 ? 'other-button-hover' : ''}}" bindtouchstart="cartView" data-totalNum="{{totalNum}}">
+      <view bindtap="orderView" class="item-content">
+        <image class='img-order' src='../../image/carts.png'></image>
+        <view class='name'>购物车</view>
+      </view>
       <text class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</text>
     </view>
-
+    <view class='item'>
+      <view bindtap="orderView" class="item-content">
+        <image class='img-order' src='../../image/orders.png'></image>
+        <view class='name'>查看订单</view>
+      </view>
+    </view>
+    <view class='item'>
+      <view bindtap="apply" class="item-content">
+        <image class='img-order' src='../../image/apply.png'></image>
+        <view class='name'>申请入驻</view>
+      </view>
+    </view>
+    <view class='item'>
+      <view bindtap="commenShow" class="item-content">
+        <image class='img-order' src='../../image/reply.png'></image>
+        <view class='name'>意见反馈</view>
+      </view>
+    </view>
+    <view class='item' style='position:relative;'>
+      <view open-type="contact" class="item-content">
+        <image class='img-order' src='../../image/client.png'></image>
+        <view class='name'>在线客服</view>
+      </view>
+      <button open-type="contact" class="btn"> 在线客服 </button>
+    </view>
+    <view class='item'>
+      <view bindtap="webShow" class="item-content">
+        <image class='img-order' src='../../image/about.png'></image>
+        <view class='name'>关于我们</view>
+      </view>
+    </view>
   </view>
-  <button bindtap="orderView" class="order" hover-class="other-button-hover"> 查看订单 </button>
-  <button bindtap="apply" class="order"> 申请入驻 </button>
-  <button bindtap="commenShow" class="order"> 意见反馈 </button>
-  <button open-type="contact" class="order"> 在线客服 </button>
-  <button bindtap="webShow" class="order"> 关于我们 </button>
 </view>

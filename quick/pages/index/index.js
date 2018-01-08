@@ -278,8 +278,9 @@ Page({
          })
       }
 
-      this.saveUnion()
-
+      if (!!wx.getStorageSync('unionId')) {
+        this.saveUnion();
+      }
    },
    /**
   * 用户点击右上角分享

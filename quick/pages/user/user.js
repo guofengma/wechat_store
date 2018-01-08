@@ -34,7 +34,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
       this.setData({
         benefit: (res.data / 100).toFixed(2)
       })
@@ -62,7 +61,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
 
       if (res.ec != '999999') {
         this.setData({
@@ -84,10 +82,88 @@ Page({
       url: '../benefit/benefit',
     })
   },
+  _getUnionID() {
+    let that = this;
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+
+          var l = 'https://store.lianlianchains.com/wx/getopenid?code=' + res.code;
+          wx.request({
+            url: l,
+            data: {},
+            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
+            // header: {}, // 设置请求的 header    
+            success: function (res) {
+              wx.getUserInfo({
+                withCredentials: true,
+                success: function (info) {
+                  that.setData({
+                    avatarUrl: info.userInfo.avatarUrl,
+                    nickName: info.userInfo.nickName
+                  });
+                  wx.request({
+                    // url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
+                    url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
+                    data: {
+                      openid: res.data.openid,
+                      session_key: res.data.session_key,
+                      encryptedData: info.encryptedData,
+                      iv: info.iv
+                    },
+                    method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
+                    // header: {}, // 设置请求的 header    
+                    success: function (secr) {
+                      wx.setStorageSync('unionId', secr.data.userInfo.unionId);
+                      that.queryscore();
+                    }
+                  });
+                }
+              })
+
+
+
+              var obj = {};
+              obj.openid = res.data.openid;
+              obj.expires_in = Date.now() + res.data.expires_in;
+              obj.session_key = res.data.session_key;
+              wx.setStorageSync('user', obj);//存储openid    
+            }
+          });
+
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+
+        }
+      }
+    });
+  },
+  _Auth() {
+    let _this = this;
+    wx.openSetting({
+      success: function (data) {
+        if (data) {
+          if (data.authSetting["scope.userInfo"] == true) {
+            _this._getUnionID();
+          }
+        }
+      },
+      fail: function () {
+        console.info("2授权失败返回数据");
+
+      }
+    });
+
+  },
   score() {
-    wx.navigateTo({
-      url: '../score/score',
-    })
+    if (!!wx.getStorageSync('unionId')) {
+      wx.navigateTo({
+        url: '../score/score',
+      })
+    } else {
+      this._Auth();
+    }
+
   },
   apply() {
     wx.navigateTo({
@@ -101,7 +177,6 @@ Page({
   },
   submitComment(e) {
     var comment = e.detail.value.comment;
-    console.log(e)
     this.setData({
       inputCotent: ""
     })
@@ -126,7 +201,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
       //  header: { 'content-type': 'application/json' }
     }).then(comment => {
-      console.log(comment)
       if (comment === "评论成功") {
         this.setData({
           cancel: true
@@ -175,7 +249,6 @@ Page({
     })
   },
   cartView(e) {
-    console.log(e.target.dataset.totalnum);
     let totalnum = e.target.dataset.totalnum;
     if (totalnum > 0) {
       wx.navigateTo({
@@ -204,7 +277,6 @@ Page({
       this.setData({
         totalNum: this.data.totalNum
       })
-      console.log("购物车商品数量" + this.data.totalNum)
     }).catch(err => {
       console.log("出错了")
       wx.showToast({
@@ -220,7 +292,6 @@ Page({
     let that = this;
     wx.getUserInfo({
       success: function (res) {
-        console.log(res.userInfo.nickName)
         that.setData({
           avatarUrl: res.userInfo.avatarUrl,
           nickName: res.userInfo.nickName
@@ -259,7 +330,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
       //   header: { 'content-type': 'application/json' }
     }).then(result => {
-      console.log(result)
 
       if (result) {
         let mobile = result.phoneno.substr(0, 3) + "****" + result.phoneno.substr(7)
@@ -277,7 +347,10 @@ Page({
     });
     this._getCartnum();
 
-    this.queryscore()
+    if (!!wx.getStorageSync('unionId')) {
+      this.queryscore();
+    }
+    
     this.querybenefit()
 
   },
@@ -321,6 +394,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   }
 })
