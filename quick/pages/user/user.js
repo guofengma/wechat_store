@@ -21,6 +21,11 @@ Page({
   //      url: '../settle/settle',
   //    })
   //  },
+  grabShow() {
+    wx.navigateTo({
+      url: '../grab/grab',
+     })
+  },
   querybenefit() {
     fetch({
       url: "/CVS/querywithusersum",

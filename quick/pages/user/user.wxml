@@ -68,5 +68,11 @@
         <view class='name'>关于我们</view>
       </view>
     </view>
+    <view class='item'>
+      <view bindtap="grabShow" class="item-content">
+        <image class='img-order' src='../../image/grab.png'></image>
+        <view class='name'>立刻抢单</view>
+      </view>
+    </view>
   </view>
 </view>

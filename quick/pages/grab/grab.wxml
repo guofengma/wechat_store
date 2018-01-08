@@ -1,0 +1,19 @@
+<view class="container">
+  <view class='header'>
+    <input type='text' placeholder='搜索位置' class='search'></input>
+    <view class='city' bindtap='city'>
+      <text class='cityname'>{{selectCity}}</text>
+      <image class='{{open ? "arrowOpen" : "arrow"}}' src='../../image/arrow.png'></image>
+    </view>
+  </view>
+
+  <view class='map' style='height: {{windowHeight * 2 - 120}}rpx;'>
+    <map id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" show-location markers="{{markers}}">
+      <cover-view class="citylist" wx:if="{{open}}">
+          <cover-view class='city-item' wx:for="{{city}}" wx:for-index="idx" wx:key="{{idx}}" data-cityname='{{item.name}}' bindtap='chooseCity'>
+            {{item.name}}
+          </cover-view>
+      </cover-view>
+    </map>
+  </view>
+</view>

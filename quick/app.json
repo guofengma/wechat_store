@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/apply/apply",
     "pages/settle/settle",
@@ -29,7 +28,8 @@
     "pages/scorelist/scorelist",
     "pages/scoreinvest/scoreinvest",
     "pages/benefit/benefit",
-    "pages/benefitlist/benefitlist"
+    "pages/benefitlist/benefitlist",
+    "pages/grab/grab"
   ],
   "window": {
     "backgroundTextStyle": "light",
