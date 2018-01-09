@@ -64,7 +64,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
 
       if (res.ec != '999999') {
         this.setData({
@@ -96,9 +95,8 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
 
-      if (res != '') {
+      if (res != '' && res.data && res.data.totalpage) {
         setTimeout(() => {
 
           totalpage = res.data.totalpage
@@ -135,9 +133,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
-
-      if (res.ec != '999999') {
+      if (res.ec != '999999' && res.data && res.data.totalpage) {
         setTimeout(() => {
 
           totalpageUser = res.data.totalpage
@@ -159,9 +155,6 @@ Page({
 
   },
   loadMore() {
-
-    console.log(totalpage)
-    console.log(page)
 
     if (page >= totalpage - 1) {
 
