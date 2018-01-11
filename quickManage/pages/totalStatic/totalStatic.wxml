@@ -18,7 +18,7 @@
     </view>
   </view>
 
-  <view class='quit' bindtap='quit'>切换用户</view>  
+  <view class='quit' bindtap='quit'>切换用户</view>
 
   <view class='line-graph'>
     <view class='unit-y'>近一月销量</view>
@@ -38,9 +38,14 @@
   <view class='store'>
     <view class='storeList' wx:for="{{storeList}}" wx:for-index="idx" wx:key="{{idx}}">
       <view class='stname' bindtap='storeView' data-id="{{item.id}}" data-storename='{{item.name}}'>{{item.name}}</view>
-      <view>{{item.data.count}}件/{{item.data.totlefee}}元</view>
-      <view>
-        <button wx:if='{{boss}}' class='blue' open-type="share" data-id="{{item.id}}">授权</button>
+
+      <view class='bottom'>
+        <wxs src="./totalStatic.wxs" module="tools" />
+        <view>{{item.data.count}}件/{{item.data.totlefee}}元</view>
+        <view class='bottomRight'>
+          <button wx:if='{{boss}}' class='blue' open-type="share" data-id="{{item.id}}">授权</button>
+          <button bindtap='sendOrder' data-orderState="{{item.servicestate}}" data-name='{{item.name}}' data-item='{{item}}' class='sendOrder' data-id="{{item.id}}">{{tools.orderState(item.servicestate)}}</button>
+        </view>
       </view>
     </view>
   </view>

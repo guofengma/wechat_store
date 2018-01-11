@@ -120,20 +120,53 @@ page {
 }
 
 .storeList {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; *//* height: 96rpx; */
+  border-bottom: 1px #ececec solid;
+  background-color: #fff;
+  padding-top: 20rpx;
+}
+
+.storeList .bottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 96rpx;
+  /* height: 96rpx; */
   border-bottom: 1px #ececec solid;
   background-color: #fff;
 }
 
+.storeList .bottomRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .blue {
-  color: #0d8fef;
   background-color: #fff;
-  border: none;
-  font-size: 30rpx;
+  font-size: 24rpx;
+  border: 1px solid #999;
+  border-radius: 2px;
+  line-height: 36rpx;
+  padding: 8rpx 32rpx;
+  color: #333333;
+  margin-right: 60rpx;
+}
+
+.sendOrder{
+  background-color: #fff;
+  font-size: 24rpx;
+  border: 1px solid #999;
+  border-radius: 2px;
+  line-height: 36rpx;
+  padding: 8rpx 0;
+  width: 112rpx;
+  text-align: center;
+  color: #333333;
 }
 
 .stname {
@@ -146,12 +179,12 @@ button::after {
 }
 
 .quit {
-  color: #333333;
+  color: #333;
   margin-top: 50rpx;
   margin-left: 77%;
   align-self: flex-end;
   position: absolute;
-  border: 1px #999999 solid;
+  border: 1px #999 solid;
   font-size: 24rpx;
   padding: 6rpx;
   z-index: 999;

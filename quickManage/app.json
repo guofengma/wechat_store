@@ -16,7 +16,9 @@
     "pages/detail/detail",
     "pages/statistics/statistics",
     "pages/info/info",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/sendorder/sendorder",
+    "pages/receiveOrder/receiveOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

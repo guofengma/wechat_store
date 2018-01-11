@@ -97,14 +97,12 @@ Page({
 
 
       if (res != '' && res.data && res.data.totalpage) {
-        setTimeout(() => {
 
           totalpage = res.data.totalpage
           this.setData({
             storeList: this.data.storeList.concat(res.data.increasMoney)
           })
 
-        }, 500);
       }
 
     }).catch(err => {

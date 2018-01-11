@@ -1,0 +1,13 @@
+<view class="container">
+  <view class='header'>
+    <image class='topBg' src="../../image/topBg.png"></image>
+  </view>
+  <view class='list'>
+    <wxs src="./shelveOrderList.wxs" module="tools" />
+    <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}' bindtap='sendOrder' class='item' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+      <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}'>{{item.storeName}}</view>
+      <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}'>{{tools.normalDate(item.time)}}</view>
+      <view class='btn' catchtap='moveTo'>{{tools.orderState(item.servicestate)}}</view>
+    </view>
+  </view>
+</view>

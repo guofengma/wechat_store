@@ -1,0 +1,22 @@
+var orderState = function (state) {
+  switch (state) {
+    case 2:
+      return "去上架";
+      break;
+    case 3:
+      return "待确认";
+      break;
+    case 4:
+      return "已完成";
+      break;
+  }
+};
+
+var normalDate = function(time) {
+  return time.substring(0, 4) + "-" + time.substring(4, 6) + "-" + time.substring(6);
+};
+
+module.exports = {
+  orderState: orderState,
+  normalDate: normalDate
+};

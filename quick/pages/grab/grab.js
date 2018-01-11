@@ -1,4 +1,5 @@
 // pages/grab/grab.js
+import fetch from '../../utils/fetch.js'
 var latitudes = '';
 var longitudes = '';
 Page({
@@ -20,15 +21,84 @@ Page({
     open: false,
     selectCity: "城市",
     markers: [{
-      iconPath: "../../image/mapStore.png",
-      id: 0,
-      latitude: latitudes,
-      longitude: longitudes,
+      id:1,
+      latitude: 39.9219,
+      longitude: 116.44355,
       width: 28,
-      height: 34
+      height: 34,
+      iconPath: "../../image/mapStore.png"
     }],
-    
+    mapShow: true
 
+  },
+  getShelves(lng, lat) {
+    fetch({
+      url: "/CVS/querybypos",
+       baseUrl: "http://192.168.50.239:9888", 
+      // baseUrl: "https://store.lianlianchains.com",
+      data: {
+        lng: lng,
+        lat: lat
+      },
+      noLoading: true,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(res => {
+
+      console.log(res);
+
+      var data = this._normallizeData(res.data);
+      console.log(data)
+      this.setData({
+        markers: data
+      });
+
+
+    }).catch(err => {
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    });
+  },
+  regionChange(e) {
+    if(e.type === "end") {
+      this.mapCtx.getCenterLocation({
+        success: (res) => {
+          console.log(res.longitude)
+          console.log(res.latitude)
+
+          var lng = res.longitude;
+          var lat = res.latitude;
+
+          this.getShelves(lng, lat);
+        }
+      });
+    }
+  },
+  markertap(e) {
+    console.log(e);
+    let item = this.data.markers.filter((item, index) => {
+      return item.id == e.markerId
+    });
+    wx.navigateTo({
+      url: '../receiveOrder/receiveOrder?item=' + JSON.stringify(item)
+    })
+  },
+  mapChange(e) {
+    console.log(e)
+  },
+  shelveOrderList() {
+    wx.navigateTo({
+      url: '../shelveOrderList/shelveOrderList',
+    })
+  },
+  searchView() {
+    wx.navigateTo({
+      url: '../search/search',
+    })
   },
   city() {
     this.setData({
@@ -76,8 +146,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap');
+    
     wx.getSystemInfo({
       success:  (res) => {
         // console.log(res.model)
@@ -91,10 +161,11 @@ Page({
           windowHeight: res.windowHeight
         })
       }
-    })
+    });
+    
     wx.getLocation({
       type: 'gcj02',
-      altitude:true,
+      altitude: true,
       success: (res) => {
         var latitude = res.latitude;
         var longitude = res.longitude;
@@ -105,32 +176,16 @@ Page({
         longitudes = longitude;
 
         this.setData({
-          latitude: latitude,
-          longitude:longitude,
-          markers: [{
-            iconPath: "../../image/mapStore.png",
-            id: 0,
-            latitude: latitude,
-            longitude: longitude,
-            width: 28,
-            height: 34
-          }]
+          longitude: longitudes,
+          latitude: latitudes
         })
+
+        console.log(longitudes, latitudes);
+        this.getShelves(longitudes, latitudes);
+
+
       }
-    })
-    // wx.getLocation({
-    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度  
-    //   success: function (res) {
-    //     var latitude = res.latitude
-    //     var longitude = res.longitude
-    //     wx.openLocation({
-    //       latitude: latitude,
-    //       longitude: longitude,
-    //       name: "东亚银行",
-    //       scale: 28
-    //     })
-    //   }
-    // })  
+    }); 
   },
 
   /**
@@ -180,5 +235,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  _normallizeData(data) {
+    let arr = [];
+    let obj = {};
+    for(let item of data) {
+      obj.id = item.storeId;
+      obj.latitude = item.lat;
+      obj.longitude = item.lng;
+      obj.width = 28;
+      obj.height = 34;
+      obj.iconPath = "../../image/mapStore.png";
+      obj.storeName = item.storeName;
+      obj.address = item.address;
+      
+      arr.push(obj);
+    }
+
+    return arr;
   }
 })

@@ -1,0 +1,51 @@
+<view class="container">
+  <view class='header'>
+    <view class='name'>{{info[0].storeName}}</view>
+    <view class='address'>{{info[0].address}}</view>
+  </view>
+  <view class='content'>
+    <form bindsubmit='submit'>
+      <view class="section">
+        <view class="section__title">服务</view>
+        <view class='section_input'>{{formData.name}}</view>
+      </view>
+      <view class='section'>
+        <label class='section_title'>价格</label>
+        <view class='section_input'>{{formData.price}}</view>
+      </view>
+      <view class="section">
+        <view class="section__title">时间</view>
+        <view class='section_input'>{{formData.time}}</view>
+      </view>
+      <view class="section" style='position: relative;'>
+        <view class="section__title">手机号</view>
+        <input class='section_input' maxlength='11'  value="{{phone}}" name="orderstate"></input>
+        <button open-type="getPhoneNumber" class='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>获 取</button>
+      </view>
+      <button data-orderstate='1' class='btn' form-type='submit'>接单</button>
+      <input hidden='true' value="{{orderState}}" name="orderstate"></input>
+    </form>
+  </view>
+  <view class='mask' wx:if="{{maskShow}}">
+    <view class='register'>
+      <view class='register_title'>
+        首次接单需注册
+      </view>
+      <view>
+        <view class="section">
+          <view class="section__title">手机号</view>
+          <input class='section_input' value="{{phone}}"></input>
+        </view>
+        <view class="section">
+          <view class="section__title">密码</view>
+          <input class='section_input' type='password' value="{{pwd}}" bindinput='pwdInput'></input>
+        </view>
+        <view class='btn-area'>
+          <view class='button' bindtap='hideMask'>取消</view>
+          <view class='button' bindtap='register'>完成</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,23 @@
+var orderState = function(state) {
+  switch(state) {
+    case 0:
+      return "发单";
+      break;
+    case 1:
+      return "发单中";
+      break;
+    case 2:
+      return "待确认";
+      break;
+    case 3: 
+      return "待确认";
+      break;
+    case 4:
+      return "已完成";
+      break;
+  }
+};
+
+module.exports = {
+  orderState: orderState
+};

@@ -1,0 +1,43 @@
+<view class="container">
+  <view class='header'>
+    <view class='name'>{{info.name}}</view>
+    <view class='address'>{{info.address}}</view>
+  </view>
+  <view class='content'>
+    <form bindsubmit='submit'>
+      <view class="section">
+        <view class="section__title">服务</view>
+        <picker class='section_input' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index]}}
+          </view>
+        </picker>
+        <input class='section_input' value='{{array[index]}}' name="service" hidden='true'></input>
+      </view>
+      <view class='section'>
+        <label class='section_title'>价格</label>
+        <input class='section_input' type='number' name="price"></input>
+      </view>
+      <view class="section">
+        <view class="section__title">时间</view>
+        <picker class='section_input' mode="date" value="{{date}}" start="{{startDate}}" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+        <input hidden='true' value='{{date}}' name="date"></input>
+      </view>
+      <view class='section section-phone'>
+        <label class='section_title'>手机号</label>
+        <input class='section_input' value='{{phone}}' type='number' name="phone"></input>
+        <button open-type="getPhoneNumber" class='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>获 取</button>
+      </view>
+      <button wx:if="{{orderState == 0}}" data-orderstate='1' class='btn' form-type='submit'>发起</button>
+      <view wx:if="{{orderState == 1}}" class='reSend'>
+        <button class='re-btn re-send' data-orderstate='1' form-type='submit'>重发</button>
+        <button class='re-btn' data-orderstate='0' form-type='submit'>取消</button>
+      </view>
+      <input hidden='true' value="{{orderState}}" name="orderstate"></input>
+    </form>
+  </view>
+</view>

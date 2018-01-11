@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="header">
+    <input></input>
+    <view>搜索</view>
+  </view>
+  <view class='serchList'>
+    <view class='item' bindtap='select'>北京国贸</view>
+  </view>
+</view>

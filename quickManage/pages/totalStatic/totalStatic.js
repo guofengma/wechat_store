@@ -12,6 +12,48 @@ Page({
     week: false,
     day: true
   },
+  //发单
+  sendOrder(e) {
+    console.log(e);
+    var orderState = e.target.dataset.orderstate;
+    console.log(orderState)
+    // if (orderState == 0) {
+    //   wx.navigateTo({
+    //     url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item),
+    //   });
+    // }
+    // else if() {
+      
+    // }
+    switch (orderState) {
+      case 0:
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
+        break;
+      case 1:
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
+        break;
+      case 2:
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
+        break;
+      case 3:
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
+        break;
+      case 4:
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
+        break;
+    }
+    
+  },
   quit() {
 
     console.log('quit');

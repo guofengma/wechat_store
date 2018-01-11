@@ -19,7 +19,7 @@ App({
             //   }
             // });
             var d = that.globalData;//这里存储了appid、secret、token串    
-            var l = 'https://store.lianlianchains.com/wx/getopenid?code=' + res.code;
+            var l = 'http://192.168.50.239:9888/wx/getbossopenid?code=' + res.code;
             wx.request({
               url: l,
               data: {},
@@ -29,6 +29,7 @@ App({
                  console.log(res)
                 var obj = {};
                 obj.openid = res.data.openid;
+                obj.session_key = res.data.session_key;
                 obj.expires_in = Date.now() + res.data.expires_in;
                 console.log(obj);
                 wx.setStorageSync('user', obj);//存储openid    

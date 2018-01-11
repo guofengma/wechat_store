@@ -76,8 +76,12 @@ export function normalizeStoreList(obj, storeidList) {
     var storeidname = item.storeid + 'name';
     o.id = item.storeid;
     o.data = JSON.parse(obj[storeid]);
-    o.name = obj[storeidname].storeName
-    arr.push(o)
+    o.name = obj[storeidname].storeName;
+    o.address = obj[storeidname].address;
+    o.lat = obj[storeidname].lat;
+    o.lng = obj[storeidname].lng;
+    o.servicestate = obj[storeidname].servicestate;
+    arr.push(o);
   })
   return arr;
 }

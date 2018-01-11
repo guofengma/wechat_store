@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/receiveOrder/receiveOrder",
     "pages/index/index",
     "pages/apply/apply",
     "pages/settle/settle",
@@ -29,7 +30,11 @@
     "pages/scoreinvest/scoreinvest",
     "pages/benefit/benefit",
     "pages/benefitlist/benefitlist",
-    "pages/grab/grab"
+    "pages/grab/grab",
+    "pages/search/search",
+    "pages/shelveOrderList/shelveOrderList",
+    "pages/sendOrder/sendOrder"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
