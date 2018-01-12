@@ -19,7 +19,7 @@
       </view>
       <view class="section" style='position: relative;'>
         <view class="section__title">手机号</view>
-        <input class='section_input' maxlength='11'  value="{{phone}}" name="orderstate"></input>
+        <input class='section_input' maxlength='11' bindinput='input'  value="{{phone}}" name="orderstate"></input>
         <button open-type="getPhoneNumber" class='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>获 取</button>
       </view>
       <button data-orderstate='1' class='btn' form-type='submit'>接单</button>

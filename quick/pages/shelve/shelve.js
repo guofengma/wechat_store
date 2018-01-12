@@ -114,9 +114,10 @@ Page({
         this.setData({
           previewImg1: path
         })
+        console.log(data)
         wx.uploadFile({
           // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
-          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', 
           filePath: path,
           name: 'test',
           formData: {
@@ -125,7 +126,7 @@ Page({
           success: (res) => {
             var data = res.data
             //do something
-
+            console.log(data)
             this.setData({
               image1: data
             })

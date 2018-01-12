@@ -13,11 +13,6 @@ Page({
     date: '',
     startDate: get3MonthBefor()
   },
-  input(e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
   getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
@@ -57,34 +52,28 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
-    })
+    }) 
   },
   submit(e) {
     console.log(e)
     var servicestate = e.detail.target.dataset.orderstate;
 
     fetch({
-      url: "/CVS/issueOrder",
+      url: "/CVS/updatestorestate",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        StoreId: this.data.info.id,
-        address: this.data.info.address,
-        StoreName: this.data.info.name,
-        lng: this.data.info.lng,
-        lat: this.data.info.lat,
-        name: e.detail.value.service,
-        price: e.detail.value.price,
-        phone: e.detail.value.phone,
-        time: (e.detail.value.date).replace(new RegExp("-", "gm"), ""),
-        servicestate: servicestate
+        StoreId: this.data.info.storeId,
+        servicestate: 4
       },
       method: "POST",
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      wx.navigateBack();
+      wx.redirectTo({
+        url: '../totalStatic/totalStatic',
+      })
 
     }).catch(err => {
 
@@ -99,9 +88,33 @@ Page({
     if (!!options.item && !!options.orderstate) {
       info = JSON.parse(options.item);
       this.setData({
-        info: info,
         orderState: options.orderstate
       })
+      fetch({
+        url: "/CVS/querybyid",
+        // baseUrl: "http://192.168.50.239:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          StoreId: info.id
+        },
+        method: "POST",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+        console.log(res);
+        var url = "https://store.lianlianchains.com/images/";
+        res.img1 = url + res.img1;
+        res.img2 = url + res.img2;
+        res.img3 = url + res.img3;
+        this.setData({
+          info: res
+        })
+
+      }).catch(err => {
+
+      });
+
+      
     }
   },
 

@@ -15,15 +15,22 @@ Page({
       url: '../sendOrder/sendOrder?storeid=' + storeid,
     })
   },
-  moveTo() {
-    wx.navigateToMiniProgram({
-      appId: 'wx22980810fa9f0ba3',
-      path: 'pages/submit/submit',
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
-      }
-    })
+  moveTo(e) {
+    if (e.target.dataset.servicestate == 2) {
+      wx.navigateToMiniProgram({
+        appId: 'wx22980810fa9f0ba3',
+        path: 'pages/submit/submit',
+        envVersion: 'develop',
+        success(res) {
+          // 打开成功
+        }
+      })
+    } else if (e.target.dataset.servicestate == 3){
+      wx.showToast({
+        title: '等待商家确认',
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -31,8 +38,8 @@ Page({
   onLoad: function (options) {
     fetch({
       url: "/CVS/querybyopenid",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid
       },

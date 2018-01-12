@@ -29,7 +29,7 @@
       </view>
       <view class='section section-phone'>
         <label class='section_title'>手机号</label>
-        <input class='section_input' value='{{phone}}' type='number' name="phone"></input>
+        <input class='section_input' value='{{phone}}' type='number' name="phone"  bindinput='input'></input>
         <button open-type="getPhoneNumber" class='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>获 取</button>
       </view>
       <button wx:if="{{orderState == 0}}" data-orderstate='1' class='btn' form-type='submit'>发起</button>

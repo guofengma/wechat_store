@@ -18,8 +18,8 @@ Page({
   receiveOrder() {
     fetch({
       url: "/CVS/getorder",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         StoreId: "000001" || this.data.info[0].id,
         openid: wx.getStorageSync('user').openid
@@ -60,8 +60,8 @@ Page({
     }
     fetch({
       url: "/CVS/shopopen",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         storeid: "000001",
         phoneno: this.data.phone,
@@ -80,6 +80,11 @@ Page({
       hasRegister: true
     });
   },
+  input(e) {
+    this.setData({
+      phone: e.detail.value
+    });
+  },
   getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
@@ -89,7 +94,7 @@ Page({
     if (e.detail.errMsg != 'getPhoneNumber:fail user deny') {
 
       wx.request({
-        url: 'http://192.168.50.239:9888/wx/decodePhone',
+        url: 'https://store.lianlianchains.com/wx/decodePhone',
         data: {
           openid: wx.getStorageSync('user').openid,
           session_key: wx.getStorageSync('user').session_key,
@@ -146,8 +151,8 @@ Page({
   _checkFirst() {
     fetch({
       url: "/CVS/shopfirst",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         phoneno: this.data.phone
       },
@@ -187,8 +192,8 @@ Page({
 
     fetch({
       url: "/CVS/querybyid",
-      baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         StoreId: info[0].id
       },

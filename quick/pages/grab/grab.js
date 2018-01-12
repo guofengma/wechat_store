@@ -20,22 +20,15 @@ Page({
     ],
     open: false,
     selectCity: "城市",
-    markers: [{
-      id:1,
-      latitude: 39.9219,
-      longitude: 116.44355,
-      width: 28,
-      height: 34,
-      iconPath: "../../image/mapStore.png"
-    }],
-    mapShow: true
-
+    markers: [],
+    mapShow: true,
+    show: false
   },
   getShelves(lng, lat) {
     fetch({
       url: "/CVS/querybypos",
-       baseUrl: "http://192.168.50.239:9888", 
-      // baseUrl: "https://store.lianlianchains.com",
+      //  baseUrl: "http://192.168.50.239:9888", 
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         lng: lng,
         lat: lat
@@ -48,11 +41,15 @@ Page({
 
       console.log(res);
 
+
       var data = this._normallizeData(res.data);
       console.log(data)
       this.setData({
-        markers: data
+        markers: data,
+        show: true
       });
+
+      
 
 
     }).catch(err => {
@@ -70,8 +67,8 @@ Page({
           console.log(res.longitude)
           console.log(res.latitude)
 
-          var lng = res.longitude;
-          var lat = res.latitude;
+          var lng = res.longitude - 0;
+          var lat = res.latitude - 0;
 
           this.getShelves(lng, lat);
         }
@@ -111,36 +108,7 @@ Page({
       open: !this.data.open
     });
 
-    // this.mapCtx.translateMarker({
-    //   markerId: 0,
-    //   autoRotate: true,
-    //   duration: 1000,
-    //   destination: {
-    //     latitude: 23.10229,
-    //     longitude: 113.3345211,
-    //   },
-    //   animationEnd() {
-    //     console.log('animation end')
-    //   }
-    // })
-
-    // this.mapCtx.getCenterLocation({
-    //   success: (res) => {
-    //     console.log(res.longitude)
-    //     console.log(res.latitude)
-
-    //     this.mapCtx.includePoints({
-    //       padding: [10],
-    //       points: [{
-    //         latitude: 23.10229,
-    //         longitude: 113.3345211,
-    //       }, {
-    //         latitude: 23.00229,
-    //         longitude: 113.3345211,
-    //       }]
-    //     })
-    //   }
-    // })
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -162,6 +130,16 @@ Page({
         })
       }
     });
+    if(options.lat && options.lng) {
+      this.setData({
+        longitude: options.lng,
+        latitude: options.lat
+      });
+
+      this.getShelves(options.lng - 0, options.lat - 0);
+
+      return
+    }
     
     wx.getLocation({
       type: 'gcj02',
@@ -172,8 +150,8 @@ Page({
         var speed = res.speed;
         var accuracy = res.accuracy;
 
-        latitudes = latitude;
-        longitudes = longitude;
+        latitudes = latitude - 0;
+        longitudes = longitude - 0;
 
         this.setData({
           longitude: longitudes,
@@ -241,8 +219,8 @@ Page({
     let obj = {};
     for(let item of data) {
       obj.id = item.storeId;
-      obj.latitude = item.lat;
-      obj.longitude = item.lng;
+      obj.latitude = item.lat - 0;
+      obj.longitude = item.lng - 0;
       obj.width = 28;
       obj.height = 34;
       obj.iconPath = "../../image/mapStore.png";

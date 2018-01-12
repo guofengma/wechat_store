@@ -13,6 +13,11 @@ Page({
     date: '',
     startDate: get3MonthBefor()
   },
+  input(e) {
+    this.setData({
+      phone:e.detail.value
+    })
+  },
   getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
@@ -22,7 +27,7 @@ Page({
     if (e.detail.errMsg != 'getPhoneNumber:fail user deny') {
 
       wx.request({
-        url: 'http://192.168.50.239:9888/wx/decodePhone',
+        url: 'https://store.lianlianchains.com/wx/decodePhone',
         data: {
           openid: wx.getStorageSync('user').openid,
           session_key: wx.getStorageSync('user').session_key,
@@ -60,8 +65,8 @@ Page({
 
     fetch({
       url: "/CVS/issueOrder",
-       baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      //  baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         StoreId: this.data.info.id,
         address: this.data.info.address,

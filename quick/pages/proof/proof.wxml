@@ -1,0 +1,31 @@
+<view class="container">
+  <view class='header'>
+    <view class='name'>{{info.storeName}}</view>
+    <view class='address'>{{info.address}}</view>
+  </view>
+  <view class='content'>
+    <view class="section">
+      <view class="section__title">服务</view>
+      <view class='section_input'>{{info.name}}</view>
+    </view>
+    <view class='section'>
+      <label class='section_title'>价格</label>
+      <view class='section_input'>{{info.price}}</view>
+    </view>
+    <view class="section">
+      <view class="section__title">时间</view>
+      <view class='section_input'>{{info.time}}</view>
+    </view>
+    <view class="section section__upload">
+      <view class="section__title">上架凭证</view>
+      <view class='section_input'>
+        <image class='upload' bindtouchstart="imageView" data-idx="previewImg1" src="{{previewImg1}}"></image>
+        <image class='upload' bindtouchstart="imageView" data-idx="previewImg2" src="{{previewImg2}}"></image>
+        <image class='upload' bindtouchstart="imageView" data-idx="previewImg3" src="{{previewImg3}}"></image>
+      </view>
+    </view>
+    <view class='reSend'>
+      <button bindtap="submit" class='re-btn re-send' data-orderstate='1'>提交</button>
+    </view>
+  </view>
+</view>

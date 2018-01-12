@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/receiveOrder/receiveOrder",
+    
     "pages/index/index",
     "pages/apply/apply",
     "pages/settle/settle",
@@ -31,9 +31,11 @@
     "pages/benefit/benefit",
     "pages/benefitlist/benefitlist",
     "pages/grab/grab",
+    "pages/receiveOrder/receiveOrder",
     "pages/search/search",
     "pages/shelveOrderList/shelveOrderList",
-    "pages/sendOrder/sendOrder"
+    "pages/sendOrder/sendOrder",
+    "pages/proof/proof"
     
   ],
   "window": {

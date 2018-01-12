@@ -4,10 +4,10 @@
   </view>
   <view class='list'>
     <wxs src="./shelveOrderList.wxs" module="tools" />
-    <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}' bindtap='sendOrder' class='item' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
-      <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}'>{{item.storeName}}</view>
-      <view data-storeid='{{item.storeId}}'  data-name='{{item.storeName}}' data-address='{{item.address}}'>{{tools.normalDate(item.time)}}</view>
-      <view class='btn' catchtap='moveTo'>{{tools.orderState(item.servicestate)}}</view>
+    <view data-storeid='{{item.storeId}}' bindtap='{{item.servicestate == 2 ? "sendOrder" : ""}}' class='item {{item.servicestate == 4 ?"finish" : ""}}' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+      <view class='storeName {{item.servicestate == 4 ?"finish_Name" : ""}}' data-storeid='{{item.storeId}}'>{{item.storeName}}</view>
+      <view class='{{item.servicestate == 4 ?"finish_time" : ""}}' data-storeid='{{item.storeId}}'>{{tools.normalDate(item.time)}}</view>
+      <view class='btn {{item.servicestate == 4 ?"finish_btn" : ""}}' catchtap='moveTo' data-servicestate='{{item.servicestate}}'>{{tools.orderState(item.servicestate)}}</view>
     </view>
   </view>
 </view>

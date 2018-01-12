@@ -1,0 +1,103 @@
+page {
+  background-color: #fff;
+}
+
+.container {
+  background-color: #fff;
+}
+
+.header {
+  text-align: center;
+  color: #fff;
+  background-color: #0d8fef;
+  padding: 40rpx;
+}
+
+.name {
+  font-size: 18px;
+}
+
+.address {
+  font-size: 14px;
+  margin-top: 10rpx;
+}
+
+.content {
+  padding: 40rpx;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 4.5%;
+}
+
+.section_title {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.section_input {
+  width: 80%;
+  border-bottom: 1px solid #ececec;
+}
+
+.section-phone{
+  position: relative;
+}
+
+.getPhoneNumber{
+  position: absolute;
+  right: 0;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  padding: 10rpx 20rpx;
+  border: 1px solid #0D8FEF;
+  background-color: #fff;
+  color: #0D8FEF;
+}
+
+.btn {
+  width: 53.3%;
+  height: 6%;
+  background-color: #0d8fef;
+  margin-top: 9.1%;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.reSend{
+  text-align: center;
+  margin-top: 9.1%;
+}
+
+.re-btn{
+  width: 280rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  display: inline-block;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #0D8FEF
+}
+
+.re-send{
+  margin-right: 35rpx;
+}
+
+.section__upload{
+  align-items: flex-start;
+}
+
+.section__upload .section_input{
+  border-bottom: none;
+}
+
+.upload{
+  width: 122rpx;
+  height: 122rpx;
+  margin-right: 50rpx;
+}

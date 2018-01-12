@@ -14,6 +14,8 @@
   align-items: center;
   padding: 40rpx;
   border-bottom: 1px solid #ececec;
+  font-size: 30rpx;
+  color: #0D8FEF
 }
 
 .btn {
@@ -24,16 +26,33 @@
   text-align: center;
   line-height: 50rpx;
   font-size: 24rpx;
-  color: #0D8FEF;
+  color: #0d8fef;
 }
 
-.success{
+.success {
   width: 112rpx;
   height: 50rpx;
   border-radius: 4px;
   text-align: center;
   line-height: 50rpx;
-  border: 1px solid #999999;
+  border: 1px solid #999;
   font-size: 24rpx;
+  color: #333;
+}
+
+.storeName {
+  font-weight: bold;
+}
+
+.finish_Name {
+  color: #333;
+}
+
+.finish_time{
+  color: #999999;
+}
+
+.finish_btn{
+  border-color: #999999;
   color: #333333;
 }

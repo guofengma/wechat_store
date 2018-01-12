@@ -1,5 +1,6 @@
 // pages/sendorder/sendorder.js
 import { get3MonthBefor, getNowDate } from '../../utils/date.js';
+import { uploadImage } from '../../utils/uploadImg.js'
 import fetch from '../../utils/fetch.js';
 Page({
 
@@ -12,12 +13,89 @@ Page({
     array: ['安装部署货架', '商品上下架'],
     phone: '',
     date: '',
-    startDate: get3MonthBefor()
+    startDate: get3MonthBefor(),
+    previewImg1: '../../image/upload.png',
+    previewImg2: '../../image/upload.png',
+    previewImg3: '../../image/upload.png',
+  },
+  //上传图片
+  imageView(e) {
+
+    let idx = e.target.dataset.idx;
+    uploadImage().then(res => {
+
+      let path = res.tempFilePaths[0];
+      if (idx === "previewImg1") {
+        this.setData({
+          previewImg1: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+
+            this.setData({
+              image1: data
+            })
+          }
+        })
+      } else if (idx === "previewImg2") {
+        this.setData({
+          previewImg2: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+
+            this.setData({
+              image2: data
+            })
+          }
+        })
+      } else if (idx === "previewImg3") {
+        this.setData({
+          previewImg3: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+
+            this.setData({
+              image3: data
+            })
+          }
+        })
+      }
+
+    })
   },
   //点击完成
   proofView() {
     wx.navigateTo({
-      url: '../proof/proof?storeid=' + this.data.storeid
+      url: '../proof/proof'
     })
   },
   //点击取消按钮
@@ -84,32 +162,46 @@ Page({
       date: e.detail.value
     })
   },
-  submit(e) {
-    console.log(e)
-    var servicestate = e.detail.target.dataset.orderstate;
-
+  updateState() {
     fetch({
-      url: "/CVS/issueOrder",
+      url: "/CVS/updatestorestate",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        StoreId: this.data.info.id,
-        address: this.data.info.address,
-        StoreName: this.data.info.name,
-        lng: this.data.info.lng,
-        lat: this.data.info.lat,
-        name: e.detail.value.service,
-        price: e.detail.value.price,
-        phone: e.detail.value.phone,
-        time: (e.detail.value.date).replace(new RegExp("-", "gm"), ""),
-        servicestate: servicestate
+        StoreId: this.data.info.storeId,
+        servicestate: 3
       },
       method: "POST",
       noLoading: true,
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      wx.navigateBack();
+      wx.redirectTo({
+        url: '../shelveOrderList/shelveOrderList',
+      });
+
+    }).catch(err => {
+
+    });
+  },
+  submit(e) {
+    fetch({
+      url: "/CVS/finish",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        StoreId: this.data.info.storeId,
+        phone: this.data.info.phone,
+        img1: this.data.image1,
+        img2: this.data.image2,
+        img3: this.data.image3
+      },
+      method: "POST",
+      noLoading: true,
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then(res => {
+
+      this.updateState();
 
     }).catch(err => {
 
@@ -138,7 +230,7 @@ Page({
         this.setData({
           info: res
         })
-        
+
       }).catch(err => {
 
       });
@@ -156,13 +248,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var date = getNowDate();
-
-    this.setData({
-      date: date
-    })
-
-    console.log(get3MonthBefor())
+    
   },
 
   /**

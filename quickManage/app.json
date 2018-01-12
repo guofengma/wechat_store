@@ -18,7 +18,8 @@
     "pages/info/info",
     "pages/chat/chat",
     "pages/sendorder/sendorder",
-    "pages/receiveOrder/receiveOrder"
+    "pages/receiveOrder/receiveOrder",
+    "pages/confirm/confirm"
   ],
   "window": {
     "backgroundTextStyle": "light",

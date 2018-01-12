@@ -1,9 +1,17 @@
 <view class="container">
-  <view class="header">
-    <input></input>
-    <view>搜索</view>
+  <view class='header'>
+    <view class='left'>
+      <input confirm-type="搜索" bindinput='input' bindconfirm="search" type='text' placeholder='搜索位置' class='search'></input>
+      <image class='delete' src="../../image/delete.png"></image>
+    </view>
+    <view class='search-btn' bindtap='search'>搜索</view>
   </view>
-  <view class='serchList'>
-    <view class='item' bindtap='select'>北京国贸</view>
+
+  
+  <view class='storeList'>
+    <view bindtap='select' data-lat='{{item.lat}}' data-lng='{{item.lng}}' class='item' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+      <image bindtap='select' data-lat='{{item.lat}}' data-lng='{{item.lng}}' class='address' src="../../image/address.png"></image>
+      <view bindtap='select' data-lat='{{item.lat}}' data-lng='{{item.lng}}'>{{item.address}}</view>
+    </view>
   </view>
 </view>

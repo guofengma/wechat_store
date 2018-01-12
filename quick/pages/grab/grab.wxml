@@ -8,7 +8,7 @@
   </view>
 
   <view class='map' style='height: {{windowHeight * 2 - 120 - 98}}rpx;'>
-    <map id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" show-location markers="{{markers}}" bindupdated="mapChange" bindmarkertap="markertap" bindregionchange="regionChange">
+    <map wx:if="{{show}}" id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" show-location markers="{{markers}}" bindupdated="mapChange" bindmarkertap="markertap" bindregionchange="regionChange">
       <cover-view class="citylist" wx:if="{{open}}">
           <cover-view class='city-item' wx:for="{{city}}" wx:for-index="idx" wx:key="{{idx}}" data-cityname='{{item.name}}' bindtap='chooseCity'>
             {{item.name}}
