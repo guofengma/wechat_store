@@ -1,0 +1,31 @@
+<view class="container">
+  <view class='header'>
+    <view class='name'>{{info.storeName}}</view>
+    <view class='address'>{{info.address}}</view>
+  </view>
+  <view class='content'>
+    <form bindsubmit='submit'>
+      <view class="section">
+        <view class="section__title">服务</view>
+        <view class='section_input'>{{info.name}}</view>
+      </view>
+      <view class='section'>
+        <label class='section_title'>价格</label>
+        <view class='section_input'>{{info.price}}</view>
+      </view>
+      <view class="section">
+        <view class="section__title">时间</view>
+        <view class='section_input'>{{info.time}}</view>
+      </view>
+      <view class='section section__voucher'>
+        <label class='section_title'>上架凭证</label>
+        <view class='section_input'>
+          <image class='img' src="{{info.img1}}"></image>
+          <image class='img' src="{{info.img2}}"></image>
+          <image class='img' src="{{info.img3}}"></image>
+        </view>
+      </view>
+      <button class='btn' form-type='submit'>确认</button>
+    </form>
+  </view>
+</view>

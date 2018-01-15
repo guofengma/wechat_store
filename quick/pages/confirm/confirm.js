@@ -1,5 +1,8 @@
 // pages/sendorder/sendorder.js
-import { get3MonthBefor, getNowDate } from '../../utils/date.js';
+import {
+  get3MonthBefor,
+  getNowDate
+} from '../../utils/date.js';
 import fetch from '../../utils/fetch.js';
 Page({
 
@@ -13,7 +16,7 @@ Page({
     date: '',
     startDate: get3MonthBefor()
   },
-  getPhoneNumber: function (e) {
+  getPhoneNumber: function(e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
@@ -30,7 +33,7 @@ Page({
           iv: e.detail.iv
         },
         method: 'GET',
-        success: function (secr) {
+        success: function(secr) {
           console.log(secr);
 
           that.setData({
@@ -42,54 +45,45 @@ Page({
 
     }
   },
-  bindPickerChange: function (e) {
+  bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
-  bindDateChange: function (e) {
+  bindDateChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
-    }) 
+    })
   },
   submit(e) {
 
     var opendId = wx.getStorageSync('user').openid;
-    var payMoney = this.data.info.price-0;
+    var payMoney = this.data.info.price - 0;
 
-    wx.navigateToMiniProgram({
-      appId: 'wx75befcb556e56774',
-      path: 'pages/confirm/confirm?info=' + JSON.stringify(this.data.info) + '&payMoney' + payMoney,
-      extraData: {},
-      envVersion: 'develop',
-      success(res) {
-        // 打开成功
-      }
-    })
-    
-    // this.prepay(opendId, payMoney)
-    
+    this.prepay(opendId, payMoney)
+
   },
   prepay(openId, payMoney) {
     console.log("支付钱数：" + payMoney);
     var that = this;
     fetch({
       url: "/wxpay/prepayshop",
-       baseUrl: "http://192.168.50.239:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': openId,
         'fee': payMoney,
         'description': "订单确认",
         'usedScore': 0,
         'mch_id': this.data.info.storeId,
-        'storeid': this.data.info.storeId,
-        'charges': this.data.info.openid
+        'storeid': this.data.info.storeId
       },
       method: "POST",
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
     }).then(result => {
       console.log(result);
       if (result.returncode) {
@@ -112,14 +106,16 @@ Page({
     var that = this;
     fetch({
       url: "/wxpay/sign",
-        baseUrl: "http://192.168.50.57:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.57:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'repay_id': prepay_id,
         'storeid': this.data.info.storeId
       },
       method: "POST",
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
     }).then(result => {
       console.log(result)
       that.requestPayment(result, payMoney);
@@ -128,7 +124,7 @@ Page({
     });
   },
   //申请支付
-  requestPayment: function (obj, payMoney) {
+  requestPayment: function(obj, payMoney) {
     let self = this;
     console.log("支付钱数：" + payMoney);
     wx.requestPayment({
@@ -137,7 +133,7 @@ Page({
       'package': obj.package,
       'signType': obj.signType,
       'paySign': obj.paySign,
-      'success': function (res) {
+      'success': function(res) {
 
         fetch({
           url: "/CVS/updatestorestate",
@@ -149,18 +145,21 @@ Page({
           },
           method: "POST",
           noLoading: true,
-          header: { 'content-type': 'application/x-www-form-urlencoded' }
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          }
         }).then(res => {
-
-          wx.redirectTo({
-            url: '../totalStatic/totalStatic',
+          wx.navigateBackMiniProgram({
+            extraData: {},
+            success(res) {
+              // 返回成功
+            }
           })
-
         }).catch(err => {
 
         });
       },
-      'fail': function (res) {
+      'fail': function(res) {
         console.log('输出失败信息：')
         console.log(res);
         console.log("支付失败")
@@ -170,7 +169,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     let info = {};
     if (!!options.item && !!options.orderstate) {
@@ -188,9 +187,12 @@ Page({
         },
         method: "POST",
         noLoading: true,
-        header: { 'content-type': 'application/x-www-form-urlencoded' }
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        }
       }).then(res => {
         console.log(res);
+        res.time = res.time.substring(0, 4) + "-" + res.time.substring(4, 6) + "-" + res.time.substring(6);
         var url = "https://store.lianlianchains.com/images/";
         res.img1 = url + res.img1;
         res.img2 = url + res.img2;
@@ -203,21 +205,21 @@ Page({
 
       });
 
-      
+
     }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var date = getNowDate();
 
     this.setData({
@@ -230,35 +232,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

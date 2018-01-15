@@ -31,7 +31,7 @@ page {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 4.5%;
+  margin-top: 60rpx;
 }
 
 .section_title {

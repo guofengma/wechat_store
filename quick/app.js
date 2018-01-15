@@ -19,28 +19,28 @@ App({
               // header: {}, // 设置请求的 header    
               success: function (res) {
                   console.log(res)
-                  wx.getUserInfo({
-                    withCredentials: true,
-                    success: function (info) {
-                      console.log(info)
-                      wx.request({
-                        // url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
-                        url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
-                        data: {
-                          openid: res.data.openid,
-                          session_key: res.data.session_key,
-                          encryptedData: info.encryptedData,
-                          iv: info.iv
-                        },
-                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
-                        // header: {}, // 设置请求的 header    
-                        success: function (secr) {
-                          console.log(secr)
-                          wx.setStorageSync('unionId', secr.data.userInfo.unionId);
-                        }
-                      });
-                    }
-                  })
+                  // wx.getUserInfo({
+                  //   withCredentials: true,
+                  //   success: function (info) {
+                  //     console.log(info)
+                  //     wx.request({
+                  //       // url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
+                  //       url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
+                  //       data: {
+                  //         openid: res.data.openid,
+                  //         session_key: res.data.session_key,
+                  //         encryptedData: info.encryptedData,
+                  //         iv: info.iv
+                  //       },
+                  //       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
+                  //       // header: {}, // 设置请求的 header    
+                  //       success: function (secr) {
+                  //         console.log(secr)
+                  //         wx.setStorageSync('unionId', secr.data.userInfo.unionId);
+                  //       }
+                  //     });
+                  //   }
+                  // })
                   
 
 

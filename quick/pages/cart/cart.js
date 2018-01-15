@@ -378,6 +378,7 @@ Page({
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(result => {
+      console.log(result)
       that.requestPayment(result, payMoney);
     }).catch(err => {
 

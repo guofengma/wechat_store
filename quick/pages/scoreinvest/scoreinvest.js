@@ -46,33 +46,21 @@ Page({
       join: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 12),
     })
 
-    if (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 12) {
-      this.setData({
-        btnCont: "参与",
-        joinBtn:true
-      });
-
-      this._getLimit();
-
-      return
-    } else if (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() < 15) {
-      this.setData({
-        btnCont: "提取",
-        joinBtn:false
-      });
-
-      return
-    } else{
-      this.setData({
-        btnContDisable:true
-      })
-    }
-
     if (investtype == 0) {
-      this.setData({
-        btnCont: "参与",
-        joinBtn: true
-      });
+      if (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() <= 12) {
+        this.setData({
+          btnCont: "参与",
+          joinBtn: true
+        });
+
+        this._getLimit();
+
+        return
+      }else{
+        this.setData({
+          btnContDisable: true
+        })
+      }
       this._getLimit();
 
       return
@@ -81,6 +69,19 @@ Page({
         btnCont: "提取",
         joinBtn: false
       });
+
+      if (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() <= 15) {
+        this.setData({
+          btnCont: "提取",
+          joinBtn: false
+        });
+
+        return
+      } else {
+        this.setData({
+          btnContDisable: true
+        })
+      }
 
       return
     }

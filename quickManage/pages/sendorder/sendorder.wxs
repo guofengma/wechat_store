@@ -1,0 +1,7 @@
+var normalDate = function (time) {
+  return time.substring(0, 4) + "-" + time.substring(4, 6) + "-" + time.substring(6);
+};
+
+module.exports = {
+  normalDate: normalDate
+};

@@ -1,10 +1,10 @@
 <view class="container">
   <view class='header'>
     <view class='left'>
-      <input confirm-type="搜索" bindinput='input' bindconfirm="search" type='text' placeholder='搜索位置' class='search'></input>
-      <image class='delete' src="../../image/delete.png"></image>
+      <input confirm-type="搜索" value="{{storename}}" bindinput='input' bindconfirm="search" type='text' placeholder='输入货架地址' class='search'></input>
+      <image bindtap='reset' class='delete' src="../../image/delete.png"></image>
     </view>
-    <view class='search-btn' bindtap='search'>搜索</view>
+    <view class='search-btn' catchtap='search'>搜索</view>
   </view>
 
   

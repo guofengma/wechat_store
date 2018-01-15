@@ -31,7 +31,7 @@ page {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 4.5%;
+  margin-top: 60rpx;
 }
 
 .section_title {
@@ -53,10 +53,13 @@ page {
   right: 0;
   font-size: 24rpx;
   line-height: 24rpx;
-  padding: 10rpx 20rpx;
+  padding: 15rpx 30rpx;
   border: 1px solid #0D8FEF;
   background-color: #fff;
   color: #0D8FEF;
+  top:50%;
+  transform: translateY(-60%);
+  z-index: 1000;
 }
 
 .btn {

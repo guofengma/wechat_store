@@ -16,7 +16,7 @@ Page({
   },
   //点击完成
   proofView() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../proof/proof?storeid=' + this.data.storeid
     })
   },
@@ -52,7 +52,7 @@ Page({
     if (e.detail.errMsg != 'getPhoneNumber:fail user deny') {
 
       wx.request({
-        url: 'http://192.168.50.239:9888/wx/decodePhone',
+        url: 'https://store.lianlianchains.com/wx/decodePhone',
         data: {
           openid: wx.getStorageSync('user').openid,
           session_key: wx.getStorageSync('user').session_key,
@@ -135,6 +135,7 @@ Page({
         header: { 'content-type': 'application/x-www-form-urlencoded' }
       }).then(res => {
         console.log(res);
+        res.time = res.time.substring(0, 4) + "-" + res.time.substring(4, 6) + "-" + res.time.substring(6);
         this.setData({
           info: res
         })

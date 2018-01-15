@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    storename: "",
   },
   input(e) {
     this.setData({
@@ -14,6 +14,12 @@ Page({
     });
 
     
+  },
+  reset() {
+    this.setData({
+      storename: "",
+      list: []
+    });
   },
   select(e) {
     console.log(e.target.dataset.lat, e.target.dataset.lng)

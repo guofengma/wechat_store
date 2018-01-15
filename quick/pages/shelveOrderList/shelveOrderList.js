@@ -11,7 +11,7 @@ Page({
   sendOrder(e) {
     console.log(e)
     var storeid = e.target.dataset.storeid;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../sendOrder/sendOrder?storeid=' + storeid,
     })
   },

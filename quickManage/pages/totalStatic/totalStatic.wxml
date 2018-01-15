@@ -44,7 +44,7 @@
         <view>{{item.data.count}}件/{{item.data.totlefee}}元</view>
         <view class='bottomRight'>
           <button wx:if='{{boss}}' class='blue' open-type="share" data-id="{{item.id}}">授权</button>
-          <button bindtap='sendOrder' data-orderState="{{item.servicestate}}" data-name='{{item.name}}' data-item='{{item}}' class='sendOrder' data-id="{{item.id}}">{{tools.orderState(item.servicestate)}}</button>
+          <button bindtap='sendOrder' data-orderState="{{item.servicestate}}" data-name='{{item.name}}' data-item='{{item}}' class='sendOrder {{item.servicestate == 4 || item.servicestate == 0 ? "gray":"blueCont"}}' data-id="{{item.id}}">{{tools.orderState(item.servicestate)}}</button>
         </view>
       </view>
     </view>

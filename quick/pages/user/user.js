@@ -2,6 +2,8 @@
 import fetch from '../../utils/fetch.js';
 
 var app = getApp();
+
+var num = 0;
 Page({
 
   /**
@@ -22,9 +24,63 @@ Page({
   //    })
   //  },
   grabShow() {
-    wx.navigateTo({
-      url: '../grab/grab',
-     })
+    
+    
+    // wx.getSetting({
+    //   success(res) {
+    //     if (!res.authSetting['scope.userLocation']) {
+        
+    //       wx.getLocation({
+    //         success: function(res) {
+    //           console.log(res)
+    //         },
+    //       })
+    //     }else{
+    //       wx.navigateTo({
+    //         url: '../grab/grab',
+    //       })
+    //     }
+    //   }
+    // })
+
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              console.log(111)
+            },
+            fail() {
+              wx.openSetting({
+                success: function (data) {
+                  if (data) {
+                    if (data.authSetting["scope.userInfo"] == true) {
+                      // wx.navigateTo({
+                      //   url: '../grab/grab',
+                      // })
+                    }
+                  }
+                },
+                fail: function () {
+                  console.info("2授权失败返回数据");
+
+                }
+              });
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '../grab/grab',
+          })
+        }
+      }
+    })
+
+    
+    
+    
   },
   querybenefit() {
     fetch({
@@ -145,19 +201,29 @@ Page({
   },
   _Auth() {
     let _this = this;
-    wx.openSetting({
-      success: function (data) {
-        if (data) {
-          if (data.authSetting["scope.userInfo"] == true) {
-            _this._getUnionID();
-          }
-        }
-      },
-      fail: function () {
-        console.info("2授权失败返回数据");
+    wx.showModal({
+      content: '快点申请获取用户信息权限',
+      success: function (res) {
+        if (res.confirm) {
+          wx.openSetting({
+            success: function (data) {
+              if (data) {
+                if (data.authSetting["scope.userInfo"] == true) {
+                  _this._getUnionID();
+                }
+              }
+            },
+            fail: function () {
+              console.info("2授权失败返回数据");
 
+            }
+          });
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
-    });
+    })
+    
 
   },
   score() {

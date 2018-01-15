@@ -257,6 +257,11 @@ Page({
    },
    onLoad: function (options) {
       var that = this;
+      if(options.t && options.t == "award") {
+        wx.navigateTo({
+          url: '../award/award',
+        })
+      }
       console.log(options.StoreId == "000001")
       if (!!options.StoreId) {
         wx.setStorageSync('storeId', options.StoreId)
@@ -266,6 +271,8 @@ Page({
           'storeName': options.StoreName
         })
       }
+
+
    },
    onShow: function () {
       var storeId = wx.getStorageSync('storeId');

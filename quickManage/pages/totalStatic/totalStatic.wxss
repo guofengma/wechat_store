@@ -137,6 +137,7 @@ page {
   /* height: 96rpx; */
   border-bottom: 1px #ececec solid;
   background-color: #fff;
+  padding-bottom: 20rpx;
 }
 
 .storeList .bottomRight {
@@ -201,4 +202,16 @@ button::after {
 .line {
   width: 4rpx;
   height: 60rpx;
+}
+
+.blueCont{
+  border: 1px solid #0D8FEF;
+  border-radius: 2px;
+  color: #0D8FEF
+}
+
+.gray{
+   border: 1px solid #999;
+  border-radius: 2px;
+  color: #333333;
 }

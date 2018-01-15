@@ -35,8 +35,9 @@
     "pages/search/search",
     "pages/shelveOrderList/shelveOrderList",
     "pages/sendOrder/sendOrder",
-    "pages/proof/proof"
-    
+    "pages/proof/proof",
+    "pages/award/award",
+    "pages/confirm/confirm"
   ],
   "window": {
     "backgroundTextStyle": "light",

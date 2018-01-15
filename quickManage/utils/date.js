@@ -33,7 +33,7 @@ export function getNowDate() {
   hms = currDate.getHours() + ':' + currDate.getMinutes() + ':' + (currDate.getSeconds() < 10 ? '0' + currDate.getSeconds() : currDate.getSeconds());
   
   month = (month < 10) ? ('0' + month) : month;
-  date = (month < 10) ? ('0' + date) : date;
+  date = (date < 10) ? ('0' + date) : date;
   resultDate = year + '-' + month + '-' + date
   // resultDate = year + '-' + month + '-' + date + ' ' + hms;
   return resultDate;

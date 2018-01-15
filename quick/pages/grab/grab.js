@@ -114,7 +114,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.mapCtx = wx.createMapContext('myMap');
+    
     
     wx.getSystemInfo({
       success:  (res) => {
@@ -170,7 +170,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    this.mapCtx = wx.createMapContext('myMap');
   },
 
   /**
@@ -216,9 +216,10 @@ Page({
   },
   _normallizeData(data) {
     let arr = [];
-    let obj = {};
-    for(let item of data) {
-      obj.id = item.storeId;
+    
+    data.forEach((item, index) => {
+      let obj = {};
+      obj.id = item.storeId - 0;
       obj.latitude = item.lat - 0;
       obj.longitude = item.lng - 0;
       obj.width = 28;
@@ -226,9 +227,9 @@ Page({
       obj.iconPath = "../../image/mapStore.png";
       obj.storeName = item.storeName;
       obj.address = item.address;
-      
+
       arr.push(obj);
-    }
+    })
 
     return arr;
   }

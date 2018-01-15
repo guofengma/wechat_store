@@ -37,12 +37,13 @@
 
 .delete{
   position: absolute;
-  right: 10rpx;
+  right: 20rpx;
   top: 50%;
   transform: translateY(-50%);
   width: 22rpx;
   height: 20rpx;
   z-index: 1000;
+  padding: 4rpx;
 }
 
 .address{

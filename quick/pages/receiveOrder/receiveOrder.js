@@ -21,7 +21,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        StoreId: "000001" || this.data.info[0].id,
+        StoreId: this.data.info[0].id == 1 ? "000001" : this.data.info[0].id,
         openid: wx.getStorageSync('user').openid
       },
       method: "POST",
@@ -30,9 +30,27 @@ Page({
     }).then(res => {
 
       if(res.ec === "000000") {
-        wx.navigateTo({
-          url: '../shelveOrderList/shelveOrderList',
+        fetch({
+          url: "/CVS/updatestorestate",
+          // baseUrl: "http://192.168.50.239:9888",
+          baseUrl: "https://store.lianlianchains.com",
+          data: {
+            StoreId: this.data.info[0].id,
+            servicestate: 2
+          },
+          method: "POST",
+          noLoading: true,
+          header: { 'content-type': 'application/x-www-form-urlencoded' }
+        }).then(res => {
+
+          wx.redirectTo({
+            url: '../shelveOrderList/shelveOrderList',
+          });
+
+        }).catch(err => {
+
         });
+        
       }
 
     }).catch(err => {
@@ -63,7 +81,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        storeid: "000001",
+        storeid: this.data.info[0].id == 1 ? '000001' : info[0].id,
         phoneno: this.data.phone,
         password: pwd
       },
@@ -195,7 +213,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        StoreId: info[0].id
+        StoreId: info[0].id == 1 ? '000001' : info[0].id
       },
       noLoading: true,
       method: "GET",
