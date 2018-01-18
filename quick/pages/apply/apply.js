@@ -46,9 +46,14 @@ Page({
     ]
   },
   bindLimitTap(e) {
+    page = 0;
     this.setData({
-      limit: e.target.dataset.limit
-    })
+      limit: e.target.dataset.limit,
+      storeList: []
+    });
+
+    this.querystore()
+
   },
   provideView() {
     wx.navigateTo({
@@ -266,15 +271,11 @@ Page({
   checkrole(roletype) {
 
     if (roletype == 0) {
-
       // 角色
       if (!this.data.field) {
         wx.navigateTo({
           url: '../providenav/providenav',
         })
-        // wx.showToast({
-        //   title: '请先申请提供场地',
-        // })
         return false
       }
     } else if (roletype == 1) {
@@ -293,9 +294,6 @@ Page({
         wx.navigateTo({
           url: '../shelvenav/shelvenav',
         });
-        // wx.showToast({
-        //   title: '请先申请货架供货',
-        // })
         return false
       }
 
@@ -331,7 +329,8 @@ Page({
       data: {
         'page': page,
         'pagenum': 5,
-        'address': this.data.address
+        'address': this.data.address,
+        openid: this.data.limit == "all" ? "" : wx.getStorageSync('user').openid
       },
       method: "GET",
       noLoading: true,
@@ -395,18 +394,12 @@ Page({
     // 0 场地 1 经营 2 供货
     var roletype = parseInt(e.target.dataset.roletype)
 
-    if (!this.checkrole(roletype)) {
-      console.log('role error')
-      return
-    }else{
-      this.initShelve(roletype)
-    }
+    this.setData({
+      roletype: e.target.dataset.roletype
+    });
 
-    // (this.data.storeid == '') ?
-    //   (this.initShelve(roletype)) :
-    //   (this.jOrqShelve(roletype, this.data.storeid))
-    
-
+    if (!this.checkrole(roletype)) return;
+    this.initShelve(roletype)
   },
   changeIcon(roletype) {
 
@@ -626,12 +619,6 @@ Page({
     console.log('onload')
 
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -650,39 +637,10 @@ Page({
     this.searchstore()
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
     this.loadMore()
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

@@ -58,6 +58,7 @@ Page({
         return
       }else{
         this.setData({
+          btnCont: "参与",
           btnContDisable: true
         })
       }
@@ -79,6 +80,7 @@ Page({
         return
       } else {
         this.setData({
+          btnCont: "提取",
           btnContDisable: true
         })
       }

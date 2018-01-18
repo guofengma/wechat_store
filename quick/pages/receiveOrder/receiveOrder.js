@@ -22,7 +22,8 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         StoreId: this.data.info[0].id == 1 ? "000001" : this.data.info[0].id,
-        openid: wx.getStorageSync('user').openid
+        openid: wx.getStorageSync('user').openid,
+        opphone: this.data.phone
       },
       method: "POST",
       noLoading: true,

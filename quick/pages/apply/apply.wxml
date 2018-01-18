@@ -1,13 +1,13 @@
 <view class="container">
-  <view class='header'>我要申请
+  <!-- <view class='header'>我要申请
     <text class='notice'>填写您的申请信息</text>
   </view>
   <view class='nav'>
     <view bindtap='provideView' class='nav-item nav-item-first'>提供场地</view>
     <view bindtap='manageView' class='nav-item nav-item-second'>经营货架</view>
     <view bindtap='shelveView' class='nav-item nav-item-third'>货架供货</view>
-  </view>
-  <view class='join-top'>
+  </view> -->
+  <view class='join-top select-role-header'>
     <view class='header-join'>
       <text class='notice'>选择角色创建货架</text>
     </view>
@@ -15,7 +15,7 @@
   <view class='store'>
     <view class='store-item-init'>
       <view class='store-content'>
-        <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item" class='init-role'>
+        <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item" class='init-role {{index == roletype ? "init-role-select" : ""}}'>
           <view class='roleimg-logo'>
             <image class='{{item.titleicon}}' src="{{item.titleimg}}" data-roletype='{{index}}' data-storeid='' bindtap='inittapicon'></image>
           </view>

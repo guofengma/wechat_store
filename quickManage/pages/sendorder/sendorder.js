@@ -16,7 +16,7 @@ Page({
   },
   priceInput(e) {
     this.setData({
-      price: e.detail.value
+      price: e.detail.value 
     })
   },
   input(e) {

@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -55,10 +55,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "settle",
-					"pathName": "pages/settle/settle",
-					"query": ""
+					"id": 4,
+					"name": "积分明细",
+					"pathName": "pages/scorelist/scorelist",
+					"query": "",
+					"scene": "1011"
 				}
 			]
 		}

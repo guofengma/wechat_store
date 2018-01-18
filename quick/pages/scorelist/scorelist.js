@@ -47,7 +47,7 @@ Page({
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'start': start,
-        'pagenum': 7,
+        'pagenum': 9,
         'unionId': wx.getStorageSync('unionId')
       },
       method: "GET",

@@ -137,11 +137,12 @@ Page({
       'success': (res) => {
 
         fetch({
-          url: "/CVS/updatestorestate",
+          url: "/CVS/finishtofour",
           // baseUrl: "http://192.168.50.239:9888",
           baseUrl: "https://store.lianlianchains.com",
           data: {
             StoreId: this.data.info.storeId,
+            phone: this.data.info.opphone,
             servicestate: 4
           },
           method: "POST",

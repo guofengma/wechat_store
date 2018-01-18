@@ -2,13 +2,12 @@
 
 .container {
   background-color: #fff;
-  overflow: hidden;
 }
 
 .list {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+   justify-content: space-between; 
   align-items: center;
   width: 90%;
   padding: 30rpx;
@@ -19,13 +18,12 @@
 .score {
   display: flex;
   flex-direction: row;
-  margin-left: 120rpx;
+  /* margin-left: 120rpx; */
 }
 
 .img {
   width: 36rpx;
   height: 36rpx;
-  margin-right: 10rpx;
 }
 
 .bak {
@@ -36,7 +34,7 @@
 .scorebk {
   width: 100%;
   height: 120rpx;
-  margin-right: 60rpx;
+  /* margin-right: 60rpx; */
 }
 
 .noorder {

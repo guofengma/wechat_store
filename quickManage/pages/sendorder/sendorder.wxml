@@ -16,7 +16,7 @@
       </view>
       <view class='section'>
         <label class='section_title'>价格</label>
-        <input class='section_input' value='{{price}}元' bindinput='priceInput' type='number' name="price"></input>
+        <input class='section_input' value='{{price}}' bindinput='priceInput' type='number' name="price"></input>
       </view>
       <view class="section">
         <view class="section__title">时间</view>
