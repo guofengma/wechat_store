@@ -127,23 +127,40 @@ Page({
 
     if (types == 'cancel') {
       fetch({
-        url: "/CVS/updatestorestate",
-        // baseUrl: "http://192.168.50.239:9888",
-        baseUrl: "https://store.lianlianchains.com",
-        data: {
-          StoreId: this.data.info.id,
-          servicestate: 0
-        },
-        method: "POST",
-        noLoading: true,
-        header: { 'content-type': 'application/x-www-form-urlencoded' }
-      }).then(res => {
+        url: "/CVS/delete",
+          // baseUrl: "http://192.168.50.239:9888",
+          baseUrl: "https://store.lianlianchains.com",
+          data: {
+            StoreId: this.data.info.id
+          },
+          method: "POST",
+          noLoading: true,
+          header: { 'content-type': 'application/x-www-form-urlencoded' }
+        }).then(res => {
 
-        wx.navigateBack();
+          wx.navigateBack();
 
-      }).catch(err => {
+        }).catch(err => {
 
-      });
+        });
+      // fetch({
+      //   url: "/CVS/updatestorestate",
+      //   // baseUrl: "http://192.168.50.239:9888",
+      //   baseUrl: "https://store.lianlianchains.com",
+      //   data: {
+      //     StoreId: this.data.info.id,
+      //     servicestate: 0
+      //   },
+      //   method: "POST",
+      //   noLoading: true,
+      //   header: { 'content-type': 'application/x-www-form-urlencoded' }
+      // }).then(res => {
+
+      //   wx.navigateBack();
+
+      // }).catch(err => {
+
+      // });
 
       return;
     }

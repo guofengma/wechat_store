@@ -10,3 +10,9 @@
     <!--<image class="scan_img" bindtap="bindScanTap" src="../../image/scanCode.png"></image>-->
     <!--<button  bindtap="bindScanTap">扫门店二维码</button>-->
 </view>
+
+<!-- <view>
+  <view>经度： {{longitude}}</view>
+  <view>纬度： {{latitude}}</view>
+</view> -->
+

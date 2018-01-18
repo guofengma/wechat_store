@@ -4,4 +4,13 @@
     <input class='section_input' type='text' bindinput='input' placeholder='请输入兑奖码' placeholder-class='placehoder'></input>
     <view class='button' bindtap='award' data-award='{{award}}'>兑奖</view>
   </view>
+  <view class='mask' wx:if="{{show}}">
+    <view class='mask-content'>
+      <image class='hb' src="{{url[index]}}"></image>
+      <view>
+        <image class='guanbi' src="{{guanbi}}" bindtap='close'></image>
+      </view>
+    </view>
+    
+  </view>
 </view>

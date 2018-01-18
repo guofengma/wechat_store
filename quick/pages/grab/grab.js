@@ -115,7 +115,7 @@ Page({
    */
   onLoad: function (options) {
     
-    
+    console.log("options1", options)
     wx.getSystemInfo({
       success:  (res) => {
         // console.log(res.model)
@@ -176,8 +176,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+      console.log("options",options)
   },
 
   /**
@@ -227,6 +227,9 @@ Page({
       obj.iconPath = "../../image/mapStore.png";
       obj.storeName = item.storeName;
       obj.address = item.address;
+      // obj.label = {
+      //   content: item.storeName
+      // };
 
       arr.push(obj);
     })

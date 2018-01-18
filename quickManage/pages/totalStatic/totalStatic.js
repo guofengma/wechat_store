@@ -37,11 +37,6 @@ Page({
         });
         break;
       case 3:
-        wx.navigateTo({
-          url: '../confirm/confirm?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
-        });
-        break;
-      case 4:
         wx.navigateToMiniProgram({
           appId: 'wx75befcb556e56774',
           path: 'pages/confirm/confirm?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
@@ -51,6 +46,12 @@ Page({
             // 打开成功
           }
         })
+        break;
+      case 4:
+        
+        wx.navigateTo({
+          url: '../sendorder/sendorder?item=' + JSON.stringify(e.target.dataset.item) + "&orderstate=" + orderState,
+        });
         break;
     }
     

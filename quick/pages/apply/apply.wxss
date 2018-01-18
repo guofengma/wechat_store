@@ -97,6 +97,27 @@ page {
   z-index: 10;
 }
 
+.tab{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+  font-size: 26rpx;
+}
+
+.tab-nav-item{
+  color: #999999;
+}
+
+.tab-nav-active{
+  color: #5DA7F8;
+}
+
+.line{
+  margin: 0 31rpx;
+}
+
 .store-item {
   /* border: 1px #ECECEC solid; */
   margin-top: 40rpx;
@@ -265,8 +286,8 @@ page {
 }
 
 .notice {
-  font-size: 28rpx;
-  color: #bbb;
+  font-size: 30rpx;
+  color: #333;
 }
 
 .storename {

@@ -38,3 +38,32 @@
   background-color: #0D8FEF;
   border-radius: 0 4px 4px 0;
 }
+
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  text-align: center;
+}
+
+.mask-content{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hb{
+  width: 612rpx;
+  height: 518rpx;
+}
+
+.guanbi {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 100rpx;
+}

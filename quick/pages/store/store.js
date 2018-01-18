@@ -69,19 +69,24 @@ Page({
    checkStore() {
       var that = this;
       wx.getLocation({
-         type: 'wgs84',
-         success: function (res) {
-            var latitude = res.latitude
-            var longitude = res.longitude
-            console.log(latitude)
-            console.log(longitude)
-            var speed = res.speed
-            var accuracy = res.accuracy
+        type: 'gcj02',
+        altitude: true,
+        success: (res) => {
+          var latitude = res.latitude;
+          var longitude = res.longitude;
+          var speed = res.speed;
+          var accuracy = res.accuracy;
 
-            that.getShop(latitude, longitude)
-            
-         }
-      })
+          this.setData({
+            longitude: longitude,
+            latitude: latitude
+          })
+
+          that.getShop(latitude, longitude)
+
+
+        }
+      }); 
    },
    /**
     * 生命周期函数--监听页面加载

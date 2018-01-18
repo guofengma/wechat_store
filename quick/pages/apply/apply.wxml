@@ -8,15 +8,12 @@
     <view bindtap='shelveView' class='nav-item nav-item-third'>货架供货</view>
   </view>
   <view class='join-top'>
-    <view class='header-join'>快速加入
+    <view class='header-join'>
       <text class='notice'>选择角色创建货架</text>
     </view>
   </view>
   <view class='store'>
     <view class='store-item-init'>
-      <view class='store-top'>
-        <!-- <view class='store-address-init'>选择您想担任的角色加入</view> -->
-      </view>
       <view class='store-content'>
         <view wx:for="{{iconlist}}" wx:key="index" wx:for-item="item" class='init-role'>
           <view class='roleimg-logo'>
@@ -28,8 +25,8 @@
     </view>
 
     <view class='join-top'>
-      <view class='header-join'>货架列表
-        <text class='notice'>组成货架合伙人</text>
+      <view class='header-join'>
+        <text class='notice'>点亮图标加入货架</text>
       </view>
       <view class='header-search'>
         <input placeholder='地点' placeholder-class='header-search-input-holder' class='header-search-input' bindinput='setAddress'></input>
@@ -37,6 +34,12 @@
           <image class="header-search-img" src='../../image/search.png' bindtap='searchstore'></image>
         </view>
       </view>
+    </view>
+
+    <view class='tab'>
+      <view class='tab-all tab-nav-item {{limit == "all" ? "tab-nav-active":""}}' data-limit='all' bindtap='bindLimitTap'>全部货架</view>
+      <view class='line'>|</view>
+      <view class='tab-mine tab-nav-item {{limit == "mine" ? "tab-nav-active":""}}' data-limit='mine' bindtap='bindLimitTap'>我的货架</view>
     </view>
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">

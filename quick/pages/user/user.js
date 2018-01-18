@@ -24,52 +24,33 @@ Page({
   //    })
   //  },
   grabShow() {
-    
-    
-    // wx.getSetting({
-    //   success(res) {
-    //     if (!res.authSetting['scope.userLocation']) {
-        
-    //       wx.getLocation({
-    //         success: function(res) {
-    //           console.log(res)
-    //         },
-    //       })
-    //     }else{
-    //       wx.navigateTo({
-    //         url: '../grab/grab',
-    //       })
-    //     }
-    //   }
-    // })
-
+    let _this = this;
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userLocation']) {
-
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success() {
-              console.log(111)
-            },
-            fail() {
-              wx.openSetting({
-                success: function (data) {
-                  if (data) {
-                    if (data.authSetting["scope.userInfo"] == true) {
-                      // wx.navigateTo({
-                      //   url: '../grab/grab',
-                      // })
+          wx.showModal({
+            content: '快点申请获取用户地理位置权限',
+            success: function (res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success: function (data) {
+                    if (data) {
+                      if (data.authSetting["scope.userLocation"] == true) {
+                        _this._getUnionID();
+                      }
                     }
-                  }
-                },
-                fail: function () {
-                  console.info("2授权失败返回数据");
+                  },
+                  fail: function () {
+                    console.info("2授权失败返回数据");
 
-                }
-              });
+                  }
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
           })
+         
         } else {
           wx.navigateTo({
             url: '../grab/grab',
@@ -176,7 +157,10 @@ Page({
                     // header: {}, // 设置请求的 header    
                     success: function (secr) {
                       wx.setStorageSync('unionId', secr.data.userInfo.unionId);
-                      that.queryscore();
+                      if (!!wx.getStorageSync('unionId')) {
+                        that.queryscore();
+                      }
+                      
                     }
                   });
                 }
@@ -227,13 +211,45 @@ Page({
 
   },
   score() {
-    if (!!wx.getStorageSync('unionId')) {
-      wx.navigateTo({
-        url: '../score/score',
-      })
-    } else {
-      this._Auth();
-    }
+    let _this = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+
+          wx.showModal({
+            content: '快点申请获取用户信息权限',
+            success: function (res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success: function (data) {
+                    if (data) {
+                      if (data.authSetting["scope.userInfo"] == true) {
+                        _this._getUnionID();
+                      }
+                    }
+                  },
+                  fail: function () {
+                    console.info("2授权失败返回数据");
+
+                  }
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        } else {
+          if (!wx.getStorageSync('unionId')) {
+            _this._getUnionID();
+          }else{
+            wx.navigateTo({
+              url: '../score/score',
+            })
+          }
+         
+        }
+      }
+    })
 
   },
   apply() {
@@ -366,7 +382,9 @@ Page({
         that.setData({
           avatarUrl: res.userInfo.avatarUrl,
           nickName: res.userInfo.nickName
-        })
+        });
+        that._getUnionID();
+        
       },
       fail: function (err) {
         that.setData({
@@ -374,6 +392,16 @@ Page({
         })
       }
     });
+
+    wx.authorize({
+      scope: 'scope.userLocation',
+      success() {
+
+      },
+      fail() {
+
+      }
+    })
 
   },
 

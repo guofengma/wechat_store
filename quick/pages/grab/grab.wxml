@@ -1,6 +1,6 @@
 <view class="container">
   <view class='header' bindtouchstart='searchView'>
-    <input type='text' placeholder='搜索位置' class='search'></input>
+    <input type='text' placeholder='搜索' class='search'></input>
     <!-- <view class='city' bindtap='city'>
       <text class='cityname'>{{selectCity}}</text>
       <image class='{{open ? "arrowOpen" : "arrow"}}' src='../../image/arrow.png'></image>

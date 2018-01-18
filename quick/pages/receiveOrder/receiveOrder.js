@@ -71,17 +71,20 @@ Page({
   register(add) {
     console.log(this.data.pwd)
     var pwd = "";
-    if(add == 'add') {
-      pwd = "";
+    if(add == 'has') {
+      console.log(111)
+      pwd = "";      
     }else{
-      pwd = this.data.pwd
+      console.log(222)
+      
+      pwd = this.data.pwd;
     }
     fetch({
       url: "/CVS/shopopen",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        storeid: this.data.info[0].id == 1 ? '000001' : info[0].id,
+        storeid: this.data.info[0].id == 1 ? '000001' : this.data.info[0].id,
         phoneno: this.data.phone,
         password: pwd
       },
@@ -188,7 +191,7 @@ Page({
           hasRegister: true,
           maskShow: false
         });
-        this.register("add")
+        this.register("has")
       }
     }).catch(err => {
 

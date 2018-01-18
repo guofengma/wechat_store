@@ -78,7 +78,8 @@ Page({
         'description': "订单确认",
         'usedScore': 0,
         'mch_id': this.data.info.storeId,
-        'storeid': this.data.info.storeId
+        'storeid': this.data.info.storeId,
+        'charges': this.data.info.openid
       },
       method: "POST",
       header: {
@@ -133,7 +134,7 @@ Page({
       'package': obj.package,
       'signType': obj.signType,
       'paySign': obj.paySign,
-      'success': function(res) {
+      'success': (res) => {
 
         fetch({
           url: "/CVS/updatestorestate",

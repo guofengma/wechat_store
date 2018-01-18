@@ -10,15 +10,15 @@
     </view>
     <view class='section'>
       <label class='section_title'>价格</label>
-      <view class='section_input'>{{info.price}}</view>
+      <view class='section_input'>{{info.price}}元</view>
     </view>
     <view class="section">
       <view class="section__title">时间</view>
       <view class='section_input'>{{info.time}}</view>
     </view>
     <view class='reSend'>
-      <button bindtap="proofView" class='re-btn re-send' data-orderstate='1'>完成</button>
-      <button bindtap='cancelOrder' class='re-btn' data-orderstate='0'>取消</button>
+      <button bindtap="proofView" class='re-btn re-send' data-orderstate='1'>订单完成</button>
+      <button bindtap='cancelOrder' class='re-btn' data-orderstate='0'>订单取消</button>
     </view>
   </view>
 </view>

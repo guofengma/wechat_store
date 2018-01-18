@@ -23,12 +23,11 @@ Page({
   //点击取消按钮
   cancelOrder() {
     fetch({
-      url: "/CVS/updatestorestate",
+      url: "/CVS/cancelorder",
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        StoreId: this.data.info.storeId,
-        servicestate: 1
+        StoreId: this.data.info.storeId
       },
       method: "POST",
       noLoading: true,
@@ -42,6 +41,26 @@ Page({
     }).catch(err => {
 
     });
+    // fetch({
+    //   url: "/CVS/updatestorestate",
+    //   // baseUrl: "http://192.168.50.239:9888",
+    //   baseUrl: "https://store.lianlianchains.com",
+    //   data: {
+    //     StoreId: this.data.info.storeId,
+    //     servicestate: 1
+    //   },
+    //   method: "POST",
+    //   noLoading: true,
+    //   header: { 'content-type': 'application/x-www-form-urlencoded' }
+    // }).then(res => {
+
+    //   wx.redirectTo({
+    //     url: '../grab/grab',
+    //   })
+
+    // }).catch(err => {
+
+    // });
   },
   getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)

@@ -2,7 +2,6 @@
   <view class='header'>
     <view class='left'>
       <input confirm-type="搜索" value="{{storename}}" bindinput='input' bindconfirm="search" type='text' placeholder='输入货架地址' class='search'></input>
-      <image bindtap='reset' class='delete' src="../../image/delete.png"></image>
     </view>
     <view class='search-btn' catchtap='search'>搜索</view>
   </view>

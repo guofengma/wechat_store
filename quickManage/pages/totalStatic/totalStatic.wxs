@@ -13,7 +13,7 @@ var orderState = function(state) {
       return "待确认";
       break;
     case 4:
-      return "已完成";
+      return "发单";
       break;
   }
 };

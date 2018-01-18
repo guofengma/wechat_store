@@ -4,10 +4,14 @@
   </view>
   <view class='list'>
     <wxs src="./shelveOrderList.wxs" module="tools" />
-    <view data-storeid='{{item.storeId}}' bindtap='{{item.servicestate == 2 ? "sendOrder" : ""}}' class='item {{item.servicestate == 4 ?"finish" : ""}}' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
+    <view wx:if="{{list && list.length > 0}}" data-storeid='{{item.storeId}}' bindtap='{{item.servicestate == 2 ? "sendOrder" : ""}}' class='item {{item.servicestate == 4 ?"finish" : ""}}' wx:for="{{list}}" wx:for-index="idx" wx:key="{{idx}}">
       <view class='storeName {{item.servicestate == 4 ?"finish_Name" : ""}}' data-storeid='{{item.storeId}}'>{{item.storeName}}</view>
       <view class='{{item.servicestate == 4 ?"finish_time" : ""}}' data-storeid='{{item.storeId}}'>{{tools.normalDate(item.time)}}</view>
       <view class='btn {{item.servicestate == 4 ?"finish_btn" : ""}}' catchtap='moveTo' data-servicestate='{{item.servicestate}}'>{{tools.orderState(item.servicestate)}}</view>
+    </view>
+    <view class='nodata' wx:if="{{!list || list.length == 0}}">
+      <image class='noOrder' src='../../image/noOrder.png'></image>
+      <view class='msg'>暂无订单</view>
     </view>
   </view>
 </view>

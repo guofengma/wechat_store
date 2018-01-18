@@ -259,7 +259,7 @@ Page({
       var that = this;
       if(options.t && options.t == "award") {
         wx.navigateTo({
-          url: '../award/award',
+          url: '../../component/award/award',
         })
       }
       console.log(options.StoreId == "000001")

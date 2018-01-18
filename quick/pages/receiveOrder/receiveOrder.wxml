@@ -11,7 +11,7 @@
       </view>
       <view class='section'>
         <label class='section_title'>价格</label>
-        <view class='section_input'>{{formData.price}}</view>
+        <view class='section_input'>{{formData.price}}元</view>
       </view>
       <view class="section">
         <view class="section__title">时间</view>
@@ -34,11 +34,11 @@
       <view>
         <view class="section">
           <view class="section__title">手机号</view>
-          <input class='section_input' value="{{phone}}"></input>
+          <input class='section_input' bindinput='input' value="{{phone}}"></input>
         </view>
         <view class="section">
           <view class="section__title">密码</view>
-          <input class='section_input' type='password' value="{{pwd}}" bindinput='pwdInput'></input>
+          <input class='section_input' maxlength='6' type='number'  value="{{pwd}}" bindinput='pwdInput'></input>
         </view>
         <view class='btn-area'>
           <view class='button' bindtap='hideMask'>取消</view>

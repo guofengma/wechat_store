@@ -10,7 +10,7 @@
     </view>
     <view class='section'>
       <label class='section_title'>价格</label>
-      <view class='section_input'>{{info.price}}</view>
+      <view class='section_input'>{{info.price}}元</view>
     </view>
     <view class="section">
       <view class="section__title">时间</view>
@@ -25,7 +25,7 @@
       </view>
     </view>
     <view class='reSend'>
-      <button bindtap="submit" class='re-btn re-send' data-orderstate='1'>提交</button>
+      <button disabled='{{!image1 || !image2 || !image3}}' bindtap="submit" class='re-btn re-send' data-orderstate='1'>提交</button>
     </view>
   </view>
 </view>

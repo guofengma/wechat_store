@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.7.2",
+	"libVersion": "1.9.1",
 	"appid": "wx75befcb556e56774",
 	"projectname": "quick",
 	"condition": {
@@ -20,8 +20,12 @@
 			"current": -1,
 			"list": []
 		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 2,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -38,10 +42,11 @@
 					"scene": "1007"
 				},
 				{
-					"id": -1,
-					"name": "score",
-					"pathName": "pages/score/score",
-					"query": ""
+					"id": 2,
+					"name": "兑奖",
+					"pathName": "pages/index/index",
+					"query": "t=award",
+					"scene": "1011"
 				},
 				{
 					"id": -1,

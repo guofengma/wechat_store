@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    limit: "all",
     user: wx.getStorageSync("user").openid,
     hasOrder: true,
     storeList: [],
@@ -43,6 +44,11 @@ Page({
         role: '供货方'
       }
     ]
+  },
+  bindLimitTap(e) {
+    this.setData({
+      limit: e.target.dataset.limit
+    })
   },
   provideView() {
     wx.navigateTo({

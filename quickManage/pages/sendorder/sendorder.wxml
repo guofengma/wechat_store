@@ -16,7 +16,7 @@
       </view>
       <view class='section'>
         <label class='section_title'>价格</label>
-        <input class='section_input' value='{{price}}' bindinput='priceInput' type='number' name="price"></input>
+        <input class='section_input' value='{{price}}元' bindinput='priceInput' type='number' name="price"></input>
       </view>
       <view class="section">
         <view class="section__title">时间</view>
@@ -32,10 +32,10 @@
         <input class='section_input' value='{{phone}}' type='number' name="phone" bindinput='input'></input>
         <button open-type="getPhoneNumber" class='getPhoneNumber' bindgetphonenumber='getPhoneNumber'>获 取</button>
       </view>
-      <button wx:if="{{orderState == 0}}" disabled='{{!price || !phone}}' data-types='send' data-orderstate='1' class='btn' form-type='submit'>发起</button>
+      <button wx:if="{{orderState == 0 || orderState == 4}}" disabled='{{!price || !phone}}' data-types='send' data-orderstate='1' class='btn' form-type='submit'>发起</button>
       <view wx:if="{{orderState == 1}}" class='reSend'>
-        <button class='re-btn re-send' data-types='resend' data-orderstate='1' form-type='submit'>重发</button>
-        <button class='re-btn' data-types='cancel' data-orderstate='0' form-type='submit'>取消</button>
+        <button class='re-btn re-send' data-types='resend' data-orderstate='1' form-type='submit'>订单重发</button>
+        <button class='re-btn' data-types='cancel' data-orderstate='0' form-type='submit'>订单取消</button>
       </view>
       <input hidden='true' value="{{orderState}}" name="orderstate"></input>
     </form>
