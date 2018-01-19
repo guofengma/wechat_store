@@ -312,7 +312,7 @@ page {
   font-size: 28rpx;
   color: #fc4037;
   box-sizing: border-box;
-  padding-right: 6rpx;
+  padding-right: 10rpx;
 }
 
 .notice {
