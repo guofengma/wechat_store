@@ -8,9 +8,9 @@ Page({
    */
   data: {
     url: [
-      "../../image/rmb2.png",
-      "../../image/rmb5.png",
-      "../../image/rmb10.png"
+      "http://store.lianlianchains.com/xiaolian/rmb2.png",
+      "http://store.lianlianchains.com/xiaolian/rmb5.png",
+      "http://store.lianlianchains.com/xiaolian/rmb10.png"
     ],
     index: 0,
     guanbi: "../../image/guanbi.png",

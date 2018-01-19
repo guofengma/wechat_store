@@ -49,7 +49,12 @@ page {
   justify-content: space-between;
 }
 
-.select-role-header{
+.comment{
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.select-role-header {
   margin-top: 0;
 }
 
@@ -101,7 +106,7 @@ page {
   z-index: 10;
 }
 
-.tab{
+.tab {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -110,15 +115,15 @@ page {
   font-size: 26rpx;
 }
 
-.tab-nav-item{
-  color: #999999;
+.tab-nav-item {
+  color: #999;
 }
 
-.tab-nav-active{
-  color: #5DA7F8;
+.tab-nav-active {
+  color: #5da7f8;
 }
 
-.line{
+.line {
   margin: 0 31rpx;
 }
 
@@ -250,9 +255,17 @@ page {
 
 .listrole {
   font-size: 26rpx;
-  /* color: #bebcbc; */
+  position: relative;
   margin-bottom: 10rpx;
   /* margin-top: 6rpx; */
+}
+
+.sign-img{
+  width: 46rpx;
+  height: 40rpx;
+  position: absolute;
+  right: -50rpx;
+  top: 0;
 }
 
 .NO {
@@ -269,7 +282,7 @@ page {
 }
 
 .NO-pengding {
-  text-align: left;
+  text-align: right;
   margin-left: 12rpx;
   padding-left: 10rpx;
   padding-top: 10rpx;
@@ -279,6 +292,7 @@ page {
   width: 95%;
   height: 55rpx;
   opacity: 0.7;
+  position: relative;
 }
 
 .opa {
@@ -288,9 +302,17 @@ page {
 .del {
   height: 38rpx;
   width: 45rpx;
-  position: relative;
-  top: 5rpx;
-  /* left: 500rpx; */
+  position: absolute;
+  left: 6rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sign {
+  font-size: 28rpx;
+  color: #fc4037;
+  box-sizing: border-box;
+  padding-right: 6rpx;
 }
 
 .notice {

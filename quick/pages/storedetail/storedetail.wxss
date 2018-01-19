@@ -16,6 +16,7 @@ page {
   flex-direction: row;
   margin-top: 60rpx;
   font-size: 32rpx;
+  align-items: center;
 }
 
 .name {

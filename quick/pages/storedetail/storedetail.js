@@ -1,4 +1,5 @@
 // pages/storedetail/storedetail.js
+import { uploadImage } from '../../utils/uploadImg.js'
 import fetch from '../../utils/fetch';
 
 Page({
@@ -17,6 +18,11 @@ Page({
     fieldimg: '../../image/office.png',
     dealimg: '../../image/managerAct.png',
     supplyimg: '../../image/truckAct.png'
+  },
+  dealedit() {
+    wx.redirectTo({
+      url: '../managenav/managenav',
+    })
   },
   previewImage(e) {
 
@@ -79,7 +85,10 @@ Page({
           fieldfee: result.fee,
           fieldpreviewImg1: 'https://store.lianlianchains.com/images/' + result.img1,
           fieldpreviewImg2: 'https://store.lianlianchains.com/images/' + result.img2,
-          fieldpreviewImg3: 'https://store.lianlianchains.com/images/' + result.img3
+          fieldpreviewImg3: 'https://store.lianlianchains.com/images/' + result.img3,
+          image1: result.img1,
+          image2: result.img2,
+          image3: result.img3
         })
 
         this.setData({
@@ -237,6 +246,297 @@ Page({
     })
 
   },
+
+  //场地输入
+  fieldInput(e) {
+    console.log(e.target.dataset.field)
+    if (e.target.dataset.field == "fieldpersontemp") {
+      this.setData({
+        fieldname: e.detail.value
+      })
+    }else{
+      this.setData({
+        [e.target.dataset.field]: e.detail.value
+      })
+    }
+    
+    console.log(this.data.fieldaddress)
+  },
+  fieldblur() {
+    fetch({
+      url: "/CVS/apply/opupdate",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        id: this.data.storeid,
+        openid: wx.getStorageSync('user').openid,
+        roletype: 0,
+        address: this.data.fieldaddress,
+        comname: this.data.fieldcomname,
+        comnum: this.data.fieldcomnum,
+        fee: this.data.fieldfee,
+        name: this.data.fieldname ? this.data.fieldname : this.data.fieldperson,
+        phone: this.data.fieldmobile,
+        img1: this.data.image1,
+        img2: this.data.image2,
+        img3: this.data.image3 
+      },
+      noLoading: false,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(result => {
+
+
+
+    }).catch(err => {
+
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    })
+  },
+
+  //经营输入
+  dealInput(e) {
+    if (e.target.dataset.deal == "dealpersontemp") {
+      this.setData({
+        dealname: e.detail.value
+      })
+    } else {
+      this.setData({
+        [e.target.dataset.deal]: e.detail.value
+      })
+    }
+
+    console.log(this.data.fieldaddress)
+  },
+  dealblur() {
+    fetch({
+      url: "/CVS/apply/opupdate",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        id: this.data.storeid,
+        openid: wx.getStorageSync('user').openid,
+        roletype: 1,
+        address: this.data.dealaddress,
+        name: this.data.dealname ? this.data.dealname : this.data.dealperson,
+        phone: this.data.dealmobile
+      },
+      noLoading: false,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(result => {
+
+
+
+    }).catch(err => {
+
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    })
+  },
+
+  //供货输入
+  supplyInput(e) {
+    console.log(e.detail.value)
+    console.log(e)
+    if (e.target.dataset.supply == "supplypersontemp") {
+      this.setData({
+        supplyname: e.detail.value
+      })
+    } else {
+      this.setData({
+        [e.target.dataset.supply]: e.detail.value
+      })
+    }
+
+  },
+  supplyblur() {
+    fetch({
+      url: "/CVS/apply/opupdate",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        id: this.data.storeid,
+        openid: wx.getStorageSync('user').openid,
+        roletype: 2,
+        address: this.data.supplyaddress,
+        name: this.data.supplyname ? this.data.supplyname : this.data.supplyperson,
+        phone: this.data.supplymobile,
+        goodtype: this.data.supplyclassify
+      },
+      noLoading: false,
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
+      //  header: { 'content-type': 'application/json' }
+    }).then(result => {
+
+
+
+    }).catch(err => {
+
+      console.log("出错了")
+      wx.showToast({
+        title: '网络繁忙'
+      })
+      console.log(err)
+    })
+  },
+  imageView(e) {
+    let _this = this;
+    this.data.apishow = false
+
+    let idx = e.target.dataset.idx;
+    uploadImage().then(res => {
+
+      let path = res.tempFilePaths[0];
+      if (idx === "previewImg1") {
+        this.setData({
+          previewImg1: path
+        })
+        console.log(data)
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload',
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+            console.log(data)
+            this.setData({
+              image1: data,
+              fieldpreviewImg1:"https://store.lianlianchains.com/images/" + data
+            })
+            fetch({
+              url: "/CVS/apply/opupdate",
+              // baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                id: _this.data.storeid,
+                openid: wx.getStorageSync('user').openid,
+                roletype: 0,
+                address: _this.data.fieldaddress,
+                comname: _this.data.fieldcomname,
+                comnum: _this.data.fieldcomnum,
+                fee: _this.data.fieldfee,
+                name: _this.data.fieldname ? _this.data.fieldname : _this.data.fieldperson,
+                phone: _this.data.fieldmobile,
+                img1: _this.data.image1,
+                img2: _this.data.image2,
+                img3: _this.data.image3
+              },
+              noLoading: false,
+              method: "GET",
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+              //  header: { 'content-type': 'application/json' }
+            }).then(result => {
+
+
+
+            }).catch(err => {
+
+              console.log("出错了")
+              wx.showToast({
+                title: '网络繁忙'
+              })
+              console.log(err)
+            })
+          }
+        })
+      } else if (idx === "previewImg2") {
+        this.setData({
+          previewImg2: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+
+            this.setData({
+              image2: data,
+              fieldpreviewImg2: "https://store.lianlianchains.com/images/" + data
+            })
+
+            fetch({
+              url: "/CVS/apply/opupdate",
+              // baseUrl: "http://192.168.50.239:9888",
+              baseUrl: "https://store.lianlianchains.com",
+              data: {
+                id: _this.data.storeid,
+                openid: wx.getStorageSync('user').openid,
+                roletype: 0,
+                address: _this.data.fieldaddress,
+                comname: _this.data.fieldcomname,
+                comnum: _this.data.fieldcomnum,
+                fee: _this.data.fieldfee,
+                name: _this.data.fieldname ? _this.data.fieldname : _this.data.fieldperson,
+                phone: _this.data.fieldmobile,
+                img1: _this.data.image1,
+                img2: _this.data.image2,
+                img3: _this.data.image3
+              },
+              noLoading: false,
+              method: "GET",
+              header: { 'content-type': 'application/x-www-form-urlencoded' }
+              //  header: { 'content-type': 'application/json' }
+            }).then(result => {
+
+
+
+            }).catch(err => {
+
+              console.log("出错了")
+              wx.showToast({
+                title: '网络繁忙'
+              })
+              console.log(err)
+            })
+          }
+        })
+      } else if (idx === "previewImg3") {
+        this.setData({
+          previewImg3: path
+        })
+        wx.uploadFile({
+          // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
+          url: 'https://store.lianlianchains.com/CVS/upload', //仅为示例，非真实的接口地址
+          filePath: path,
+          name: 'test',
+          formData: {
+            'openid': wx.getStorageSync('user').openid
+          },
+          success: (res) => {
+            var data = res.data
+            //do something
+
+            this.setData({
+              image3: data
+            })
+          }
+        })
+      }
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -258,7 +558,8 @@ Page({
     this.setData({
       fielduser: options.field,
       dealuser: options.deal,
-      supplyuser: options.supply
+      supplyuser: options.supply,
+      canedit: options.canedit
     })
   },
   /**
@@ -278,38 +579,5 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

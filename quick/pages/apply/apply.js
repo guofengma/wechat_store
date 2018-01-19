@@ -20,7 +20,7 @@ Page({
     storetitle: 'NO-pengding',
     iconlist: [
       {
-        titleimg: "../../image/office.png",
+        titleimg: "http://store.lianlianchains.com/xiaolian/office.png",
         titleicon: "roleimg-office",
         iconflag: false,
         img: '../../image/join.png',
@@ -28,7 +28,7 @@ Page({
         role: '场地方'
       },
       {
-        titleimg: "../../image/manager.png",
+        titleimg: "http://store.lianlianchains.com/xiaolian/manager.png",
         titleicon: "roleimg-manager",
         iconflag: false,
         img: '../../image/join.png',
@@ -36,7 +36,7 @@ Page({
         role: '经营方'
       },
       {
-        titleimg: "../../image/truck.png",
+        titleimg: "http://store.lianlianchains.com/xiaolian/truck.png",
         titleicon: "roleimg-truck",
         iconflag: false,
         img: '../../image/join.png',
@@ -44,6 +44,11 @@ Page({
         role: '供货方'
       }
     ]
+  },
+  progressView() {
+    wx.navigateTo({
+      url: '../../component/progress/progress',
+    })
   },
   bindLimitTap(e) {
     page = 0;
@@ -146,6 +151,8 @@ Page({
     var fieldstate = e.currentTarget.dataset.fieldstate
     var dealstate = e.currentTarget.dataset.dealstate
     var supplystate = e.currentTarget.dataset.supplystate
+    var canedit = e.currentTarget.dataset.canedit;
+    console.log("edit", canedit, e)
 
     // open
     if (fieldstate == 1 && dealstate == 1 && supplystate == 1 &&
@@ -212,7 +219,8 @@ Page({
                   '&field=' + field + '&deal=' + deal + '&supply=' + supply +
                   '&fieldstate=' + fieldstate +
                   '&dealstate=' + dealstate +
-                  '&supplystate=' + supplystate
+                  '&supplystate=' + supplystate +
+                  '&canedit=' + canedit
                 })
               }
 
@@ -225,7 +233,8 @@ Page({
             '&field=' + field + '&deal=' + deal + '&supply=' + supply +
             '&fieldstate=' + fieldstate +
             '&dealstate=' + dealstate +
-            '&supplystate=' + supplystate
+            '&supplystate=' + supplystate +
+            '&canedit=' + canedit
           })
 
         }
@@ -247,7 +256,8 @@ Page({
         '&field=' + field + '&deal=' + deal + '&supply=' + supply +
         '&fieldstate=' + fieldstate +
         '&dealstate=' + dealstate +
-        '&supplystate=' + supplystate
+        '&supplystate=' + supplystate + 
+        '&canedit=' + canedit
       })
 
     }

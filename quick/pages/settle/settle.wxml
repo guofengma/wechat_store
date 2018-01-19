@@ -21,7 +21,7 @@
     </view>
     <view class='business-content'>
       <view class='imgs'>
-        <image class='business-img' src='../../image/business.png'></image>
+        <image class='business-img' src='http://store.lianlianchains.com/xiaolian/business.png'></image>
       </view>
       <view class='business-bottom bottom'>
         <view class='business-bottom-left'>

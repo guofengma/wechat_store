@@ -1,0 +1,1 @@
+<image class="progress" style="width: {{screenWidth * 2}}rpx; height: {{(screenWidth * 2 /895) * 4085 }}rpx;"  src="http://store.lianlianchains.com/xiaolian/progress.png"></image>

@@ -1,5 +1,5 @@
 <view class="container">
-  <image class='img' src='../../image/award.png'></image>
+  <image class='img' src='http://store.lianlianchains.com/xiaolian/award.png'></image>
   <view class='section'>
     <input class='section_input' type='text' bindinput='input' placeholder='请输入兑奖码' placeholder-class='placehoder'></input>
     <view class='button' bindtap='award' data-award='{{award}}'>兑奖</view>

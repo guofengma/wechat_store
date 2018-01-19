@@ -38,7 +38,8 @@
   "subPackages": [{
     "root": "component/",
     "pages": [
-      "award/award"
+      "award/award",
+      "progress/progress"
     ]
   }],
   "window": {
