@@ -336,6 +336,7 @@ Page({
     })
   },
   cartView(e) {
+    console.log(1111)
     let totalnum = e.target.dataset.totalnum;
     if (totalnum > 0) {
       wx.navigateTo({

@@ -30,12 +30,12 @@
 
 
   <view class='bottom'>
-    <view class="item" wx:if="{{totalNum > 0}}" hover-class="{{totalNum > 0 ? 'other-button-hover' : ''}}" bindtouchstart="cartView" data-totalNum="{{totalNum}}">
-      <view bindtap="orderView" class="item-content">
-        <image class='img-order' src='../../image/carts.png'></image>
-        <view class='name'>购物车</view>
+    <view class="item" hidden="{{totalNum <= 0}}" bindtap="cartView" data-totalNum="{{totalNum}}">
+      <view class="item-content"  data-totalNum="{{totalNum}}">
+        <image class='img-order' data-totalNum="{{totalNum}}" src='../../image/carts.png'></image>
+        <view class='name' data-totalNum="{{totalNum}}">购物车</view>
       </view>
-      <text class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</text>
+      <text bindtap="cartView" class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</text>
     </view>
     <view class='item'>
       <view bindtap="orderView" class="item-content">

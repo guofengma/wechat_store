@@ -47,15 +47,20 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .comment{
   width: 36rpx;
   height: 36rpx;
+  margin-left: 10rpx;
+  margin-top: 6rpx;
 }
 
 .select-role-header {
   margin-top: 0;
+  justify-content: flex-start;
+  
 }
 
 .header-join {
@@ -282,7 +287,7 @@ page {
 }
 
 .NO-pengding {
-  text-align: right;
+  text-align: center;
   margin-left: 12rpx;
   padding-left: 10rpx;
   padding-top: 10rpx;
@@ -311,8 +316,6 @@ page {
 .sign {
   font-size: 28rpx;
   color: #fc4037;
-  box-sizing: border-box;
-  padding-right: 10rpx;
 }
 
 .notice {

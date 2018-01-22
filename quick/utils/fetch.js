@@ -1,6 +1,5 @@
 //request请求封装
 export default function (param) {
-    console.log(param);
     if (!param.noLoading) {
         // wx.showToast({
         //   title: '加载中',

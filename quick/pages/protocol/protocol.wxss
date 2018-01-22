@@ -55,7 +55,7 @@ page {
 }
 
 .inp {
-  width: 50rpx;
+  width: 100rpx;
   border-bottom: 1px #999990 solid;
   text-align: center;
 }

@@ -44,14 +44,14 @@
     </view>
 
     <view class='store-item' wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
-      <view class='store-top' bindtap='storedetail' data-canedit="{{item.field==user || item.supply==user || item.deal==user ? true : false}}" data-storeid='{{item.id}}' data-field='{{item.field}}' data-fieldstate='{{item.fieldstate}}' data-deal='{{item.deal}}' data-dealstate='{{item.dealstate}}' data-supply='{{item.supply}}' data-supplystate='{{item.supplystate}}'>
+      <view class='store-top' bindtap='storedetail' data-canedit="{{item.field==user || item.supply==user || item.deal==user ? true : false}}" data-storeid='{{item.id}}' data-field='{{item.field}}' data-fieldstate='{{item.fieldstate}}' data-deal='{{item.deal}}' data-dealstate='{{item.dealstate}}' data-supply='{{item.supply}}' data-supplystate='{{item.supplystate}}' data-fieldname='{{item.fieldname}}' data-dealname='{{item.dealname}}' data-supplyname='{{item.supplyname}}'>
         <view wx:if="{{ item.storename!=null}}" class='NO'>
           {{item.storename}}
         </view>
         <view wx:if="{{ item.storename==null}}" class='NO-pengding'>
           <image data-del='0' class='del' src='http://store.lianlianchains.com/xiaolian/del.png' wx:if='{{ item.field==user || item.supply==user || item.deal==user}}'></image>
-          <view class='sign' wx:if="{{item.field && item.supply && item.deal && (!item.fieldstate || !item.dealstate || !item.supplystate) && (item.field==user || item.supply==user || item.deal==user)}}">请签约</view>
-          <view class='sign' wx:if="{{item.field && item.supply && item.deal && item.fieldstate && item.dealstate &&item.supplystate && (item.deal == user)}}">{{"请开户"}}</view>
+          <view class='sign' wx:if="{{item.field && item.supply && item.deal && (!item.fieldstate || !item.dealstate || !item.supplystate) && (item.field==user || item.supply==user || item.deal==user)}}">签约申请</view>
+          <view class='sign' wx:if="{{item.field && item.supply && item.deal && item.fieldstate && item.dealstate &&item.supplystate && (item.deal == user)}}">{{"开户申请"}}</view>
         </view>
       </view>
       <view class='store-content'>

@@ -1,5 +1,7 @@
 /* pages/benefitlist/benefitlist.wxss */
-
+page{
+  background-color: #fff;
+}
 .container {
   background-color: #fff;
   /* padding: 0 20rpx; */
@@ -58,4 +60,5 @@
   text-align: center;
   margin: 10rpx 0;
   color: gray;
+  background-color: #fff;
 }

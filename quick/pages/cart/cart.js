@@ -72,12 +72,12 @@ Page({
     if (this.data.scoreflag) {
 
       var score = this.data.curscore
-      var sale = (score / 100).toFixed(2)
+      var sale = (score / 100).toFixed(2) - 0;
 
       console.log('total=' + this.data.total)
 
-      sale = sale > (this.data.total * 0.1).toFixed(2) ?
-        (this.data.total * 0.1).toFixed(2) : sale
+      sale = sale > (this.data.total * 0.1).toFixed(2)-0 ?
+        (this.data.total * 0.1).toFixed(2)-0 : sale
 
       console.log('sale=' + sale)
 
@@ -104,12 +104,12 @@ Page({
       } else {
         this.setData({
           scoreimg: '../../image/scoreyes.png',
-          scoredesc: '使用' + sale * 100 + '积分 抵扣' + sale + '元',
-          score: sale * 100
+          scoredesc: '使用' + ((sale * 100).toFixed(2) - 0) + '积分 抵扣' + sale + '元',
+          score: (sale * 100).toFixed(2) - 0
         })
 
         this.setData({
-          totaltemp: (this.data.total - sale).toFixed(2)
+          totaltemp: (this.data.total - sale).toFixed(2) - 0
         })
 
       }
@@ -395,13 +395,12 @@ Page({
       'signType': obj.signType,
       'paySign': obj.paySign,
       'success': function (res) {
-        
-        // console.log(111);
         // var unionId = wx.getStorageSync('unionId');
         // // if (unionId) {
         // //   recharge(unionId, 5)
         // // }
-        
+
+        //清空购物车
         fetch({
           url: "/CVS/cart/deleteall",
           //   baseUrl: "http://192.168.50.57:9888",
@@ -415,11 +414,8 @@ Page({
           header: { 'content-type': 'application/x-www-form-urlencoded' }
           //   header: { 'content-type': 'application/json' }
         }).then(carts => {
-          console.log('输出删除成功信息')
-          console.log("carts", carts)
-          console.log("删除成功")
           if (carts) {
-            console.log("即将跳转")
+            //跳转到我的页面
             wx.switchTab({
               url: '../user/user',
             })

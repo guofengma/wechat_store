@@ -85,7 +85,6 @@ Page({
   },
   storedetail(e) {
 
-    console.log(e)
     var that = this
 
     if (e.target.dataset.del == 0) {
@@ -95,7 +94,6 @@ Page({
         success: function (sm) {
 
           if (sm.confirm) {
-            console.log('用户点击确定')
 
             // 货架删除接口
             fetch({
@@ -111,7 +109,6 @@ Page({
               //  header: { 'content-type': 'application/json' }
             }).then(result => {
 
-              console.log(result);
               that.searchstore();
 
             }).catch(err => {
@@ -141,7 +138,7 @@ Page({
     var supply = e.currentTarget.dataset.supply
 
     if (this.isEmpty(field) && this.isEmpty(deal) && this.isEmpty(supply)) {
-      console.log('没有用户')
+      // console.log('没有用户')
       wx.showToast({
         title: '还未有用户加入',
       })
@@ -151,8 +148,51 @@ Page({
     var fieldstate = e.currentTarget.dataset.fieldstate
     var dealstate = e.currentTarget.dataset.dealstate
     var supplystate = e.currentTarget.dataset.supplystate
+    var fieldname = e.currentTarget.dataset.fieldname
+    var dealname = e.currentTarget.dataset.dealname
+    var supplyname = e.currentTarget.dataset.supplyname
     var canedit = e.currentTarget.dataset.canedit;
-    console.log("edit", canedit, e)
+
+    //签约
+    if (field && deal && supply && (fieldstate == 0 || dealstate == 0 || supplystate == 0) && (field == this.data.user || deal == this.data.user || supply == this.data.user)) {
+      wx.showModal({
+        title: '签约申请',
+        content: '合伙人已满员，是否申请签约？',
+        success: function (sm) {
+
+          if (sm.confirm) {
+            wx.navigateTo({
+              url: '../protocol/protocol?' + 'storeid=' + storeid +
+              '&fielduser=' + field +
+              '&dealuser=' + deal +
+              '&supplyuser=' + supply +
+              '&fieldstate=' + fieldstate +
+              '&dealstate=' + dealstate +
+              '&supplystate=' + supplystate +
+              '&fieldperson=' + fieldname +
+              '&dealperson=' + dealname +
+              '&supplyperson=' + supplyname
+            })
+            
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+
+            wx.navigateTo({
+              url: '../storedetail/storedetail?' + 'storeid=' + storeid +
+              '&field=' + field + '&deal=' + deal + '&supply=' + supply +
+              '&fieldstate=' + fieldstate +
+              '&dealstate=' + dealstate +
+              '&supplystate=' + supplystate +
+              '&canedit=' + canedit
+            })
+          }
+
+        }
+      });
+
+      return;
+    }
+      
 
     // open
     if (fieldstate == 1 && dealstate == 1 && supplystate == 1 &&
@@ -171,7 +211,6 @@ Page({
         //  header: { 'content-type': 'application/json' }
       }).then(result => {
 
-        console.log(result)
         if (!result) {
 
           wx.showModal({
@@ -196,7 +235,6 @@ Page({
                   //  header: { 'content-type': 'application/json' }
                 }).then(result => {
 
-                  console.log(result)
                   wx.navigateTo({
                     url: '../open/open?' + 'mobile=' + result.phone +
                     '&id=' + storeid
@@ -220,7 +258,7 @@ Page({
                   '&fieldstate=' + fieldstate +
                   '&dealstate=' + dealstate +
                   '&supplystate=' + supplystate +
-                  '&canedit=' + canedit
+                  '&canedit=' + false
                 })
               }
 
@@ -325,8 +363,8 @@ Page({
   },
   querystore() {
 
-    console.log('user===' + this.data.user)
-    console.log('user2===' + wx.getStorageSync("user").openid)
+    // console.log('user===' + this.data.user)
+    // console.log('user2===' + wx.getStorageSync("user").openid)
 
     this.setData({
       hasOrder: true
@@ -347,7 +385,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res.apply)
       if (res.apply != '') {
         setTimeout(() => {
 
@@ -511,7 +548,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
 
       if (res.ec == '000000') {
 
@@ -520,20 +556,6 @@ Page({
         this.setData({
           [item]: (optype == 'quit') ? '' : this.data.user
         })
-
-        // if (optype == 'quit'){
-
-        //   wx.showToast({
-        //     title: '退出成功',
-        //   })
-
-        // }else{
-
-        //   wx.showToast({
-        //     title: '加入成功',
-        //   })
-
-        // }
 
         this.searchstore()
 
@@ -565,7 +587,6 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-      console.log(res)
       // setTimeout(() => {
 
       //   wx.showToast({
@@ -626,7 +647,6 @@ Page({
    */
   onLoad: function (options) {
 
-    console.log('onload')
 
   },
 
@@ -635,7 +655,6 @@ Page({
    */
   onShow: function () {
 
-    console.log('onshow')
     this.setData({
       user: wx.getStorageSync("user").openid
     })

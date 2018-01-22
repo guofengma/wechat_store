@@ -14,7 +14,7 @@
 }
 
 .section_input{
-  width: 320rpx;
+  width: 300rpx;
   height: 80rpx;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 4px 0 0 4px;

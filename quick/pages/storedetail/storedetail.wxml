@@ -20,18 +20,18 @@
   <view class='container' wx:if='{{fieldflag && field}}'>
     <view class='item'>
       <label class='name'>公司地址 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{fieldaddress}}" data-field='fieldaddress' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入公司地址'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{fieldaddress}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{fieldaddress}}" data-field='fieldaddress' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入公司地址'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{fieldaddress}}</view> 
     </view>
     <view class='item'>
       <label class='name'>公司名称 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{fieldcomname}}" data-field='fieldcomname' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入公司名称'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{fieldcomname}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{fieldcomname}}" data-field='fieldcomname' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入公司名称'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{fieldcomname}}</view> 
     </view>
     <view class='item'>
       <label class='name'>公司人数 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{fieldcomnum}}" data-field='fieldcomnum' bindinput='fieldInput' bindblur='fieldblur' type='number' placeholder='请输入公司人数'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{fieldcomnum}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{fieldcomnum}}" data-field='fieldcomnum' bindinput='fieldInput' bindblur='fieldblur' type='number' placeholder='请输入公司人数'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{fieldcomnum}}</view> 
     </view>
     <!-- <view class='item'>
       <label class='name'>费用情况 </label>
@@ -39,19 +39,19 @@
     </view> -->
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{fieldpersontemp}}" data-field='fieldpersontemp' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入姓名'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{fieldpersontemp}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{fieldpersontemp}}" data-field='fieldpersontemp' bindinput='fieldInput' bindblur='fieldblur' type='text' placeholder='请输入姓名'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{fieldpersontemp}}</view> 
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
-      <input hidden="{{canedit}}" class='input-border' maxlength='11' value="{{fieldmobile}}" data-field='fieldmobile' bindinput='fieldInput' bindblur='fieldblur' type='number' placeholder='请输入电话号'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{fieldmobile}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' maxlength='11' value="{{fieldmobile}}" data-field='fieldmobile' bindinput='fieldInput' bindblur='fieldblur' type='number' placeholder='请输入电话号'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{fieldmobile}}</view> 
     </view>
     <view class='item'>
       <label class='upload-title'>场地照片 </label>
       <view class='upload-cont'>
-        <image class='upload' src="{{fieldpreviewImg1}}" data-idx="previewImg1" data-img="{{fieldpreviewImg1}}" bindtap="{{canedit ? 'imageView' : ''}}"></image>
-        <image class='upload' src="{{fieldpreviewImg2}}" data-idx="previewImg2" data-img="{{fieldpreviewImg2}}" bindtap="{{canedit ? 'imageView' : ''}}"></image>
+        <image class='upload' src="{{fieldpreviewImg1}}" data-idx="previewImg1" data-img="{{fieldpreviewImg1}}" bindtap="{{canedit == 'true' ? 'imageView' : 'previewImage'}}"></image>
+        <image class='upload' src="{{fieldpreviewImg2}}" data-idx="previewImg2" data-img="{{fieldpreviewImg2}}" bindtap="{{canedit == 'true' ? 'imageView' : 'previewImage'}}"></image>
         <!-- <image class='upload' src="{{fieldpreviewImg3}}"
           data-img="{{fieldpreviewImg3}}" bindtap="previewImage"></image> -->
       </view>
@@ -62,18 +62,18 @@
   <view class='container' wx:if='{{dealflag && deal}}'>
     <view class='item'>
       <label class='name'>联系地址 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{dealaddress}}" data-deal='dealaddress' bindinput='dealInput' bindblur='dealblur' type='text' placeholder='请输入联系地址'></input>
-      <view hidden="{{!canedit}}" class='input-border'>{{dealaddress}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{dealaddress}}" data-deal='dealaddress' bindinput='dealInput' bindblur='dealblur' type='text' placeholder='请输入联系地址'></input>
+      <view hidden="{{canedit == 'true'}}" class='input-border'>{{dealaddress}}</view> 
     </view>
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{dealpersontemp}}" data-deal='dealpersontemp' bindinput='dealInput' bindblur='dealblur' type='text' placeholder='请输入姓名'></input>
-      <view hidden="{{!canedit}}" class='input-border'>{{dealpersontemp}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{dealpersontemp}}" data-deal='dealpersontemp' bindinput='dealInput' bindblur='dealblur' type='text' placeholder='请输入姓名'></input>
+      <view hidden="{{canedit == 'true'}}" class='input-border'>{{dealpersontemp}}</view> 
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
-      <input hidden="{{canedit}}" class='input-border' maxlength='11' value="{{dealmobile}}" data-deal='dealmobile' bindinput='dealInput' bindblur='dealblur' type='number' placeholder='请输入电话号'></input>
-      <view hidden="{{!canedit}}" class='input-border'>{{dealmobile}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' maxlength='11' value="{{dealmobile}}" data-deal='dealmobile' bindinput='dealInput' bindblur='dealblur' type='number' placeholder='请输入电话号'></input>
+      <view hidden="{{canedit == 'true'}}" class='input-border'>{{dealmobile}}</view> 
     </view>
     <!-- <view class='item'>
       <label class='upload-title-two'>工商营业执照 </label>
@@ -95,23 +95,23 @@
   <view class='container' wx:if='{{supplyflag && supply}}'>
     <view class='item'>
       <label class='name'>联系地址 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{supplyaddress}}" data-supply='supplyaddress' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入地址'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{supplyaddress}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{supplyaddress}}" data-supply='supplyaddress' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入地址'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{supplyaddress}}</view> 
     </view>
     <view class='item'>
       <label class='name'>联系人员 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{supplypersontemp}}" data-supply='supplypersontemp' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入姓名'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{supplypersontemp}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{supplypersontemp}}" data-supply='supplypersontemp' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入姓名'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{supplypersontemp}}</view> 
     </view>
     <view class='item'>
       <label class='name'>联系电话 </label>
-      <input hidden="{{canedit}}" class='input-border' maxlength='11' value="{{supplymobile}}" data-supply='supplymobile' bindinput='supplyInput' bindblur='supplyblur' type='number' placeholder='请输入电话号'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{supplymobile}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' maxlength='11' value="{{supplymobile}}" data-supply='supplymobile' bindinput='supplyInput' bindblur='supplyblur' type='number' placeholder='请输入电话号'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{supplymobile}}</view> 
     </view>
     <view class='item'>
       <label class='name'>供货种类 </label>
-      <input hidden="{{canedit}}" class='input-border' value="{{supplyclassify}}" data-supply='supplyclassify' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入供货种类'></input>
-       <view hidden="{{!canedit}}" class='input-border'>{{supplyclassify}}</view> 
+      <input hidden="{{canedit == 'false'}}" class='input-border' value="{{supplyclassify}}" data-supply='supplyclassify' bindinput='supplyInput' bindblur='supplyblur' type='text' placeholder='请输入供货种类'></input>
+       <view hidden="{{canedit == 'true'}}" class='input-border'>{{supplyclassify}}</view> 
     </view>
     <!-- <view class='item'>
       <label class='upload-title-two'>工商营业执照 </label>

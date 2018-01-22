@@ -15,7 +15,7 @@
         <input class='section_input' value='{{array[index]}}' name="service" hidden='true'></input>
       </view>
       <view class='section'>
-        <label class='section_title'>价格</label>
+        <label class='section_title'>价格(元)</label>
         <input class='section_input' value='{{price}}' bindinput='priceInput' type='number' name="price"></input>
       </view>
       <view class="section">
