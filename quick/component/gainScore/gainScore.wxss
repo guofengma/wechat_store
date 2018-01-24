@@ -4,13 +4,6 @@
   background-color: #fff;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 120rpx;
-  background-color: #0d8fef;
-}
 
 .scoreicon {
   width: 96rpx;
@@ -46,35 +39,14 @@
   height: 28rpx;
 }
 
-.title {
-  margin: 30rpx 0 30rpx 40rpx;
-  font-size: 34rpx;
-}
 
-.storelist {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 30rpx 40rpx 20rpx 40rpx;
-  border-top: 1px #ececec solid;
-  padding-top: 30rpx;
-  width: 90%;
-  background-color: #fff;
-}
+
+
 
 .storeimg {
   width: 80rpx;
   height: 80rpx;
   margin-right: 40rpx;
-}
-
-.info {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.storeinfo {
-  width: 460rpx;
 }
 
 .op {
@@ -84,6 +56,7 @@
   text-align: center;
   color: #fff;
   font-size: 24rpx;
+  margin: 0;
 }
 
 .chg {
@@ -92,20 +65,31 @@
   margin-top: 10rpx;
 }
 
-.score-tab{
+.myJoin,.useScore{
+  padding: 30rpx 40rpx;
+}
+
+.storelist {
+  margin: 30rpx 0 20rpx 0;
+  border-top: 1px #ececec solid;
+  padding-top: 30rpx;
+  background-color: #fff;
+}
+
+.useScore-headR{
+  width: 86rpx;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 
-.tab-img{
-  width: 96rpx;
-  height: 88rpx;
+.title {
+  font-size: 34rpx;
 }
 
-.score-tab .title{
-  text-align: center;
-  font-size: 28rpx;
-  margin-left: 0;
+.info-img{
+  width: 26rpx;
+  height: 26rpx;
 }
+

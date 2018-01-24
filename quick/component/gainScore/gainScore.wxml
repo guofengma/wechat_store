@@ -1,0 +1,44 @@
+<!--pages/score/score.wxml-->
+<view class='container'>
+  <view class='myJoin'>
+    <view class='title'>我参与的</view>
+    <view wx:for="{{storeListUser}}" wx:key="index" wx:for-item="item">
+      <view class='storelist'>
+        <view>
+          <image src='../../image/storeicon.png' class='storeimg'></image>
+        </view>
+        <view class='storeinfo'>
+          <view>{{item.storename}}</view>
+          <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
+        </view>
+        <button class='op' bindtap='investquit' data-storeid='{{item.storeid}}' data-storename='{{item.storename}}' data-investtype='1' data-score='{{item.score}}' data-scorebonus='{{item.scorebonus}}'>提取</button>
+      </view>
+    </view>
+  </view>
+
+  <view class='useScore'>
+    <view class='title flex-row-between' wx:if="{{storeList && storeList.length}}">
+      <view>小积分 大用处</view>
+      <view class='useScore-headR flex-row-between'>
+        <image class='info-img' src="../../image/info.png"></image>
+        <view class='info FontSize-12'>说明</view>
+      </view>
+    </view>
+    <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
+      <view class='storelist flex-row-between'>
+        <view class='flex-row-start'>
+          <image src='../../image/storeicon.png' class='storeimg'></image>
+          <view class='storeinfo'>
+            <view>{{item.storename}}</view>
+            <!-- <view class='chg'>周涨幅 {{item.finalincrease}}%</view> -->
+          </view>
+        </view>
+
+        <button class='op' bindtap='investjoin' data-storeid='{{item.storeid}}' data-storename='{{item.storename}}' data-investtype='0'>参与</button>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

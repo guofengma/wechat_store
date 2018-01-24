@@ -11,6 +11,31 @@ page{
   letter-spacing: -0.19px;
 }
 
+.flex-row-between{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-row-around{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-row-start{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.FontSize-12{
+  font-size: 24rpx;
+}
+
 .clear{
   zoom: 1;
 } 

@@ -1,6 +1,8 @@
 // pages/award/award.js
 import fetch from '../../utils/fetch.js'
 
+var onoff = true
+
 Page({
 
   /**
@@ -14,7 +16,8 @@ Page({
     ],
     index: 0,
     guanbi: "../../image/guanbi.png",
-    show: false
+    show: false,
+    canUse: true
   },
   input(e) {
     this.setData({
@@ -35,16 +38,12 @@ Page({
       return
     }
 
-    if(!!timer) {
-      clearTimeout(timer);
-    }
-    var timer = setTimeout(() => {
-      clearTimeout(timer);
+    if (onoff) {
       this.pack();
-      
-    },500)
+    }
   },
   pack() {
+    onoff = false;
     let obj = {
       "200": 0,
       "500": 1,
@@ -64,6 +63,7 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
       //  header: { 'content-type': 'application/json' }
     }).then(result => {
+      
       if (result.ec == "000000") {
         this.setData({
           index: obj[result.data],
@@ -74,10 +74,10 @@ Page({
           content: result.em,
         })
       }
-      console.log(result)
+      onoff = true;
 
     }).catch(err => {
-
+      onoff = true;
       console.log("出错了")
       wx.showToast({
         title: '网络繁忙'

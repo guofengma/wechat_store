@@ -24,17 +24,12 @@ Page({
       url: '../../component/gainScore/gainScore',
     })
   },
-  exchangeView() {
-    wx.navigateTo({
-      url: '../../component/exchange/exchange',
-    })
-  },
   detail() {
     wx.navigateTo({
       url: '../scorelist/scorelist',
     })
   },
-  investquit(e){
+  investquit(e) {
 
     var investtype = e.target.dataset.investtype
     var storeid = e.target.dataset.storeid
@@ -44,13 +39,13 @@ Page({
 
     wx.navigateTo({
       url: '../scoreinvest/scoreinvest?investtype=' + investtype +
-      '&storeid=' + storeid + '&storename=' + storename + 
+      '&storeid=' + storeid + '&storename=' + storename +
       '&score=' + score + '&scorebonus=' + scorebonus,
     })
   },
   investjoin(e) {
 
-    var investtype = e.target.dataset.investtype 
+    var investtype = e.target.dataset.investtype
     var storeid = e.target.dataset.storeid
     var storename = e.target.dataset.storename
 
@@ -108,10 +103,10 @@ Page({
 
       if (res != '' && res.data && res.data.totalpage) {
 
-          totalpage = res.data.totalpage
-          this.setData({
-            storeList: this.data.storeList.concat(res.data.increasMoney)
-          })
+        totalpage = res.data.totalpage
+        this.setData({
+          storeList: this.data.storeList.concat(res.data.increasMoney)
+        })
 
       }
 
@@ -207,7 +202,7 @@ Page({
       storeListUser: [],
       storeList: []
     })
-    
+
     this.queryscore()
     this.querystoreuser()
     this.querystore()

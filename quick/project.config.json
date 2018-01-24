@@ -25,7 +25,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -49,15 +49,16 @@
 					"scene": "1011"
 				},
 				{
-					"id": -1,
-					"name": "benefit",
-					"pathName": "pages/benefit/benefit",
-					"query": ""
+					"id": 3,
+					"name": "付款",
+					"pathName": "component/pay/pay",
+					"query": "",
+					"scene": "1011"
 				},
 				{
 					"id": 4,
-					"name": "积分明细",
-					"pathName": "pages/scorelist/scorelist",
+					"name": "积分",
+					"pathName": "pages/score/score",
 					"query": "",
 					"scene": "1011"
 				}

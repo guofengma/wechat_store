@@ -9,8 +9,7 @@
     <view class='item'>
       <label class='name'>联系人员 </label>
       <view class='input-border'>
-          <input bindinput='setPerson' type='text' name="person" 
-          placeholder='需要微信实名' value='{{Person}}'></input>
+          <input bindinput='setPerson' type='text' name="person" value='{{Person}}'></input>
       </view>
     </view>
     <view class='item'>

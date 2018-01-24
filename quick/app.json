@@ -39,7 +39,10 @@
     "root": "component/",
     "pages": [
       "award/award",
-      "progress/progress"
+      "progress/progress",
+      "gainScore/gainScore",
+      "exchange/exchange",
+      "pay/pay"
     ]
   }],
   "window": {
