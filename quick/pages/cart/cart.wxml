@@ -11,7 +11,7 @@
         <view class="guige">规格：{{item.specifi}}</view>
         <view class="money">
           <text class="symbol">¥</text>
-          <text class="singMoney">{{item.price}}</text>
+          <text class="singMoney">{{item.price}}</text>    
         </view>
       </view>
       <view class="total">
@@ -22,7 +22,7 @@
     </view>
   </view>
   <view class="item total" hidden="{{!hidden}}">
-    <view class="classname">金额：¥{{totaltemp}}</view>
+    <view class="classname">金额：¥{{payMoney}}<text class='activity' wx:if="{{percent-0 < 1}}">¥{{total}}</text></view>
     <view class='score'>
       <image src='{{scoreimg}}' class='scoreimg' ></image>
       <view bindtap='score'>{{scoredesc}}</view>

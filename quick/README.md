@@ -64,3 +64,5 @@ component
   #### 交换积分（component/exchange/exchange）
 
   #### 积分转账付款（component/pay/pay）
+
+  #### 购物卡（component/shopCard/shopCard）

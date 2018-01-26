@@ -321,7 +321,9 @@ Page({
       let specifi = wx.getStorageSync('specifi');
       this.setData({
          name: name,
-         specifi: specifi
+         specifi: specifi,
+         storeId: wx.getStorageSync('storeId'),
+         percent: wx.getStorageSync('percent')
       })
       console.log('查询购物车开始');
       fetch({

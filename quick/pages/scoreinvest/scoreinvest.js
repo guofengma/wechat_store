@@ -71,7 +71,7 @@ Page({
         joinBtn: false
       });
 
-      if (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() <= 15) {
+      if (dt.getHours() > 13 && dt.getHours() <= 15) {
         this.setData({
           btnCont: "提取",
           joinBtn: false

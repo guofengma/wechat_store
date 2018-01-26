@@ -3,6 +3,11 @@
 .container {
   padding: 0 40rpx;
   background-color: #f8f8f8;
+  height: 100%;
+}
+
+.container .content{
+  height: 100%;
 }
 
 .container .content .rule {
@@ -14,7 +19,7 @@
 .container .content .rule .rule_top {
   text-align: center;
   color: #0d8fef;
-  padding-top: 50rpx;
+  padding-top: 6%;
   font-size: 34rpx;
 }
 
@@ -22,7 +27,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 70rpx 0 100rpx;
+  padding: 8% 0 10%;
 }
 
 .container .content .rule_content .rule_item {
@@ -46,9 +51,9 @@
 }
 
 .container .content .buy {
-  margin-top: 45rpx;
+  margin-top: 6%;
   text-align: center;
-  height: 430rpx;
+  height: 40%;
   position: relative;
   border: 1px #eee solid;
   border-radius: 5px;
@@ -88,8 +93,8 @@
 }
 
 .container .content .buy .store image {
-  width: 50rpx;
-  height: 49rpx;
+  width: 36rpx;
+  height: 32rpx;
   margin-right: 8rpx;
 }
 
@@ -167,6 +172,12 @@
   z-index: 1;
 }
 
-.container .content .buy .tit {
+.activity{
+  width: 576rpx;
+  height: 144rpx;
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 

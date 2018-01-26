@@ -9,11 +9,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: [
-      "http://store.lianlianchains.com/xiaolian/rmb2.png",
-      "http://store.lianlianchains.com/xiaolian/rmb5.png",
-      "http://store.lianlianchains.com/xiaolian/rmb10.png"
-    ],
     index: 0,
     guanbi: "../../image/guanbi.png",
     show: false,
@@ -44,11 +39,6 @@ Page({
   },
   pack() {
     onoff = false;
-    let obj = {
-      "200": 0,
-      "500": 1,
-      "1000": 2
-    };
 
     fetch({
       url: "/wxpay/sendredpack",
@@ -66,7 +56,7 @@ Page({
       
       if (result.ec == "000000") {
         this.setData({
-          index: obj[result.data],
+          src: "http://store.lianlianchains.com/xiaolian/rmb"+result.data+".png",
           show: true
         })
       } else {

@@ -1,0 +1,98 @@
+.container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.intro {
+  font-size: 28rpx;
+  color: #333;
+  text-align: center;
+  margin: 40rpx;
+}
+
+.content {
+  padding: 0 40rpx;
+}
+
+.item {
+  margin-bottom: 40rpx;
+  text-align: center;
+  background-color: #fff;
+  position: relative;
+}
+
+.item .amount{
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%,-50%);
+  width: 40rpx;
+  height: 40rpx;
+  background: #DF301F;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.item .header {
+  width: 320rpx;
+  height: 220rpx;
+}
+
+.num {
+  background-color: #fff;
+  border-radius: 0 0 4px 4px;
+}
+
+.increase {
+  width: 28rpx;
+  height: 28rpx;
+  padding: 36rpx 40rpx;
+}
+
+.reduce {
+  width: 28rpx;
+  height: 4rpx;
+  padding: 36rpx 40rpx;
+}
+
+.item:nth-of-type(odd) {
+  float: left;
+}
+
+.item:nth-of-type(even) {
+  float: right;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 40rpx 30rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.total {
+  font-size: 40rpx;
+  color: #000;
+}
+
+.youhui {
+  font-size: 28rpx;
+  color: #df301f;
+  margin-left: 36rpx;
+}
+
+.button {
+  margin: 0;
+  width: 160rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #0d8fef;
+}

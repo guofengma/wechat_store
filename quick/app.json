@@ -42,7 +42,8 @@
       "progress/progress",
       "gainScore/gainScore",
       "exchange/exchange",
-      "pay/pay"
+      "pay/pay",
+      "shopCard/shopCard"
     ]
   }],
   "window": {

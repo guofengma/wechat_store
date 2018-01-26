@@ -86,3 +86,12 @@
    border-radius: 6px;
    color: #fff;
 }
+
+.getLocation{
+  margin-left: 20rpx;
+}
+
+.address{
+  width: 50rpx;
+  height: 50rpx;
+}

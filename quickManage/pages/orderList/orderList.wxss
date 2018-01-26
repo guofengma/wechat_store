@@ -104,3 +104,11 @@ page{
    padding: 20rpx 0 50rpx;
    color: #999999;
 }
+
+.activity{
+  display: inline-block;
+  margin-right: 18rpx;
+  margin-left: 20rpx;
+  color: #999999;
+  text-decoration: line-through;
+}

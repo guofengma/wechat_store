@@ -17,7 +17,7 @@
             <text class="amount"><text style="color:#0D8FEF;">x{{goods.amount}}</text></text>
           </view>
           <view class="classname">
-            <text style="color:red;">¥{{(goods.amount * (goods.price*100))/100}}</text>
+            <text style="color:red;">¥{{(goods.amount * (goods.price*100 * percent))/100}}</text>
           </view>
         </view>
       </view>
@@ -25,7 +25,7 @@
       <view class="elem bottom" style="padding: {{item.state != '支付成功' || item.checkstate != 0 ? '30rpx 28rpx' : '30rpx 28rpx'}};">
         <view wx:if="{{item.state == '支付成功' && item.checkstate == 0}}" class="check" bindtouchstart="checkView" data-orderno="{{item.orderNo}}">{{item.checkstate == 0 ? '待核验': ''}}</view>
         <view class="hasCheck">
-          共{{item.totalNum}}件商品 ¥{{item.fee}}（积分抵扣{{item.usedScore}}） 
+          共{{item.totalNum}}件商品 ¥{{item.fee}}<text class='activity' wx:if="{{item.bonusScore - 0 > item.fee - 0}}">¥{{item.bonusScore}}</text>（积分抵扣{{item.usedScore}}）
         </view>
       </view>
     </view>

@@ -140,3 +140,10 @@ to {left: -50px;}
   width: 26rpx;
   height: 26rpx;
 }
+
+.activity{
+  display: inline-block;
+  margin-left: 20rpx;
+  color:#F02E51;
+  text-decoration: line-through;
+}

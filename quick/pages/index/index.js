@@ -271,6 +271,29 @@ Page({
           'storeName': options.StoreName
         })
       }
+      fetch({
+        url: "/CVS/discount",
+        //   baseUrl: "http://192.168.50.57:9888", 
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          openid: wx.getStorageSync('user').openid,
+          storeid: wx.getStorageSync('storeId')
+        },
+        noLoading: true,
+        method: "GET",
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+        //  header: { 'content-type': 'application/json' }
+      }).then(res => {
+
+        wx.setStorageSync('percent', res.data)
+      }).catch(err => {
+        console.log("出错了")
+        wx.showToast({
+          title: '网络繁忙'
+        })
+        console.log(err)
+      });
+
 
 
    },

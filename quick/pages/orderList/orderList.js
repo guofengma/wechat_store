@@ -178,7 +178,8 @@ Page({
          }
          orderList = [...result];
          this.setData({
-            orderList: orderList
+            orderList: orderList,
+            percent: wx.getStorageSync('percent')
          })
 
       }).catch(err => {

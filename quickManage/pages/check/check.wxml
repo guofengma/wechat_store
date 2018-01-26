@@ -2,6 +2,10 @@
     <view class="store" bindtap='totalStaticView'>
       <image class='storepic' src='../../image/change.png'></image>
       <view>{{storename}}</view>
+      <view class='getLocation' catchtap='getLocation'>
+        <image class='address' src="../../image/address.png"></image>
+      </view>
+      <view>获取位置</view>
     </view>
     <view class="info">扫顾客二维码</view>
     <image class='checkpic' bindtouchstart="scanCode" src="../../image/scanCode.png"></image>

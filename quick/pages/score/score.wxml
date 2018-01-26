@@ -37,7 +37,7 @@
       <image class='tab-img' src="../../image/stock_exchange.png"></image>
       <view class='gain'>积分交换</view>
     </view>
-    <view class='title'>
+    <view class='title' bindtap='shopCardView'>
       <image class='tab-img' src="../../image/shop.png"></image>
       <view>购物卡</view>
     </view>

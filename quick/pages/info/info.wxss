@@ -51,6 +51,7 @@
 }
 .container .content .money{
     color: #0D8FEF;
+    position: relative;
 }
 .container .content .symbol{
     font-size: 36rpx;
@@ -79,9 +80,7 @@
     width: 56rpx;
     height: 56rpx;
 } 
-.container .content .total image:first-of-type{
-    /*padding: 0 0 40rpx 40rpx;*/
-}
+
 .footer{
     position: fixed;
     bottom: 0;
@@ -103,4 +102,16 @@
 .footer .cart{
     background-color: #259AF0;
     color: #fff;
+}
+
+.activity{
+  display: inline-block;
+  margin-left: 20rpx;
+  color: #999999;
+  text-decoration: line-through;
+  font-size: 24rpx;
+}
+
+.container .activity .num{
+  font-size: 28rpx;
 }

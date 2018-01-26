@@ -1,0 +1,23 @@
+<view class="container">
+  <view class='intro'>
+    购物卡可直接用于支付订单并奖励积分
+  </view>
+  <view class='content clear'>
+    <view class='item' wx:for="{{list}}" wx:key="{{index}}"  data-index='{{index}}' bindtap='{{index != idx ? "chooseCard" : ""}}'>
+      <view class='amount' wx:if="{{index == idx}}">{{amount}}</view>
+      <image class='header' src="{{item.cardUrl}}"></image>
+      <view class='num flex-row-between'>
+        <image bindtap='{{index == idx ? "reduce" : "chooseCard"}}' class='reduce' src="{{item.active ? img[0].reduceBlue : img[1].reduceGray}}"></image>
+        <image bindtap='{{index == idx ? "increase" : "chooseCard"}}' class='increase' src="{{item.active ? img[0].increaseBlue : img[1].increaseGray}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='footer flex-row-between'>
+    <view class='flex-row-start'>
+      <view class='total'>￥{{amount * price}}</view>
+      <view class='youhui'>赠送{{amount * price * 100}}积分</view>
+    </view>
+    <button class='button' bindtap='buy'>购买</button>
+  </view>
+</view>

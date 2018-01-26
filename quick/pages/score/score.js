@@ -29,6 +29,11 @@ Page({
       url: '../../component/exchange/exchange',
     })
   },
+  shopCardView() {
+    wx.navigateTo({
+      url: '../../component/shopCard/shopCard',
+    })
+  },
   detail() {
     wx.navigateTo({
       url: '../scorelist/scorelist',
