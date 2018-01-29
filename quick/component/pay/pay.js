@@ -15,12 +15,6 @@ Page({
     password: ''
   },
   moneyInput(e) {
-    if (e.detail.value - 0 > this.data.frt - 0) {
-      this.setData({
-        money: this.data.frt
-      });
-      return
-    }
     this.setData({
       money: e.detail.value
     })
@@ -78,7 +72,7 @@ Page({
       wx.showModal({
         content: '手机号不能为空',
         showCancel: false,
-        confirmColor: '#DDBF90'
+        confirmColor: '#0D8FEF'
       });
       return;
     }
@@ -136,12 +130,12 @@ Page({
     });
   },
 
-  buy() {
+  pay() {
     if (!this.data.money) {
       wx.showModal({
         content: '金额不能为空',
         showCancel: false,
-        confirmColor: '#DDBF90'
+        confirmColor: '#0D8FEF'
       });
 
       return
@@ -150,18 +144,30 @@ Page({
       wx.showModal({
         content: '验证码不能为空',
         showCancel: false,
-        confirmColor: '#DDBF90'
+        confirmColor: '#0D8FEF'
       });
 
       return
     }
-    if (parseInt(this.data.frt) < parseInt(this.data.money)) {
-      wx.showModal({
-        title: '余额不足请充值',
-        showCancel: false,
-        confirmColor: '#DDBF90'
-      })
 
+    if (!this.data.pwd) {
+      wx.showModal({
+        content: '密码不能为空',
+        showCancel: false,
+        confirmColor: '#0D8FEF'
+      });
+
+      return
+    }
+
+    if (this.data.pwd.length != 6) {
+      wx.showModal({
+        content: '密码为6位数字',
+        showCancel: false,
+        confirmColor: '#0D8FEF'
+      });
+
+      return
     }
 
     fetch({
@@ -171,20 +177,15 @@ Page({
       data: {
         mobile: this.data.mobile,
         code: this.data.smsCode,
+        storeid: wx.getStorageSync('storeId')
       },
       noLoading: true,
       method: "GET",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      }
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
       // header: { 'content-type': 'application/json' }
     }).then(result => {
       if (result.code == 200) {
-        console.log("校验成功")
-        var openId = wx.getStorageSync('user').openid;
-        var payMoney = 0.01;
-        var score = this.data.money;
-        this.prepay(openId, payMoney, score);
+        this.order()
       } else {
         wx.showToast({
           title: '验证码错误',
@@ -196,22 +197,24 @@ Page({
       console.log(err)
 
     });
-
   },
-  prepay(openId, payMoney, score) {
+  order() {
+    let payMoney = 1;
+    this.prepay(wx.getStorageSync('user').openid, payMoney)
+  },
+  prepay(openId, payMoney) {
     console.log("支付钱数：" + payMoney);
     var that = this;
     fetch({
-      url: "/video/prepay",
+      url: "/wxpay/prepayscore",
       //  baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': openId,
         'fee': payMoney,
-        'description': wx.getStorageSync('unionId') + "至" + wx.getStorageSync('reaccID') + "的转账"
-        // 'usedScore': this.data.score,
-        // 'mch_id': wx.getStorageSync('storeId'),
-        // 'storeid': wx.getStorageSync('storeId')
+        'description': "积分交换手续费",
+        'mch_id': wx.getStorageSync('storeId'),
+        'storeid': wx.getStorageSync('storeId'),
       },
       method: "POST",
       header: {
@@ -219,22 +222,17 @@ Page({
       }
     }).then(result => {
       console.log(result);
-      if (result.returncode) {
-        wx.showToast({
-          title: result.returnmsg,
-        })
-        return
+      if (result.return_code == "SUCCESS") {
+        var prepay_id = result.prepay_id;
+        that.sign(prepay_id);
       }
-      var prepay_id = result.prepay_id;
-      wx.setStorageSync('orderNo', result.orderNo)
-      console.log("统一下单返回 prepay_id:" + prepay_id);
-      that.sign(prepay_id, score);
+      
     }).catch(err => {
 
     });
   },
   //签名
-  sign(prepay_id, score) {
+  sign(prepay_id) {
     var that = this;
     fetch({
       url: "/video/wxpay/sign",
@@ -248,13 +246,13 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       }
     }).then(result => {
-      that.requestPayment(result, score);
+      that.requestPayment(result);
     }).catch(err => {
 
     });
   },
   //申请支付
-  requestPayment: function(obj, score) {
+  requestPayment: function(obj) {
     let self = this;
     wx.requestPayment({
       'timeStamp': obj.timeStamp,
@@ -264,48 +262,7 @@ Page({
       'paySign': obj.paySign,
       'success': function(res) {
         console.log(res);
-        fetch({
-          url: '/frt/invoke',
-          // baseUrl: "https://123.207.144.58",
-          baseUrl: "https://store.lianlianchains.com",
-          data: {
-            func: 'transefer',
-            ccId: '',
-            usr: wx.getStorageSync('unionId'),
-            acc: wx.getStorageSync('unionId'),
-            reacc: wx.getStorageSync('reaccID'),
-            desc: "转账汇款",
-            amt: score
-          },
-          noLoading: false,
-          method: "GET",
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          }
-          //  header: { 'content-type': 'application/json' }
-        }).then(res => {
-          console.log(res);
-          wx.showModal({
-            content: '交易成功',
-            showCancel: false,
-            confirmColor: '#DDBF90',
-            success: function(res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '../user/user',
-                })
-              }
-            }
-          });
-
-        }).catch(err => {
-
-          console.log("出错了")
-          wx.showToast({
-            title: '网络繁忙'
-          })
-          console.log(err)
-        });
+        this.transfer();
 
       },
       'fail': function(res) {
@@ -316,11 +273,43 @@ Page({
     })
   },
 
+  transfer() {
+    fetch({
+      url: "/CVS/user/scoretransfer",
+      // baseUrl: "http://192.168.50.239:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        unionid: wx.getStorageSync('unionId'),
+        unionto: this.data.unionto,
+        score: this.data.money,
+        password: this.data.pwd
+      },
+      noLoading: true,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+      // header: { 'content-type': 'application/json' }
+    }).then(result => {
+      wx.navigateBack({
+        url: "../../pages/score/score"
+      })
+    }).catch(err => {
+      console.log("出错了")
+      console.log(err)
+
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    if(options.unionto) {
+      this.setData({
+        unionto: options.unionto
+      })
+    }
   },
 
   /**

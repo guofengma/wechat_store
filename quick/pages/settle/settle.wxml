@@ -15,9 +15,9 @@
       <view class='market-bottom-item'>
         月销售额：{{1500}}-{{2000}}
       </view>
-      <view class='market-bottom-item'>
+      <!-- <view class='market-bottom-item'>
         毛利润率：{{25}}%-{{30}}%
-      </view>
+      </view> -->
     </view>
     <view class='business-content'>
       <view class='imgs'>

@@ -38,7 +38,7 @@ Page({
     var scorebonus = e.target.dataset.scorebonus
 
     wx.navigateTo({
-      url: '../scoreinvest/scoreinvest?investtype=' + investtype +
+      url: '../../pages/scoreinvest/scoreinvest?investtype=' + investtype +
       '&storeid=' + storeid + '&storename=' + storename +
       '&score=' + score + '&scorebonus=' + scorebonus,
     })
@@ -50,7 +50,7 @@ Page({
     var storename = e.target.dataset.storename
 
     wx.navigateTo({
-      url: '../scoreinvest/scoreinvest?investtype=' + investtype +
+      url: '../../pages/scoreinvest/scoreinvest?investtype=' + investtype +
       '&storeid=' + storeid + '&storename=' + storename +
       '&curscore=' + this.data.score,
     })

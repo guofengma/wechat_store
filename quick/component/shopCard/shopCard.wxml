@@ -16,8 +16,8 @@
   <view class='footer flex-row-between'>
     <view class='flex-row-start'>
       <view class='total'>￥{{amount * price}}</view>
-      <view class='youhui'>赠送{{amount * price * 100}}积分</view>
+      <view class='youhui'>赠送{{amount * price * 10}}积分</view>
     </view>
-    <button class='button' bindtap='buy'>购买</button>
+    <button class='button' data-price='{{amount * price}}' bindtap='buy'>购买</button>
   </view>
 </view>

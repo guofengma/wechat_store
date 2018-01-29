@@ -334,7 +334,7 @@ Page({
   },
   //下单
   order() {
-    let payMoney = (this.data.total * wx.getStorageSync('percent') - (this.data.total - this.data.totaltemp)).toFixed(2) - 0;
+    let payMoney = this.data.payMoney;
     console.log("fee", payMoney )
     let oringeFee = this.data.total;
     this.prepay(wx.getStorageSync('user').openid, payMoney, oringeFee)

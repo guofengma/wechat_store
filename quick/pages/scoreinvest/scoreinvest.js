@@ -41,13 +41,13 @@ Page({
     console.log(dt.getHours())
 
     this.setData({
-      btn: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 15),
-      extract: (dt.getDay() == 1 && dt.getHours() > 13 && dt.getHours() < 15),
-      join: (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() < 12),
+      btn: (dt.getHours() > 9 && dt.getHours() < 15),
+      extract: ( dt.getHours() > 9 && dt.getHours() < 12),
+      join: (dt.getHours() > 13 && dt.getHours() < 15),
     })
 
     if (investtype == 0) {
-      if (dt.getDay() == 1 && dt.getHours() > 9 && dt.getHours() <= 12) {
+      if (dt.getHours() > 13 && dt.getHours() <= 18) {
         this.setData({
           btnCont: "参与",
           joinBtn: true
@@ -71,7 +71,7 @@ Page({
         joinBtn: false
       });
 
-      if (dt.getHours() > 13 && dt.getHours() <= 15) {
+      if (dt.getHours() > 9 && dt.getHours() <= 12) {
         this.setData({
           btnCont: "提取",
           joinBtn: false

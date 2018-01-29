@@ -23,7 +23,7 @@ Page({
         console.log(res);
 
         wx.navigateTo({
-          url: '../pay/pay',
+          url: '../pay/pay?unionto='+res.result,
         })
       }
     })
@@ -33,10 +33,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let openid = wx.getStorageSync('user').openid;
+    let unionto = wx.getStorageSync('unionId');
     
     this.setData({
-      receiveCode: "https://store.lianlianchains.com/qrcode?data=" + openid + "&width=202&height=202"
+      receiveCode: "https://store.lianlianchains.com/qrcode?data=" + unionto + "&width=202&height=202"
     })
   },
   /**
