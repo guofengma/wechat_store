@@ -22,7 +22,7 @@
 
          <view class="elem bottom">
             <view class="hasCheck">
-            共{{item.totalNum}}件商品 ¥{{item.fee}}<text class='activity' wx:if="{{item.bonusScore-item.usedScore == item.fee}}">¥{{item.bonusScore}}</text>（积分抵扣{{item.usedScore}}）
+            共{{item.totalNum}}件商品 ¥{{item.fee}}<text class='activity' wx:if="{{!!item.bonusScore}}">¥{{item.bonusScore}}</text>（积分抵扣{{item.usedScore}}）
             </view>
          </view>
       </view>

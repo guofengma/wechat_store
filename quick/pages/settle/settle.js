@@ -9,6 +9,11 @@ Page({
   data: {
   
   },
+  benefitView() {
+    wx.navigateTo({
+      url: '../benefit/benefit',
+    })
+  },
   saveUnion() {
     fetch({
       url: "/wx/account",

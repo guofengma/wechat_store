@@ -92,6 +92,6 @@
 }
 
 .address{
-  width: 50rpx;
-  height: 50rpx;
+  width: 46rpx;
+  height: 46rpx;
 }

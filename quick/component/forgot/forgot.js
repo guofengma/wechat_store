@@ -14,23 +14,6 @@ Page({
     smsBtn: false,
     password: ''
   },
-  forgotView() {
-    if (this.data.mobile && this.data.mobile.length == 11) {
-      wx.navigateTo({
-        url: '../forgot/forgot?mobile='+ this.data.mobile,
-        success: function (res) { },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
-    }else{
-      wx.showModal({
-        content: '请输入正确的手机号',
-        showCancel: false,
-        confirmColor: '#0D8FEF'
-      });
-    }
-    
-  },
   moneyInput(e) {
     this.setData({
       money: e.detail.value
@@ -46,7 +29,7 @@ Page({
       pwd: e.detail.value
     })
   },
-  getPhoneNumber: function(e) {
+  getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
@@ -63,7 +46,7 @@ Page({
           iv: e.detail.iv
         },
         method: 'GET',
-        success: function(secr) {
+        success: function (secr) {
           console.log(secr);
 
           that.setData({
@@ -148,15 +131,6 @@ Page({
   },
 
   pay() {
-    if (!this.data.money) {
-      wx.showModal({
-        content: '金额不能为空',
-        showCancel: false,
-        confirmColor: '#0D8FEF'
-      });
-
-      return
-    }
     if (!this.data.smsCode) {
       wx.showModal({
         content: '验证码不能为空',
@@ -202,7 +176,8 @@ Page({
       // header: { 'content-type': 'application/json' }
     }).then(result => {
       if (result.code == 200) {
-        this.checkPassword();
+        this.order();
+        // this.resetPassword();
       } else {
         wx.showToast({
           title: '验证码错误',
@@ -215,65 +190,9 @@ Page({
 
     });
 
-    
-  },
-  checkPassword() {
-    fetch({
-      url: "/CVS/user/querytransfer",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        unionid: wx.getStorageSync('unionId'),
-        unionto: this.data.unionto,
-        score: this.data.money,
-        password: this.data.pwd
-      },
-      noLoading: true,
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      }
-      // header: { 'content-type': 'application/json' }
-    }).then(result => {
-      // 10001   //付款账号不存在
-      // 10002   //收款账号不存在
-      // 10003   //账号余额不足
-      // 10004   //密码错误
-      // 10005   //转账金额不合法(负数)
-      if (JSON.parse(result.data).result == "0") {
-        this.order();
-      }else if (JSON.parse(result.data).result == "10004") {
-        wx.showModal({
-          content: '密码错误',
-          showCancel: false,
-          confirmColor: '#0D8FEF'
-        });
-      } else if (JSON.parse(result.data).result == "10003") {
-        wx.showModal({
-          content: '账号余额不足',
-          showCancel: false,
-          confirmColor: '#0D8FEF'
-        });
-      } else if (JSON.parse(result.data).result == "10005") {
-        wx.showModal({
-          content: '转账金额不合法',
-          showCancel: false,
-          confirmColor: '#0D8FEF'
-        });
-      }else {
-        wx.showModal({
-          content: '网络错误',
-          showCancel: false,
-          confirmColor: '#0D8FEF',
-        });
-      }
 
-    }).catch(err => {
-      console.log("出错了")
-      console.log(err)
-
-    });
   },
+  
   order() {
     let payMoney = 1;
     this.prepay(wx.getStorageSync('user').openid, payMoney)
@@ -302,7 +221,7 @@ Page({
         var prepay_id = result.prepay_id;
         that.sign(prepay_id);
       }
-      
+
     }).catch(err => {
 
     });
@@ -328,7 +247,7 @@ Page({
     });
   },
   //申请支付
-  requestPayment: function(obj) {
+  requestPayment: function (obj) {
     let self = this;
     wx.requestPayment({
       'timeStamp': obj.timeStamp,
@@ -338,10 +257,10 @@ Page({
       'paySign': obj.paySign,
       'success': (res) => {
         console.log(res);
-        this.transfer();
-        
+        this.resetPassword();
+
       },
-      'fail': function(res) {
+      'fail': function (res) {
         console.log('输出失败信息：')
         console.log(res);
         console.log("支付失败")
@@ -349,44 +268,28 @@ Page({
     })
   },
 
-  transfer() {
+  resetPassword() {
     fetch({
-      url: "/CVS/user/scoretransfer",
-      // baseUrl: "http://192.168.50.239:9888",
+      url: "/CVS/user/resetPassword",
+      //   baseUrl: "http://192.168.50.57:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        unionid: wx.getStorageSync('unionId'),
-        unionto: this.data.unionto,
-        score: this.data.money,
-        password: this.data.pwd
+        password: this.data.pwd,
+        openid: wx.getStorageSync('user').openid
       },
       noLoading: true,
-      method: "POST",
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      }
+      method: "GET",
+      header: { 'content-type': 'application/x-www-form-urlencoded' }
       // header: { 'content-type': 'application/json' }
     }).then(result => {
       if (result.ec == "000000") {
-        wx.navigateBack({
-          url: "../../pages/score/score"
+        wx.navigateBack();
+      } else {
+        wx.showToast({
+          title: '密码重置失败',
+          duration: 1500
         })
-        
-      }else{
-        wx.showModal({
-          content: '交易失败',
-          showCancel: false,
-          confirmColor: '#0D8FEF',
-          success:  (res) => {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-            }
-          }
-        });
       }
-      
     }).catch(err => {
       console.log("出错了")
       console.log(err)
@@ -394,13 +297,15 @@ Page({
     });
   },
 
+
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    if(options.unionto) {
+  onLoad: function (options) {
+    if (options.mobile) {
       this.setData({
-        unionto: options.unionto
+        mobile: options.mobile
       })
     }
   },
@@ -408,14 +313,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
     // fetch({
     //   url: '/frt/query',
@@ -456,35 +361,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -235,6 +235,39 @@ Page({
     this.itemshow(idx)
   },
   itemshow(idx) {
+    if (idx == 0) {
+      if (this.data.user != this.data.fielduser) {
+        this.setData({
+          canedit: 'false'
+        })
+      }else{
+        this.setData({
+          canedit: 'true'
+        })
+      }
+    } else if (idx == 1) {
+      if (this.data.user != this.data.dealuser) {
+        this.setData({
+          canedit: 'false'
+        })
+      } else {
+        this.setData({
+          canedit: 'true'
+        })
+      }
+    } else if (idx == 2) {
+      if (this.data.user != this.data.supplyuser) {
+        this.setData({
+          canedit: 'false'
+        })
+      } else {
+        this.setData({
+          canedit: 'true'
+        })
+      }
+    }
+    console.log(this.data.user, this.data.dealuser, this.data.user == this.data.dealuser)
+    console.log(idx,this.data.canedit)
 
     this.setData({
       fieldimg: (idx == 0) ? '../../image/office.png' : '../../image/officeAct.png',
@@ -538,6 +571,17 @@ Page({
 
     })
   },
+  checkCanedit() {
+    if (this.data.user != this.data.fielduser) {
+      this.setData({
+        canedit: 'false'
+      })
+    } else {
+      this.setData({
+        canedit: 'true'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -560,8 +604,11 @@ Page({
       fielduser: options.field,
       dealuser: options.deal,
       supplyuser: options.supply,
-      canedit: options.canedit
+      canedit: options.canedit,
+      user: options.user
     })
+
+    this.checkCanedit();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

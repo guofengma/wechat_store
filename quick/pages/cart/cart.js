@@ -222,7 +222,8 @@ Page({
             that.checkCart()
             that.setData({
               total: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0,
-              totaltemp: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0
+              totaltemp: (that.data.total - e.target.dataset.price * e.target.dataset.amount).toFixed(2) - 0,
+              payMoney: ((that.data.total - e.target.dataset.price * e.target.dataset.amount) * wx.getStorageSync('percent') - that.data.sale).toFixed(2) - 0
             })
             console.log(that.data.total)
             console.log(typeof that.data.total)
@@ -274,7 +275,8 @@ Page({
     this.setData({
       cartList: this.data.cartList,
       total: this.data.total,
-      totaltemp: this.data.total
+      totaltemp: this.data.total,
+      payMoney: (this.data.total * wx.getStorageSync('percent') - this.data.sale).toFixed(2) - 0
     });
   },
   bindIncreaseTap(e) {
@@ -293,7 +295,7 @@ Page({
     } else {
 
       this.setData({
-        totalAmount: this.data.totalAmount
+        totalAmount: this.data.totalAmount,
       })
       wx.showToast({
         title: '购物车已达上限',
@@ -329,7 +331,8 @@ Page({
     this.setData({
       cartList: this.data.cartList,
       total: this.data.total,
-      totaltemp: this.data.total
+      totaltemp: this.data.total,
+      payMoney: (this.data.total * wx.getStorageSync('percent') - this.data.sale).toFixed(2) - 0
     });
   },
   //下单

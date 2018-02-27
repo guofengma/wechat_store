@@ -37,9 +37,6 @@ Page({
     price: 10,
     total: 0
   },
-  buy() {
-    console.log(this.data.amount * this.data.price)
-  },
   increase() {
     this.data.amount++;
     this.setData({

@@ -16,6 +16,15 @@ Page({
     date: '',
     startDate: get3MonthBefor()
   },
+  previewImage() {
+    wx.previewImage({
+      current: this.data.info.img1,
+      urls: [this.data.info.img1, this.data.info.img2, this.data.info.img3],
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   getPhoneNumber: function(e) {
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)

@@ -3,6 +3,8 @@ import fetch from '../../utils/fetch.js';
 
 var app = getApp();
 
+let componentBasePath = "../../component/";
+
 var num = 0;
 Page({
 
@@ -18,11 +20,11 @@ Page({
     score: 0,
     benefit: 0
   },
-  //  settleView() {
-  //    wx.navigateTo({
-  //      url: '../settle/settle',
-  //    })
-  //  },
+  walletView() {
+    wx.navigateTo({
+      url: componentBasePath + "wallet/wallet",
+    })
+  },
   grabShow() {
     let _this = this;
     wx.getSetting({
@@ -50,7 +52,7 @@ Page({
               }
             }
           })
-         
+
         } else {
           wx.navigateTo({
             url: '../grab/grab',
@@ -59,9 +61,9 @@ Page({
       }
     })
 
-    
-    
-    
+
+
+
   },
   querybenefit() {
     fetch({
@@ -160,7 +162,7 @@ Page({
                       if (!!wx.getStorageSync('unionId')) {
                         that.queryscore();
                       }
-                      
+
                     }
                   });
                 }
@@ -207,7 +209,7 @@ Page({
         }
       }
     })
-    
+
 
   },
   score() {
@@ -241,12 +243,12 @@ Page({
         } else {
           if (!wx.getStorageSync('unionId')) {
             _this._getUnionID();
-          }else{
+          } else {
             wx.navigateTo({
               url: '../score/score',
             })
           }
-         
+
         }
       }
     })
@@ -385,7 +387,7 @@ Page({
           nickName: res.userInfo.nickName
         });
         that._getUnionID();
-        
+
       },
       fail: function (err) {
         that.setData({
@@ -450,7 +452,7 @@ Page({
     if (!!wx.getStorageSync('unionId')) {
       this.queryscore();
     }
-    
+
     this.querybenefit()
 
   },
@@ -494,6 +496,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   }
 })

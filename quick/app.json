@@ -43,7 +43,9 @@
       "gainScore/gainScore",
       "exchange/exchange",
       "pay/pay",
-      "shopCard/shopCard"
+      "shopCard/shopCard",
+      "wallet/wallet",
+      "forgot/forgot"
     ]
   }],
   "window": {

@@ -1,6 +1,7 @@
 .container {
   background-color: #fff;
   padding-top: 50rpx;
+  overflow: hidden;
 }
 
 .buybg {
@@ -78,7 +79,7 @@
   line-height: 80rpx;
   background-color: #0D8FEF;
   color: #FFFFFF;
-  margin-top: 140rpx;
+  margin-top: 280rpx;
   border-radius: 4px;
   font-size: 32rpx;
 }

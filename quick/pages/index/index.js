@@ -44,7 +44,7 @@ Page({
        //  header: { 'content-type': 'application/json' }
      }).then(res => {
 
-       console.log(res)
+      //  console.log(res)
 
      }).catch(err => {
        console.log("出错了")
@@ -67,11 +67,11 @@ Page({
    ScancodeTap(){
       wx.scanCode({
          success: (res) => {
-            console.log(res);
+            // console.log(res);
             wx.setStorageSync('code', res.result);
             var code = res.code;
-            console.log("扫码成功");
-            console.log("条形码：" + code)
+            // console.log("扫码成功");
+            // console.log("条形码：" + code)
 
             //查库
             fetch({
@@ -88,8 +88,8 @@ Page({
                header: { 'content-type': 'application/x-www-form-urlencoded' }
                // header: { 'content-type': 'application/json' }
             }).then(result => {
-               console.log(result)
-               console.log("查库成功");
+              //  console.log(result)
+              //  console.log("查库成功");
                if (!result){
                   wx.showToast({
                      title: '该商品暂未上架',
@@ -113,8 +113,7 @@ Page({
                   header: { 'content-type': 'application/x-www-form-urlencoded' }
                   // header: { 'content-type': 'application/json' }
                }).then(carts => {
-                  console.log("输出carts:")
-                  console.log(carts)
+                  console.log("输出carts:",carts)
                   console.log("购物车查询成功")
 
                   if (carts.length) {
@@ -271,6 +270,26 @@ Page({
           'storeName': options.StoreName
         })
       }
+      
+
+
+
+   },
+   onShow: function () {
+      var storeId = wx.getStorageSync('storeId');
+      let storeNames = wx.getStorageSync('storeName');
+
+      if (storeId) {
+         this.setData({
+            'storeId': storeId,
+            'storeName': storeNames
+         })
+      }
+
+      if (!!wx.getStorageSync('unionId')) {
+        this.saveUnion();
+      }
+
       fetch({
         url: "/CVS/discount",
         //   baseUrl: "http://192.168.50.57:9888", 
@@ -293,24 +312,6 @@ Page({
         })
         console.log(err)
       });
-
-
-
-   },
-   onShow: function () {
-      var storeId = wx.getStorageSync('storeId');
-      let storeNames = wx.getStorageSync('storeName');
-
-      if (storeId) {
-         this.setData({
-            'storeId': storeId,
-            'storeName': storeNames
-         })
-      }
-
-      if (!!wx.getStorageSync('unionId')) {
-        this.saveUnion();
-      }
    },
    /**
   * 用户点击右上角分享

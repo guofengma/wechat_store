@@ -19,7 +19,7 @@
       </view>
       <view class='section section__voucher'>
         <label class='section_title'>上架凭证</label>
-        <view class='section_input'>
+        <view class='section_input' bindtap='previewImage'>
           <image class='img' src="{{info.img1}}"></image>
           <image class='img' src="{{info.img2}}"></image>
           <image class='img' src="{{info.img3}}"></image>

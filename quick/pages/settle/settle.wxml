@@ -35,5 +35,9 @@
       </view>
     </view>
   </view>
-  <view bindtap='applyView' class='button'>申请</view>
+  <view class='btnCont'>
+    <view bindtap='applyView' class='button'>申请入驻</view>
+    <view bindtap='benefitView' class='button'>货架分润</view>
+  </view>
+
 </view>

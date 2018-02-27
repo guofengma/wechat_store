@@ -1,7 +1,7 @@
 <!--pages/score/score.wxml-->
 <view class='container'>
   <view class='myJoin' wx:if="{{storeListUser && storeListUser.length}}">
-    <view class='title'>我参与的</view>
+    <view class='title'>我的</view>
     <view wx:for="{{storeListUser}}" wx:key="index" wx:for-item="item">
       <view class='storelist flex-row-between'>
         <view class='flex-row-start'>

@@ -16,7 +16,7 @@
     <!-- <image bindtap='commenShow' class='comment' src='../../image/comment.png'></image> -->
     <!-- <button wx:if="{{ mobile == ''}}" class="submit" hover-class="submit-button-hover" bindtap="bindSubmitTap"> 登录 </button>
       <view class="mobile" wx:if="{{ mobile !== ''}}" class="mobile">{{mobile}}</view> -->
-    <view class="nav">
+    <!-- <view class="nav">
       <view class="elem" bindtap='score'>
         <view class="num">{{score}}</view>
         <view class="name">快点积分</view>
@@ -25,7 +25,7 @@
         <view class="num">{{benefit}}</view>
         <view class="name">快点赚钱</view>
       </view>
-    </view>
+    </view> -->
   </view>
 
 
@@ -36,6 +36,12 @@
         <view class='name' data-totalNum="{{totalNum}}">购物车</view>
       </view>
       <text bindtap="cartView" class="num" wx:if="{{totalNum > 0}}">{{totalNum}}</text>
+    </view>
+    <view class='item'>
+      <view bindtap="walletView" class="item-content">
+        <image class='img-order' src='../../image/qianbao.png'></image>
+        <view class='name'>我的钱包</view>
+      </view>
     </view>
     <view class='item'>
       <view bindtap="orderView" class="item-content">

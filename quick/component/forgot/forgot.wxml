@@ -2,22 +2,6 @@
 
   <view class='buy'>
     <view class='item'>
-      <view class='title'>
-        <text space='true' decode="true">收款人</text>
-      </view>
-      <view class='sendcode'>
-        <input class='input' disabled='true' type='text' placeholder-class='placehoder' value='{{unionto}}' placeholder='请输入金额'></input>
-      </view>
-    </view>
-    <view class='item'>
-      <view class='title'>
-        <text space='true' decode="true">积&nbsp;&nbsp;&nbsp;分</text>
-      </view>
-      <view class='sendcode'>
-        <input class='input' type='number' placeholder-class='placehoder' value='{{money}}' bindinput='moneyInput' placeholder='请输入积分'></input>
-      </view>
-    </view>
-    <view class='item'>
       <view class='title'>手机号 </view>
       <view class='sendcode'>
         <input class='input' type='number' placeholder-class='placehoder' maxlength='11' value='{{mobile}}' bindinput='phoneInput' placeholder='请输入手机号'></input>
@@ -38,11 +22,9 @@
       </view>
       <view class='sendcode'>
         <input class='input' password='true' type='number' maxlength='6' placeholder-class='placehoder' value='{{pwd}}' bindinput='pwdInput' placeholder='请输入密码'></input>
-        <view class='send forgot' bindtap='forgotView'>找回密码</view>
       </view>
     </view>
-    <view class='prompt'>1.首次使用，填写密码即为设置密码，后续交易使用此密码</view>
-    <view class='prompt'>2.转移积分每次需要1元手续费</view>
+    <view class='prompt'>重置密码会收取1.0元手续费</view>
     <view class='button' bindtap='pay'>支付</view>
 
   </view>

@@ -9,10 +9,10 @@
     <view class="guige">规格：{{specifi}}</view>
     <view class="money">
       <text class="symbol">¥</text>
-      <text class="num">{{total}}</text>
+      <text class="num">{{total * percent - 0}}</text>
       <view class='activity' wx:if="{{percent - 0 < 1}}">
         <text class="symbol">¥</text>
-        <text class="num">{{total * percent - 0}}</text>
+        <text class="num">{{total}}</text>
       </view>
     </view>
     <view class="total">

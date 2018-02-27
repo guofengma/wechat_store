@@ -47,7 +47,7 @@ Page({
     })
 
     if (investtype == 0) {
-      if (dt.getHours() > 13 && dt.getHours() <= 18) {
+      if (dt.getHours() > 13 && dt.getHours() <= 15) {
         this.setData({
           btnCont: "参与",
           joinBtn: true
@@ -163,7 +163,7 @@ Page({
 
       if (res.ec == '000000') {
         wx.navigateBack({
-          url: '../score/score',
+          url: '../../component/wallet/wallet',
         })
       }
 
@@ -215,7 +215,7 @@ Page({
 
       if (res.ec == '000000') {
         wx.navigateBack({
-          url: '../score/score',
+          url: '../../component/wallet/wallet',
         })
       }
 
@@ -236,7 +236,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        'storeid': this.data.storeid
+        'storeId': this.data.storeid
       },
       method: "GET",
       noLoading: true,

@@ -183,7 +183,8 @@ Page({
               '&fieldstate=' + fieldstate +
               '&dealstate=' + dealstate +
               '&supplystate=' + supplystate +
-              '&canedit=' + canedit
+              '&canedit=' + canedit +
+              '&user=' + that.data.user
             })
           }
 
@@ -258,7 +259,8 @@ Page({
                   '&fieldstate=' + fieldstate +
                   '&dealstate=' + dealstate +
                   '&supplystate=' + supplystate +
-                  '&canedit=' + false
+                  '&canedit=' + false +
+                  '&user=' + that.data.user
                 })
               }
 
@@ -272,7 +274,8 @@ Page({
             '&fieldstate=' + fieldstate +
             '&dealstate=' + dealstate +
             '&supplystate=' + supplystate +
-            '&canedit=' + canedit
+            '&canedit=' + canedit +
+            '&user=' + that.data.user
           })
 
         }
@@ -295,7 +298,8 @@ Page({
         '&fieldstate=' + fieldstate +
         '&dealstate=' + dealstate +
         '&supplystate=' + supplystate + 
-        '&canedit=' + canedit
+        '&canedit=' + canedit +
+        '&user=' + that.data.user
       })
 
     }
