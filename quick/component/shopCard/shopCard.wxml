@@ -7,8 +7,8 @@
       <view class='amount' wx:if="{{index == idx}}">{{amount}}</view>
       <image class='header' src="{{item.cardUrl}}"></image>
       <view class='num flex-row-between'>
-        <image bindtap='{{index == idx ? "reduce" : "chooseCard"}}' class='reduce' src="{{item.active ? img[0].reduceBlue : img[1].reduceGray}}"></image>
-        <image bindtap='{{index == idx ? "increase" : "chooseCard"}}' class='increase' src="{{item.active ? img[0].increaseBlue : img[1].increaseGray}}"></image>
+        <image bindtap='{{index == idx ? "reduce" : "chooseCard"}}' data-index='{{index}}' class='reduce' src="{{item.active ? img[0].reduceBlue : img[1].reduceGray}}"></image>
+        <image bindtap='{{index == idx ? "increase" : "chooseCard"}}' data-index='{{index}}' class='increase' src="{{item.active ? img[0].increaseBlue : img[1].increaseGray}}"></image>
       </view>
     </view>
   </view>

@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showbtn: true
+    showbtn: true,
+    loading:false
   },
   setPw(e) {
     this.setData({
@@ -25,7 +26,9 @@ Page({
     })
   },
   formSubmit(e) {
-
+    this.setData({
+      loading: true
+    })
     fetch({
       url: "/CVS/apply/register",
         // baseUrl: "http://192.168.50.239:9888", 
@@ -43,6 +46,9 @@ Page({
     }).then(result => {
 
       console.log(result)
+      this.setData({
+        loading: false
+      })
 
       if (result.ec == '000000') {
 

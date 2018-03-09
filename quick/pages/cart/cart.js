@@ -21,7 +21,7 @@ Page({
     totalAmount: 0,
     scoreflag: false,
     score: 0,
-    scoreimg: '',
+    scoreimg: '../../image/scoreno.png',
     scoredesc: '积分抵扣 最多可抵10%',
     sale: 0
   },
@@ -29,7 +29,7 @@ Page({
 
     this.setData({
       scoreflag: false,
-      scoreimg: '',
+      scoreimg: '../../image/scoreno.png',
       scoredesc: '积分抵扣 最多可抵10%',
       score: 0
     })
@@ -87,7 +87,7 @@ Page({
         if ((this.data.total * 0.1).toFixed(2)<0.01){
 
           this.setData({
-            scoreimg: '',
+            scoreimg: '../../image/scoreno.png',
             scoredesc: '商品金额 不满足折扣条件',
             score: 0,
             sale: 0
@@ -96,7 +96,7 @@ Page({
         }else{
 
           this.setData({
-            scoreimg: '',
+            scoreimg: '../../image/scoreno.png',
             scoredesc: '积分不足 可参与活动赚积分',
             score: 0,
             sale: 0
@@ -121,7 +121,7 @@ Page({
 
     } else {
       this.setData({
-        scoreimg: '',
+        scoreimg: '../../image/scoreno.png',
         scoredesc: '积分抵扣 最多可抵10%',
         score: 0
       })

@@ -321,6 +321,7 @@ Page({
     })
   },
   checkrole(roletype) {
+    console.log(roletype)
 
     if (roletype == 0) {
       // 角色
@@ -334,8 +335,8 @@ Page({
 
       // 角色
       if (!this.data.deal) {
-        wx.showToast({
-          title: '请先申请经营货架',
+        wx.navigateTo({
+          url: '../managenav/managenav',
         })
         return false
       }

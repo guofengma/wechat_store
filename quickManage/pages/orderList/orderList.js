@@ -153,6 +153,7 @@ Page({
    */
   onShow: function () {
      var that = this;
+     page = 0;     
      fetch({
         url: "/wxpay/queryShopOrderByPage",
       //   baseUrl: "http://192.168.50.57:9888",

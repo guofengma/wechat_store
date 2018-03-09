@@ -26,7 +26,7 @@
       </view>
     </view>
 
-    <button wx:if="{{showbtn}}" disabled='{{!pw || !storename || !storeaddr}}' class='button' form-type='submit'>提交</button>
+    <button wx:if="{{showbtn}}" loading='{{loading}}' disabled='{{!pw || !storename || !storeaddr}}' class='button' form-type='submit'>提交</button>
   </view>
 
 </form>

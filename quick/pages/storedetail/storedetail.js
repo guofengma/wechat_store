@@ -447,12 +447,15 @@ Page({
             'openid': wx.getStorageSync('user').openid
           },
           success: (res) => {
-            var data = res.data
+            var data = res.data;
+
             //do something
             this.setData({
               image1: data,
               fieldpreviewImg1:"https://store.lianlianchains.com/images/" + data
             })
+
+            
             fetch({
               url: "/CVS/apply/opupdate",
               // baseUrl: "http://192.168.50.239:9888",
@@ -472,7 +475,7 @@ Page({
                 img3: _this.data.image3
               },
               noLoading: false,
-              method: "GET",
+              method: "POST",
               header: { 'content-type': 'application/x-www-form-urlencoded' }
               //  header: { 'content-type': 'application/json' }
             }).then(result => {
@@ -529,7 +532,7 @@ Page({
                 img3: _this.data.image3
               },
               noLoading: false,
-              method: "GET",
+              method: "POST",
               header: { 'content-type': 'application/x-www-form-urlencoded' }
               //  header: { 'content-type': 'application/json' }
             }).then(result => {

@@ -21,9 +21,46 @@ Page({
     benefit: 0
   },
   walletView() {
-    wx.navigateTo({
-      url: componentBasePath + "wallet/wallet",
+    let _this = this;
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userInfo']) {
+
+          wx.showModal({
+            content: '快点申请获取用户信息权限',
+            success: function (res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success: function (data) {
+                    if (data) {
+                      if (data.authSetting["scope.userInfo"] == true) {
+                        _this._getUnionID();
+                      }
+                    }
+                  },
+                  fail: function () {
+                    console.info("2授权失败返回数据");
+
+                  }
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        } else {
+          if (!wx.getStorageSync('unionId')) {
+            _this._getUnionID();
+          } else {
+            wx.navigateTo({
+              url: componentBasePath + "wallet/wallet",
+            })
+          }
+
+        }
+      }
     })
+    
   },
   grabShow() {
     let _this = this;
