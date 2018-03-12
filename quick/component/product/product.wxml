@@ -1,0 +1,19 @@
+<!--pages/cart/cart.wxml-->
+<view class="container">
+  <view class='search'>
+    <input class='input' bindconfirm="bindconfirm" bindinput='input' placeholder='输入商品名称'></input>
+    <view class='button' bindtap='search'>搜索</view>
+  </view>
+  <view>
+    <view class='item' wx:for="{{result}}">
+      <view>{{item.name}}</view>
+      <view class='bottom'>
+        <view>
+          <text class='guige'>规格：{{item.guige}}</text>
+          <text class='money'>￥{{item.money}}</text>
+        </view>
+        <view class='choose' data-info="{{item.code}}" bindtap='choose'>选择商品</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+.container{
+  padding: 36rpx 34rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.search{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input{
+  background: #F8F8F8;
+  width: 580rpx;
+  text-align: center;
+  height: 60rpx;
+  border: 1px solid #ECECEC;
+  border-radius: 4px;
+}
+
+.button{
+  font-size: 28rpx;
+  color: #333333;
+  width: 70rpx;
+}
+
+.item{
+  border-bottom: 1px solid #ECECEC;
+  padding: 30rpx 0;
+}
+
+.item .bottom{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32rpx;
+}
+
+.guige{
+  color: #999999;
+}
+
+.money{
+  color: #F02E51;
+  margin-left: 38rpx;
+}
+
+.choose{
+  color: #0D8DEC;
+}

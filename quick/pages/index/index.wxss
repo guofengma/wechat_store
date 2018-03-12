@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.container .content{
+.container .content {
   height: 100%;
 }
 
@@ -58,6 +58,15 @@
   border: 1px #eee solid;
   border-radius: 5px;
   background-color: #fff;
+}
+
+.container .content .buy .noscan {
+  position: absolute;
+  bottom: 20rpx;
+  right: 21rpx;
+  font-size: 14px;
+  color: #0d8fef;
+  z-index: 2;
 }
 
 .container .content .shadow {
@@ -172,7 +181,7 @@
   z-index: 1;
 }
 
-.activity{
+.activity {
   width: 576rpx;
   height: 144rpx;
   position: absolute;
@@ -180,4 +189,3 @@
   left: 50%;
   transform: translateX(-50%);
 }
-

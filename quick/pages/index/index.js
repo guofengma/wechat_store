@@ -29,6 +29,54 @@ Page({
          }
       ]
    },
+   searchView() {
+     wx.navigateTo({
+       url: '../../component/product/product',
+     })
+
+     return;
+     if (wx.getStorageSync('storeId')) {
+       fetch({
+         url: "/CVS/cart/querycart",
+         //   baseUrl: "http://192.168.50.57:9888", 
+         baseUrl: "https://store.lianlianchains.com",
+         data: {
+           openid: wx.getStorageSync('user').openid,
+           storeid: wx.getStorageSync('storeId')
+         },
+         noLoading: true,
+         method: "GET",
+         header: { 'content-type': 'application/x-www-form-urlencoded' }
+         //  header: { 'content-type': 'application/json' }
+       }).then(carts => {
+         var totalNum = 0;
+         for (var i = 0; i < carts.length; i++) {
+           totalNum += carts[i].amount
+         }
+         if (totalNum >= 5) {
+           wx.showToast({
+             title: '购物车已满',
+           })
+           return
+         }
+         wx.navigateTo({
+           url: '../../component/product/product',
+         })
+       }).catch(err => {
+         console.log("出错了")
+         wx.showToast({
+           title: '网络繁忙'
+         })
+         console.log(err)
+       });
+
+
+     } else {
+       wx.navigateTo({
+         url: '../store/store'
+       })
+     }
+   },
    saveUnion(){
      fetch({
        url: "/wx/account",

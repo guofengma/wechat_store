@@ -45,7 +45,8 @@
       "pay/pay",
       "shopCard/shopCard",
       "wallet/wallet",
-      "forgot/forgot"
+      "forgot/forgot",
+      "product/product"
     ]
   }],
   "window": {

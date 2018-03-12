@@ -43,30 +43,10 @@
 				},
 				{
 					"id": 2,
-					"name": "兑奖",
-					"pathName": "pages/index/index",
+					"name": "aaaa",
+					"pathName": "component/awarrd/award",
 					"query": "t=award",
-					"scene": "1011"
-				},
-				{
-					"id": 3,
-					"name": "付款",
-					"pathName": "component/pay/pay",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": 4,
-					"name": "积分",
-					"pathName": "pages/score/score",
-					"query": "",
-					"scene": "1011"
-				},
-				{
-					"id": -1,
-					"name": "确认",
-					"pathName": "pages/confirm/confirm",
-					"query": ""
+					"scene": "1024"
 				}
 			]
 		}

@@ -29,6 +29,7 @@
         class="" src="../../image/scanCode.png"></image>
         <view class='scan_tit'>扫描商品条形码</view>
       </view>      
+      <view class='noscan' bindtap='searchView'>找不到条码？</view>
     </view>
 
     <image class='activity' src="../../image/activity.png"></image>
