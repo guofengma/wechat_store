@@ -5,20 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    result:[
-      {
-        name: "伊利百利包牛奶100L",
-        guige: "100L",
-        money: 89,
-        code: 11111111111111111111
-      },
-      {
-        name: "伊利百利包牛奶150L",
-        guige: "100L",
-        money: 99,
-        code: 22222222222222222222
-      }
-    ]
+    result:[]
   },
   input(e) {
     console.log(e.detail.value)
@@ -27,13 +14,20 @@ Page({
       product: e.detail.value
     })
   },
+  bindconfirm(e) {
+    console.log(e.detail.value)
+    let product = e.detail.value;
+    this.setData({
+      product: e.detail.value
+    })
+  },
   search() {
     fetch({
-      url: "/sms/send",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      url: "/CVS/good/queryname",
+        baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        product: this.data.product,
+        name: this.data.product,
         storeid: wx.getStorageSync('storeId')
       },
       noLoading: true,
@@ -43,12 +37,15 @@ Page({
         'content-type': 'application/json'
       }
     }).then(result => {
-      
+      this.setData({
+        result: result
+      })
     }).catch(err => {
       console.log(err)
     });
   },
   ScancodeTap(code) {
+
     //查库
     fetch({
       url: "/CVS/good/querybyCode",
@@ -95,7 +92,7 @@ Page({
 
           console.log("购物车不为空的情况")
           let index = carts.findIndex((value, index, arr) => {
-            return value.code == res.result;
+            return value.code == code;
           });
           if (index >= 0) {
             console.log("购物车不为空的情况，扫描已经存在的商品")
@@ -115,7 +112,7 @@ Page({
               data: {
                 openid: wx.getStorageSync('user').openid,
                 amount: 1,
-                code: res.result,
+                code: code,
                 //   code: "6901121300298",
                 storeid: wx.getStorageSync('storeId')
               },
@@ -131,7 +128,7 @@ Page({
           }
         } else {
           console.log("购物车为空的情况")
-          console.log("条形码：" + res.result)
+          console.log("条形码：" + code)
           wx.setStorageSync('already', false);
 
           fetch({
@@ -141,7 +138,7 @@ Page({
             data: {
               openid: wx.getStorageSync('user').openid,
               amount: 1,
-              code: res.result,
+              code: code,
               //  code: "6901121300298",
               storeid: wx.getStorageSync('storeId')
             },
@@ -175,25 +172,8 @@ Page({
 
   choose(e) {
     let code = e.currentTarget.dataset.info;
-    fetch({
-      url: "/sms/send",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        product: this.data.product,
-        storeid: wx.getStorageSync('storeId')
-      },
-      noLoading: true,
-      method: "GET",
-      //   header: { 'content-type': 'application/x-www-form-urlencoded' }
-      header: {
-        'content-type': 'application/json'
-      }
-    }).then(result => {
-      this.ScancodeTap(code)
-    }).catch(err => {
-      console.log(err)
-    });
+
+    this.ScancodeTap(code)
     
   },
 

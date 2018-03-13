@@ -9,8 +9,8 @@
       <view>{{item.name}}</view>
       <view class='bottom'>
         <view>
-          <text class='guige'>规格：{{item.guige}}</text>
-          <text class='money'>￥{{item.money}}</text>
+          <text class='guige'>规格：{{item.specifi}}</text>
+          <text class='money'>￥{{item.price}}</text>
         </view>
         <view class='choose' data-info="{{item.code}}" bindtap='choose'>选择商品</view>
       </view>
