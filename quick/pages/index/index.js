@@ -30,11 +30,6 @@ Page({
       ]
    },
    searchView() {
-     wx.navigateTo({
-       url: '../../component/product/product',
-     })
-
-     return;
      if (wx.getStorageSync('storeId')) {
        fetch({
          url: "/CVS/cart/querycart",

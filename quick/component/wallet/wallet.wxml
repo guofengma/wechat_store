@@ -5,8 +5,8 @@
     <view class='scoreicon'>
       <image src='../../image/score.png' class='scoreimg'></image>
     </view>
-    <view class='score'>我的积分： {{score}}</view>
-    <view class='detail' bindtap='detail'>查看明细</view>
+    <view class='score'><text>{{score}}</text><text class='change' hidden='{{change}}'>+ {{amount}}</text></view>
+    <view class='detail' bindtap='{{!share? "detail" : "loading"}}'>查看明细</view>
     <view class='right'>
       <image src='../../image/right.png' class='rightimg'></image>
     </view>
@@ -29,35 +29,41 @@
 
   
   <view class='score-tab'>
-    <view class='title' bindtap='gainScoreView'>
+    <view class='title' bindtap='{{!share? "gainScoreView" : "loading"}}'>
       <image class='tab-img' src="../../image/zuanjifen.png"></image>
       <view class='gain'>赚积分</view>
     </view>
-    <view class='title' bindtap='exchangeView'>
+    <view class='title' bindtap='{{!share? "exchangeView" : "loading"}}'>
       <image class='tab-img' src="../../image/fukuan.png"></image>
       <view class='gain'>付款</view>
     </view>
-    <view class='title' bindtap='shopCardView'>
+    <view class='title' bindtap='{{!share? "shopCardView" : "loading"}}'>
       <image class='tab-img' src="../../image/gouwuka.png"></image>
       <view>购物卡</view>
     </view>
+    <view class='title' bindtap='{{!share? "shareView" : "loading"}}'>
+      <image class='tab-img' src="../../image/h-icon.png"></image>
+      <view>积分红包</view>
+    </view>
   </view>
-  <view class='receive-cont'>
+  <view class='receive-cont' hidden='{{code}}'>
     <view class='receive-cont-title'>扫一扫，向我付款</view>
     <image bindtap='preview' class='receiveCode' src="{{receiveCode}}"></image>
   </view>
 
-  <!-- <view wx:for="{{storeList}}" wx:key="index" wx:for-item="item">
-    <view class='storelist'>
-      <view>
-        <image src='../../image/storeicon.png' class='storeimg'></image>
-      </view>
-      <view class='storeinfo'>
-        <view>{{item.storename}}</view>
-         <view class='chg'>周涨幅 {{item.finalincrease}}%</view> 
-      </view>
-      <button class='op' bindtap='investjoin' data-storeid='{{item.storeid}}' data-storename='{{item.storename}}' data-investtype='0'>参与</button>
-    </view>
-  </view> -->
-
 </view>
+<view class='bottom' bindtap='{{!share? "loulan" : "loading"}}'>
+  <image class='loulan' src='{{src}}'></image>
+</view>
+<view class='toast' hidden='{{transfer}}'>
+  <view class='toast-content'>
+    <label>积分数量：</label>
+    <input type='number' class='toast-input' bindinput='amountInput'></input>
+    <button class='cancel' bindtap='cancelToast'>取消</button>
+    <button class='ensure' open-type='share'>确定</button>
+  </view>
+</view>
+
+<!-- <view class='mask' hidden='{{mask}}'>
+  <image class='image' bindtap='getScore' src='../../image/hongbao.png'></image>  
+</view> -->

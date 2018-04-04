@@ -1,0 +1,55 @@
+.container{
+  background-color: #fff;
+  padding: 0 40rpx;
+  padding-top: 80rpx;
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.logo-content{
+  text-align: center;
+}
+
+.logo{
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.title{
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+
+.center{
+  text-align: center;
+}
+
+.line{
+  height: 1px;
+  background-color: #ececec;
+  margin: 40rpx 0;
+}
+
+.info1{
+  font-size: 32rpx;
+  color: #666666;
+  margin: 40rpx 0;
+}
+
+.info2{
+  font-size: 24rpx;
+  color: #666666;
+  margin: 40rpx 0;
+}
+
+.section-button{
+  padding-top: 30rpx;
+}
+
+.button{
+  height: 72rpx;
+  font-size: 30rpx;
+  line-height: 72rpx;
+  margin-top: 30rpx;
+}

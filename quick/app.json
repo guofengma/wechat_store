@@ -35,20 +35,24 @@
     "pages/proof/proof",
     "pages/confirm/confirm"
   ],
-  "subPackages": [{
-    "root": "component/",
-    "pages": [
-      "award/award",
-      "progress/progress",
-      "gainScore/gainScore",
-      "exchange/exchange",
-      "pay/pay",
-      "shopCard/shopCard",
-      "wallet/wallet",
-      "forgot/forgot",
-      "product/product"
-    ]
-  }],
+  "subPackages": [
+    {
+      "root": "component/",
+      "pages": [
+        "award/award",
+        "progress/progress",
+        "gainScore/gainScore",
+        "exchange/exchange",
+        "pay/pay",
+        "shopCard/shopCard",
+        "wallet/wallet",
+        "forgot/forgot",
+        "product/product",
+        "platLogin/platLogin",
+        "loulanpay/loulanpay"
+      ]
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "light",
@@ -61,16 +65,19 @@
     "backgroundColor": "#ffffff",
     "selectedColor": "#0D8FEF",
     "borderStyle": "white",
-    "list": [{
-      "selectedIconPath": "./image/homeAct.png",
-      "iconPath": "./image/home.png",
-      "pagePath": "pages/index/index",
-      "text": "首页"
-    }, {
-      "selectedIconPath": "./image/mineAct.png",
-      "iconPath": "./image/mine.png",
-      "pagePath": "pages/user/user",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "selectedIconPath": "./image/homeAct.png",
+        "iconPath": "./image/home.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "./image/mineAct.png",
+        "iconPath": "./image/mine.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
   }
 }

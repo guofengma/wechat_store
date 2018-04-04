@@ -207,7 +207,7 @@ Page({
       data: {
         'openid': openId,
         'fee': payMoney,
-        'description': "积分交换手续费",
+        'description': "密码重置手续费",
         'mch_id': wx.getStorageSync('storeId'),
         'storeid': wx.getStorageSync('storeId'),
       },

@@ -298,7 +298,7 @@ Page({
   },
   webShow() {
     wx.navigateTo({
-      url: '../webpage/webpage',
+      url: '../webpage/webpage?webpage=https://store.lianlianchains.com/',
     })
   },
   submitComment(e) {

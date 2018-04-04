@@ -5,7 +5,7 @@
     <view class='button' bindtap='search'>搜索</view>
   </view>
   <view>
-    <view class='item' wx:for="{{result}}">
+    <view class='item' wx:for="{{result}}" wx:key="index">
       <view>{{item.name}}</view>
       <view class='bottom'>
         <view>

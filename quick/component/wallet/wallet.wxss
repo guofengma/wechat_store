@@ -129,3 +129,85 @@
   height: 320rpx;
   margin-top: 50rpx;
 }
+
+.bottom{
+  padding: 16rpx 0;
+  border-top: 1px #ececec solid;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.loulan{
+  display: inline-block;
+  width: 260rpx;
+  height: 58rpx;
+}
+
+.toast{
+  padding: 10rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 500rpx;
+  box-sizing: border-box;
+  z-index: 1000;
+  background: #fff;
+  border: 1px #ececec solid;
+}
+
+.toast-content{
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.toast-input{
+  background-color: #f8f8f8;
+  margin: 40rpx 0;
+  height: 80rpx;
+}
+
+.image{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.mask{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+.cancel,.ensure{
+  height: 40px;
+  line-height: 40px;
+}
+
+.cancel{
+  margin-bottom: 20rpx;
+}
+
+.ensure{
+  background-color: #0d8fef;
+  color: #fff;
+}
+
+.change{
+  margin-left: 20rpx;
+  color: red;
+}

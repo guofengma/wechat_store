@@ -17,15 +17,34 @@ Page({
   bindconfirm(e) {
     console.log(e.detail.value)
     let product = e.detail.value;
-    this.setData({
-      product: e.detail.value
-    })
+
+    fetch({
+      url: "/CVS/good/queryname",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        name: product,
+        storeid: wx.getStorageSync('storeId')
+      },
+      noLoading: true,
+      method: "GET",
+      //   header: { 'content-type': 'application/x-www-form-urlencoded' }
+      header: {
+        'content-type': 'application/json'
+      }
+    }).then(result => {
+      this.setData({
+        result: result
+      })
+    }).catch(err => { 
+      console.log(err)
+    });
   },
   search() {
     fetch({
       url: "/CVS/good/queryname",
-        baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         name: this.data.product,
         storeid: wx.getStorageSync('storeId')
