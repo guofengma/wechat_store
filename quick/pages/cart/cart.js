@@ -1,6 +1,5 @@
 // pages/cart/cart.js
 import fetch from '../../utils/fetch';
-import { recharge } from '../../utils/score';
 
 var score = 0;
 
@@ -41,7 +40,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        'unionId': wx.getStorageSync('unionId')
+        'openid': wx.getStorageSync('user').openid
       },
       method: "GET",
       noLoading: true,
@@ -194,7 +193,7 @@ Page({
     });
   },
   bindDeleteTap(e) {
-    console.log(e.target.dataset.code)
+
     var that = this;
     wx.showModal({
       title: '提示',
@@ -411,10 +410,6 @@ Page({
       'signType': obj.signType,
       'paySign': obj.paySign,
       'success': function (res) {
-        // var unionId = wx.getStorageSync('unionId');
-        // // if (unionId) {
-        // //   recharge(unionId, 5)
-        // // }
 
         //清空购物车
         fetch({
@@ -449,33 +444,6 @@ Page({
         console.log("支付失败")
       }
     })
-  },
-  _getUserInfo() {
-    var unionId = wx.getStorageSync('unionId');
-    if (unionId) {
-      recharge(unionId, 5)
-    }
-    //  fetch({
-    //     url: "/CVS/user/query",
-    //     //   baseUrl: "http://192.168.50.57:9888",
-    //     baseUrl: "https://store.lianlianchains.com",
-    //     data: {
-    //        openid: wx.getStorageSync('user').openid
-    //     },
-    //     noLoading: true,
-    //     method: "GET",
-    //     header: { 'content-type': 'application/x-www-form-urlencoded' }
-    //     //   header: { 'content-type': 'application/json' }
-    //  }).then(result => {
-    //     console.log(result)
-
-    //     if (result.phoneno) {
-    //        recharge(result.phoneno,5)
-    //     } 
-    //  }).catch(err => {
-    //     console.log("出错了")
-    //     console.log(err)
-    //  });
   },
   onLoad: function (options) {
     // console.log("onload")

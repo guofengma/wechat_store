@@ -23,7 +23,7 @@ Page({
         console.log(res);
 
         wx.navigateTo({
-          url: '../pay/pay?unionto='+res.result,
+          url: '../pay/pay?opento='+res.result,
         })
       }
     })
@@ -33,10 +33,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let unionto = wx.getStorageSync('unionId');
+    let opento = wx.getStorageSync('user').openid;
     
     this.setData({
-      receiveCode: "https://store.lianlianchains.com/qrcode?data=" + unionto + "&width=202&height=202"
+      receiveCode: "https://store.lianlianchains.com/qrcode?data=" + opento + "&width=202&height=202"
     })
   },
   /**
@@ -50,42 +50,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    this.loadMore()
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

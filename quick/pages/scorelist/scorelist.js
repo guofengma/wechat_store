@@ -43,12 +43,12 @@ Page({
 
     fetch({
       url: "/CVS/score/querydetail",
-      // baseUrl: "http://192.168.50.239:9888",
+      // baseUrl: "http://192.168.50.238:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
         'start': start,
         'pagenum': 9,
-        'unionId': wx.getStorageSync('unionId')
+        'openid': wx.getStorageSync('user').openid
       },
       method: "GET",
       noLoading: true,
@@ -58,7 +58,6 @@ Page({
       console.log(res)
       console.log('...')
 
-      // var data = JSON.parse(res.data)
 
       var data = JSON.parse(res.data).records
       start = JSON.parse(res.data).nextser
@@ -72,7 +71,6 @@ Page({
             data[i].time = this.toDate(data[i].time)
           }
 
-          // start = data[data.length - 1].ser + 1
 
           this.setData({
             storeList: this.data.storeList.concat(data)

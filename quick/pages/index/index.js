@@ -78,8 +78,7 @@ Page({
         //  baseUrl: "http://192.168.50.239:9888", 
        baseUrl: "https://store.lianlianchains.com",
        data: {
-         openid: wx.getStorageSync('user').openid,
-         unionId: wx.getStorageSync('unionId')
+         openid: wx.getStorageSync('user').openid
        },
        noLoading: true,
        method: "GET",
@@ -329,7 +328,7 @@ Page({
          })
       }
 
-      if (!!wx.getStorageSync('unionId')) {
+      if (!!wx.getStorageSync('user').openid) {
         this.saveUnion();
       }
 
@@ -355,11 +354,5 @@ Page({
         })
         console.log(err)
       });
-   },
-   /**
-  * 用户点击右上角分享
-  */
-   onShareAppMessage: function () {
-
    }
 })

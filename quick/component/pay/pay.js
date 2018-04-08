@@ -116,8 +116,8 @@ Page({
   sendSms() {
     fetch({
       url: "/sms/send",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
+        baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         mobile: this.data.mobile
       },
@@ -189,8 +189,8 @@ Page({
 
     fetch({
       url: "/sms/verify",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
+        baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         mobile: this.data.mobile,
         code: this.data.smsCode,
@@ -220,11 +220,11 @@ Page({
   checkPassword() {
     fetch({
       url: "/CVS/user/querytransfer",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        unionid: wx.getStorageSync('unionId'),
-        unionto: this.data.unionto,
+        openid: wx.getStorageSync('user').openid,
+        opento: this.data.opento,
         score: this.data.money,
         password: this.data.pwd
       },
@@ -283,8 +283,8 @@ Page({
     var that = this;
     fetch({
       url: "/wxpay/prepayscore",
-      //  baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+       baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': openId,
         'fee': payMoney,
@@ -312,8 +312,8 @@ Page({
     var that = this;
     fetch({
       url: "/wxpay/sign",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
+        baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
         'repay_id': prepay_id
       },
@@ -352,11 +352,11 @@ Page({
   transfer() {
     fetch({
       url: "/CVS/user/scoretransfer",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
+      baseUrl: "http://192.168.50.238:9888",
+      // baseUrl: "https://store.lianlianchains.com",
       data: {
-        unionid: wx.getStorageSync('unionId'),
-        unionto: this.data.unionto,
+        openid: wx.getStorageSync('user').openid,
+        opento: this.data.opento,
         score: this.data.money,
         password: this.data.pwd
       },
@@ -398,18 +398,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if(options.unionto) {
+    if (options.opento) {
       this.setData({
-        unionto: options.unionto
+        opento: options.opento
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
   },
 
   /**
@@ -417,74 +410,6 @@ Page({
    */
   onShow: function() {
 
-    // fetch({
-    //   url: '/frt/query',
-    //   //   baseUrl: "http://192.168.50.57:9888", 
-    //   baseUrl: "https://store.lianlianchains.com",
-    //   data: {
-    //     func: 'getBalance',
-    //     ccId: '',
-    //     usr: wx.getStorageSync('unionId'),
-    //     acc: wx.getStorageSync('unionId')
-    //   },
-    //   noLoading: false,
-    //   method: "GET",
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   }
-    //   //  header: { 'content-type': 'application/json' }
-    // }).then(res => {
-    //   console.log(res)
-    //   if (res.code == '0') {
-
-    //     this.setData({
-    //       frt: res.result,
-    //       money: res.result
-    //     })
-
-    //   }
-    // }).catch(err => {
-
-    //   console.log("出错了")
-    //   wx.showToast({
-    //     title: '网络繁忙'
-    //   })
-    //   console.log(err)
-    // })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+    
   }
 })

@@ -322,40 +322,7 @@ Page({
    */
   onShow: function () {
 
-    // fetch({
-    //   url: '/frt/query',
-    //   //   baseUrl: "http://192.168.50.57:9888", 
-    //   baseUrl: "https://store.lianlianchains.com",
-    //   data: {
-    //     func: 'getBalance',
-    //     ccId: '',
-    //     usr: wx.getStorageSync('unionId'),
-    //     acc: wx.getStorageSync('unionId')
-    //   },
-    //   noLoading: false,
-    //   method: "GET",
-    //   header: {
-    //     'content-type': 'application/x-www-form-urlencoded'
-    //   }
-    //   //  header: { 'content-type': 'application/json' }
-    // }).then(res => {
-    //   console.log(res)
-    //   if (res.code == '0') {
-
-    //     this.setData({
-    //       frt: res.result,
-    //       money: res.result
-    //     })
-
-    //   }
-    // }).catch(err => {
-
-    //   console.log("出错了")
-    //   wx.showToast({
-    //     title: '网络繁忙'
-    //   })
-    //   console.log(err)
-    // })
+    
   },
 
   /**

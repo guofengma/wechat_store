@@ -34,7 +34,7 @@ Page({
                   success: function (data) {
                     if (data) {
                       if (data.authSetting["scope.userInfo"] == true) {
-                        _this._getUnionID();
+
                       }
                     }
                   },
@@ -49,14 +49,9 @@ Page({
             }
           })
         } else {
-          if (!wx.getStorageSync('unionId')) {
-            _this._getUnionID();
-          } else {
-            wx.navigateTo({
-              url: componentBasePath + "wallet/wallet",
-            })
-          }
-
+          wx.navigateTo({
+            url: componentBasePath + "wallet/wallet",
+          })
         }
       }
     })
@@ -75,7 +70,7 @@ Page({
                   success: function (data) {
                     if (data) {
                       if (data.authSetting["scope.userLocation"] == true) {
-                        _this._getUnionID();
+
                       }
                     }
                   },
@@ -102,125 +97,10 @@ Page({
 
 
   },
-  querybenefit() {
-    fetch({
-      url: "/CVS/querywithusersum",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        'openid': wx.getStorageSync("user").openid
-      },
-      method: "GET",
-      noLoading: true,
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
-    }).then(res => {
-
-      this.setData({
-        benefit: (res.data / 100).toFixed(2)
-      })
-
-    }).catch(err => {
-
-      wx.showToast({
-        title: '出错了',
-      })
-      console.log(err)
-
-    })
-  },
-  queryscore() {
-
-    fetch({
-      url: "/CVS/score/query",
-      // baseUrl: "http://192.168.50.239:9888",
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        'unionId': wx.getStorageSync('unionId')
-      },
-      method: "GET",
-      noLoading: true,
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
-    }).then(res => {
-
-
-      if (res.ec != '999999') {
-        this.setData({
-          score: res.data
-        })
-      }
-
-    }).catch(err => {
-
-      wx.showToast({
-        title: '出错了',
-      })
-      console.log(err)
-
-    })
-  },
   benefit() {
     wx.navigateTo({
       url: '../benefit/benefit',
     })
-  },
-  _getUnionID() {
-    let that = this;
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-
-          var l = 'https://store.lianlianchains.com/wx/getopenid?code=' + res.code;
-          wx.request({
-            url: l,
-            data: {},
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
-            // header: {}, // 设置请求的 header    
-            success: function (res) {
-              wx.getUserInfo({
-                withCredentials: true,
-                success: function (info) {
-                  that.setData({
-                    avatarUrl: info.userInfo.avatarUrl,
-                    nickName: info.userInfo.nickName
-                  });
-                  wx.request({
-                    // url: 'http://192.168.50.239:9888/wx/decodeUserInfo',
-                    url: 'https://store.lianlianchains.com/wx/decodeUserInfo',
-                    data: {
-                      openid: res.data.openid,
-                      session_key: res.data.session_key,
-                      encryptedData: info.encryptedData,
-                      iv: info.iv
-                    },
-                    method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT    
-                    // header: {}, // 设置请求的 header    
-                    success: function (secr) {
-                      wx.setStorageSync('unionId', secr.data.userInfo.unionId);
-                      if (!!wx.getStorageSync('unionId')) {
-                        that.queryscore();
-                      }
-
-                    }
-                  });
-                }
-              })
-
-
-
-              var obj = {};
-              obj.openid = res.data.openid;
-              obj.expires_in = Date.now() + res.data.expires_in;
-              obj.session_key = res.data.session_key;
-              wx.setStorageSync('user', obj);//存储openid    
-            }
-          });
-
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-
-        }
-      }
-    });
   },
   _Auth() {
     let _this = this;
@@ -232,7 +112,7 @@ Page({
             success: function (data) {
               if (data) {
                 if (data.authSetting["scope.userInfo"] == true) {
-                  _this._getUnionID();
+
                 }
               }
             },
@@ -263,7 +143,7 @@ Page({
                   success: function (data) {
                     if (data) {
                       if (data.authSetting["scope.userInfo"] == true) {
-                        _this._getUnionID();
+
                       }
                     }
                   },
@@ -278,14 +158,9 @@ Page({
             }
           })
         } else {
-          if (!wx.getStorageSync('unionId')) {
-            _this._getUnionID();
-          } else {
-            wx.navigateTo({
-              url: '../score/score',
-            })
-          }
-
+          wx.navigateTo({
+            url: '../score/score',
+          })
         }
       }
     })
@@ -423,7 +298,6 @@ Page({
           avatarUrl: res.userInfo.avatarUrl,
           nickName: res.userInfo.nickName
         });
-        that._getUnionID();
 
       },
       fail: function (err) {
@@ -446,93 +320,10 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
     var that = this;
-    fetch({
-      url: "/CVS/user/query",
-      //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://store.lianlianchains.com",
-      data: {
-        openid: wx.getStorageSync('user').openid
-      },
-      noLoading: true,
-      method: "GET",
-      header: { 'content-type': 'application/x-www-form-urlencoded' }
-      //   header: { 'content-type': 'application/json' }
-    }).then(result => {
-
-      if (result) {
-        let mobile = result.phoneno.substr(0, 3) + "****" + result.phoneno.substr(7)
-        this.setData({
-          mobile: mobile
-        })
-      } else {
-        this.setData({
-          mobile: ""
-        })
-      }
-    }).catch(err => {
-      console.log("出错了")
-      console.log(err)
-    });
     this._getCartnum();
-
-    if (!!wx.getStorageSync('unionId')) {
-      this.queryscore();
-    }
-
-    this.querybenefit()
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
   }
 })

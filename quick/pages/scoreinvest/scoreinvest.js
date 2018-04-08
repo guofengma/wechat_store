@@ -98,7 +98,7 @@ Page({
       // baseUrl: "http://192.168.50.239:9888",
       baseUrl: "https://store.lianlianchains.com",
       data: {
-        'unionId': wx.getStorageSync('unionId'),
+        'openid': wx.getStorageSync('user').openid,
         'storeId': this.data.storeid
       },
       method: "GET",

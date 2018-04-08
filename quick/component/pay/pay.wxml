@@ -6,7 +6,7 @@
         <text space='true' decode="true">收款人</text>
       </view>
       <view class='sendcode'>
-        <input class='input' disabled='true' type='text' placeholder-class='placehoder' value='{{unionto}}' placeholder='请输入金额'></input>
+        <input class='input' disabled='true' type='text' placeholder-class='placehoder' value='{{opento}}' placeholder='请输入金额'></input>
       </view>
     </view>
     <view class='item'>

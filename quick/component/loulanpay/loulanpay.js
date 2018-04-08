@@ -132,7 +132,7 @@ Page({
     fetch({
       url: "/loulan/chain/queryOrder",
       //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://loulan.lianlianchains.com",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         orderNo: orderNo
       },
@@ -146,7 +146,8 @@ Page({
       console.log(result)
 
       this.setData({
-        reacc: result.data.openid
+        reacc: result.data.openid,
+        money: result.data.fee
       })
     }).catch(err => {
       console.log(err)
@@ -196,7 +197,7 @@ Page({
     fetch({
       url: "/loulan/chain/updateOrder",
       //   baseUrl: "http://192.168.50.57:9888",
-      baseUrl: "https://loulan.lianlianchains.com",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         state: 1,
         orderNo: this.data.orderNo
@@ -240,8 +241,6 @@ Page({
 
       socketOpen = true
 
-      // let unionId = wx.getStorageSync('unionId');
-
 
       socketMsgQueue = []
 
@@ -277,8 +276,6 @@ Page({
         console.log("连接服务器成功。");
 
         socketOpen = true
-
-        // let unionId = wx.getStorageSync('unionId');
 
 
         socketMsgQueue = []

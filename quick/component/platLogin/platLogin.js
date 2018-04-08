@@ -52,8 +52,6 @@ Page({
 
       socketOpen = true
       
-      // let unionId = wx.getStorageSync('unionId');
-      
 
       socketMsgQueue = []
       
@@ -90,7 +88,6 @@ Page({
 
         socketOpen = true
 
-        // let unionId = wx.getStorageSync('unionId');
 
 
         socketMsgQueue = []
