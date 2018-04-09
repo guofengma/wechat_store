@@ -116,8 +116,8 @@ Page({
   sendSms() {
     fetch({
       url: "/sms/send",
-        baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         mobile: this.data.mobile
       },
@@ -189,8 +189,8 @@ Page({
 
     fetch({
       url: "/sms/verify",
-        baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         mobile: this.data.mobile,
         code: this.data.smsCode,
@@ -220,8 +220,8 @@ Page({
   checkPassword() {
     fetch({
       url: "/CVS/user/querytransfer",
-      baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid,
         opento: this.data.opento,
@@ -283,8 +283,8 @@ Page({
     var that = this;
     fetch({
       url: "/wxpay/prepayscore",
-       baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      //  baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'openid': openId,
         'fee': payMoney,
@@ -312,8 +312,8 @@ Page({
     var that = this;
     fetch({
       url: "/wxpay/sign",
-        baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+        // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         'repay_id': prepay_id
       },
@@ -352,8 +352,8 @@ Page({
   transfer() {
     fetch({
       url: "/CVS/user/scoretransfer",
-      baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid,
         opento: this.data.opento,

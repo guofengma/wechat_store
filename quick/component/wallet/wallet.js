@@ -90,8 +90,8 @@ Page({
 
     fetch({
       url: "/CVS/score/query",
-      baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid
       },
@@ -164,8 +164,8 @@ Page({
 
                 fetch({
                   url: "/kd/register?func=account&usr=" + wx.getStorageSync('user').openid + "&acc=" + wx.getStorageSync('user').openid,
-                  baseUrl: "http://192.168.10.100",
-                  // baseUrl: "https://store.lianlianchains.com",
+                  // baseUrl: "http://192.168.10.100",
+                  baseUrl: "https://store.lianlianchains.com",
                   data: {
 
                   },
@@ -177,8 +177,8 @@ Page({
                   if (res.code == 0) {
                     fetch({
                       url: "/CVS/user/transferquery",
-                      baseUrl: "http://192.168.50.238:9888",
-                      // baseUrl: "https://store.lianlianchains.com",
+                      // baseUrl: "http://192.168.50.238:9888",
+                      baseUrl: "https://store.lianlianchains.com",
                       data: {
                         openid: unionFrom,
                         opento: wx.getStorageSync('user').openid,
@@ -267,8 +267,8 @@ Page({
     console.log("start")
     fetch({
       url: "/CVS/user/transfer",
-      baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: unionFrom,
         uuid: uuid,
@@ -522,8 +522,8 @@ Page({
   getUuid() {
     fetch({
       url: "/CVS/user/newredpack",
-      baseUrl: "http://192.168.50.238:9888",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.50.238:9888",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid
       },

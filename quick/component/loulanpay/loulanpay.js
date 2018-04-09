@@ -75,8 +75,8 @@ Page({
     });
     fetch({
       url: "/kd/invoke",
-      baseUrl: "http://192.168.10.100",
-      // baseUrl: "https://store.lianlianchains.com",
+      // baseUrl: "http://192.168.10.100",
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         func:"transeferUsePwd",
         usr: wx.getStorageSync('user').openid,

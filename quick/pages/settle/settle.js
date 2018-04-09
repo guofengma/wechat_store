@@ -17,8 +17,8 @@ Page({
   saveUnion() {
     fetch({
       url: "/wx/account",
-       baseUrl: "http://192.168.50.238:9888", 
-      // baseUrl: "https://store.lianlianchains.com",
+      //  baseUrl: "http://192.168.50.238:9888", 
+      baseUrl: "https://store.lianlianchains.com",
       data: {
         openid: wx.getStorageSync('user').openid
       },
