@@ -108,13 +108,14 @@ Page({
 
     let idx = e.target.dataset.idx;
     uploadImage().then(res => {
+    
 
       let path = res.tempFilePaths[0];
       if (idx === "previewImg1") {
         this.setData({
           previewImg1: path
         })
-        console.log(data)
+
         wx.uploadFile({
           // url: 'http://192.168.50.115:8123/upload', //仅为示例，非真实的接口地址
           url: 'https://store.lianlianchains.com/CVS/upload', 

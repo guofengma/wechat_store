@@ -6,7 +6,15 @@
         <text space='true' decode="true">收款人</text>
       </view>
       <view class='sendcode'>
-        <input class='input' disabled='true' type='text' placeholder-class='placehoder' value='{{reacc}}'></input>
+        <input class='input' disabled='true' type='text' placeholder-class='placehoder' value='{{publisher}}'></input>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='title'>
+        <text space='true' decode="true">名&nbsp;&nbsp;&nbsp;称</text>
+      </view>
+      <view class='sendcode'>
+        <input class='input' type='number' disabled='true' placeholder-class='placehoder' value='{{name}}' bindinput='moneyInput' placeholder='请输入积分'></input>
       </view>
     </view>
     <view class='item'>
@@ -17,7 +25,7 @@
         <input class='input' type='number' disabled='true' placeholder-class='placehoder' value='{{money}}' bindinput='moneyInput' placeholder='请输入积分'></input>
       </view>
     </view>
-   
+
     <view class='item' style='margin-bottom: 0;'>
       <view class='title'>
         <text space='true' decode="true">密&nbsp;&nbsp;&nbsp;码</text>

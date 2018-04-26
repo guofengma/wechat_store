@@ -63,7 +63,7 @@ Page({
       if (data.types == 1 && data.data == self.data.uuid) {
         self.sendSocketMessage(JSON.stringify({
           types: "2",
-          data: wx.getStorageSync('user').openid
+          data: { openid: wx.getStorageSync('user').openid,uuid:data.uuid}
         }));
         self.setData({
           loading: false

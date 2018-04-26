@@ -12,7 +12,8 @@ Page({
     benifit: 0,
     score: 0,
     extract: false,
-    limitNum:0
+    limitNum:0,
+    btnContDisable: false
   },
   setScore(e) {
     var inputNum = e.detail.value - 0;
@@ -50,7 +51,8 @@ Page({
       if (dt.getHours() > 13 && dt.getHours() <= 15) {
         this.setData({
           btnCont: "参与",
-          joinBtn: true
+          joinBtn: true,
+          btnContDisable: false
         });
 
         this._getLimit();
@@ -74,7 +76,8 @@ Page({
       if (dt.getHours() > 9 && dt.getHours() <= 12) {
         this.setData({
           btnCont: "提取",
-          joinBtn: false
+          joinBtn: false,
+          btnContDisable: false
         });
 
         return

@@ -100,23 +100,27 @@ Page({
     var that = this
     if (e.detail.errMsg != 'getPhoneNumber:fail user deny') {
 
-      wx.request({
-        url: 'http://192.168.50.239:9888/wx/decodePhone',
+      fetch({
+        url: "/wx/decodePhone",
+        // baseUrl: "http://192.168.50.239:9888",
+        baseUrl: "https://store.lianlianchains.com",
         data: {
           openid: wx.getStorageSync('user').openid,
           session_key: wx.getStorageSync('user').session_key,
           encryptedData: e.detail.encryptedData,
           iv: e.detail.iv
         },
-        method: 'GET',
-        success: function (secr) {
-          console.log(secr);
+        method: "GET",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+        console.log(res);
+        that.setData({
+          phone: secr.data.ret.phone
+        })
 
-          that.setData({
-            phone: secr.data.ret.phone
-          })
+      }).catch(err => {
 
-        }
       });
 
     }

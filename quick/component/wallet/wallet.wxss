@@ -152,7 +152,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  height: 500rpx;
+  height: 580rpx;
   box-sizing: border-box;
   z-index: 1000;
   background: #fff;

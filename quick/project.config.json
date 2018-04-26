@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.90",
+	"libVersion": "1.9.98",
 	"appid": "wx75befcb556e56774",
 	"projectname": "quick",
 	"condition": {
@@ -56,7 +56,7 @@
 					"id": 3,
 					"name": "楼兰转账",
 					"pathName": "component/loulanpay/loulanpay",
-					"query": "orderNo=lqldez6biv1fque5hlxgxijj5grqfbez",
+					"query": "orderNo=66t6goman62v2fb328bombwj5b0d7ag8",
 					"scene": "1011"
 				}
 			]

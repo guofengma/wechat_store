@@ -34,6 +34,15 @@ Page({
     })
   },
   pay() {
+    if (!this.data.publisher) {
+      wx.showModal({
+        content: '收款人不能为空',
+        showCancel: false,
+        confirmColor: '#0D8FEF'
+      });
+
+      return
+    }
     if (!this.data.money) {
       wx.showModal({
         content: '金额不能为空',
@@ -64,15 +73,103 @@ Page({
       return
     }
 
-    this.transfer();
+    this.transPreCheck();
   },
 
 
-  transfer() {
+  transPreCheck() {
 
     this.setData({
       loading: true
     });
+
+    fetch({
+      url: "/kd/query",
+      // baseUrl: "http://192.168.10.100",
+      baseUrl: "https://store.lianlianchains.com",
+      data: {
+        func: "transPreCheck",
+        usr: wx.getStorageSync('user').openid,
+        acc: wx.getStorageSync('user').openid,
+        reacc: this.data.reacc,
+        amt: this.data.money,
+        pwd: this.data.pwd
+      },
+      noLoading: true,
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }
+      // header: { 'content-type': 'application/json' }
+    }).then(result => {
+      console.log(result.code)
+
+      if (result.result == "0") {
+        this.transfer();
+      } else if (result.result == "10004") {
+        wx.showModal({
+          content: '密码错误',
+          showCancel: false,
+          confirmColor: '#0D8FEF'
+        });
+
+        this.setData({
+          loading: false
+        });
+      } else if (result.result == "10003") {
+        wx.showModal({
+          content: '账号余额不足',
+          confirmText: "去充值",
+          confirmColor: '#0D8FEF',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '../shopCard/shopCard',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        });
+
+        this.setData({
+          loading: false
+        });
+      } else if (result.result == "10005") {
+        wx.showModal({
+          content: '转账金额不合法',
+          showCancel: false,
+          confirmColor: '#0D8FEF'
+        });
+
+        this.setData({
+          loading: false
+        });
+      } else {
+        wx.showModal({
+          content: '网络错误',
+          showCancel: false,
+          confirmColor: '#0D8FEF',
+        });
+
+        this.setData({
+          loading: false
+        });
+      }
+
+      
+    }).catch(err => {
+      console.log(err)
+      this.setData({
+        loading: false
+      });
+    });
+
+    
+  },
+
+  transfer() {
     fetch({
       url: "/kd/invoke",
       // baseUrl: "http://192.168.10.100",
@@ -84,7 +181,7 @@ Page({
         reacc: this.data.reacc,
         amt:this.data.money,
         pwd:this.data.pwd,
-        desc:"转账"
+        desc:"合约购买"
       },
       noLoading: true,
       method: "POST",
@@ -100,8 +197,8 @@ Page({
         })
 
         this.sendSocketMessage(JSON.stringify({ types: "0", data: wx.getStorageSync('user').openid }));
-        
-        
+
+
       }else{
         wx.showModal({
           content: '交易失败',
@@ -115,8 +212,11 @@ Page({
             }
           }
         });
+        this.setData({
+          loading: false
+        });
       }
-      
+
     }).catch(err => {
       console.log("出错了")
       console.log(err)
@@ -146,8 +246,10 @@ Page({
       console.log(result)
 
       this.setData({
-        reacc: result.data.openid,
-        money: result.data.fee
+        publisher: result.data.publisher ? result.data.publisher : "null",
+        reacc: result.data.publisher,
+        money: result.data.fee,
+        name: result.data.description
       })
     }).catch(err => {
       console.log(err)

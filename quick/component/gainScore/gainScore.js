@@ -195,6 +195,7 @@ Page({
 
     this.queryscore()
     this.querystoreuser()
+    this.querystore()
   },
 
   /**

@@ -1,13 +1,12 @@
-// pages/score/score.js
 import fetch from '../../utils/fetch';
 
-let storeListUser = []
-let pageUser = 0
-let totalpageUser = 0
+let storeListUser = [];
+let pageUser = 0;
+let totalpageUser = 0;
 
-let storeList = []
-let page = 0
-let totalpage = 0
+let storeList = [];
+let page = 0;
+let totalpage = 0;
 
 Page({
 
@@ -152,9 +151,16 @@ Page({
               obj.openid = res.data.openid;
               obj.expires_in = Date.now() + res.data.expires_in;
               obj.session_key = res.data.session_key;
-              wx.setStorageSync('user', obj);//存储openid    
+              wx.setStorageSync('user', obj);//存储openid  
 
-              if (!!wx.getStorageSync('user').openid) {
+              if (unionFrom == wx.getStorageSync('user').openid) {
+
+                that.setData({
+                  share: false
+                });
+              }  
+
+              else{
 
                 that.setData({
                   receiveCode: "https://store.lianlianchains.com/qrcode?data=" + wx.getStorageSync('user').openid + "&width=202&height=202"
@@ -280,19 +286,17 @@ Page({
       header: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then(res => {
 
-
-        
-      
       if(res.data == 0) {
         this.setData({
           change: false,
+          share: false
         })
       }else{
-        wx.showModal({
-          content: '领取过了',
-          showCancel: false,
-          confirmColor: '#0D8FEF',
-        });
+        // wx.showModal({
+        //   content: '领取过了',
+        //   showCancel: false,
+        //   confirmColor: '#0D8FEF'
+        // })
 
         wx.hideLoading();
 
@@ -310,7 +314,7 @@ Page({
         clearTimeout(timer)
       },1000)
 
-      var timer2 = setTimeout(() => {;
+      var timer2 = setTimeout(() => {
         this.setData({
           share: false
         })
@@ -358,23 +362,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let opento = wx.getStorageSync('user').openid;
+    
     let _this = this;
 
     wx.setStorageSync("options", options);
 
     this.setData({
-      receiveCode: "https://store.lianlianchains.com/qrcode?data=" + opento + "&width=202&height=202",
-      code: false,
-      transfer: true,
+      transfer: true
     })
-
-    if (options.target == "share") {
-      this.setData({
-        share: true
-      })
-    }
-
     
   },
   /**
@@ -394,86 +389,67 @@ Page({
     let options = wx.getStorageSync('options');
     
 
-    if (this.data.share == true && options.target == "share" && options.openid != wx.getStorageSync('user').openid && options.amount && options.unionFrom) {
+    if (options.target == "share" && options.amount && options.unionFrom) {
+
+      fetch({
+        url: "/CVS/user/redpackquery",
+        // baseUrl: "http://192.168.50.238:9888",
+        baseUrl: "https://store.lianlianchains.com",
+        data: {
+          uuid: options.uuid
+        },
+        method: "GET",
+        noLoading: true,
+        header: { 'content-type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+
+        if (res.data == 0) {
+          this.setData({
+            amount: options.amount,
+            transfer: true,
+            share: true
+          })
+          _this._getUnionID(options.unionFrom, options.amount, options.uuid);
 
 
+        }else{
+          this.setData({
+            share: false
+          });
 
-      this.setData({
-        amount: options.amount,
-        code: true,
-        transfer: true,
-        share: true
-      })
+          // wx.showModal({
+          //   content: '领取过了',
+          //   showCancel: false,
+          //   confirmColor: '#0D8FEF'
+          // });
 
-      wx.getSetting({
-        success(res) {
-          if (!res.authSetting['scope.userInfo']) {
-            console.log("未授权")
-            console.log(wx.getStorageSync('userauth'));
-            if (wx.getStorageSync('userauth') == "success") {
-              console.log("第二次进入")
-              _this._getUnionID(options.unionFrom, options.amount, options.uuid)
-            } else if (wx.getStorageSync('userauth') == "faild") {
-              console.log("拒绝后")
-              wx.showModal({
-                content: '快点申请获取用户信息权限',
-                success: function (res) {
-                  if (res.confirm) {
-                    wx.openSetting({
-                      success: function (data) {
-                        if (data) {
-                          if (data.authSetting["scope.userInfo"] == true) {
-                            wx.showLoading({
-                              mask: true,
-                              duration: 0,
-                              title: '加载中',
-                            })
-                            _this._getUnionID(options.unionFrom, options.amount, options.uuid);
-                          }
-                        }
-                      },
-                      fail: function () {
-                        console.info("2授权失败返回数据");
-
-                      }
-                    });
-                  } else if (res.cancel) {
-                    console.log('用户点击取消')
-                  }
-                }
-              })
-            } else {
-              console.log("第一次进入")
-
-              _this._getUnionID(options.unionFrom, options.amount, options.uuid)
-            }
-
-          } else {
-            console.log("已授权")
-            if (!!wx.getStorageSync('user').openid) {
-
-              _this._getUnionID(options.unionFrom, options.amount, options.uuid);
-
-              return;
-            }
-
-            _this.setData({
-              receiveCode: "https://store.lianlianchains.com/qrcode?data=" + wx.getStorageSync('user').openid + "&width=202&height=202"
-            })
-            _this._getUnionID(options.unionFrom, options.amount, options.uuid);
-
-          }
+          return;
         }
+        
+
+      }).catch(err => {
+
+        wx.showToast({
+          title: '出错了',
+        });
+
+        wx.hideLoading();
+
       })
+
+      
     }
 
-    this.setData({
-      code: false,
-    })
+    let opento = wx.getStorageSync('user').openid;
 
-    if (!!wx.getStorageSync('user').openid) {
-      this.queryscore()
+    if (opento) {
+      this.setData({
+        receiveCode: "https://store.lianlianchains.com/qrcode?data=" + opento + "&width=202&height=202"
+      })
+      this.queryscore();
     }
+
+      
 
     
   },
@@ -482,14 +458,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -570,8 +546,7 @@ Page({
         // 转发成功
 
         this.setData({
-          code: false,
-          transfer: true,
+          transfer: true
         })
       },
       fail: function (res) {

@@ -1,55 +1,52 @@
-.container{
+.container {
   background-color: #fff;
   padding: 0 40rpx;
-  padding-top: 80rpx;
+  padding-top: 180rpx;
   overflow: hidden;
   height: 100%;
   box-sizing: border-box;
 }
 
-.logo-content{
+.logo-content {
   text-align: center;
 }
 
-.logo{
-  width: 130rpx;
-  height: 130rpx;
+.logo {
+  width: 140rpx;
+  height: 133.2rpx;
 }
 
-.title{
+.title {
   font-size: 36rpx;
   margin-top: 30rpx;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.line{
+.line {
   height: 1px;
   background-color: #ececec;
   margin: 40rpx 0;
 }
 
-.info1{
-  font-size: 32rpx;
-  color: #666666;
+.info1 {
   margin: 40rpx 0;
+  text-align: center;
+  font-family: PingFang-SC-Medium;
+  font-size: 28rpx;
+  color: #999;
 }
 
-.info2{
-  font-size: 24rpx;
-  color: #666666;
-  margin: 40rpx 0;
+
+.section-button {
+  padding-top: 240rpx;
 }
 
-.section-button{
-  padding-top: 30rpx;
-}
-
-.button{
-  height: 72rpx;
+.button {
+  height: 90rpx;
   font-size: 30rpx;
-  line-height: 72rpx;
+  line-height: 90rpx;
   margin-top: 30rpx;
 }

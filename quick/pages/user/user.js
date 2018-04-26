@@ -22,38 +22,8 @@ Page({
   },
   walletView() {
     let _this = this;
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userInfo']) {
-
-          wx.showModal({
-            content: '快点申请获取用户信息权限',
-            success: function (res) {
-              if (res.confirm) {
-                wx.openSetting({
-                  success: function (data) {
-                    if (data) {
-                      if (data.authSetting["scope.userInfo"] == true) {
-
-                      }
-                    }
-                  },
-                  fail: function () {
-                    console.info("2授权失败返回数据");
-
-                  }
-                });
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
-            }
-          })
-        } else {
-          wx.navigateTo({
-            url: componentBasePath + "wallet/wallet",
-          })
-        }
-      }
+    wx.navigateTo({
+      url: componentBasePath + "wallet/wallet?target=wallet",
     })
     
   },

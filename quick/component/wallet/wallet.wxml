@@ -46,7 +46,7 @@
       <view>积分红包</view>
     </view>
   </view>
-  <view class='receive-cont' hidden='{{code}}'>
+  <view class='receive-cont'>
     <view class='receive-cont-title'>扫一扫，向我付款</view>
     <image bindtap='preview' class='receiveCode' src="{{receiveCode}}"></image>
   </view>

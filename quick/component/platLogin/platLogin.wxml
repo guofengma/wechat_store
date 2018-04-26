@@ -3,11 +3,9 @@
     <view class='logo-content'>
       <image class='logo' src='./image/logo.png'></image>
     </view>
-    <view class='center title'>楼兰开放平台微信登录</view>
+    <view class='center title'>楼兰开放平台</view>
   </view>
-  <view class='line'></view>
-  <view class='info1'>即将登录楼兰开放平台微信登录，请确认是本人操作</view>
-  <view class='info2'>· 使用你的账号登录该应用</view>
+  <view class='info1'>即将使用微信登录，请确认是本人操作</view>
 
   
   <view class='section-button'>
